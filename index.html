@@ -368,9 +368,9 @@ const SEOUL_DAYS = [
  ]},
  {id:'s4',num:'DEPART',kr:'수요일',date:'Wed · Sep 2',iso:'2026-09-02',sub:'Cimer Spa send-off → fly to Tokyo ✈️',anchor:5*60+30,items:[
   ['🏨','Wake up & check out Park Hyatt','travel','gn','Gangnam','2','삼성 Samseong',null,30,'Early start! Grab a conbini breakfast on the way.',null,1],
-  ['🧖','Cimer Spa at Paradise City','spa','ich','Incheon','AREX','ICN shuttle',4.7,90,'Luxury jjimjilbang + aqua pools next to the airport — soak, sauna, get fresh for Tokyo. ~₩30K, luggage lockers on site.','https://www.tiktok.com/@tiktok/video/7504672079887781163',1],
-  ['🛫','To the airport — check in','travel','ich','Incheon',null,'GMP or ICN — TBD',null,60,'If ICN, free shuttle right back to T1. Gimpo (GMP) preferred if booked — closer both sides.',null,1],
-  ['✈️','Flight Seoul → Tokyo (HND)','travel','ich','→ Tokyo',null,'~10 AM departure',null,150,'Annyeong Seoul 🇰🇷 → Konnichiwa Tokyo 🇯🇵. BOOK THIS FLIGHT — GMP→HND preferred.',null,1]
+  ['🧖','Cimer Spa at Paradise City','spa','ich','Incheon','AREX','ICN shuttle',4.7,90,'Luxury jjimjilbang + aqua pools next to the airport — soak, sauna, get fresh for Tokyo. ~₩30K, luggage lockers on site. ⚠️ Flight is now 8:00 AM from GMP — the spa morning no longer fits; propose moving it to Sep 1 (crew vote!).','https://www.tiktok.com/@tiktok/video/7504672079887781163',1],
+  ['🛫','To the airport — check in','travel','ich','Incheon',null,'GMP ✓',null,60,'Gimpo it is — JL90 departs 8:00 AM, so be at GMP by ~6:00–6:30 AM for international check-in.',null,1],
+  ['✈️','Flight Seoul → Tokyo (HND)','travel','ich','→ Tokyo',null,'JL 90 · 8:00 AM',null,135,'Annyeong Seoul 🇰🇷 → Konnichiwa Tokyo 🇯🇵. BOOKED for Clearwaters — JL90 GMP→HND 8:00 AM → 10:15 AM (Nick confirmed Sep 2; Olivia being moved over from the Sep 1 booking).',null,1]
  ]}
 ];
 
@@ -441,7 +441,7 @@ const TOKYO_DAYS = [
   ['🛍️','Last shopping / free time','shop','sj','Shinjuku',null,'—',null,90,'Station shops have great stuff.',null,1],
   ['🍜','Last Tokyo meal — ramen or quick sushi','food','sj','Shinjuku',null,'—',5.0,60,'One final bowl before splitting up.',null,1],
   ['🧳','Check out — head to airports','travel','sj','Shinjuku',null,'—',null,30,'Brysons → Haneda (Keikyu, ~30 min, arrive by 2 PM). Clearwaters → Narita (NEX, ~1.5 hr).',null,1],
-  ['✈️','Flights home — see Flights tab','travel','hnd','HND / NRT',null,'—',null,0,'Delta HND→LAX 4:35 PM · United HND→SFO 3:50 PM · JL58 NRT→SFO 6:15 PM. Arrive home the same day 🤯',null,1]
+  ['✈️','Flights home — see Flights tab','travel','hnd','HND / NRT',null,'—',null,0,'Delta HND→LAX 4:35 PM (Brysons) · United HND→SFO 3:50 PM (Becksteads) · UA838 NRT→SFO 5:05 PM (Olivia) · JL58 NRT→SFO 6:15 PM (Nick). Arrive home the same day 🤯',null,1]
  ]}
 ];
 
@@ -492,7 +492,7 @@ const BENCH={
 
 /* ===== Booking checklist ===== */
 const TODOS=[
- ['c1','✈️','Book GMP → HND flight — all 3 families','ASAP — fares climb','Gimpo→Haneda strongly preferred (city airports both sides). ~9–10 AM Wed Sep 2. Clearwaters: change the JL90 Sep 1 booking → Sep 2!'],
+ ['c1','✈️','GMP → HND flight — Wed Sep 2 (JL90, 8:00 AM)','ASAP — fares climb','Clearwaters: Nick BOOKED ✓ on Sep 2. Olivia still ticketed on the Sep 1 JL90 — move her to Sep 2! Brysons + Becksteads: still need to book.'],
  ['c2','✈️','Clearwaters: book SFO → ICN','ASAP','Airline still TBD — Brysons (Air Premia) & Becksteads (United) are booked.'],
  ['c3','🏨','Book Tokyo hotel — Shinjuku','by early July','5 nights Sep 2–7. Shinjuku recommended in the plan.'],
  ['c4','🎨','teamLab Borderless tickets — Fri Sep 4 evening','~Jul 4 (released ~2 mo out)','Sells out fast. <a href="https://borderless.teamlab.art" target="_blank">borderless.teamlab.art</a>'],
@@ -515,10 +515,13 @@ const FLIGHTS = [
   {who:'Becksteads',a:'SFO',b:'ICN',meta:'<b>10:40 AM → 3:00 PM (+1)</b> · 13 hrs · United',note:''}
  ]},
  {sec:'Flight 2 · Seoul → Tokyo — Wed Sep 2',rows:[
-  {who:'Everyone — ⚠️ BOOK THIS!',a:'GMP',b:'HND',meta:'<b>Morning ~9–10 AM</b> · ~2.5 hrs · TBD',note:'Gimpo→Haneda strongly preferred — city airports on both sides. Clearwaters: changing a JL90 Sep 1 booking to Sep 2.'}
+  {who:'Clearwaters — Nick ✓',a:'GMP',b:'HND',meta:'<b>8:00 AM → 10:15 AM</b> · 2h 15m · JAL 90 (787-9)',note:'Booked Jun 10 on points.'},
+  {who:'Clearwaters — Olivia ⚠️',a:'GMP',b:'HND',meta:'<b>Still on Sep 1 JL90</b> · moving to Sep 2',note:'Ticketed on the Sep 1 flight — change to Sep 2 to join everyone.'},
+  {who:'Brysons + Becksteads — ⚠️ BOOK THIS!',a:'GMP',b:'HND',meta:'<b>JL 90 · 8:00 AM → 10:15 AM</b> · 2h 15m',note:'Gimpo→Haneda — city airports on both sides. Match the Clearwaters flight.'}
  ]},
  {sec:'Flight 3 · Tokyo → Home — Mon Sep 7',rows:[
-  {who:'Clearwaters',a:'NRT',b:'SFO',meta:'<b>6:15 PM → 11:55 AM same day</b> · 9h 40m · JAL 58',note:'Narita Express out ~12:30 PM — arrive before you left 🤯'},
+  {who:'Clearwaters — Nick',a:'NRT',b:'SFO',meta:'<b>6:15 PM → 11:55 AM same day</b> · 9h 40m · JAL 58',note:'Narita Express out ~12:30 PM — arrive before you left 🤯'},
+  {who:'Clearwaters — Olivia',a:'NRT',b:'SFO',meta:'<b>5:05 PM → 10:40 AM same day</b> · 9h 35m · United 838',note:'Booked Jun 10 — lands 75 min before Nick.'},
   {who:'Brysons',a:'HND',b:'LAX',meta:'<b>4:35 PM → 10:53 AM same day</b> · 10h 18m · Delta',note:'Haneda is close — Keikyu ~30 min'},
   {who:'Becksteads',a:'HND',b:'SFO',meta:'<b>3:50 PM → 9:45 AM same day</b> · 9h 40m · United',note:''}
  ]}
