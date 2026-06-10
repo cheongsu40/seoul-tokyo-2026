@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>서울 ✕ 東京 · Seoul–Tokyo 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0d14; --bg2:#10131d; --card:#161a27; --card2:#1c2133;
+  --line:#262c40; --txt:#eef1f8; --dim:#8a92ab; --dim2:#5d6580;
+  --red:#ff4d6d; --blue:#5b8cff; --gold:#ffd166; --mint:#3ddc97;
+  --grad:linear-gradient(135deg,#ff4d6d 0%,#ff7a59 45%,#5b8cff 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Outfit','Noto Sans KR',-apple-system,sans-serif;
+  font-size:15px;line-height:1.45;overscroll-behavior-y:none;
+  background-image:radial-gradient(1200px 500px at 80% -10%,rgba(91,140,255,.12),transparent 60%),
+                   radial-gradient(900px 420px at 10% -5%,rgba(255,77,109,.14),transparent 55%);}
+.wrap{max-width:560px;margin:0 auto;padding:0 14px 110px}
+
+/* ---------- hero ---------- */
+.hero{padding:34px 4px 16px;text-align:center}
+.hero .flag{font-size:13px;letter-spacing:.4em;color:var(--dim);text-transform:uppercase}
+.hero h1{font-family:'Noto Sans KR';font-weight:900;font-size:42px;line-height:1.05;margin:8px 0 2px;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .en{font-weight:800;font-size:20px;letter-spacing:.18em}
+.hero .dates{margin-top:10px;color:var(--dim);font-size:13.5px}
+.hero .crew{margin-top:6px;font-size:12px;color:var(--dim2);letter-spacing:.08em}
+#cd{margin:14px auto 0;display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:9px 18px;font-weight:800;font-size:16px;letter-spacing:.06em}
+#cd b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tip{margin:14px auto 0;max-width:420px;background:rgba(255,209,102,.08);border:1px solid rgba(255,209,102,.25);
+  color:#ffd166;border-radius:12px;padding:9px 13px;font-size:12.5px}
+
+/* ---------- city tabs ---------- */
+.tabs{position:sticky;top:0;z-index:50;display:flex;gap:6px;padding:12px 0 10px;
+  background:linear-gradient(var(--bg) 75%,transparent)}
+.tab{flex:1;text-align:center;padding:9px 0;border-radius:13px;background:var(--card);border:1px solid var(--line);
+  color:var(--dim);font-weight:600;font-size:13.5px;cursor:pointer;transition:.18s;font-family:'Noto Sans KR';position:relative}
+.tab.on{color:#fff;background:var(--card2);border-color:transparent}
+.tab.on::after{content:'';position:absolute;inset:-1px;border-radius:13px;padding:1.5px;background:var(--grad);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.tab small{display:block;font-size:8.5px;letter-spacing:.14em;color:var(--dim2);font-family:'Outfit'}
+.tab .bdgct{position:absolute;top:-6px;right:-4px;background:var(--red);color:#fff;font-size:10px;font-weight:800;
+  min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+
+/* ---------- day pills ---------- */
+.pills{position:sticky;top:58px;z-index:49;display:flex;gap:7px;overflow-x:auto;padding:4px 0 12px;scrollbar-width:none;
+  background:linear-gradient(var(--bg) 60%,transparent)}
+.pills::-webkit-scrollbar{display:none}
+.pill{flex:0 0 auto;padding:7px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);
+  color:var(--dim);font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap}
+.pill.on{background:var(--grad);color:#fff;border-color:transparent}
+
+/* ---------- now banner ---------- */
+.nowbar{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(61,220,151,.14),rgba(91,140,255,.1));
+  border:1px solid rgba(61,220,151,.4);border-radius:14px;padding:11px 14px;margin:2px 0 14px;font-size:13px}
+.nowbar .dot{width:9px;height:9px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 0 rgba(61,220,151,.6);animation:pulse 1.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(61,220,151,0)}100%{box-shadow:0 0 0 0 rgba(61,220,151,0)}}
+.nowbar b{color:var(--mint)}
+
+/* ---------- day section ---------- */
+.day{margin:6px 0 30px}
+.dhead{display:flex;align-items:baseline;gap:10px;padding:10px 2px 4px;flex-wrap:wrap}
+.dhead .big{font-family:'Noto Sans KR';font-weight:900;font-size:22px}
+.dhead .kr{color:var(--dim2);font-size:13px;font-family:'Noto Sans KR'}
+.wx{margin-left:auto;font-size:12px;color:var(--dim);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.dsub{color:var(--dim);font-size:13px;padding:0 2px 14px}
+
+/* ---------- cards ---------- */
+.list{display:flex;flex-direction:column}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:18px;
+  padding:13px 12px 13px 14px;position:relative;transition:transform .15s, box-shadow .15s, opacity .15s, border-color .3s}
+.card.dragging{opacity:.35}
+.card.now{border-color:var(--mint);box-shadow:0 0 22px rgba(61,220,151,.18)}
+.card .heroimg{width:100%;height:110px;object-fit:cover;border-radius:12px;margin-bottom:11px;display:block;filter:saturate(1.05)}
+.card .row{display:flex;gap:12px}
+.card .timecol{flex:0 0 56px;text-align:right;padding-top:2px}
+.card .time{font-weight:800;font-size:14px;letter-spacing:.02em}
+.card .ampm{font-size:10px;color:var(--dim2);font-weight:600;letter-spacing:.12em}
+.card .emoji{flex:0 0 38px;height:38px;border-radius:12px;background:var(--bg2);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:19px;margin-top:1px}
+.card .body{flex:1;min-width:0}
+.card .title{font-weight:600;font-size:14.5px;font-family:'Noto Sans KR'}
+.badges{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;align-items:center}
+.bdg{font-size:10.5px;padding:2.5px 8px;border-radius:999px;background:var(--bg2);border:1px solid var(--line);color:var(--dim);font-weight:600;letter-spacing:.02em;text-decoration:none}
+.bdg.cat{border:none;color:#0b0d14;font-weight:700}
+.bdg.line{color:#fff;border:none;font-weight:700}
+.bdg.star{color:var(--gold);border-color:rgba(255,209,102,.3)}
+.bdg.nav{color:var(--mint);border-color:rgba(61,220,151,.35)}
+.note{display:none;margin-top:8px;font-size:12.5px;color:var(--dim);border-top:1px dashed var(--line);padding-top:8px}
+.card.open .note{display:block}
+.note a{color:var(--blue);text-decoration:none;font-weight:600}
+.handle{flex:0 0 26px;display:flex;align-items:center;justify-content:center;color:var(--dim2);font-size:17px;
+  cursor:grab;touch-action:none;border-radius:10px;user-select:none;-webkit-user-select:none}
+.handle:active{cursor:grabbing;color:#fff}
+.card.locked .handle{opacity:.2;pointer-events:none}
+.rm{position:absolute;top:9px;right:9px;width:21px;height:21px;border-radius:50%;background:var(--bg2);border:1px solid var(--line);
+  color:var(--dim);font-size:11px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+.chip{display:flex;align-items:center;gap:8px;padding:5px 0 5px 70px;color:var(--dim2);font-size:11.5px;font-weight:600}
+.chip .ln{flex:0 0 14px;border-left:2px dotted var(--line);height:22px;margin-left:11px}
+.chip span{display:flex;align-items:center;gap:5px}
+.chip b{color:var(--dim)}
+
+.ghost{position:fixed;z-index:999;pointer-events:none;width:calc(100% - 28px);max-width:532px;
+  box-shadow:0 18px 50px rgba(0,0,0,.6);transform:scale(1.02);border-color:var(--blue)!important;opacity:.97}
+
+.dfoot{display:flex;justify-content:space-between;align-items:center;color:var(--dim2);font-size:12px;padding:12px 4px 0}
+.reset{background:none;border:1px solid var(--line);color:var(--dim);border-radius:999px;padding:5px 12px;font-size:11.5px;cursor:pointer}
+
+/* ---------- bench ---------- */
+#fab{position:fixed;bottom:20px;right:18px;z-index:90;background:var(--grad);color:#fff;border:none;border-radius:999px;
+  padding:13px 20px;font-weight:800;font-size:14px;font-family:'Noto Sans KR';box-shadow:0 10px 30px rgba(255,77,109,.35);cursor:pointer}
+#sheetbg{position:fixed;inset:0;background:rgba(5,7,12,.7);backdrop-filter:blur(3px);z-index:95}
+#sheet{position:fixed;left:0;right:0;bottom:0;z-index:96;background:var(--bg2);border-radius:22px 22px 0 0;border:1px solid var(--line);
+  max-height:74vh;overflow-y:auto;padding:18px 16px 30px;max-width:560px;margin:0 auto}
+#sheet h3{font-family:'Noto Sans KR';font-weight:900;font-size:19px;margin-bottom:2px}
+#sheet .sub{color:var(--dim);font-size:12.5px;margin-bottom:14px}
+.bgrp{font-size:11px;letter-spacing:.16em;color:var(--dim2);text-transform:uppercase;font-weight:800;margin:16px 0 8px}
+.brow{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:8px}
+.brow .be{font-size:19px}
+.brow .bt{flex:1;min-width:0}
+.brow .bt .n{font-size:13px;font-weight:600;font-family:'Noto Sans KR'}
+.brow .bt .m{font-size:11px;color:var(--dim2)}
+.brow .add{background:var(--card2);border:1px solid var(--line);color:var(--mint);border-radius:999px;padding:5px 13px;font-weight:800;font-size:12px;cursor:pointer;white-space:nowrap}
+.brow .add.done{color:var(--dim2)}
+.dayspick{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0 2px;width:100%}
+.dayspick .dp{background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:11.5px;font-weight:700;color:var(--gold);cursor:pointer}
+
+/* ---------- map ---------- */
+.mapwrap{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:10px;margin-top:4px}
+.mapwrap svg{width:100%;height:auto;display:block}
+.mpin{cursor:pointer}
+.mpin circle.ring{transition:.2s}
+.mpin.sel circle.ring{stroke-width:4}
+.mlegend{display:flex;flex-wrap:wrap;gap:8px;padding:12px 4px 4px;font-size:11px;color:var(--dim)}
+.mlegend span{display:flex;align-items:center;gap:5px}
+.mlegend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+#mpanel{margin-top:12px}
+#mpanel .ph{font-family:'Noto Sans KR';font-weight:800;font-size:15px;padding:2px 2px 8px}
+.mrow{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:9px 12px;margin-bottom:7px;font-size:13px}
+.mrow .d{font-size:10.5px;font-weight:800;padding:3px 8px;border-radius:999px;color:#0b0d14}
+.mrow .tm{color:var(--dim2);font-size:11.5px;margin-left:auto;white-space:nowrap}
+
+/* ---------- checklist ---------- */
+.todo{display:flex;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-bottom:9px;cursor:pointer;align-items:flex-start}
+.todo .cb{flex:0 0 24px;height:24px;border-radius:8px;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;color:#0b0d14;margin-top:1px}
+.todo.done .cb{background:var(--mint);border-color:var(--mint)}
+.todo .tt{font-weight:600;font-size:14px;font-family:'Noto Sans KR'}
+.todo.done .tt{text-decoration:line-through;color:var(--dim2)}
+.todo .due{font-size:11px;color:var(--gold);font-weight:700;margin-top:2px}
+.todo.done .due{color:var(--dim2)}
+.todo .nt{font-size:12px;color:var(--dim);margin-top:3px}
+.todo a{color:var(--blue);text-decoration:none;font-weight:600}
+.tprog{margin:4px 0 16px}
+.tprog .bar{height:8px;border-radius:99px;background:var(--card);border:1px solid var(--line);overflow:hidden}
+.tprog .fill{height:100%;background:var(--grad);border-radius:99px;transition:width .4s}
+.tprog .lbl{font-size:12px;color:var(--dim);margin-top:6px}
+
+/* ---------- flights ---------- */
+.fsec{margin:18px 0 8px;font-weight:800;letter-spacing:.14em;font-size:12px;color:var(--dim);text-transform:uppercase}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:10px}
+.fcard .who{font-weight:700;font-size:14px;font-family:'Noto Sans KR'}
+.fcard .route{display:flex;align-items:center;gap:10px;margin:8px 0 4px;font-weight:800;font-size:20px;letter-spacing:.04em}
+.fcard .route .arrow{flex:1;height:1px;background:var(--line);position:relative}
+.fcard .route .arrow::after{content:'✈︎';position:absolute;top:-9px;left:50%;transform:translateX(-50%);color:var(--dim);font-size:13px}
+.fcard .meta{color:var(--dim);font-size:12.5px}
+.fcard .meta b{color:var(--txt)}
+.ov{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.ovc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}
+.ovc .city{font-family:'Noto Sans KR';font-weight:900;font-size:18px}
+.ovc .d{color:var(--dim);font-size:12px;margin-top:4px;line-height:1.5}
+
+footer{text-align:center;color:var(--dim2);font-size:11.5px;padding:30px 0 10px;font-family:'Noto Sans KR'}
+.hidden{display:none!important}
+@media (max-width:380px){.card .timecol{flex-basis:48px}.hero h1{font-size:36px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="flag">SUMMER 2026 · 여름</div>
+    <h1>서울 ✕ 東京</h1>
+    <div class="en">SEOUL → TOKYO</div>
+    <div class="dates">Aug 28 – Sep 7, 2026 · 9 nights · 2 cities</div>
+    <div class="crew">CLEARWATERS · BRYSONS · BECKSTEADS</div>
+    <div id="cd">⏳ …</div>
+    <div class="tip">✦ Hold <b>⠿</b> to reorder — times &amp; subway travel recalc. Tap <b>⭐ Bench</b> to add ranked extras.</div>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+  <div class="pills" id="pills"></div>
+  <div id="content"></div>
+
+  <footer>안전한 여행 되세요 — have a safe trip 🇰🇷🇯🇵<br><span style="opacity:.6">v7 · auto-times are estimates · tap cards for notes &amp; links</span></footer>
+</div>
+<button id="fab" class="hidden">⭐ Bench</button>
+
+<script>
+/* ================= STATIC DATA ================= */
+const CAT = {
+  travel:{l:'Travel',c:'#8a92ab'}, food:{l:'먹자 Eat',c:'#ff4d6d'}, cafe:{l:'카페 Cafe',c:'#ffb37a'},
+  snack:{l:'간식 Snack',c:'#ffd166'}, shop:{l:'쇼핑 Shop',c:'#5b8cff'}, sight:{l:'관광 See',c:'#3ddc97'},
+  beauty:{l:'뷰티 Beauty',c:'#f5a3ff'}, spa:{l:'스파 Spa',c:'#7ad7f0'}, night:{l:'밤 Night',c:'#b39cff'},
+  act:{l:'액티비티 Play',c:'#7ae0c3'}, rest:{l:'휴식 Rest',c:'#9aa3bd'}
+};
+const LINES = {
+  '1':'#0052A4','2':'#00A84D','3':'#EF7C1C','4':'#00A5DE','5':'#996CAC','6':'#CD7C2F','7':'#747F00','9':'#BDB092',
+  'AREX':'#0090D2','JR':'#2E8B57','G':'#f62e36','A':'#ec6e65','H':'#9caeb7','Y':'#d7c447','RM':'#0079c2','KQ':'#00629b','NEX':'#b71c1c'
+};
+function M(pairs,def){const m={};for(const[a,b,v]of pairs){(m[a]=m[a]||{})[b]=v;(m[b]=m[b]||{})[a]=v}
+  return (a,b)=>a===b?0:((m[a]&&m[a][b])??def)}
+const T_SEOUL = M([
+ ['ich','gn',95],['ich','hd',75],['ich','md',80],['ich','gwh',80],
+ ['gn','hd',45],['gn','sc',45],['gn','ss',25],['gn','ddp',25],['gn','md',35],['gn','gwh',40],
+ ['gn','iks',35],['gn','mj',30],['gn','apg',15],['gn','sinsa',20],['gn','cdm',10],['gn','bp',20],
+ ['gn','gns',12],['gn','elj',30],['gn','jamsil',10],
+ ['gns','apg',15],['gns','sinsa',10],['gns','cdm',15],['gns','gn',12],
+ ['apg','sinsa',10],['apg','cdm',10],['sinsa','cdm',15],
+ ['hd','sc',8],['hd','md',25],['hd','gwh',25],['hd','iks',25],
+ ['sc','gwh',25],['sc','iks',28],['sc','md',25],['sc','cdm',45],
+ ['ss','ddp',15],['ss','md',25],['ss','iks',22],['ss','mj',10],['ss','elj',20],
+ ['ddp','md',10],['ddp','elj',8],['ddp','iks',12],
+ ['md','gwh',15],['md','iks',15],['md','elj',7],
+ ['gwh','iks',10],['iks','mj',20],['mj','gn',30],['bp','gn',20],['bp','md',25],['jamsil','ss',15],
+ ['hn','gn',25],['hn','md',20],['hn','iks',25],['hn','hd',35],['hn','ss',20],['hn','elj',15],['hn','bp',20]
+],35);
+const T_TOKYO = M([
+ ['hnd','sj',45],['sj','asa',30],['asa','ue',10],['ue','akb',5],['akb','sj',20],
+ ['sj','hj',8],['hj','omo',6],['omo','shb',10],['shb','sj',10],['shb','rop',15],['rop','sj',15],
+ ['sj','tsk',25],['tsk','min',15],['min','gz',10],['gz','sj',18],['gz','shb',20],['tsk','gz',10],
+ ['sj','oda',35],['oda','shb',30],['sj','gz',18],['sj','min',20],['sj','ue',25],['sj','akb',20]
+],30);
+
+/* map zone meta: name + lat/lon */
+const ZONES = {
+ seoul:{
+  gn:{n:'Samseong · 호텔',la:37.5089,lo:127.0633,hotel:1}, gns:{n:'Gangnam Stn',la:37.4979,lo:127.0276},
+  apg:{n:'Apgujeong',la:37.5270,lo:127.0286}, sinsa:{n:'Garosugil',la:37.5160,lo:127.0203},
+  cdm:{n:'Cheongdam',la:37.5193,lo:127.0536}, hd:{n:'Hongdae',la:37.5573,lo:126.9237},
+  sc:{n:'Shinchon',la:37.5598,lo:126.9423}, ss:{n:'Seongsu',la:37.5446,lo:127.0559},
+  ddp:{n:'DDP',la:37.5663,lo:127.0110}, md:{n:'Myeongdong',la:37.5560,lo:126.9820},
+  gwh:{n:'Gwanghwamun',la:37.5790,lo:126.9680}, iks:{n:'Ikseon-dong',la:37.5830,lo:126.9950},
+  mj:{n:'Majang',la:37.5660,lo:127.0427}, bp:{n:'Banpo',la:37.5126,lo:126.9966},
+  elj:{n:'Euljiro',la:37.5600,lo:126.9960}, jamsil:{n:'Jamsil',la:37.5133,lo:127.1001},
+  hn:{n:'Hannam',la:37.5345,lo:127.0017}
+ },
+ tokyo:{
+  sj:{n:'Shinjuku · 호텔',la:35.6896,lo:139.7006,hotel:1}, hj:{n:'Harajuku',la:35.6702,lo:139.7027},
+  omo:{n:'Omotesando',la:35.6652,lo:139.7126}, shb:{n:'Shibuya',la:35.6580,lo:139.7016},
+  rop:{n:'Roppongi',la:35.6627,lo:139.7307}, min:{n:'Tokyo Tower',la:35.6586,lo:139.7454},
+  gz:{n:'Ginza',la:35.6717,lo:139.7650}, tsk:{n:'Tsukiji',la:35.6655,lo:139.7708},
+  ue:{n:'Ueno',la:35.7138,lo:139.7770}, akb:{n:'Akihabara',la:35.6984,lo:139.7731},
+  asa:{n:'Asakusa',la:35.7118,lo:139.7966}, oda:{n:'Odaiba',la:35.6190,lo:139.7798}
+ }
+};
+const FRAMES={seoul:{lo0:126.90,lo1:127.12,la0:37.488,la1:37.602},tokyo:{lo0:139.685,lo1:139.812,la0:35.605,la1:35.725}};
+const DAYCOL=['#ffd166','#ff4d6d','#f5a3ff','#5b8cff','#3ddc97','#7ad7f0'];
+
+/* typical late-Aug/early-Sep climate (auto-upgrades to live forecast within 16 days) */
+const WX_TYP={
+ '2026-08-29':['🌦',85,74,40],'2026-08-30':['⛅',86,74,35],'2026-08-31':['🌧',84,73,50],
+ '2026-09-01':['⛅',85,73,35],'2026-09-02':['🌦',84,72,40],
+ '2026-09-03':['🌦',86,76,45],'2026-09-04':['⛅',87,76,35],'2026-09-05':['🌧',85,75,50],
+ '2026-09-06':['⛅',86,75,40],'2026-09-07':['🌦',85,74,40]
+};
+const WMO={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌦',55:'🌧',61:'🌧',63:'🌧',65:'⛈',80:'🌦',81:'🌧',82:'⛈',95:'⛈',96:'⛈',99:'⛈'};
+
+/* wikipedia hero images: [title-substring, slug] (verified) */
+const WIKI=[
+ ['Arrive Incheon','Incheon_International_Airport'],['Dongdaemun Design','Dongdaemun_Design_Plaza'],
+ ['Seongsu —','Seongsu-dong'],['Hongdae nightlife','Hongdae,_Seoul'],['Myeongdong Night','Myeongdong'],
+ ['Banpo Bridge','Banpo_Bridge'],['Gyeongbokgung','Gyeongbokgung'],
+ ['Senso-ji','Sensō-ji'],['Shibuya Crossing','Shibuya_Crossing'],['Meiji Shrine','Meiji_Shrine'],
+ ['Tokyo Tower','Tokyo_Tower'],['Shinjuku Gyoen','Shinjuku_Gyoen'],['Akihabara','Akihabara'],
+ ['Takeshita','Takeshita_Street'],['Tsukiji Outer','Tsukiji'],['Odaiba','Odaiba'],
+ ['Ueno Park','Ueno_Park'],['Kabukicho Neon','Kabukichō']
+];
+
+/* item: [emoji,title,cat,zone,areaLabel,line,station,rating,durMins,note,link,locked,notBefore] */
+const SEOUL_DAYS = [
+ {id:'s0',num:'ARRIVAL',kr:'토요일',date:'Sat · Aug 29',iso:'2026-08-29',sub:'Touch down, bag drop & Hongdae Saturday night 🎶',anchor:15*60,items:[
+  ['✈️','Arrive Incheon International Airport','travel','ich','Incheon','AREX','ICN T1',null,45,'Immigration + bags — the usual drill. Both families land ~3:00–3:50 PM.',null,1],
+  ['🏨','Drop bags at Park Hyatt Seoul','travel','gn','Gangnam','2','삼성 Samseong',null,15,'AREX Express → Seoul Station → Line 2 to Samseong. Quick bag drop — don\'t unpack, just dump and go!',null,1],
+  ['🥩','Taecho Galbi (태초갈비)','food','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,90,'Korean beef galbi in Hongdae — perfect Saturday-night first dinner.','https://www.instagram.com/taecho_beef'],
+  ['🎶','Hongdae nightlife — buskers, bars, shops','night','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,120,'Saturday night = peak energy. Street performers, indie bars, vintage shops open late.'],
+  ['🌙','Return to Park Hyatt & crash','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Line 2 direct to Samseong. Bags already there — crash out 🇰🇷']
+ ]},
+ {id:'s1',num:'DAY 1',kr:'일요일',date:'Sun · Aug 30',iso:'2026-08-30',sub:'Dongdaemun, Seongsu & Myeongdong eats',anchor:9*60,items:[
+  ['🥞','Bills — Ricotta Pancakes','food','gn','Gangnam','2','삼성 Samseong',5.0,60,'"Unreal" ricotta pancakes — rated 5.0 by everyone. Bills Gangnam opens at 9 AM!'],
+  ['🏛️','Dongdaemun Design Plaza (DDP)','sight','ddp','Dongdaemun','2','DDP역',4.0,90,'Zaha Hadid\'s spaceship building — free exhibits, wild architecture, great photos.','https://www.tiktok.com/@koreaview_4u/video/7547193551218658567'],
+  ['🛍️','Seongsu — "Brooklyn of Seoul"','shop','ss','Seongsu','2','성수 Seongsu',4.0,90,'Trendy cafes, vintage shops, indie boutiques. Musinsa, PHYPS & 29cm are all here too.'],
+  ['☕','Onion Cafe (어니언) — hanok bakery','cafe','ss','Seongsu','2','성수 Seongsu',4.8,30,'Iconic bakery in a renovated factory — pastries + coffee, raw industrial vibes. Always a queue!','https://www.tiktok.com/@karissaeats/video/7461760966301191455'],
+  ['🍥','Myeongdong Kyoja — Michelin dumplings','food','md','Myeongdong','4','명동 Myeongdong',5.0,60,'Michelin-listed kalguksu & mandu — early dinner before the night market crowd.',null,0,17*60],
+  ['🍡','Myeongdong Night Markets','snack','md','Myeongdong','4','명동 Myeongdong',5.0,45,'Hotteok ⭐4.5, tteok-bokki ⭐5.0, candied fruit — grab and walk.'],
+  ['🌈','Banpo Bridge Rainbow Fountain + 7/11 ramen','night','bp','Banpo','3','고속터미널 Express Bus Tml',5.0,45,'Moonlight Rainbow Fountain show on the Han River — pair with convenience-store ramen on the riverbank. Shows ~8–9 PM.',null,0,20*60],
+  ['🌙','Return to Park Hyatt & rest','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Spa day tomorrow! 💆']
+ ]},
+ {id:'s2',num:'DAY 2',kr:'월요일',date:'Mon · Aug 31',iso:'2026-08-31',sub:'Gangnam wellness & beauty day 💆✨',anchor:9*60,items:[
+  ['🥞','Bills — Ricotta Pancakes (round 2)','food','gn','Gangnam','2','삼성 Samseong',5.0,60,'Can\'t get enough of those ricotta pancakes 🥞'],
+  ['💆','Spa Gogyeol — Korean wellness massage','beauty','gn','Gangnam','2','삼성 Samseong',5.0,60,'Acupressure + stretching massage — from ₩120K. Book ahead.','https://www.tiktok.com/@farhabae/video/7592736918274690318'],
+  ['✨','Facials — Aqua Peel · HydraFacial · Rejuran','beauty','gns','Gangnam Stn','2','강남 Gangnam',5.0,60,'Pick your treatment: Aqua Peel ~$50-100 · Rejuran ~$70-150 · Juvelook ~$80-200.'],
+  ['🎨','Color Analysis (Ecojardin) + Headspa','beauty','gns','Gangnam Stn','2','강남 Gangnam',null,90,'Ecojardin: color analysis + 18-step scalp treatment. Parkjun Beauty Lab: 15-step headspa. Book ahead!'],
+  ['🥩','BBQ Lunch — 도산정육 or Jeju Rooftop Black BBQ','food','apg','Apgujeong','3','압구정 Apgujeong',5.0,90,'Dosan Jeonguk: premium butcher-style BBQ · Jeju Rooftop: meat in a cave! Both ⭐5.0.','https://map.naver.com/p/entry/place/1890747832'],
+  ['💫','Apgujeong — Korea\'s wealthiest hood','shop','apg','Apgujeong','3','압구정 Apgujeong',4.0,60,'Luxury shopping, galleries, designer cafes.'],
+  ['🌿','Garosugil — tree-lined boutique street','shop','sinsa','Sinsa','3','신사 Sinsa',4.3,60,'Boutiques, cafes, galleries — Malbon golf flagship (⭐5.0) is right here, pop in.','https://www.tiktok.com/@chernocare/video/7619720924442430738'],
+  ['🚿','Back to Park Hyatt — freshen up','rest','gn','Gangnam','2','삼성 Samseong',null,60,'Recharge & shower — pampered and glowing before dinner.'],
+  ['🍜','BUDAE JJIGAE!! — 놀부부대찌개 압구정점','food','apg','Apgujeong','3','압구정 Apgujeong',5.0,90,'Cheongsu\'s favorite — army stew, ramen + hot dogs. Backup: Daewoo Sikdang or Songtan.',null,0,18*60+30],
+  ['🎶','Break Silence music bar (or Euljiro 3-ga)','night','ss','Seongsu','2','성수 Seongsu',4.7,75,'Request 2 songs each — cocktails while your picks play on the big speakers. Mon hours 5 PM–12 AM.','https://www.tiktok.com/@leoniecadao/video/7562157146268257539'],
+  ['🌙','Return to Park Hyatt & rest','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Palace district & temples tomorrow 🇰🇷']
+ ]},
+ {id:'s3',num:'DAY 3',kr:'화요일',date:'Tue · Sep 1',iso:'2026-09-01',sub:'Temples, palace district & Ikseon-dong',anchor:9*60,items:[
+  ['🥤','Twelve (Korea\'s Erewhon) — Wonder Bar','food','cdm','Cheongdam','7','청담 Cheongdam',5.0,45,'Smoothies + health bowls inside House of Shinsegae. Quick taxi from Park Hyatt.','https://www.tiktok.com/@justinyooniverse/video/7588163558945410359'],
+  ['🛕','Seoul Temple','sight','sc','Shinchon','2','신촌 Sinchon',7.5,90,'Rated 7.5 (Bryson gave it a 10 🤣) — peaceful morning visit.'],
+  ['🏹','Shinchon Robinhood Archery Café','act','sc','Shinchon','2','신촌 Sinchon',4.0,45,'Archery café near the temple — friendly competition.','https://www.tiktok.com/@clovchoi/video/7597972816776023327'],
+  ['☕','Cafe Pokpo (카페 폭포) — waterfall cafe','cafe','sc','Seodaemun','2','신촌 Sinchon',5.7,60,'Coffee in front of an actual waterfall — killer photo ops.','https://www.tiktok.com/@anakjajan/video/7298936532755336454'],
+  ['🏛️','Gyeongbokgung Palace — photo stop','sight','gwh','Gwanghwamun','3','경복궁 Gyeongbokgung',2.7,30,'Quick photo at the palace gate — not going inside.','https://www.tiktok.com/@dhxhra/video/7197150004518178090'],
+  ['📚','Kyobo Book Centre — Gwanghwamun flagship','shop','gwh','Gwanghwamun','5','광화문 Gwanghwamun',3.0,30,'Korea\'s biggest bookstore — stationery, K-books, souvenirs.','https://www.tiktok.com/@gisselle_val/video/7392572302761790753'],
+  ['🍚','Solsot (솥솥) — crispy pot rice','food','iks','Ikseon-dong','3','안국 Anguk',3.0,60,'Steak bowls in a sizzling hot pot — late lunch.'],
+  ['🎯','Ikseon Shooting Club (익선사격장)','act','iks','Ikseon-dong','3','안국 Anguk',5.0,30,'Indoor range in the hanok alleys — rifles, pistols & archery. ₩5,000–15,000.','https://www.tiktok.com/@searchwithwinfred/video/7599526342945672455'],
+  ['🥖','Jayeondo Sogeumppang — salted bread','snack','iks','Ikseon-dong','3','안국 Anguk',5.0,20,'Viral salted bread — grab and go.','https://www.tiktok.com/@daveyscakestravels/video/7496822617878433031'],
+  ['☔','Rain Report — indoor rain cafe','cafe','iks','Ikseon-dong','3','안국 Anguk',5.0,45,'Indoor rain every 15 min — K-drama umbrella photos + the famous tissue bread.','https://www.tiktok.com/@angelagiakas/video/7438035533227478279'],
+  ['🥩','Born and Bred — premium hanwoo beef','food','mj','Majang','5','마장 Majang',5.0,90,'Michelin-rated hanwoo by Majang Meat Market — last dinner in Seoul! 🇰🇷','https://www.tiktok.com/@aikenchia/video/7386472536071998736',0,17*60+30],
+  ['🎤','Karaoke (Noraebang) near COEX','night','gn','Gangnam','2','삼성 Samseong',null,90,'Coin noraebangs everywhere near COEX — go all out!'],
+  ['🌙','Last night at Park Hyatt — pack for Tokyo','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Pack tonight — 5:30 AM start tomorrow ✈️']
+ ]},
+ {id:'s4',num:'DEPART',kr:'수요일',date:'Wed · Sep 2',iso:'2026-09-02',sub:'Cimer Spa send-off → fly to Tokyo ✈️',anchor:5*60+30,items:[
+  ['🏨','Wake up & check out Park Hyatt','travel','gn','Gangnam','2','삼성 Samseong',null,30,'Early start! Grab a conbini breakfast on the way.',null,1],
+  ['🧖','Cimer Spa at Paradise City','spa','ich','Incheon','AREX','ICN shuttle',4.7,90,'Luxury jjimjilbang + aqua pools next to the airport — soak, sauna, get fresh for Tokyo. ~₩30K, luggage lockers on site.',null,1],
+  ['🛫','To the airport — check in','travel','ich','Incheon',null,'GMP or ICN — TBD',null,60,'If ICN, free shuttle right back to T1. Gimpo (GMP) preferred if booked — closer both sides.',null,1],
+  ['✈️','Flight Seoul → Tokyo (HND)','travel','ich','→ Tokyo',null,'~10 AM departure',null,150,'Annyeong Seoul 🇰🇷 → Konnichiwa Tokyo 🇯🇵. BOOK THIS FLIGHT — GMP→HND preferred.',null,1]
+ ]}
+];
+
+const TOKYO_DAYS = [
+ {id:'t0',num:'ARRIVAL',kr:'수요일',date:'Wed · Sep 2',iso:'2026-09-02',sub:'Arrival & Shinjuku night',anchor:13*60,items:[
+  ['✈️','Arrive Tokyo Haneda from Seoul','travel','hnd','Haneda','KQ','HND',null,30,'Quick transfer — Keikyu Line toward the city.',null,1],
+  ['🏨','Check in — Shinjuku hotel','travel','sj','Shinjuku','JR','新宿 Shinjuku',null,30,'Drop bags and freshen up.',null,1],
+  ['🍜','Ichiran Ramen (Shinjuku)','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,45,'Solo-booth ramen — you customize everything. Famous.'],
+  ['🏪','Don Quijote mega store','shop','sj','Shinjuku','JR','新宿 Shinjuku',5.0,90,'Open 24 hrs — snacks, souvenirs, literally everything.'],
+  ['🌿','Shinjuku Gyoen National Garden','sight','sj','Shinjuku','JR','新宿 Shinjuku',3.0,90,'Japanese garden — perfect golden-hour stroll. Last entry 5:30 PM.'],
+  ['🍢','Omoide Yokocho (Memory Lane)','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,90,'Tiny yakitori alley — smoky, atmospheric, iconic.'],
+  ['🎮','Shinjuku arcades & claw machines','act','sj','Shinjuku','JR','新宿 Shinjuku',5.0,120,'Huge arcades, claw machines, purikura booths — way too fun.'],
+  ['🌃','Kabukicho neon walk','night','sj','Shinjuku','JR','新宿 Shinjuku',5.0,30,'Neon-lit entertainment district — great photos.'],
+  ['🌚','Conbini run (7-Eleven / Lawson)','snack','sj','Shinjuku',null,'—',7.0,20,'Onigiri, egg sando, melon pan, mochi — all fire.'],
+  ['🌙','Hotel & rest','rest','sj','Shinjuku',null,'—',null,0,'Big Asakusa day tomorrow.']
+ ]},
+ {id:'t1',num:'DAY 1',kr:'목요일',date:'Thu · Sep 3',iso:'2026-09-03',sub:'Asakusa, Akihabara & East Tokyo',anchor:7*60,items:[
+  ['⛩️','Senso-ji Temple — beat the crowds','sight','asa','Asakusa','A','浅草 Asakusa',5.0,90,'Tokyo\'s oldest temple + Thunder Gate — go early for photos.'],
+  ['🛍️','Nakamise Shopping Street','shop','asa','Asakusa','A','浅草 Asakusa',4.0,45,'Traditional souvenirs, senbei crackers — right at the temple.'],
+  ['🍞','Street breakfast — melon pan + dango + taiyaki','snack','asa','Asakusa','A','浅草 Asakusa',5.0,30,'Fresh melon pan (Kagetsudo), taiyaki, dango — all rated 5.0.'],
+  ['🌿','Ueno Park & Museums','sight','ue','Ueno','JR','上野 Ueno',3.0,90,'Beautiful park, Tokyo National Museum, shrines.'],
+  ['🍣','Sushi no Midori (Ueno) — SPLURGE #1','food','ue','Ueno','JR','上野 Ueno',5.0,60,'Best-value omakase in Tokyo.'],
+  ['🎮','Akihabara — Electric Town','sight','akb','Akihabara','JR','秋葉原 Akihabara',4.0,150,'Anime, arcades, retro games, maid cafes — sensory overload.'],
+  ['🍦','Taiyaki & soft serve break','snack','akb','Akihabara','JR','秋葉原 Akihabara',5.0,30,'Fish-shaped custard waffle + Japanese soft serve.'],
+  ['🍛','Afuri Ramen — yuzu shio','food','sj','Shinjuku','JR','新宿 Shinjuku',4.5,45,'Light yuzu-citrus ramen — totally different vibe from Ichiran.',null,0,17*60],
+  ['🌃','Shinjuku neon stroll + conbini run','night','sj','Shinjuku','JR','新宿 Shinjuku',4.5,60,'Lawson vs 7-Eleven battle tonight.'],
+  ['🌙','Hotel & rest','rest','sj','Shinjuku',null,'—',null,0,'Big Harajuku/Shibuya day tomorrow.']
+ ]},
+ {id:'t2',num:'DAY 2',kr:'금요일',date:'Fri · Sep 4',iso:'2026-09-04',sub:'Harajuku, Shibuya & the Big Crossing',anchor:8*60,items:[
+  ['⛩️','Meiji Shrine','sight','hj','Harajuku','JR','原宿 Harajuku',4.0,90,'Peaceful forest shrine in the heart of Tokyo — go early.'],
+  ['🎀','Harajuku Takeshita Street','shop','hj','Harajuku','JR','原宿 Harajuku',4.0,90,'Kawaii fashion, rainbow crepes, cotton candy.'],
+  ['🛍️','Omotesando — Tokyo\'s Champs-Élysées','shop','omo','Omotesando','G','表参道 Omotesandō',5.0,60,'Luxury flagships, stunning architecture.'],
+  ['🍛','Gyukatsu Motomura — fried wagyu cutlet','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Cook your own wagyu on a hot stone — unreal. Viral.'],
+  ['🚶','Shibuya Crossing + Hachiko','sight','shb','Shibuya','JR','渋谷 Shibuya',7.5,30,'World\'s busiest intersection — iconic.'],
+  ['🌆','Shibuya Sky — BOOK AHEAD','sight','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Open-air rooftop above the crossing — book tickets in advance!'],
+  ['🍦','Soft serve + rainbow crepes','snack','shb','Shibuya','JR','渋谷 Shibuya',5.0,30,'Soft serve ⭐5.0 + Harajuku crepes ⭐4.5.'],
+  ['🏪','Don Quijote Shibuya','shop','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Tax-free snacks, cosmetics, gadgets.'],
+  ['🎨','teamLab Borderless — MUST BOOK','sight','rop','Roppongi','H','麻布台 Azabudai',5.0,120,'#1 most viral Tokyo spot — BOOK TICKETS IN ADVANCE.'],
+  ['🍣','Omakase splurge dinner — SPLURGE #2','food','rop','Roppongi','H','六本木 Roppongi',5.0,90,'Chef\'s choice, ~15 courses — bougie.'],
+  ['🌙','Hotel & rest','rest','sj','Shinjuku',null,'—',null,0,'Food coma from omakase.']
+ ]},
+ {id:'t3',num:'DAY 3',kr:'토요일',date:'Sat · Sep 5',iso:'2026-09-05',sub:'Tsukiji, Tokyo Tower & Ginza',anchor:7*60,items:[
+  ['🍣','Tsukiji Outer Market — street food breakfast','food','tsk','Tsukiji','H','築地 Tsukiji',4.0,120,'Tamagoyaki, fresh sashimi, scallops, uni — GO EARLY.'],
+  ['🍣','Sushi Dai — SPLURGE #3','food','tsk','Tsukiji','Y','豊洲 Toyosu',5.0,60,'Legendary omakase, famous tuna set — worth every yen.'],
+  ['🗼','Tokyo Tower','sight','min','Minato','H','神谷町 Kamiyachō',3.0,60,'Iconic red & white tower — classic photo.'],
+  ['🛍️','Ginza — 12-floor Uniqlo flagship','shop','gz','Ginza','G','銀座 Ginza',3.0,90,'Japan-exclusive items + tax-free.'],
+  ['🍰','Japanese fruit parfait','snack','gz','Ginza','G','銀座 Ginza',4.5,30,'Strawberry, melon, or seasonal — legendary.'],
+  ['😴','Back to Shinjuku — recharge','rest','sj','Shinjuku','JR','新宿 Shinjuku',null,90,'Rest at the hotel before the evening.'],
+  ['🍖','Yakiniku late lunch','food','shb','Shibuya','JR','渋谷 Shibuya',4.5,60,'Japanese BBQ — rated 4.5.',null,0,15*60],
+  ['🎮','Arcades round 2','act','shb','Shibuya','JR','渋谷 Shibuya',5.0,120,'More claw machines — can\'t get enough.'],
+  ['🍜','Farewell ramen (Ichiran or Afuri)','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,45,'One more bowl for the road.',null,0,18*60+30],
+  ['🌃','Neon walk + conbini + pack','night','sj','Shinjuku',null,'—',4.5,90,'Stock up on snacks to bring home.'],
+  ['🌙','Hotel & rest','rest','sj','Shinjuku',null,'—',null,0,'Last full day tomorrow.']
+ ]},
+ {id:'t4',num:'DAY 4',kr:'일요일',date:'Sun · Sep 6',iso:'2026-09-06',sub:'Last full day — Odaiba & final night',anchor:8*60,items:[
+  ['🍳','Conbini breakfast','snack','sj','Shinjuku',null,'—',4.5,30,'Onigiri, egg sando, melon pan — hits different.'],
+  ['🤖','Odaiba — waterfront & life-size Gundam','sight','oda','Odaiba','RM','東京テレポート Teleport',2.0,120,'Waterfront views, Rainbow Bridge, Gundam statue.'],
+  ['🛍️','Last-minute souvenir shopping','shop','shb','Shibuya','JR','渋谷 Shibuya',null,90,'Tokyo Banana, Kit Kats, station souvenirs.'],
+  ['🍣','Farewell omakase lunch','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,90,'Last big sushi meal — go out with a bang.'],
+  ['🍰','Fruit parfait or crepe','snack','shb','Shibuya','JR','渋谷 Shibuya',4.5,30,'One last sweet treat.'],
+  ['🚶','Free time — revisit favorites','rest','sj','Shinjuku/Shibuya',null,'—',null,120,'Go back to anything you loved — Donki, arcades, etc.'],
+  ['🍢','Omoide Yokocho round 2 — farewell yakitori','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,90,'Smoky perfection, one last time.',null,0,17*60],
+  ['🌃','Final Kabukicho neon walk + conbini haul','night','sj','Shinjuku',null,'—',5.0,90,'Take ALL the photos. Buy ALL the snacks — onigiri for the plane.'],
+  ['🌙','Pack up — last night in Tokyo','rest','sj','Shinjuku',null,'—',null,0,'What a trip 🇯🇵']
+ ]},
+ {id:'t5',num:'DEPART',kr:'월요일',date:'Mon · Sep 7',iso:'2026-09-07',sub:'Sayonara Tokyo ✈️ separate flights home',anchor:8*60,items:[
+  ['🍳','Bills breakfast (Tokyo) — last one together','food','sj','Shinjuku',null,'—',5.0,60,'Same unreal ricotta pancakes.',null,1],
+  ['🛍️','Last shopping / free time','shop','sj','Shinjuku',null,'—',null,90,'Station shops have great stuff.',null,1],
+  ['🍜','Last Tokyo meal — ramen or quick sushi','food','sj','Shinjuku',null,'—',5.0,60,'One final bowl before splitting up.',null,1],
+  ['🧳','Check out — head to airports','travel','sj','Shinjuku',null,'—',null,30,'Brysons → Haneda (Keikyu, ~30 min, arrive by 2 PM). Clearwaters → Narita (NEX, ~1.5 hr).',null,1],
+  ['✈️','Flights home — see Flights tab','travel','hnd','HND / NRT',null,'—',null,0,'Delta HND→LAX 4:35 PM · United HND→SFO 3:50 PM · JL58 NRT→SFO 6:15 PM. Arrive home the same day 🤯',null,1]
+ ]}
+];
+
+/* ===== BENCH: highly-rated roster items not on the schedule ===== */
+const BENCH={
+ seoul:[
+  ['🛍️','Musinsa Seongsu — K-fashion flagship','shop','ss','Seongsu','2','성수 Seongsu',5.0,45,'150+ Korean brands — "Korean Uniqlo." Rooftop café.'],
+  ['🏍️','PHYPS — Honda moto concept store','shop','ss','Seongsu','2','성수 Seongsu',5.0,30,'Motorcycle-inspired streetwear.'],
+  ['🧢','29cm + 29CM Kids','shop','ss','Seongsu','2','성수 Seongsu',5.0,45,'Curated Korean fashion — Liv will love.'],
+  ['💍','NyuNyu — 3-floor accessories megastore','shop','ss','Seongsu','2','성수 Seongsu',4.0,30,'Jewelry, bags, accessories.','https://www.tiktok.com/@meereeumm/video/7568166094855228686'],
+  ['🏭','LCDC Seoul — cultural complex','shop','ss','Seongsu','2','성수 Seongsu',3.5,45,'Café, select shops, rooftop bar, pop-ups.'],
+  ['🦌','Seoul Forest — deer feeding','sight','ss','Seongsu','2','성수 Seongsu',2.0,60,'Walk + feed the deer.'],
+  ['🍚','Seongsu Darak — famous omurice','food','ss','Seongsu','2','성수 Seongsu',3.0,60,'Egg-over-rice comfort food.'],
+  ['🥞','Lucyd — Aussie brunch bistro','food','iks','Ikseon-dong','3','안국 Anguk',5.0,60,'Open kitchen, Australian chef — strong brunch option.'],
+  ['🍞','Mil Toast — soufflé french toast','cafe','iks','Ikseon-dong','3','종로3가 Jongno 3-ga',3.0,45,'Steamed bread + soufflé toast in the hanok alleys.'],
+  ['🥮','Hotteok — BTS favorite stand','snack','gwh','Samcheong-dong','3','광화문 Gwanghwamun',5.0,15,'Famous hotteok near the palace.','https://www.tiktok.com/@eternalbts7/video/7589770832121990455'],
+  ['📸','Seosulla-gil — palace wall alley','sight','gwh','Gyeongbokgung','3','경복궁 Gyeongbokgung',3.0,30,'Local stone-wall alley, outdoor eats, photo spot.'],
+  ['🎤','HiKR Ground — free K-pop experience','act','gwh','Jonggak','1','종각 Jonggak',3.5,45,'Korea Tourism Org — free K-culture exhibits & studio.'],
+  ['📚','COEX & Starfield Library','shop','gn','Gangnam · COEX','2','삼성 Samseong',2.7,45,'Right next to the hotel — easy anytime drop-in.'],
+  ['⛳','Riverside Spa + Golf Simulator','spa','gn','Gangnam','2','삼성 Samseong',5.0,90,'Spa + golf sim near Park Hyatt — great guys option.','https://www.riversidehotel.co.kr/pages/spa02.php'],
+  ['🥩','Woo Tender — bougie beef','food','gn','Gangnam','2','삼성 Samseong',5.0,90,'Premium hanwoo near the hotel.'],
+  ['♨️','Sparex — Seoul\'s biggest jjimjilbang','spa','ddp','Dongdaemun','2','DDP역',5.0,90,'At DDP — pairs with the museum morning.'],
+  ['🍜','Nishimuramen — Michelin ramen','food','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,60,'Michelin-rated ramen.','https://guide.michelin.com/us/en/seoul-capital-area/kr-seoul/restaurant/nishimuramen'],
+  ['🍧','Bingsu at Sulbing','snack','md','Myeongdong','4','명동 Myeongdong',5.0,30,'Korean shaved ice — rated 5.0 by all three, still unscheduled!'],
+  ['🍗','Starchicken — Myeongdong fried chicken','snack','md','Myeongdong','4','명동 Myeongdong',3.5,30,'Korean fried chicken stand.'],
+  ['🌃','Euljiro "Hipjiro" — hidden bars & neon alleys','night','elj','Euljiro','2','을지로3가 Euljiro 3-ga',3.0,60,'From your IG saves — Euljiro by day, Hipjiro by night. Hidden bars around Euljiro 14-gil.','https://www.instagram.com/p/DYSFhSFzgUy/'],
+  ['🍩','Odonut (오도넛) — viral Taiwanese donuts','snack','hn','Hannam (Yongsan)','6','한강진 Hangangjin',5.0,30,'From your IG saves — "best bites of my life." Crispy Taiwanese-style donuts in Hannam.','https://www.instagram.com/p/DZDukK2iFmh/'],
+  ['👟','Seongsu top-10 shops crawl (@andrewpolo_)','shop','ss','Seongsu','2','성수 Seongsu',4.5,90,'From your IG saves — 8 hours of Seongsu shopping distilled into 10 menswear/accessory shops.','https://www.instagram.com/p/DZKf4o5hoDY/'],
+  ['⚾','KBO Baseball — Jamsil Stadium','act','jamsil','Jamsil','2','잠실 Jamsil',3.0,180,'Korean baseball = cheer squads, beer, fried chicken. Check LG/Doosan home schedule.'],
+  ['🪖','DMZ Tour (Paju) — half day','sight','gwh','Paju — far north',null,'Tour bus',3.0,420,'Needs advance booking + passport. Eats most of a day.'],
+  ['🥓','Geumdwaeji Sikdang (금돼지식당) — BTS\'s KBBQ','food','elj','Yaksu (Jung-gu)','6','약수 Yaksu',5.0,90,'From your TikTok saves — Michelin Bib Gourmand pork BBQ, BTS-approved. Expect a queue; go early or late.','https://www.tiktok.com/@tiktok/video/7512775342172523818'],
+  ['🏙️','Hannam-dong stroll — Seoul\'s trendiest hood','shop','hn','Hannam (Yongsan)','6','한강진 Hangangjin',4.5,90,'From your TikTok saves — fashion, galleries & cafes where the cool kids actually are. Pairs with Odonut + Leeum.','https://www.tiktok.com/@tiktok/video/7512071963284606216'],
+  ['🎨','Leeum Museum of Art','sight','hn','Hannam (Yongsan)','6','한강진 Hangangjin',4.0,90,'From your TikTok saves — Samsung\'s world-class art museum, free general admission. Right in Hannam.','https://www.tiktok.com/@tiktok/video/7518355744593366294'],
+  ['🍲','Yongga Rotating Hotpot (용가회전훠궈)','food','md','Myeongdong','4','명동 Myeongdong',4.5,60,'From your TikTok saves — solo-booth rotating hotpot buffet, unlimited refills ~₩19-22K. Viral for a reason.','https://www.tiktok.com/@tiktok/video/7513972601346198802'],
+  ['🧥','24/7 Vintage Store — Hongdae','shop','hd','Hongdae','2','홍대입구 Hongik Univ',4.0,45,'From your TikTok saves — ₩10K/₩30K racks, open all night. Perfect for the arrival-night Hongdae wander.','https://www.tiktok.com/@tiktok/video/7585035222543125781'],
+  ['🍸','The Roof Seoul — Myeongdong rooftop bar','night','md','Myeongdong','4','명동 Myeongdong',4.0,60,'From your TikTok saves — rooftop cocktails above Myeongdong. Nice cap to a night-market evening.','https://www.tiktok.com/@tiktok/video/7526493544714882322']
+ ],
+ tokyo:[
+  ['🗼','Tokyo Skytree night view','sight','asa','Sumida','A','押上 Oshiage',2.5,90,'Tallest tower in Japan — night views.'],
+  ['🌉','Odaiba Rainbow Bridge night walk','night','oda','Odaiba','RM','東京テレポート',2.5,60,'Lit-up bridge over the bay.'],
+  ['🍣','Genki Sushi — conveyor belt','snack','shb','Shibuya','JR','渋谷 Shibuya',4.5,45,'Order by tablet, sushi arrives on rails.'],
+  ['🍜','Ichiran round 2','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,45,'You know you want to.'],
+  ['🧵','Japanese denim hunt — Shibuya/Harajuku','shop','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'From your IG saves — "do not leave Japan without Japanese denim." Momotaro, Japan Blue & vintage shops around Shibuya/Harajuku.','https://www.instagram.com/p/DTOxNSlD5ut/'],
+  ['🍢','Halal Wagyu Stall — Shibuya skewers','food','shb','Shibuya','JR','渋谷 Shibuya',4.5,30,'From your IG saves — wagyu skewers at 1F 20-7 Udagawacho, 4 min from Shibuya Station. Open 11 AM–11 PM.','https://www.instagram.com/p/DYryvhczYQc/'],
+  ['🦟','Drugstore run — mosquito patches & cooling sheets','shop','sj','Shinjuku',null,'—',4.0,20,'From your IG saves — the Japan-summer drugstore essential. Grab at Matsumoto Kiyoshi or Don Quijote on night one.','https://www.instagram.com/p/DYlFq4GuSTh/']
+ ]
+};
+
+/* ===== Booking checklist ===== */
+const TODOS=[
+ ['c1','✈️','Book GMP → HND flight — all 3 families','ASAP — fares climb','Gimpo→Haneda strongly preferred (city airports both sides). ~9–10 AM Wed Sep 2.'],
+ ['c2','✈️','Clearwaters: book SFO → ICN','ASAP','Airline still TBD — Brysons (Air Premia) & Becksteads (United) are booked.'],
+ ['c3','🏨','Book Tokyo hotel — Shinjuku','by early July','5 nights Sep 2–7. Shinjuku recommended in the plan.'],
+ ['c4','🎨','teamLab Borderless tickets — Fri Sep 4 evening','~Jul 4 (released ~2 mo out)','Sells out fast. <a href="https://borderless.teamlab.art" target="_blank">borderless.teamlab.art</a>'],
+ ['c5','🌆','Shibuya Sky tickets — Fri Sep 4 ~1:30 PM','~Aug 7 (4 wks out)','Sunset slots go first. <a href="https://www.shibuya-scramble-square.com/sky/" target="_blank">official site</a>'],
+ ['c6','💆','Book Spa Gogyeol — Mon Aug 31, 10 AM','2–3 wks out','Korean wellness massage, from ₩120K.'],
+ ['c7','🎨','Book Ecojardin color analysis + headspa','books out weeks ahead','Mon Aug 31 midday slot. Parkjun Beauty Lab = backup.'],
+ ['c8','✨','Pick + book facial clinic','by mid-Aug','Aqua Peel / HydraFacial / Rejuran — Gangnam beauty district.'],
+ ['c9','🥩','Reserve Born and Bred — Tue Sep 1 dinner','~Aug 1','Books fast (try CatchTable). Backup: Woo Tender near hotel.'],
+ ['c10','🍣','Book Tokyo omakase splurge — Fri Sep 4','by mid-Aug','Roppongi/Azabudai area, after teamLab.'],
+ ['c11','📱','eSIMs for Korea + Japan','week before','Airalo / Ubigi — one per phone, install before flying.'],
+ ['c12','💳','Transit cards — T-money/TTC+ + Suica','before landing','From your TikTok saves: skip the plastic card — add T-money to iPhone Apple Wallet in 30 sec (or grab the new TTC+ prepaid card). Suica also adds straight from Apple Wallet for Tokyo.'],
+ ['c13','🛂','K-ETA / Visit Japan Web check','2 wks before','US travelers K-ETA-exempt through 2026 (verify) · fill Visit Japan Web for fast entry.'],
+ ['c14','⚾','Optional: KBO baseball tickets','if adding','Jamsil — LG Twins / Doosan Bears home schedule for Aug 30–Sep 1.']
+];
+
+const FLIGHTS = [
+ {sec:'Flight 1 · To Seoul (ICN) — Fri Aug 28',rows:[
+  {who:'Clearwaters',a:'SFO',b:'ICN',meta:'<b>10:40 AM → 3:00 PM (+1)</b> · ~13 hrs · Airline TBD',note:'Arrive Sat 3:00 PM — immigration + bags ~1 hr'},
+  {who:'Brysons',a:'LAX',b:'ICN',meta:'<b>10:50 AM → 3:50 PM (+1)</b> · 13 hrs · Air Premia',note:'Nonstop — lands nearly the same time!'},
+  {who:'Becksteads',a:'SFO',b:'ICN',meta:'<b>10:40 AM → 3:00 PM (+1)</b> · 13 hrs · United',note:''}
+ ]},
+ {sec:'Flight 2 · Seoul → Tokyo — Wed Sep 2',rows:[
+  {who:'Everyone — ⚠️ BOOK THIS!',a:'GMP',b:'HND',meta:'<b>Morning ~9–10 AM</b> · ~2.5 hrs · TBD',note:'Gimpo→Haneda strongly preferred — city airports on both sides'}
+ ]},
+ {sec:'Flight 3 · Tokyo → Home — Mon Sep 7',rows:[
+  {who:'Clearwaters',a:'NRT',b:'SFO',meta:'<b>6:15 PM → 11:55 AM same day</b> · 9h 40m · JAL 58',note:'Narita Express out ~12:30 PM — arrive before you left 🤯'},
+  {who:'Brysons',a:'HND',b:'LAX',meta:'<b>4:35 PM → 10:53 AM same day</b> · 10h 18m · Delta',note:'Haneda is close — Keikyu ~30 min'},
+  {who:'Becksteads',a:'HND',b:'SFO',meta:'<b>3:50 PM → 9:45 AM same day</b> · 9h 40m · United',note:''}
+ ]}
+];
+
+/* ================= STATE ================= */
+let store;
+try{store=JSON.parse(localStorage.getItem('st26v2')||'{}')}catch(e){store={}}
+store.order=store.order||{};store.extra=store.extra||{};store.checks=store.checks||{};store.img=store.img||{};store.wx=store.wx||{};
+function save(){try{localStorage.setItem('st26v2',JSON.stringify(store))}catch(e){}}
+
+/* ================= ENGINE ================= */
+function fmt(mins){mins=((mins%1440)+1440)%1440;let h=Math.floor(mins/60),m=mins%60,ap=h>=12?'PM':'AM';h=h%12||12;
+  return {t:h+':'+String(m).padStart(2,'0'),ap}}
+function durLabel(d){if(!d)return null;if(d<60)return d+' min';const h=d/60;return (h%1?h.toFixed(1):h)+' hr'}
+function cityOf(dayId){return dayId[0]==='s'?'seoul':'tokyo'}
+function tt(city,a,b){return city==='seoul'?T_SEOUL(a,b):T_TOKYO(a,b)}
+function findDay(id){return [...SEOUL_DAYS,...TOKYO_DAYS].find(d=>d.id===id)}
+
+function allEntries(day){
+  const city=cityOf(day.id);
+  const base=day.items.map((it,i)=>({id:String(i),it,bench:false}));
+  const extra=(store.extra[day.id]||[]).map(k=>({id:'b'+k,it:BENCH[city][k],bench:true}));
+  return base.concat(extra);
+}
+function orderedItems(day){
+  const ents=allEntries(day);
+  const ord=store.order[day.id];
+  if(!ord)return ents;
+  const byId=new Map(ents.map(o=>[o.id,o]));
+  const out=ord.filter(i=>byId.has(i)).map(i=>byId.get(i));
+  ents.forEach(o=>{if(!ord.includes(o.id))out.push(o)});
+  return out;
+}
+function compute(day){
+  const city=cityOf(day.id);let t=day.anchor;const rows=[];let prev=null;let transit=0;
+  for(const ent of orderedItems(day)){
+    const it=ent.it,[e,title,cat,zone]=it;
+    if(prev){
+      const mins=tt(city,prev[3],zone);
+      if(mins>0){rows.push({type:'chip',mins,walk:mins<=7});t+=mins;transit+=mins}
+      else if(prev[3]===zone&&prev[2]!=='travel'&&cat!=='travel'){rows.push({type:'chip',mins:3,walk:true});t+=3;transit+=3}
+    }
+    const nb=it[12];
+    if(nb&&t<nb){rows.push({type:'gap',mins:nb-t});t=nb}
+    rows.push({type:'item',id:ent.id,bench:ent.bench,start:t,it});
+    t+=(it[8]||0);prev=it;
+  }
+  return {rows,end:t,transit};
+}
+
+/* ================= NOW / COUNTDOWN ================= */
+const TZ={seoul:'Asia/Seoul',tokyo:'Asia/Tokyo'};
+function nowIn(tz){
+  if(window.__fakeNow)return window.__fakeNow;
+  const d=new Date();
+  const date=d.toLocaleDateString('en-CA',{timeZone:tz});
+  const [h,m]=d.toLocaleTimeString('en-GB',{timeZone:tz,hour12:false,hour:'2-digit',minute:'2-digit'}).split(':');
+  return {date,mins:+h*60+ +m};
+}
+function liveDay(city){
+  const days=city==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
+  const now=nowIn(TZ[city]);
+  return {day:days.find(d=>d.iso===now.date),now};
+}
+const TRIP_START=new Date('2026-08-28T10:40:00-07:00'), TRIP_END=new Date('2026-09-08T00:00:00+09:00');
+function tickCountdown(){
+  const el=document.getElementById('cd');if(!el)return;
+  const n=new Date();
+  if(n<TRIP_START){
+    let s=Math.floor((TRIP_START-n)/1000);
+    const d=Math.floor(s/86400);s-=d*86400;const h=Math.floor(s/3600);s-=h*3600;const m=Math.floor(s/60);s-=m*60;
+    el.innerHTML=`🛫 T–<b>${d}d ${h}h ${m}m ${String(s).padStart(2,'0')}s</b> until wheels up`;
+  }else if(n<TRIP_END){el.innerHTML='🔥 <b>TRIP IS LIVE</b> · 여행 중'}
+  else{el.innerHTML='🏠 다녀왔습니다 — <b>what a trip</b> 🇰🇷🇯🇵'}
+}
+
+/* ================= WEATHER ================= */
+function wxFor(iso){
+  const live=store.wx[iso];
+  if(live)return {e:live.e,hi:live.hi,lo:live.lo,p:live.p,live:true};
+  const t=WX_TYP[iso];return t?{e:t[0],hi:t[1],lo:t[2],p:t[3],live:false}:null;
+}
+async function fetchWeather(){
+  const today=new Date();
+  const horizon=new Date(today.getTime()+15*86400000);
+  const cities=[{la:37.57,lo:126.98,d0:'2026-08-29',d1:'2026-09-02'},{la:35.69,lo:139.70,d0:'2026-09-02',d1:'2026-09-07'}];
+  let touched=false;
+  for(const c of cities){
+    const start=new Date(c.d0)>today?c.d0:today.toISOString().slice(0,10);
+    if(new Date(start)>horizon||new Date(c.d1)<today)continue;
+    const end=new Date(c.d1)<horizon?c.d1:horizon.toISOString().slice(0,10);
+    try{
+      const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${c.la}&longitude=${c.lo}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=auto&start_date=${start}&end_date=${end}`);
+      const j=await r.json();
+      if(j.daily)j.daily.time.forEach((d,i)=>{
+        store.wx[d]={e:WMO[j.daily.weather_code[i]]||'🌦',hi:Math.round(j.daily.temperature_2m_max[i]),lo:Math.round(j.daily.temperature_2m_min[i]),p:j.daily.precipitation_probability_max[i]};
+        touched=true;
+      });
+    }catch(e){}
+  }
+  if(touched){save();if(curView==='seoul'||curView==='tokyo')renderAll()}
+}
+
+/* ================= IMAGES ================= */
+function wikiFor(title){const hit=WIKI.find(w=>title.includes(w[0]));return hit?hit[1]:null}
+let imgQueue=[],imgBusy=false;
+function queueImages(){
+  imgQueue=[...document.querySelectorAll('.card[data-wiki]')].map(el=>el.dataset.wiki)
+    .filter((s,i,a)=>a.indexOf(s)===i&&!store.img[s]);
+  pumpImages();applyImages();
+}
+async function pumpImages(){
+  if(imgBusy)return;imgBusy=true;
+  while(imgQueue.length){
+    const slug=imgQueue.shift();
+    try{
+      const r=await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(slug));
+      const j=await r.json();
+      store.img[slug]=(j.thumbnail&&j.thumbnail.source)?j.thumbnail.source:'none';
+      save();applyImages();
+    }catch(e){}
+    await new Promise(res=>setTimeout(res,400));
+  }
+  imgBusy=false;
+}
+function applyImages(){
+  document.querySelectorAll('.card[data-wiki]').forEach(el=>{
+    const u=store.img[el.dataset.wiki];
+    if(u&&u!=='none'&&!el.querySelector('.heroimg')){
+      const fb=u.replace('/640px-','/330px-');
+      const img=document.createElement('img');
+      img.className='heroimg';img.loading='lazy';img.alt='';
+      img.src=u.replace(/\/(\d+)px-/,'/640px-');
+      img.onerror=()=>{if(img.src!==fb){img.src=fb;return}img.remove()};
+      el.prepend(img);
+    }
+  });
+}
+
+/* ================= RENDER ================= */
+const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOKYO'},{id:'map',kr:'지도',en:'MAP'},{id:'todo',kr:'체크',en:'TO-DO'},{id:'flights',kr:'항공',en:'FLIGHTS'}];
+let curView='seoul',mapCity='seoul',selZone=null;
+const $=s=>document.querySelector(s);
+
+function todoLeft(){return TODOS.filter(t=>!store.checks[t[0]]).length}
+function renderTabs(){
+  $('#tabs').innerHTML=VIEWS.map(v=>{
+    const badge=v.id==='todo'&&todoLeft()?`<span class="bdgct">${todoLeft()}</span>`:'';
+    return `<div class="tab ${v.id===curView?'on':''}" data-c="${v.id}">${v.kr}<small>${v.en}</small>${badge}</div>`;
+  }).join('');
+  document.querySelectorAll('.tab').forEach(el=>el.onclick=()=>{curView=el.dataset.c;renderAll();window.scrollTo({top:0})});
+}
+function renderPills(){
+  if(curView==='seoul'||curView==='tokyo'){
+    const days=curView==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
+    $('#pills').innerHTML=days.map(d=>`<div class="pill" data-d="${d.id}">${d.num}<span style="opacity:.6"> · ${d.date.split(' · ')[1]}</span></div>`).join('');
+    document.querySelectorAll('.pill').forEach(el=>el.onclick=()=>document.getElementById('sec-'+el.dataset.d).scrollIntoView({behavior:'smooth'}));
+  }else if(curView==='map'){
+    $('#pills').innerHTML=['seoul','tokyo'].map(c=>`<div class="pill ${c===mapCity?'on':''}" data-m="${c}">${c==='seoul'?'🇰🇷 서울 Seoul':'🇯🇵 東京 Tokyo'}</div>`).join('');
+    document.querySelectorAll('.pill').forEach(el=>el.onclick=()=>{mapCity=el.dataset.m;selZone=null;renderAll()});
+  }else $('#pills').innerHTML='';
+}
+function starLabel(r){return r==null?null:'⭐ '+(r%1?r.toFixed(1):r+'.0')}
+function navLink(city,it){
+  const q=encodeURIComponent(it[1].replace(/\s*[—–(].*$/,'').trim()+' '+(city==='seoul'?'서울':'Tokyo'));
+  return city==='seoul'?`https://map.naver.com/p/search/${q}`:`https://www.google.com/maps/search/?api=1&query=${q}`;
+}
+function cardHTML(row,city,liveNow){
+  const it=row.it,[e,title,cat,zone,area,line,stn,r,d,note,link,locked]=it;
+  const f=fmt(row.start),c=CAT[cat];
+  const slug=wikiFor(title);
+  const isNow=liveNow!=null&&liveNow>=row.start&&liveNow<row.start+(d||30);
+  const badges=[
+    `<span class="bdg cat" style="background:${c.c}">${c.l}</span>`,
+    line?`<span class="bdg line" style="background:${LINES[line]||'#555'}">${/^\d/.test(line)?'Line '+line:line}</span>`:'',
+    stn&&stn!=='—'?`<span class="bdg">${stn}</span>`:'',
+    starLabel(r)?`<span class="bdg star">${starLabel(r)}</span>`:'',
+    durLabel(d)?`<span class="bdg dur">⏱ ${durLabel(d)}</span>`:'',
+    (cat!=='travel'&&cat!=='rest')?`<a class="bdg nav" href="${navLink(city,it)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🧭 ${city==='seoul'?'Naver':'GMaps'}</a>`:''
+  ].filter(Boolean).join('');
+  const noteHtml=(note||'')+(link?` <a href="${link}" target="_blank" rel="noopener">↗ watch / map</a>`:'');
+  return `<div class="card ${locked?'locked':''} ${isNow?'now':''}" data-idx="${row.id}" ${slug?`data-wiki="${slug}"`:''}>
+    ${row.bench?'<div class="rm" title="remove">✕</div>':''}
+    <div class="row">
+    <div class="timecol"><div class="time">${f.t}</div><div class="ampm">${f.ap}</div></div>
+    <div class="emoji">${e}</div>
+    <div class="body"><div class="title">${isNow?'🟢 ':''}${title}</div><div class="badges">${badges}</div>
+      ${noteHtml?`<div class="note">${noteHtml}</div>`:''}</div>
+    <div class="handle" title="drag to reorder">⠿</div>
+    </div>
+  </div>`;
+}
+function chipHTML(row){
+  if(row.type==='gap'){
+    const l=row.mins>=60?(Math.round(row.mins/60*10)/10)+' hr':row.mins+' min';
+    return `<div class="chip" style="color:var(--gold)"><span class="ln"></span><span>✨ <b style="color:var(--gold)">free time · ~${l}</b> — wander, shop, café</span></div>`;
+  }
+  const icon=row.walk?'🚶':'🚇',lbl=row.walk?'walk':'subway';
+  return `<div class="chip"><span class="ln"></span><span>${icon} <b>~${row.mins} min</b> ${lbl}</span></div>`;
+}
+function dayHTML(day){
+  const city=cityOf(day.id);
+  const {rows,end,transit}=compute(day);
+  const live=liveDay(city);
+  const liveNow=(live.day&&live.day.id===day.id)?live.now.mins:null;
+  const f=fmt(end);const wx=wxFor(day.iso);
+  const wxs=wx?`<span class="wx">${wx.e} ${wx.hi}°/${wx.lo}° · 💧${wx.p}%${wx.live?'':' <span style="opacity:.55">typical</span>'}</span>`:'';
+  return `<section class="day" id="sec-${day.id}">
+    <div class="dhead"><span class="big">${day.num}</span><span class="kr">${day.kr} · ${day.date}</span>${wxs}</div>
+    <div class="dsub">${day.sub}</div>
+    <div class="list" data-day="${day.id}">${rows.map(r=>r.type==='item'?cardHTML(r,city,liveNow):chipHTML(r)).join('')}</div>
+    <div class="dfoot"><span>wraps ~<b style="color:var(--txt)">${f.t} ${f.ap}</b> · ${rows.filter(r=>r.type==='item').length} stops · ~${Math.round(transit/60*10)/10} hr transit</span>
+    <button class="reset" data-day="${day.id}">↺ reset</button></div>
+  </section>`;
+}
+function nowBannerHTML(city){
+  const {day,now}=liveDay(city);
+  if(!day)return '';
+  const {rows}=compute(day);
+  const items=rows.filter(r=>r.type==='item');
+  const cur=items.filter(r=>now.mins>=r.start&&now.mins<r.start+(r.it[8]||30)).pop();
+  const next=items.find(r=>r.start>now.mins);
+  let msg;
+  if(cur&&next)msg=`<b>NOW:</b> ${cur.it[0]} ${cur.it[1].split('—')[0].trim()} &nbsp;·&nbsp; next up ${next.it[0]} at <b>${fmt(next.start).t} ${fmt(next.start).ap}</b>`;
+  else if(cur)msg=`<b>NOW:</b> ${cur.it[0]} ${cur.it[1].split('—')[0].trim()} — last stop of the day`;
+  else if(next)msg=`Up next: ${next.it[0]} ${next.it[1].split('—')[0].trim()} at <b>${fmt(next.start).t} ${fmt(next.start).ap}</b>`;
+  else msg=`That's a wrap on ${day.num} 🌙`;
+  return `<div class="nowbar"><span class="dot"></span><span>${msg}</span></div>`;
+}
+
+/* ----- map ----- */
+function proj(city,la,lo){
+  const f=FRAMES[city];
+  return {x:30+(lo-f.lo0)/(f.lo1-f.lo0)*640, y:30+(f.la1-la)/(f.la1-f.la0)*460};
+}
+function zoneVisits(city){
+  const days=city==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
+  const map={};
+  days.forEach((d,di)=>{
+    compute(d).rows.filter(r=>r.type==='item').forEach(r=>{
+      const z=r.it[3];if(!ZONES[city][z])return;
+      (map[z]=map[z]||[]).push({di,day:d,start:r.start,it:r.it});
+    });
+  });
+  return map;
+}
+function mapHTML(){
+  const city=mapCity,zs=ZONES[city],visits=zoneVisits(city);
+  const water=city==='seoul'
+    ?`<path d="M670,330 C610,355 600,355 553,358 C480,368 430,400 379,408 C320,416 260,392 204,358 C150,326 110,292 88,256 L30,215" fill="none" stroke="#1c2a45" stroke-width="26" stroke-linecap="round" opacity=".9"/>
+      <text x="330" y="442" fill="#3b4a6b" font-size="13" font-style="italic">한강 Han River</text>`
+    :`<path d="M598,71 C570,140 530,200 495,265 C475,300 470,330 472,360" fill="none" stroke="#1c2a45" stroke-width="16" stroke-linecap="round" opacity=".9"/>
+      <path d="M700,330 C640,360 580,400 540,470 L700,520 Z" fill="#16223a" opacity=".9"/>
+      <text x="585" y="455" fill="#3b4a6b" font-size="13" font-style="italic">Tokyo Bay</text>`;
+  const pins=Object.keys(zs).map(z=>{
+    const p=proj(city,zs[z].la,zs[z].lo);
+    const v=visits[z]||[];
+    const col=v.length?DAYCOL[v[0].di%DAYCOL.length]:'#3a4258';
+    const emoji=zs[z].hotel?'🏨':(v[0]?v[0].it[0]:'·');
+    const sel=selZone===z?'sel':'';
+    return `<g class="mpin ${sel}" data-z="${z}" transform="translate(${p.x},${p.y})">
+      <circle class="ring" r="17" fill="#161a27" stroke="${col}" stroke-width="${v.length?2.5:1.5}"/>
+      <text y="5.5" text-anchor="middle" font-size="15">${emoji}</text>
+      <text y="33" text-anchor="middle" font-size="10.5" fill="${selZone===z?'#fff':'#8a92ab'}" font-weight="700">${zs[z].n}</text>
+      ${v.length>1?`<circle cx="13" cy="-13" r="7.5" fill="${col}"/><text x="13" y="-9.5" text-anchor="middle" font-size="9" font-weight="800" fill="#0b0d14">${v.length}</text>`:''}
+    </g>`;
+  }).join('');
+  const days=city==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
+  const legend=days.map((d,i)=>`<span><i style="background:${DAYCOL[i%DAYCOL.length]}"></i>${d.num}</span>`).join('');
+  let panel='';
+  if(selZone&&visits[selZone]){
+    panel=`<div class="ph">📍 ${zs[selZone].n} — ${visits[selZone].length} stop${visits[selZone].length>1?'s':''}</div>`+
+      visits[selZone].map(v=>`<div class="mrow"><span class="d" style="background:${DAYCOL[v.di%DAYCOL.length]}">${v.day.num}</span>
+        <span>${v.it[0]} ${v.it[1].split('—')[0].trim()}</span><span class="tm">${fmt(v.start).t} ${fmt(v.start).ap}</span></div>`).join('');
+  }else panel=`<div class="ph" style="color:var(--dim2)">tap a pin to see what's happening there</div>`;
+  return `<div class="mapwrap"><svg viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg">
+    <rect width="700" height="520" rx="14" fill="#0e1119"/>${water}${pins}</svg>
+    <div class="mlegend">${legend}<span><i style="background:#3a4258"></i>bench spot</span></div></div>
+    <div id="mpanel">${panel}</div>`;
+}
+
+/* ----- checklist ----- */
+function todoHTML(){
+  const done=TODOS.length-todoLeft();
+  const pct=Math.round(done/TODOS.length*100);
+  return `<div class="tprog"><div class="bar"><div class="fill" style="width:${pct}%"></div></div>
+    <div class="lbl">${done}/${TODOS.length} booked · ${pct===100?'완료! all set 🎉':'keep going — the trip thanks you'}</div></div>`+
+   TODOS.map(t=>{
+    const on=!!store.checks[t[0]];
+    return `<div class="todo ${on?'done':''}" data-t="${t[0]}">
+      <div class="cb">${on?'✓':''}</div>
+      <div><div class="tt">${t[1]} ${t[2]}</div><div class="due">📅 ${t[3]}</div><div class="nt">${t[4]}</div></div>
+    </div>`;
+   }).join('');
+}
+function flightsHTML(){
+  let h='';
+  for(const g of FLIGHTS){
+    h+=`<div class="fsec">${g.sec}</div>`;
+    h+=g.rows.map(r=>`<div class="fcard"><div class="who">${r.who}</div>
+      <div class="route">${r.a}<div class="arrow"></div>${r.b}</div>
+      <div class="meta">${r.meta}${r.note?`<br><span style="color:var(--dim2)">${r.note}</span>`:''}</div></div>`).join('');
+  }
+  h+=`<div class="fsec">Trip Overview</div><div class="ov">
+    <div class="ovc"><div class="city">🇰🇷 서울</div><div class="d">Aug 29 – Sep 2<br>4 nights · Park Hyatt Seoul<br>Gangnam (Samseong, by COEX)</div></div>
+    <div class="ovc"><div class="city">🇯🇵 東京</div><div class="d">Sep 2 – 7<br>5 nights · Hotel TBD<br>Shinjuku (recommended)</div></div>
+  </div>`;
+  return h;
+}
+function renderAll(){
+  renderTabs();renderPills();
+  let html='';
+  if(curView==='seoul'||curView==='tokyo'){
+    const days=curView==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
+    html=nowBannerHTML(curView)+days.map(dayHTML).join('');
+    $('#fab').classList.remove('hidden');
+  }else{
+    $('#fab').classList.add('hidden');
+    if(curView==='map')html=mapHTML();
+    else if(curView==='todo')html=todoHTML();
+    else html=flightsHTML();
+  }
+  $('#content').innerHTML=html;
+  bind();
+  if(curView==='seoul'||curView==='tokyo')queueImages();
+}
+function rerenderDay(day){
+  const sec=document.getElementById('sec-'+day.id);
+  if(!sec){renderAll();return}
+  sec.outerHTML=dayHTML(day);bind();queueImages();
+}
+
+/* ================= INTERACTION ================= */
+function bind(){
+  document.querySelectorAll('.card .body').forEach(el=>{
+    el.onclick=()=>el.closest('.card').classList.toggle('open');
+  });
+  document.querySelectorAll('.reset').forEach(b=>b.onclick=()=>{
+    delete store.order[b.dataset.day];delete store.extra[b.dataset.day];save();
+    rerenderDay(findDay(b.dataset.day));
+  });
+  document.querySelectorAll('.handle').forEach(h=>{h.onpointerdown=startDrag});
+  document.querySelectorAll('.rm').forEach(x=>x.onclick=ev=>{
+    ev.stopPropagation();
+    const card=ev.target.closest('.card'),list=card.closest('.list');
+    const dayId=list.dataset.day,id=card.dataset.idx;
+    store.extra[dayId]=(store.extra[dayId]||[]).filter(k=>'b'+k!==id);
+    if(store.order[dayId])store.order[dayId]=store.order[dayId].filter(i=>i!==id);
+    save();rerenderDay(findDay(dayId));
+  });
+  document.querySelectorAll('.mpin').forEach(p=>p.onclick=()=>{
+    selZone=selZone===p.dataset.z?null:p.dataset.z;renderAll();
+  });
+  document.querySelectorAll('.todo').forEach(t=>t.onclick=ev=>{
+    if(ev.target.tagName==='A')return;
+    store.checks[t.dataset.t]=!store.checks[t.dataset.t];save();renderAll();
+  });
+}
+let drag=null;
+function startDrag(ev){
+  ev.preventDefault();
+  const card=ev.target.closest('.card'),list=card.closest('.list');
+  const ghost=card.cloneNode(true);ghost.classList.add('ghost');
+  const r=card.getBoundingClientRect();
+  ghost.style.left=r.left+'px';ghost.style.top=(ev.clientY-40)+'px';ghost.style.width=r.width+'px';
+  document.body.appendChild(ghost);
+  card.classList.add('dragging');
+  drag={card,list,ghost};
+  ev.target.setPointerCapture(ev.pointerId);
+  ev.target.onpointermove=moveDrag;ev.target.onpointerup=endDrag;ev.target.onpointercancel=endDrag;
+}
+function moveDrag(ev){
+  if(!drag)return;
+  drag.ghost.style.top=(ev.clientY-40)+'px';
+  const els=[...drag.list.querySelectorAll('.card:not(.dragging)')];
+  for(const el of els){
+    const r=el.getBoundingClientRect();
+    if(ev.clientY>r.top&&ev.clientY<r.bottom){
+      if(ev.clientY<r.top+r.height/2)drag.list.insertBefore(drag.card,el);
+      else drag.list.insertBefore(drag.card,el.nextSibling);
+      break;
+    }
+  }
+  const m=90;
+  if(ev.clientY<m)window.scrollBy(0,-12);else if(innerHeight-ev.clientY<m)window.scrollBy(0,12);
+}
+function endDrag(ev){
+  if(!drag)return;
+  const{card,list,ghost}=drag;
+  ghost.remove();card.classList.remove('dragging');
+  ev.target.onpointermove=null;ev.target.onpointerup=null;
+  const dayId=list.dataset.day,day=findDay(dayId);
+  store.order[dayId]=[...list.querySelectorAll('.card')].map(el=>el.dataset.idx);
+  save();drag=null;rerenderDay(day);
+}
+
+/* ----- bench sheet ----- */
+function openBench(){
+  const city=curView;
+  const days=city==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
+  const added=new Set();
+  days.forEach(d=>(store.extra[d.id]||[]).forEach(k=>added.add(k)));
+  const groups={};
+  BENCH[city].forEach((b,k)=>{(groups[b[4]]=groups[b[4]]||[]).push({b,k})});
+  let h=`<h3>⭐ 벤치 The Bench</h3><div class="sub">Crew-ranked spots not on the schedule — tap <b style="color:var(--mint)">+ add</b>, pick a day, times recalc.</div>`;
+  for(const g of Object.keys(groups)){
+    h+=`<div class="bgrp">${g}</div>`;
+    for(const {b,k} of groups[g]){
+      const isAdded=added.has(k);
+      h+=`<div class="brow" data-k="${k}"><span class="be">${b[0]}</span>
+        <div class="bt"><div class="n">${b[1]}</div><div class="m">${[starLabel(b[7]),durLabel(b[8]),b[6]&&b[6]!=='—'?b[6]:null].filter(Boolean).join(' · ')}</div></div>
+        <button class="add ${isAdded?'done':''}">${isAdded?'✓ added':'+ add'}</button>
+        <div class="dayspick hidden">${days.map(d=>`<span class="dp" data-day="${d.id}">${d.num}</span>`).join('')}</div></div>`;
+    }
+  }
+  const bg=document.createElement('div');bg.id='sheetbg';
+  const sh=document.createElement('div');sh.id='sheet';sh.innerHTML=h;
+  document.body.append(bg,sh);
+  bg.onclick=closeBench;
+  sh.querySelectorAll('.add').forEach(btn=>btn.onclick=()=>{
+    const row=btn.closest('.brow');
+    row.querySelector('.dayspick').classList.toggle('hidden');
+  });
+  sh.querySelectorAll('.dp').forEach(dp=>dp.onclick=()=>{
+    const k=+dp.closest('.brow').dataset.k,dayId=dp.dataset.day;
+    (store.extra[dayId]=store.extra[dayId]||[]).push(k);
+    /* slot the new card in before any trailing rest/travel cards (hotel return, flights) */
+    const day=findDay(dayId);
+    const ids=orderedItems(day).map(o=>o.id);
+    const newId=ids.pop();
+    let at=ids.length;
+    while(at>0){const ent=orderedItems(day).find(o=>o.id===ids[at-1]);
+      if(ent&&(ent.it[2]==='rest'||ent.it[2]==='travel'))at--;else break}
+    ids.splice(at,0,newId);
+    store.order[dayId]=ids;
+    save();closeBench();renderAll();
+    setTimeout(()=>{const s=document.getElementById('sec-'+dayId);if(s)s.scrollIntoView({behavior:'smooth'})},60);
+  });
+}
+function closeBench(){document.getElementById('sheetbg')?.remove();document.getElementById('sheet')?.remove()}
+document.getElementById('fab').onclick=openBench;
+
+/* ================= INIT ================= */
+renderAll();
+tickCountdown();setInterval(tickCountdown,1000);
+setInterval(()=>{if(curView==='seoul'||curView==='tokyo')renderAll()},60000);
+fetchWeather();
+</script>
+</body>
+</html>
