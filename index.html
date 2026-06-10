@@ -286,7 +286,7 @@ const WMO={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',
 /* wikipedia hero images: [title-substring, slug] (verified) */
 const WIKI=[
  ['Arrive Incheon','Incheon_International_Airport'],['Dongdaemun Design','Dongdaemun_Design_Plaza'],
- ['Seongsu —','Seongsu-dong'],['Hongdae nightlife','Hongdae,_Seoul'],['Myeongdong Night','Myeongdong'],
+ ['Seongsu —','Seongsu-dong'],['Hongdae nightlife','direct:https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Hongdae_Party_District_at_Night%2C_Seoul.jpg/960px-Hongdae_Party_District_at_Night%2C_Seoul.jpg'],['Myeongdong Night','Myeongdong'],
  ['Banpo Bridge','Banpo_Bridge'],['Gyeongbokgung','Gyeongbokgung'],
  ['Senso-ji','Sensō-ji'],['Shibuya Crossing','Shibuya_Crossing'],['Meiji Shrine','Meiji_Shrine'],
  ['Tokyo Tower','Tokyo_Tower'],['Shinjuku Gyoen','Shinjuku_Gyoen'],['Akihabara','Akihabara'],
@@ -603,7 +603,7 @@ function wikiFor(title){const hit=WIKI.find(w=>title.includes(w[0]));return hit?
 let imgQueue=[],imgBusy=false;
 function queueImages(){
   imgQueue=[...document.querySelectorAll('.card[data-wiki]')].map(el=>el.dataset.wiki)
-    .filter((s,i,a)=>a.indexOf(s)===i&&!store.img[s]);
+    .filter((s,i,a)=>a.indexOf(s)===i&&!s.startsWith('direct:')&&!store.img[s]);
   pumpImages();applyImages();
 }
 async function pumpImages(){
@@ -622,12 +622,14 @@ async function pumpImages(){
 }
 function applyImages(){
   document.querySelectorAll('.card[data-wiki]').forEach(el=>{
-    const u=store.img[el.dataset.wiki];
+    const slug=el.dataset.wiki;
+    const direct=slug.startsWith('direct:');
+    const u=direct?slug.slice(7):store.img[slug];
     if(u&&u!=='none'&&!el.querySelector('.heroimg')){
-      const fb=u.replace('/640px-','/330px-');
+      const fb=direct?u:u.replace('/640px-','/330px-');
       const img=document.createElement('img');
       img.className='heroimg';img.loading='lazy';img.alt='';
-      img.src=u.replace(/\/(\d+)px-/,'/640px-');
+      img.src=direct?u:u.replace(/\/(\d+)px-/,'/640px-');
       img.onerror=()=>{if(img.src!==fb){img.src=fb;return}img.remove()};
       el.prepend(img);
     }
