@@ -331,7 +331,7 @@ const NAVER=[
  ['Seoul Temple','11664014'],['Robinhood','1018487691'],['Cafe Pokpo','1472283292'],
  ['Gyeongbokgung','11571707'],['Kyobo Book','12183349'],['Solsot','1933776590'],
  ['Ikseon Shooting','1988780624'],['Jayeondo','1869147927'],['Rain Report','2077529202'],
- ['Born and Bred','1151270351'],['Karaoke','q:삼성동 코인노래방'],
+ ['Born and Bred','1151270351'],['Karaoke','q:삼성동 코인노래방'],['Sulbing','1543701210'],
  ['Hongdae nightlife','q:홍대 걷고싶은거리'],['Cimer Spa','1776546877']
 ];
 
@@ -351,6 +351,7 @@ const SEOUL_DAYS = [
   ['☕','Onion Cafe (어니언) — hanok bakery','cafe','ss','Seongsu','2','성수 Seongsu',4.8,30,'Iconic bakery in a renovated factory — pastries + coffee, raw industrial vibes. Always a queue!','https://www.tiktok.com/@karissaeats/video/7461760966301191455'],
   ['🍥','Myeongdong Kyoja — Michelin dumplings','food','md','Myeongdong','4','명동 Myeongdong',5.0,60,'Michelin-listed kalguksu & mandu — early dinner before the night market crowd.','https://www.tiktok.com/@tiktok/video/7614772988264680725',0,17*60],
   ['🍡','Myeongdong Night Markets','snack','md','Myeongdong','4','명동 Myeongdong',5.0,45,'Hotteok ⭐4.5, tteok-bokki ⭐5.0, candied fruit — grab and walk. Your saved rating-everything-with-prices video linked.','https://www.tiktok.com/@tiktok/video/7559267728121531671'],
+  ['🍧','Bingsu at Sulbing (설빙 명동2호점)','snack','md','Myeongdong','4','명동 Myeongdong',5.0,30,'Korean shaved ice — rated 5.0 by all three families. 2nd floor just past Myeongdong Kyoja — injeolmi or mango bowls to share before Banpo.'],
   ['🌈','Banpo Bridge Rainbow Fountain + 7/11 ramen','night','bp','Banpo','3','고속터미널 Express Bus Tml',5.0,45,'Moonlight Rainbow Fountain show on the Han River — pair with convenience-store ramen on the riverbank. Shows ~8–9 PM.','https://www.tiktok.com/@tiktok/video/7342997097806843182',0,20*60],
   ['🌙','Return to Park Hyatt & rest','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Spa day tomorrow! 💆']
  ]},
@@ -481,7 +482,7 @@ const BENCH={
   ['♨️','Sparex — Seoul\'s biggest jjimjilbang','spa','ddp','Dongdaemun','2','DDP역',5.0,90,'At DDP — pairs with the museum morning.'],
   ['🧖','Cimer Spa at Paradise City','spa','ich','Incheon','AREX','ICN shuttle',4.7,90,'Luxury jjimjilbang + aqua pools by Incheon airport — soak, sauna, ~₩30K, luggage lockers on site. Benched: doesn\'t fit the 8:00 AM GMP departure — slot it earlier in the week if there\'s appetite.','https://www.tiktok.com/@tiktok/video/7504672079887781163'],
   ['🍜','Nishimuramen — Michelin ramen','food','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,60,'Michelin-rated ramen.','https://guide.michelin.com/us/en/seoul-capital-area/kr-seoul/restaurant/nishimuramen'],
-  ['🍧','Bingsu at Sulbing','snack','md','Myeongdong','4','명동 Myeongdong',5.0,30,'Korean shaved ice — rated 5.0 by all three, still unscheduled!'],
+  null, /* Bingsu at Sulbing — promoted to the Day 1 schedule; slot kept null so saved bench indices don't shift */
   ['🍗','Starchicken — Myeongdong fried chicken','snack','md','Myeongdong','4','명동 Myeongdong',3.5,30,'Korean fried chicken stand.'],
   ['🌃','Euljiro "Hipjiro" — hidden bars & neon alleys','night','elj','Euljiro','2','을지로3가 Euljiro 3-ga',3.0,60,'From your IG saves — Euljiro by day, Hipjiro by night. Hidden bars around Euljiro 14-gil.','https://www.instagram.com/p/DYSFhSFzgUy/'],
   ['🍩','Odonut (오도넛) — viral Taiwanese donuts','snack','hn','Hannam (Yongsan)','6','한강진 Hangangjin',5.0,30,'From your IG saves — "best bites of my life." Crispy Taiwanese-style donuts in Hannam.','https://www.instagram.com/p/DZDukK2iFmh/'],
@@ -982,7 +983,7 @@ function openBench(){
   const added=new Set();
   days.forEach(d=>(store.extra[d.id]||[]).forEach(k=>added.add(k)));
   const groups={};
-  BENCH[city].forEach((b,k)=>{(groups[b[4]]=groups[b[4]]||[]).push({b,k})});
+  BENCH[city].forEach((b,k)=>{if(!b)return;(groups[b[4]]=groups[b[4]]||[]).push({b,k})});
   let h=`<h3>⭐ 벤치 The Bench</h3><div class="sub">Crew-ranked spots not on the schedule — tap <b style="color:var(--mint)">+ add</b>, pick a day, times recalc.</div>`;
   for(const g of Object.keys(groups)){
     h+=`<div class="bgrp">${g}</div>`;
