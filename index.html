@@ -334,7 +334,8 @@ const NAVER=[
  ['Born and Bred','1151270351'],['Karaoke','q:삼성동 코인노래방'],['Sulbing','1543701210'],
  ['Hongdae nightlife','q:홍대 걷고싶은거리'],['Cimer Spa','1776546877'],
  ['Sparex Dongmyo','1001448302'],['Sparex','1394291379'],['Aquafield','38502600'],
- ['Golfzon','q:골프존파크 삼성 강남스크린2호'],['24/7 Vintage','q:홍대 빈티지샵']
+ ['Golfzon','q:골프존파크 삼성 강남스크린2호'],['24/7 Vintage','q:홍대 빈티지샵'],
+ ['Geumdwaeji','37869877'],['London Bagel','q:런던베이글뮤지엄 도산'],['Cafe Mamas','q:카페마마스 코엑스']
 ];
 
 /* item: [emoji,title,cat,zone,areaLabel,line,station,rating,durMins,note,link,locked,notBefore] */
@@ -342,13 +343,13 @@ const SEOUL_DAYS = [
  {id:'s0',num:'ARRIVAL',kr:'토요일',date:'Sat · Aug 29',iso:'2026-08-29',sub:'Touch down, bag drop & Hongdae Saturday night 🎶',anchor:15*60,items:[
   ['✈️','Arrive Incheon International Airport','travel','ich','Incheon','AREX','ICN T1',null,45,'Immigration + bags — the usual drill. Both families land ~3:00–3:50 PM.',null,1],
   ['🏨','Drop bags at Park Hyatt Seoul','travel','gn','Gangnam','2','삼성 Samseong',null,15,'AREX Express → Seoul Station → Line 2 to Samseong. Quick bag drop — don\'t unpack, just dump and go!',null,1],
-  ['🥩','Taecho Galbi (태초갈비)','food','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,90,'Korean beef galbi in Hongdae — perfect Saturday-night first dinner.','https://www.instagram.com/taecho_beef'],
+  ['🥩','Taecho Galbi (태초갈비)','food','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,90,'Korean beef galbi in Hongdae — perfect Saturday-night first dinner. Open noon–11:30 PM daily, but Sat 6–8 PM is peak — join the CatchTable waitlist remotely or aim for 5:30.','https://www.instagram.com/taecho_beef'],
   ['🎶','Hongdae nightlife — buskers, bars, shops','night','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,120,'Saturday night = peak energy. Street performers, indie bars, vintage shops open late. Your saved clip: best clubs in Hongdae.','https://www.tiktok.com/@tiktok/video/7300459973191027970'],
   ['🧥','24/7 Vintage Store — open all night','shop','hd','Hongdae','2','홍대입구 Hongik Univ',4.0,45,'From your TikTok saves — ₩10K/₩30K racks, open 24 hours. ⚠️ The viral unmanned shop (와우산로23길 35-3) is liquidating through June — if it\'s gone by Aug, the Naver badge searches Hongdae\'s other late-night vintage spots.','https://www.tiktok.com/@tiktok/video/7585035222543125781'],
   ['🌙','Return to Park Hyatt & crash','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Line 2 direct to Samseong. Bags already there — crash out 🇰🇷']
  ]},
  {id:'s1',num:'DAY 1',kr:'일요일',date:'Sun · Aug 30',iso:'2026-08-30',sub:'Dongdaemun, Seongsu & Myeongdong eats',anchor:9*60,items:[
-  ['🥞','Bills — Ricotta Pancakes','food','gn','Gangnam','2','삼성 Samseong',5.0,60,'"Unreal" ricotta pancakes — rated 5.0 by everyone. Bills Gangnam opens at 9 AM!'],
+  ['🥞','Bills — Ricotta Pancakes','food','gn','Gangnam','2','삼성 Samseong',5.0,60,'"Unreal" ricotta pancakes — rated 5.0 by everyone. Weekend open is 9 AM sharp (weekdays 10:30 — that\'s why this is the Sunday stop). Reserve via CatchTable Global.'],
   ['🏛️','Dongdaemun Design Plaza (DDP)','sight','ddp','Dongdaemun','2','DDP역',4.0,90,'Zaha Hadid\'s spaceship building — free exhibits, wild architecture, great photos.','https://www.tiktok.com/@koreaview_4u/video/7547193551218658567'],
   ['♨️','Sparex (DDP) — hanok-village jjimjilbang','spa','ddp','Dongdaemun','2','DDP역',4.0,120,'Exit 14 is the building — famous hanok-village interior, ₩12K, towels + uniforms provided, open 24h. Soak, sweat & sikhye before Seongsu. (Dragon Hill from the guidebooks is permanently closed.)'],
   ['🛍️','Seongsu — "Brooklyn of Seoul"','shop','ss','Seongsu','2','성수 Seongsu',4.0,90,'Trendy cafes, vintage shops, indie boutiques. Musinsa, PHYPS & 29cm are all here too. Your saved one-day Seongsu itinerary linked.','https://www.tiktok.com/@tiktok/video/7490808472691363090'],
@@ -360,11 +361,11 @@ const SEOUL_DAYS = [
   ['🌙','Return to Park Hyatt & rest','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Spa day tomorrow! 💆']
  ]},
  {id:'s2',num:'DAY 2',kr:'월요일',date:'Mon · Aug 31',iso:'2026-08-31',sub:'Gangnam wellness & beauty day 💆✨',anchor:9*60,items:[
-  ['🥞','Bills — Ricotta Pancakes (round 2)','food','gn','Gangnam','2','삼성 Samseong',5.0,60,'Can\'t get enough of those ricotta pancakes 🥞'],
-  ['💆','Spa Gogyeol — Korean wellness massage','beauty','gn','Gangnam','2','삼성 Samseong',5.0,60,'Acupressure + stretching massage — from ₩120K. Book ahead.','https://www.tiktok.com/@farhabae/video/7592736918274690318'],
+  ['🥯','London Bagel Museum (도산점) — breakfast','food','apg','Dosan','3','압구정 Apgujeong',null,60,'⚠️ bills opens 10:30 on weekdays (the 9 AM open is weekend-only) — LBM opens 8 AM, and the pretzel + salt-bread bagels are a Seoul icon. Near Dosan Park, short hop to the spa.'],
+  ['💆','Spa Gogyeol — Korean wellness massage','beauty','gn','Gangnam','2','삼성 Samseong',5.0,60,'Acupressure + stretching massage — from ₩120K. Book the 10 AM slot ahead (doors open 10).','https://www.tiktok.com/@farhabae/video/7592736918274690318'],
   ['✨','Facials — Aqua Peel · HydraFacial · Rejuran','beauty','gns','Gangnam Stn','2','강남 Gangnam',5.0,60,'Pick your treatment: Aqua Peel ~$50-100 · Rejuran ~$70-150 · Juvelook ~$80-200. Your saved 7-clinics-with-prices guide linked.','https://www.tiktok.com/@tiktok/video/7594403101092744449'],
-  ['🎨','Color Analysis (Ecojardin) + Headspa','beauty','gns','Gangnam Stn','2','강남 Gangnam',null,90,'Ecojardin: color analysis + 18-step scalp treatment. Parkjun Beauty Lab: 15-step headspa. Book ahead! Your saved Parkjun video linked.','https://www.tiktok.com/@tiktok/video/7510294635755982136'],
-  ['🥩','BBQ Lunch — 도산정육 or Jeju Rooftop Black BBQ','food','apg','Apgujeong','3','압구정 Apgujeong',5.0,90,'Dosan Jeonguk (🧭 badge): premium butcher-style BBQ · Jeju Rooftop (↗ link): meat in a cave! Both ⭐5.0.','https://map.naver.com/p/entry/place/1890747832'],
+  ['🥩','BBQ Lunch — 도산정육 or Jeju Rooftop Black BBQ','food','apg','Apgujeong','3','압구정 Apgujeong',5.0,90,'Dosan Jeonguk (🧭 badge): premium butcher-style BBQ · Jeju Rooftop (↗ link): meat in a cave! Both ⭐5.0. ⚠️ Breaks: Dosan 2–3 PM, Jeju Oktap 3–4 PM — that\'s why lunch is BEFORE color analysis; order by 1 PM.','https://map.naver.com/p/entry/place/1890747832'],
+  ['🎨','Color Analysis (Ecojardin) + Headspa','beauty','gns','Gangnam Stn','2','강남 Gangnam',null,90,'Ecojardin: color analysis + 18-step scalp treatment (open till 8 PM). Parkjun Beauty Lab: 15-step headspa. Book ahead! Your saved Parkjun video linked.','https://www.tiktok.com/@tiktok/video/7510294635755982136'],
   ['💫','Apgujeong — Korea\'s wealthiest hood','shop','apg','Apgujeong','3','압구정 Apgujeong',4.0,60,'Luxury shopping, galleries, designer cafes.'],
   ['🌿','Garosugil — tree-lined boutique street','shop','sinsa','Sinsa','3','신사 Sinsa',4.3,60,'Boutiques, cafes, galleries — Malbon golf flagship (⭐5.0) is right here, pop in.','https://www.tiktok.com/@chernocare/video/7619720924442430738'],
   ['🚿','Back to Park Hyatt — freshen up','rest','gn','Gangnam','2','삼성 Samseong',null,60,'Recharge & shower — pampered and glowing before dinner.'],
@@ -373,15 +374,15 @@ const SEOUL_DAYS = [
   ['🌙','Return to Park Hyatt & rest','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Palace district & temples tomorrow 🇰🇷']
  ]},
  {id:'s3',num:'DAY 3',kr:'화요일',date:'Tue · Sep 1',iso:'2026-09-01',sub:'Temples, palace district & Ikseon-dong',anchor:9*60,items:[
-  ['🥤','Twelve (Korea\'s Erewhon) — Wonder Bar','food','cdm','Cheongdam','7','청담 Cheongdam',5.0,45,'Smoothies + health bowls inside House of Shinsegae. Quick taxi from Park Hyatt.','https://www.tiktok.com/@justinyooniverse/video/7588163558945410359'],
+  ['☕','Breakfast — Cafe Mamas COEX (or hotel café)','food','gn','Gangnam · COEX','2','삼성 Samseong',null,45,'⚠️ Twelve\'s building (House of Shinsegae) doesn\'t open until 10:30 — moved it to the bench. Cafe Mamas in COEX does paninis + salads from early morning, steps from the hotel.'],
   ['🛕','Seoul Temple','sight','sc','Shinchon','2','신촌 Sinchon',7.5,90,'Rated 7.5 (Bryson gave it a 10 🤣) — peaceful morning visit.'],
-  ['🏹','Shinchon Robinhood Archery Café','act','sc','Shinchon','2','신촌 Sinchon',4.0,45,'Archery café near the temple — friendly competition.','https://www.tiktok.com/@clovchoi/video/7597972816776023327'],
+  ['🏹','Shinchon Robinhood Archery Café','act','sc','Shinchon','2','신촌 Sinchon',4.0,45,'Archery café near the temple — friendly competition. Opens around noon — confirm via IG @sinchonrobinhood before locking the time.','https://www.tiktok.com/@clovchoi/video/7597972816776023327'],
   ['☕','Cafe Pokpo (카페 폭포) — waterfall cafe','cafe','sc','Seodaemun','2','신촌 Sinchon',5.7,60,'Coffee in front of an actual waterfall — killer photo ops.','https://www.tiktok.com/@tiktok/video/7525417758851337489'],
-  ['🏛️','Gyeongbokgung Palace — photo stop','sight','gwh','Gwanghwamun','3','경복궁 Gyeongbokgung',2.7,30,'Quick photo at the palace gate — not going inside.','https://www.tiktok.com/@dhxhra/video/7197150004518178090'],
+  ['🏛️','Gyeongbokgung Palace — photo stop','sight','gwh','Gwanghwamun','3','경복궁 Gyeongbokgung',2.7,30,'Quick photo at the palace gate — not going inside. (Good thing: the palace itself is closed Tuesdays, and the guard ceremony doesn\'t run Tue — but the gate + plaza are public and always photo-able.)','https://www.tiktok.com/@dhxhra/video/7197150004518178090'],
   ['📚','Kyobo Book Centre — Gwanghwamun flagship','shop','gwh','Gwanghwamun','5','광화문 Gwanghwamun',3.0,30,'Korea\'s biggest bookstore — stationery, K-books, souvenirs.','https://www.tiktok.com/@gisselle_val/video/7392572302761790753'],
-  ['🍚','Lunch — Solsot (솔솥) or Geumdwaeji Sikdang','food','iks','Ikseon-dong','3','안국 Anguk',null,60,'Solsot (🧭 badge): sizzling pot-rice bowls right in Ikseon, crew ⭐3.0 · Geumdwaeji (↗ link): BTS\'s Michelin Bib KBBQ ⭐5.0 from your saves, 2 stops away at Yaksu — its CatchTable queue opens 10 AM sharp, join then.','https://map.naver.com/p/entry/place/37869877'],
+  ['🥓','Late lunch — Geumdwaeji Sikdang (금돼지식당)','food','elj','Yaksu','6','약수 Yaksu',5.0,60,'BTS\'s Michelin Bib KBBQ ⭐5.0 from your saves — serves straight through the afternoon (no break), and mid-afternoon beats the dinner queue. ⚠️ Solsot (↗ link, crew ⭐3.0) breaks 3–5 PM weekdays — only works if you eat before ~2:15.','https://map.naver.com/p/entry/place/1933776590'],
   ['🎯','Ikseon Shooting Range — RealShot (리얼샷)','act','iks','Ikseon-dong','3','안국 Anguk',5.0,30,'Indoor range in the hanok alleys — rifles, pistols & archery. ₩5,000–15,000.','https://www.tiktok.com/@searchwithwinfred/video/7599526342945672455'],
-  ['🥖','Jayeondo Sogeumppang — salted bread','snack','iks','Ikseon-dong','3','안국 Anguk',5.0,20,'Viral salted bread — grab and go.','https://www.tiktok.com/@daveyscakestravels/video/7496822617878433031'],
+  ['🥖','Jayeondo Sogeumppang — salted bread','snack','iks','Ikseon-dong','3','안국 Anguk',5.0,20,'Viral salted bread — grab and go. Open till 10 PM, but popular flavors can sell out — if you pass it earlier in the Ikseon loop, buy then.','https://www.tiktok.com/@daveyscakestravels/video/7496822617878433031'],
   ['☔','Rain Report — indoor rain cafe','cafe','iks','Ikseon-dong','3','안국 Anguk',5.0,45,'Indoor rain every 15 min — K-drama umbrella photos + the famous tissue bread.','https://www.tiktok.com/@angelagiakas/video/7438035533227478279'],
   ['🥩','Born and Bred — premium hanwoo beef','food','mj','Majang','5','마장 Majang',5.0,90,'Michelin-rated hanwoo by Majang Meat Market — last dinner in Seoul! 🇰🇷 Plan: 3F private room ×6, omakase course (~$145pp), 6 PM — booking details in checklist.','https://www.tiktok.com/@tiktok/video/7462314178645331218',0,18*60],
   ['🎤','Karaoke (Noraebang) near COEX','night','gn','Gangnam','2','삼성 Samseong',null,90,'Coin noraebangs everywhere near COEX — go all out!'],
@@ -500,7 +501,8 @@ const BENCH={
   null, /* 24/7 Vintage — promoted to the arrival-night schedule; null keeps bench indices stable */
   ['🍸','The Roof Seoul — Myeongdong rooftop bar','night','md','Myeongdong','4','명동 Myeongdong',4.0,60,'From your TikTok saves — rooftop cocktails above Myeongdong. Nice cap to a night-market evening.','https://www.tiktok.com/@tiktok/video/7526493544714882322'],
   ['♨️','Aquafield Hanam — Korea\'s flagship jjimjilbang','spa','jamsil','Hanam — Starfield','2','잠실 → taxi/bus',5.0,180,'Korean-web research top pick: Shinsegae-built & spotless per recent reviews — 360° media-art sauna, red-clay kiln, cloud/salt/hinoki rooms, co-ed jjimjil floor for the whole crew. ~₩25-30K. ~25-min taxi from Park Hyatt. Closes 10 PM — go weekday afternoon.'],
-  ['♨️','Sparex Dongmyo — 24h sky-floor jjimjilbang','spa','ddp','Dongmyo (Jongno)','6','동묘앞 Dongmyo-ap',4.5,150,'Korean-web runner-up: newest big jjimjilbang in central Seoul — "everything new and clean" per reviews, 12-13F views, ₩13-17K, open 24/7. 10 min from DDP/Ikseon — pairs with the Dongdaemun or Ikseon day.']
+  ['♨️','Sparex Dongmyo — 24h sky-floor jjimjilbang','spa','ddp','Dongmyo (Jongno)','6','동묘앞 Dongmyo-ap',4.5,150,'Korean-web runner-up: newest big jjimjilbang in central Seoul — "everything new and clean" per reviews, 12-13F views, ₩13-17K, open 24/7. 10 min from DDP/Ikseon — pairs with the Dongdaemun or Ikseon day.'],
+  ['🥤','Twelve (Korea\'s Erewhon) — Wonder Bar','food','cdm','Cheongdam','7','청담 Cheongdam',5.0,45,'Smoothies + health bowls inside House of Shinsegae. ⚠️ Building opens 10:30 — slot it mid-morning or later, not breakfast.','https://www.tiktok.com/@justinyooniverse/video/7588163558945410359']
  ],
  tokyo:[
   ['🗼','Tokyo Skytree night view','sight','asa','Sumida','A','押上 Oshiage',2.5,90,'Tallest tower in Japan — night views.'],
@@ -521,7 +523,7 @@ const TODOS=[
  ['c4','🎨','teamLab Borderless tickets — Fri Sep 4 evening','~Jul 4 (released ~2 mo out)','Sells out fast. <a href="https://borderless.teamlab.art" target="_blank">borderless.teamlab.art</a>'],
  ['c5','🌆','Shibuya Sky tickets — Fri Sep 4 ~1:30 PM','~Aug 7 (4 wks out)','Sunset slots go first. <a href="https://www.shibuya-scramble-square.com/sky/" target="_blank">official site</a>'],
  ['c6','💆','Book Spa Gogyeol — Mon Aug 31, 10 AM','2–3 wks out','Korean wellness massage, from ₩120K.'],
- ['c7','🎨','Book Ecojardin color analysis + headspa','books out weeks ahead','Mon Aug 31 midday slot. Parkjun Beauty Lab = backup.'],
+ ['c7','🎨','Book Ecojardin color analysis + headspa','books out weeks ahead','Mon Aug 31 ~2:15 PM slot (after BBQ lunch — moved because both BBQ spots break mid-afternoon). Parkjun Beauty Lab = backup.'],
  ['c8','✨','Pick + book facial clinic','by mid-Aug','Aqua Peel / HydraFacial / Rejuran — Gangnam beauty district.'],
  ['c9','🥩','Reserve Born and Bred ×6 — Tue Sep 1, 6:00 PM','~Aug 1 — books fast','DECIDED: 3F private room ×6, omakase course (~₩200K/pp ≈ $145). Call ☎ 02-2294-5005 (12–3 PM KST = 8–11 PM PT) — say: "9월 1일 화요일 저녁 6시, 6명, 3층 프라이빗룸 오마카세 코스로 예약하고 싶어요" — or <a href="https://app.catchtable.co.kr/ct/shop/bandb" target="_blank">CatchTable</a> when the window opens ~Aug 1. Backup: Woo Tender near hotel.'],
  ['c10','🍣','Book Tokyo omakase ×6 — Fri Sep 4','early July (1–2 mo window)','Two that actually take 6 (rare for omakase): <a href="https://www.tablecheck.com/en/shops/sushi-azabu/reserve" target="_blank">Sushi Azabu</a> (Azabudai Hills, ¥9,800–15,000, max 7) or <a href="https://www.tablecheck.com/en/shops/sushitokyo-ten-roppongi/reserve" target="_blank">Sushi Tokyo Ten Roppongi</a> (¥9,900–13,200, max 12). TableCheck, English, foreign cards OK. Strict same-day cancel fees.'],
