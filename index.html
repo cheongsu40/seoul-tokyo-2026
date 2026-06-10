@@ -332,7 +332,9 @@ const NAVER=[
  ['Gyeongbokgung','11571707'],['Kyobo Book','12183349'],['Solsot','1933776590'],
  ['Ikseon Shooting','1988780624'],['Jayeondo','1869147927'],['Rain Report','2077529202'],
  ['Born and Bred','1151270351'],['Karaoke','q:삼성동 코인노래방'],['Sulbing','1543701210'],
- ['Hongdae nightlife','q:홍대 걷고싶은거리'],['Cimer Spa','1776546877']
+ ['Hongdae nightlife','q:홍대 걷고싶은거리'],['Cimer Spa','1776546877'],
+ ['Sparex Dongmyo','1001448302'],['Sparex','1394291379'],['Aquafield','38502600'],
+ ['Golfzon','q:골프존파크 삼성 강남스크린2호']
 ];
 
 /* item: [emoji,title,cat,zone,areaLabel,line,station,rating,durMins,note,link,locked,notBefore] */
@@ -365,8 +367,8 @@ const SEOUL_DAYS = [
   ['💫','Apgujeong — Korea\'s wealthiest hood','shop','apg','Apgujeong','3','압구정 Apgujeong',4.0,60,'Luxury shopping, galleries, designer cafes.'],
   ['🌿','Garosugil — tree-lined boutique street','shop','sinsa','Sinsa','3','신사 Sinsa',4.3,60,'Boutiques, cafes, galleries — Malbon golf flagship (⭐5.0) is right here, pop in.','https://www.tiktok.com/@chernocare/video/7619720924442430738'],
   ['🚿','Back to Park Hyatt — freshen up','rest','gn','Gangnam','2','삼성 Samseong',null,60,'Recharge & shower — pampered and glowing before dinner.'],
-  ['🍜','BUDAE JJIGAE!! — 놀부부대찌개 압구정점','food','apg','Apgujeong','3','압구정 Apgujeong',5.0,90,'Cheongsu\'s favorite — army stew, ramen + hot dogs. Backup: Daewoo Sikdang or Songtan.',null,0,18*60+30],
-  ['🎶','Break Silence music bar (or Euljiro 3-ga)','night','ss','Seongsu','2','성수 Seongsu',4.7,75,'Request 2 songs each — cocktails while your picks play on the big speakers. Mon hours 5 PM–12 AM.','https://www.tiktok.com/@leoniecadao/video/7562157146268257539'],
+  ['🍜','BUDAE JJIGAE!! — 놀부부대찌개 압구정점','food','apg','Apgujeong','3','압구정 Apgujeong',5.0,90,'Cheongsu\'s favorite — army stew, ramen + hot dogs. Call 02-540-0440 a day ahead for 6. Backup: Daewoo Sikdang or Songtan.',null,0,18*60+30],
+  ['🎶','Break Silence music bar (or Euljiro 3-ga)','night','ss','Seongsu','2','성수 Seongsu',4.7,75,'Request 2 songs each — cocktails while your picks play on the big speakers. Mon hours 5 PM–12 AM. Small 2F room — DM @break__silence ahead so 6 can sit together.','https://www.tiktok.com/@leoniecadao/video/7562157146268257539'],
   ['🌙','Return to Park Hyatt & rest','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Palace district & temples tomorrow 🇰🇷']
  ]},
  {id:'s3',num:'DAY 3',kr:'화요일',date:'Tue · Sep 1',iso:'2026-09-01',sub:'Temples, palace district & Ikseon-dong',anchor:9*60,items:[
@@ -380,7 +382,7 @@ const SEOUL_DAYS = [
   ['🎯','Ikseon Shooting Range — RealShot (리얼샷)','act','iks','Ikseon-dong','3','안국 Anguk',5.0,30,'Indoor range in the hanok alleys — rifles, pistols & archery. ₩5,000–15,000.','https://www.tiktok.com/@searchwithwinfred/video/7599526342945672455'],
   ['🥖','Jayeondo Sogeumppang — salted bread','snack','iks','Ikseon-dong','3','안국 Anguk',5.0,20,'Viral salted bread — grab and go.','https://www.tiktok.com/@daveyscakestravels/video/7496822617878433031'],
   ['☔','Rain Report — indoor rain cafe','cafe','iks','Ikseon-dong','3','안국 Anguk',5.0,45,'Indoor rain every 15 min — K-drama umbrella photos + the famous tissue bread.','https://www.tiktok.com/@angelagiakas/video/7438035533227478279'],
-  ['🥩','Born and Bred — premium hanwoo beef','food','mj','Majang','5','마장 Majang',5.0,90,'Michelin-rated hanwoo by Majang Meat Market — last dinner in Seoul! 🇰🇷','https://www.tiktok.com/@tiktok/video/7462314178645331218',0,17*60+30],
+  ['🥩','Born and Bred — premium hanwoo beef','food','mj','Majang','5','마장 Majang',5.0,90,'Michelin-rated hanwoo by Majang Meat Market — last dinner in Seoul! 🇰🇷 Dinner opens 6 PM. Party of 6 = 3F private room or B1 counter — see checklist.','https://www.tiktok.com/@tiktok/video/7462314178645331218',0,18*60],
   ['🎤','Karaoke (Noraebang) near COEX','night','gn','Gangnam','2','삼성 Samseong',null,90,'Coin noraebangs everywhere near COEX — go all out!'],
   ['🌙','Last night at Park Hyatt — pack for Tokyo','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Pack tonight — 5:30 AM start tomorrow ✈️']
  ]},
@@ -409,7 +411,7 @@ const TOKYO_DAYS = [
   ['🛍️','Nakamise Shopping Street','shop','asa','Asakusa','A','浅草 Asakusa',4.0,45,'Traditional souvenirs, senbei crackers — right at the temple.'],
   ['🍞','Street breakfast — melon pan + dango + taiyaki','snack','asa','Asakusa','A','浅草 Asakusa',5.0,30,'Fresh melon pan (Kagetsudo), taiyaki, dango — all rated 5.0.'],
   ['🌿','Ueno Park & Museums','sight','ue','Ueno','JR','上野 Ueno',3.0,90,'Beautiful park, Tokyo National Museum, shrines.'],
-  ['🍣','Sushi no Midori (Ueno) — SPLURGE #1','food','ue','Ueno','JR','上野 Ueno',5.0,60,'Best-value omakase in Tokyo.'],
+  ['🍣','Sushi no Midori — SPLURGE #1 (⚠️ branch TBD)','food','ue','Ueno','JR','上野 Ueno',5.0,60,'Best-value omakase in Tokyo — but ⚠️ there\'s NO Ueno branch (closest real ones: Shibuya Mark City, Ginza). Bookings cap at 4 — split 4+2 or queue together at 10 AM. See checklist; crew may want to swap in an actual Ueno sushi spot for this slot.'],
   ['🎮','Akihabara — Electric Town','sight','akb','Akihabara','JR','秋葉原 Akihabara',4.0,150,'Anime, arcades, retro games, maid cafes — sensory overload.'],
   ['🍦','Taiyaki & soft serve break','snack','akb','Akihabara','JR','秋葉原 Akihabara',5.0,30,'Fish-shaped custard waffle + Japanese soft serve.'],
   ['🍛','Afuri Ramen — yuzu shio','food','sj','Shinjuku','JR','新宿 Shinjuku',4.5,45,'Light yuzu-citrus ramen — totally different vibe from Ichiran.',null,0,17*60],
@@ -420,7 +422,7 @@ const TOKYO_DAYS = [
   ['⛩️','Meiji Shrine','sight','hj','Harajuku','JR','原宿 Harajuku',4.0,90,'Peaceful forest shrine in the heart of Tokyo — go early.'],
   ['🎀','Harajuku Takeshita Street','shop','hj','Harajuku','JR','原宿 Harajuku',4.0,90,'Kawaii fashion, rainbow crepes, cotton candy.'],
   ['🛍️','Omotesando — Tokyo\'s Champs-Élysées','shop','omo','Omotesando','G','表参道 Omotesandō',5.0,60,'Luxury flagships, stunning architecture.'],
-  ['🍛','Gyukatsu Motomura — fried wagyu cutlet','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Cook your own wagyu on a hot stone — unreal. Viral.'],
+  ['🍛','Gyukatsu Motomura — fried wagyu cutlet','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Cook your own wagyu on a hot stone — unreal. Viral. Main shop = 9-seat queue-only basement; the Shibuya Bunten annex around the corner takes table bookings on Tabelog — book that for 6.'],
   ['🚶','Shibuya Crossing + Hachiko','sight','shb','Shibuya','JR','渋谷 Shibuya',7.5,30,'World\'s busiest intersection — iconic.'],
   ['🌆','Shibuya Sky — BOOK AHEAD','sight','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Open-air rooftop above the crossing — book tickets in advance!'],
   ['🍦','Soft serve + rainbow crepes','snack','shb','Shibuya','JR','渋谷 Shibuya',5.0,30,'Soft serve ⭐5.0 + Harajuku crepes ⭐4.5.'],
@@ -431,7 +433,7 @@ const TOKYO_DAYS = [
  ]},
  {id:'t3',num:'DAY 3',kr:'토요일',date:'Sat · Sep 5',iso:'2026-09-05',sub:'Tsukiji, Tokyo Tower & Ginza',anchor:7*60,items:[
   ['🍣','Tsukiji Outer Market — street food breakfast','food','tsk','Tsukiji','H','築地 Tsukiji',4.0,120,'Tamagoyaki, fresh sashimi, scallops, uni — GO EARLY.'],
-  ['🍣','Sushi Dai — SPLURGE #3','food','tsk','Tsukiji','Y','豊洲 Toyosu',5.0,60,'Legendary omakase, famous tuna set — worth every yen.'],
+  ['🍣','Sushi Dai — SPLURGE #3','food','tsk','Tsukiji','Y','豊洲 Toyosu',5.0,60,'Legendary omakase, famous tuna set — worth every yen. ⚠️ No reservations ever: all 6 must be in line before ~5 AM for a seating slot; cash only. Honest take: send the 2-3 die-hards, everyone else grazes the outer market.'],
   ['🗼','Tokyo Tower','sight','min','Minato','H','神谷町 Kamiyachō',3.0,60,'Iconic red & white tower — classic photo.'],
   ['🛍️','Ginza — 12-floor Uniqlo flagship','shop','gz','Ginza','G','銀座 Ginza',3.0,90,'Japan-exclusive items + tax-free.'],
   ['🍰','Japanese fruit parfait','snack','gz','Ginza','G','銀座 Ginza',4.5,30,'Strawberry, melon, or seasonal — legendary.'],
@@ -478,9 +480,9 @@ const BENCH={
   ['📸','Seosulla-gil — palace wall alley','sight','gwh','Gyeongbokgung','3','경복궁 Gyeongbokgung',3.0,30,'Local stone-wall alley, outdoor eats, photo spot.','https://www.tiktok.com/@tiktok/video/7532473021399960840'],
   ['🎤','HiKR Ground — free K-pop experience','act','gwh','Jonggak','1','종각 Jonggak',3.5,45,'Korea Tourism Org — free K-culture exhibits & studio.'],
   ['📚','COEX & Starfield Library','shop','gn','Gangnam · COEX','2','삼성 Samseong',2.7,45,'Right next to the hotel — easy anytime drop-in.'],
-  ['⛳','Riverside Spa + Golf Simulator','spa','gn','Gangnam','2','삼성 Samseong',5.0,90,'Spa + golf sim near Park Hyatt — great guys option.','https://www.riversidehotel.co.kr/pages/spa02.php'],
+  ['⛳','Golfzon Park Samseong — screen golf','act','gn','Gangnam','2','삼성 Samseong',null,120,'Guys option for the Mon beauty block — group screen-golf rooms, club rental, ~₩25-35K/pp for 18 holes, minutes from the hotel. (Replaced Riverside Spa: turns out that\'s a dated men-only sauna 35 min away in Jamwon.)'],
   ['🥩','Woo Tender — bougie beef','food','gn','Gangnam','2','삼성 Samseong',5.0,90,'Premium hanwoo near the hotel.'],
-  ['♨️','Sparex — Seoul\'s biggest jjimjilbang','spa','ddp','Dongdaemun','2','DDP역',5.0,90,'At DDP — pairs with the museum morning.'],
+  ['♨️','Sparex (DDP) — hanok-village jjimjilbang','spa','ddp','Dongdaemun','2','DDP역',4.0,120,'Line 2 direct, exit 14 IS the building — famous hanok-village interior, ₩12K, 24h. Older but clean (nightly deep-clean) & very photogenic. Pairs with the DDP morning. ⚠️ Dragon Hill Spa from the guidebooks is permanently CLOSED — Korean-web verified.'],
   ['🧖','Cimer Spa at Paradise City','spa','ich','Incheon','AREX','ICN shuttle',4.7,90,'Luxury jjimjilbang + aqua pools by Incheon airport — soak, sauna, ~₩30K, luggage lockers on site. Benched: doesn\'t fit the 8:00 AM GMP departure — slot it earlier in the week if there\'s appetite.','https://www.tiktok.com/@tiktok/video/7504672079887781163'],
   ['🍜','Nishimuramen — Michelin ramen','food','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,60,'Michelin-rated ramen.','https://guide.michelin.com/us/en/seoul-capital-area/kr-seoul/restaurant/nishimuramen'],
   null, /* Bingsu at Sulbing — promoted to the Day 1 schedule; slot kept null so saved bench indices don't shift */
@@ -495,7 +497,9 @@ const BENCH={
   ['🎨','Leeum Museum of Art','sight','hn','Hannam (Yongsan)','6','한강진 Hangangjin',4.0,90,'From your TikTok saves — Samsung\'s world-class art museum, free general admission. Right in Hannam.','https://www.tiktok.com/@tiktok/video/7518355744593366294'],
   ['🍲','Yongga Rotating Hotpot (용가회전훠궈)','food','md','Myeongdong','4','명동 Myeongdong',4.5,60,'From your TikTok saves — solo-booth rotating hotpot buffet, unlimited refills ~₩19-22K. Viral for a reason.','https://www.tiktok.com/@tiktok/video/7513972601346198802'],
   null, /* 24/7 Vintage — promoted to the arrival-night schedule; null keeps bench indices stable */
-  ['🍸','The Roof Seoul — Myeongdong rooftop bar','night','md','Myeongdong','4','명동 Myeongdong',4.0,60,'From your TikTok saves — rooftop cocktails above Myeongdong. Nice cap to a night-market evening.','https://www.tiktok.com/@tiktok/video/7526493544714882322']
+  ['🍸','The Roof Seoul — Myeongdong rooftop bar','night','md','Myeongdong','4','명동 Myeongdong',4.0,60,'From your TikTok saves — rooftop cocktails above Myeongdong. Nice cap to a night-market evening.','https://www.tiktok.com/@tiktok/video/7526493544714882322'],
+  ['♨️','Aquafield Hanam — Korea\'s flagship jjimjilbang','spa','jamsil','Hanam — Starfield','2','잠실 → taxi/bus',5.0,180,'Korean-web research top pick: Shinsegae-built & spotless per recent reviews — 360° media-art sauna, red-clay kiln, cloud/salt/hinoki rooms, co-ed jjimjil floor for the whole crew. ~₩25-30K. ~25-min taxi from Park Hyatt. Closes 10 PM — go weekday afternoon.'],
+  ['♨️','Sparex Dongmyo — 24h sky-floor jjimjilbang','spa','ddp','Dongmyo (Jongno)','6','동묘앞 Dongmyo-ap',4.5,150,'Korean-web runner-up: newest big jjimjilbang in central Seoul — "everything new and clean" per reviews, 12-13F views, ₩13-17K, open 24/7. 10 min from DDP/Ikseon — pairs with the Dongdaemun or Ikseon day.']
  ],
  tokyo:[
   ['🗼','Tokyo Skytree night view','sight','asa','Sumida','A','押上 Oshiage',2.5,90,'Tallest tower in Japan — night views.'],
@@ -518,8 +522,13 @@ const TODOS=[
  ['c6','💆','Book Spa Gogyeol — Mon Aug 31, 10 AM','2–3 wks out','Korean wellness massage, from ₩120K.'],
  ['c7','🎨','Book Ecojardin color analysis + headspa','books out weeks ahead','Mon Aug 31 midday slot. Parkjun Beauty Lab = backup.'],
  ['c8','✨','Pick + book facial clinic','by mid-Aug','Aqua Peel / HydraFacial / Rejuran — Gangnam beauty district.'],
- ['c9','🥩','Reserve Born and Bred — Tue Sep 1 dinner','~Aug 1','Books fast (try CatchTable). Backup: Woo Tender near hotel.'],
- ['c10','🍣','Book Tokyo omakase splurge — Fri Sep 4','by mid-Aug','Roppongi/Azabudai area, after teamLab.'],
+ ['c9','🥩','Reserve Born and Bred ×6 — Tue Sep 1, 6:00 PM','~Aug 1 — books fast','⚠️ Party of 6 = 3F private room (requires the ~₩200K/pp omakase course) or B1 counter — the casual 2F hall seats 2–4 and may split you. Call 02-2294-5005 to confirm before locking in. Dinner starts 6:00 PM (not 5:30). <a href="https://app.catchtable.co.kr/ct/shop/bandb" target="_blank">CatchTable</a> · Backup: Woo Tender near hotel.'],
+ ['c10','🍣','Book Tokyo omakase ×6 — Fri Sep 4','early July (1–2 mo window)','Two that actually take 6 (rare for omakase): <a href="https://www.tablecheck.com/en/shops/sushi-azabu/reserve" target="_blank">Sushi Azabu</a> (Azabudai Hills, ¥9,800–15,000, max 7) or <a href="https://www.tablecheck.com/en/shops/sushitokyo-ten-roppongi/reserve" target="_blank">Sushi Tokyo Ten Roppongi</a> (¥9,900–13,200, max 12). TableCheck, English, foreign cards OK. Strict same-day cancel fees.'],
+ ['c15','📲','Install CatchTable Global + TableCheck apps','this week','The two booking apps that work without a Korean phone number. CatchTable Global: bills, Jeju Oktap + remote queues. TableCheck: all the Tokyo bookings.'],
+ ['c16','🥩','Reserve Taecho Galbi ×6 — Sat Aug 29 dinner','~Aug 1 (rolling ~30-day window)','Saturday Hongdae slots go fast — book the day the window opens. <a href="https://app.catchtable.co.kr/ct/shop/TaechoGalbi" target="_blank">CatchTable</a> or <a href="https://autoreserve.com/en/restaurants/iFWESVjktHnmqHzSLyv3" target="_blank">AutoReserve</a> (English — books via AI phone call) · ☎ 0507-1337-4590.'],
+ ['c17','🥞','Reserve bills Gangnam ×6 — Sun 8/30 + Mon 8/31, 9 AM','1–2 wks out','<a href="https://www.catchtable.net/shop/bills_gangnam" target="_blank">CatchTable Global</a> — takes foreigners. Deposit; free cancel ≥2 days out; ⚠️ >10 min late = auto-cancel + forfeit. Walk-in wait is ~1 hr otherwise.'],
+ ['c18','🍣','Sushi no Midori — pick a real branch + split 4+2','by mid-Aug','⚠️ There is NO Ueno branch (despite the plan). Nearest real options: Shibuya Mark City or Ginza. TableCheck caps bookings at 4 and won\'t join tables — book 4+2 back-to-back, or all 6 hit the Shibuya ticket machine at 10 AM for the 11 AM open. <a href="https://www.tablecheck.com/en/shops/sushinomidori-shibuya/reserve" target="_blank">TableCheck Shibuya</a>.'],
+ ['c19','📞','Call Nolboo Apgujeong for 6 — Mon Aug 31, 6:30 PM','day or two before','No booking platform — phone only: ☎ 02-540-0440. Easy table on a Monday.'],
  ['c11','📱','eSIMs for Korea + Japan','week before','Airalo / Ubigi — one per phone, install before flying.'],
  ['c12','💳','Transit cards — T-money/TTC+ + Suica','before landing','From your TikTok saves: skip the plastic card — add T-money to iPhone Apple Wallet in 30 sec (or grab the new TTC+ prepaid card). Suica also adds straight from Apple Wallet for Tokyo.'],
  ['c13','🛂','K-ETA / Visit Japan Web check','2 wks before','US travelers K-ETA-exempt through 2026 (verify) · fill Visit Japan Web for fast entry.'],
