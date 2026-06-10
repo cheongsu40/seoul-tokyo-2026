@@ -319,6 +319,22 @@ const WIKI=[
  ['Ueno Park','Ueno_Park'],['Kabukicho Neon','Kabukichō']
 ];
 
+/* naver deep links: [title-substring, placeId] → exact place page (hours/photos/directions),
+   or 'q:한국어 검색어' for area strolls with no single venue. IDs verified 2026-06-10. */
+const NAVER=[
+ ['Taecho Galbi','1010262406'],['Bills','1019866860'],['Dongdaemun Design','18063223'],
+ ['Seongsu —','q:성수동 카페거리'],['Onion Cafe','38561949'],['Myeongdong Kyoja','11592650'],
+ ['Myeongdong Night','q:명동 길거리음식'],['Banpo Bridge','13543876'],
+ ['Spa Gogyeol','1165936424'],['Facials','q:강남역 피부관리'],['Color Analysis','2049113230'],
+ ['BBQ Lunch','1254940478'],['Apgujeong —','q:압구정로데오거리'],['Garosugil','q:가로수길'],
+ ['BUDAE JJIGAE','32625661'],['Break Silence','1053160252'],['Twelve','2016629318'],
+ ['Seoul Temple','11664014'],['Robinhood','1018487691'],['Cafe Pokpo','1472283292'],
+ ['Gyeongbokgung','11571707'],['Kyobo Book','12183349'],['Solsot','1933776590'],
+ ['Ikseon Shooting','1988780624'],['Jayeondo','1869147927'],['Rain Report','2077529202'],
+ ['Born and Bred','1151270351'],['Karaoke','q:삼성동 코인노래방'],
+ ['Hongdae nightlife','q:홍대 걷고싶은거리'],['Cimer Spa','1776546877']
+];
+
 /* item: [emoji,title,cat,zone,areaLabel,line,station,rating,durMins,note,link,locked,notBefore] */
 const SEOUL_DAYS = [
  {id:'s0',num:'ARRIVAL',kr:'토요일',date:'Sat · Aug 29',iso:'2026-08-29',sub:'Touch down, bag drop & Hongdae Saturday night 🎶',anchor:15*60,items:[
@@ -343,7 +359,7 @@ const SEOUL_DAYS = [
   ['💆','Spa Gogyeol — Korean wellness massage','beauty','gn','Gangnam','2','삼성 Samseong',5.0,60,'Acupressure + stretching massage — from ₩120K. Book ahead.','https://www.tiktok.com/@farhabae/video/7592736918274690318'],
   ['✨','Facials — Aqua Peel · HydraFacial · Rejuran','beauty','gns','Gangnam Stn','2','강남 Gangnam',5.0,60,'Pick your treatment: Aqua Peel ~$50-100 · Rejuran ~$70-150 · Juvelook ~$80-200. Your saved 7-clinics-with-prices guide linked.','https://www.tiktok.com/@tiktok/video/7594403101092744449'],
   ['🎨','Color Analysis (Ecojardin) + Headspa','beauty','gns','Gangnam Stn','2','강남 Gangnam',null,90,'Ecojardin: color analysis + 18-step scalp treatment. Parkjun Beauty Lab: 15-step headspa. Book ahead! Your saved Parkjun video linked.','https://www.tiktok.com/@tiktok/video/7510294635755982136'],
-  ['🥩','BBQ Lunch — 도산정육 or Jeju Rooftop Black BBQ','food','apg','Apgujeong','3','압구정 Apgujeong',5.0,90,'Dosan Jeonguk: premium butcher-style BBQ · Jeju Rooftop: meat in a cave! Both ⭐5.0.','https://map.naver.com/p/entry/place/1890747832'],
+  ['🥩','BBQ Lunch — 도산정육 or Jeju Rooftop Black BBQ','food','apg','Apgujeong','3','압구정 Apgujeong',5.0,90,'Dosan Jeonguk (🧭 badge): premium butcher-style BBQ · Jeju Rooftop (↗ link): meat in a cave! Both ⭐5.0.','https://map.naver.com/p/entry/place/1890747832'],
   ['💫','Apgujeong — Korea\'s wealthiest hood','shop','apg','Apgujeong','3','압구정 Apgujeong',4.0,60,'Luxury shopping, galleries, designer cafes.'],
   ['🌿','Garosugil — tree-lined boutique street','shop','sinsa','Sinsa','3','신사 Sinsa',4.3,60,'Boutiques, cafes, galleries — Malbon golf flagship (⭐5.0) is right here, pop in.','https://www.tiktok.com/@chernocare/video/7619720924442430738'],
   ['🚿','Back to Park Hyatt — freshen up','rest','gn','Gangnam','2','삼성 Samseong',null,60,'Recharge & shower — pampered and glowing before dinner.'],
@@ -358,8 +374,8 @@ const SEOUL_DAYS = [
   ['☕','Cafe Pokpo (카페 폭포) — waterfall cafe','cafe','sc','Seodaemun','2','신촌 Sinchon',5.7,60,'Coffee in front of an actual waterfall — killer photo ops.','https://www.tiktok.com/@tiktok/video/7525417758851337489'],
   ['🏛️','Gyeongbokgung Palace — photo stop','sight','gwh','Gwanghwamun','3','경복궁 Gyeongbokgung',2.7,30,'Quick photo at the palace gate — not going inside.','https://www.tiktok.com/@dhxhra/video/7197150004518178090'],
   ['📚','Kyobo Book Centre — Gwanghwamun flagship','shop','gwh','Gwanghwamun','5','광화문 Gwanghwamun',3.0,30,'Korea\'s biggest bookstore — stationery, K-books, souvenirs.','https://www.tiktok.com/@gisselle_val/video/7392572302761790753'],
-  ['🍚','Solsot (솥솥) — crispy pot rice','food','iks','Ikseon-dong','3','안국 Anguk',3.0,60,'Steak bowls in a sizzling hot pot — late lunch.','https://www.tiktok.com/@tiktok/video/7573612843942022407'],
-  ['🎯','Ikseon Shooting Club (익선사격장)','act','iks','Ikseon-dong','3','안국 Anguk',5.0,30,'Indoor range in the hanok alleys — rifles, pistols & archery. ₩5,000–15,000.','https://www.tiktok.com/@searchwithwinfred/video/7599526342945672455'],
+  ['🍚','Solsot (솔솥 익선점) — crispy pot rice','food','iks','Ikseon-dong','3','안국 Anguk',3.0,60,'Steak bowls in a sizzling hot pot — late lunch.','https://www.tiktok.com/@tiktok/video/7573612843942022407'],
+  ['🎯','Ikseon Shooting Range — RealShot (리얼샷)','act','iks','Ikseon-dong','3','안국 Anguk',5.0,30,'Indoor range in the hanok alleys — rifles, pistols & archery. ₩5,000–15,000.','https://www.tiktok.com/@searchwithwinfred/video/7599526342945672455'],
   ['🥖','Jayeondo Sogeumppang — salted bread','snack','iks','Ikseon-dong','3','안국 Anguk',5.0,20,'Viral salted bread — grab and go.','https://www.tiktok.com/@daveyscakestravels/video/7496822617878433031'],
   ['☔','Rain Report — indoor rain cafe','cafe','iks','Ikseon-dong','3','안국 Anguk',5.0,45,'Indoor rain every 15 min — K-drama umbrella photos + the famous tissue bread.','https://www.tiktok.com/@angelagiakas/video/7438035533227478279'],
   ['🥩','Born and Bred — premium hanwoo beef','food','mj','Majang','5','마장 Majang',5.0,90,'Michelin-rated hanwoo by Majang Meat Market — last dinner in Seoul! 🇰🇷','https://www.tiktok.com/@tiktok/video/7462314178645331218',0,17*60+30],
@@ -716,8 +732,15 @@ function renderPills(){
 }
 function starLabel(r){return r==null?null:'⭐ '+(r%1?r.toFixed(1):r+'.0')}
 function navLink(city,it){
-  const q=encodeURIComponent(it[1].replace(/\s*[—–(].*$/,'').trim()+' '+(city==='seoul'?'서울':'Tokyo'));
-  return city==='seoul'?`https://map.naver.com/p/search/${q}`:`https://www.google.com/maps/search/?api=1&query=${q}`;
+  if(city==='seoul'){
+    const m=NAVER.find(n=>it[1].includes(n[0]));
+    if(m)return m[1].startsWith('q:')
+      ?`https://map.naver.com/p/search/${encodeURIComponent(m[1].slice(2))}`
+      :`https://map.naver.com/p/entry/place/${m[1]}`;
+    return `https://map.naver.com/p/search/${encodeURIComponent(it[1].replace(/\s*[—–(].*$/,'').trim()+' 서울')}`;
+  }
+  const q=encodeURIComponent(it[1].replace(/\s*[—–(].*$/,'').trim()+' Tokyo');
+  return `https://www.google.com/maps/search/?api=1&query=${q}`;
 }
 function cardHTML(row,city,liveNow){
   const it=row.it,[e,title,cat,zone,area,line,stn,r,d,note,link,locked]=it;
