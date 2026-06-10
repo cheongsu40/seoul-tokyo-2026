@@ -334,7 +334,7 @@ const NAVER=[
  ['Born and Bred','1151270351'],['Karaoke','q:삼성동 코인노래방'],['Sulbing','1543701210'],
  ['Hongdae nightlife','q:홍대 걷고싶은거리'],['Cimer Spa','1776546877'],
  ['Sparex Dongmyo','1001448302'],['Sparex','1394291379'],['Aquafield','38502600'],
- ['Golfzon','q:골프존파크 삼성 강남스크린2호']
+ ['Golfzon','q:골프존파크 삼성 강남스크린2호'],['24/7 Vintage','q:홍대 빈티지샵']
 ];
 
 /* item: [emoji,title,cat,zone,areaLabel,line,station,rating,durMins,note,link,locked,notBefore] */
@@ -344,7 +344,7 @@ const SEOUL_DAYS = [
   ['🏨','Drop bags at Park Hyatt Seoul','travel','gn','Gangnam','2','삼성 Samseong',null,15,'AREX Express → Seoul Station → Line 2 to Samseong. Quick bag drop — don\'t unpack, just dump and go!',null,1],
   ['🥩','Taecho Galbi (태초갈비)','food','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,90,'Korean beef galbi in Hongdae — perfect Saturday-night first dinner.','https://www.instagram.com/taecho_beef'],
   ['🎶','Hongdae nightlife — buskers, bars, shops','night','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,120,'Saturday night = peak energy. Street performers, indie bars, vintage shops open late. Your saved clip: best clubs in Hongdae.','https://www.tiktok.com/@tiktok/video/7300459973191027970'],
-  ['🧥','24/7 Vintage Store — open all night','shop','hd','Hongdae','2','홍대입구 Hongik Univ',4.0,45,'From your TikTok saves — ₩10K/₩30K racks, open 24 hours. Cap the Hongdae wander here; jet lag is no excuse.','https://www.tiktok.com/@tiktok/video/7585035222543125781'],
+  ['🧥','24/7 Vintage Store — open all night','shop','hd','Hongdae','2','홍대입구 Hongik Univ',4.0,45,'From your TikTok saves — ₩10K/₩30K racks, open 24 hours. ⚠️ The viral unmanned shop (와우산로23길 35-3) is liquidating through June — if it\'s gone by Aug, the Naver badge searches Hongdae\'s other late-night vintage spots.','https://www.tiktok.com/@tiktok/video/7585035222543125781'],
   ['🌙','Return to Park Hyatt & crash','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Line 2 direct to Samseong. Bags already there — crash out 🇰🇷']
  ]},
  {id:'s1',num:'DAY 1',kr:'일요일',date:'Sun · Aug 30',iso:'2026-08-30',sub:'Dongdaemun, Seongsu & Myeongdong eats',anchor:9*60,items:[
@@ -378,7 +378,7 @@ const SEOUL_DAYS = [
   ['☕','Cafe Pokpo (카페 폭포) — waterfall cafe','cafe','sc','Seodaemun','2','신촌 Sinchon',5.7,60,'Coffee in front of an actual waterfall — killer photo ops.','https://www.tiktok.com/@tiktok/video/7525417758851337489'],
   ['🏛️','Gyeongbokgung Palace — photo stop','sight','gwh','Gwanghwamun','3','경복궁 Gyeongbokgung',2.7,30,'Quick photo at the palace gate — not going inside.','https://www.tiktok.com/@dhxhra/video/7197150004518178090'],
   ['📚','Kyobo Book Centre — Gwanghwamun flagship','shop','gwh','Gwanghwamun','5','광화문 Gwanghwamun',3.0,30,'Korea\'s biggest bookstore — stationery, K-books, souvenirs.','https://www.tiktok.com/@gisselle_val/video/7392572302761790753'],
-  ['🍚','Solsot (솔솥 익선점) — crispy pot rice','food','iks','Ikseon-dong','3','안국 Anguk',3.0,60,'Steak bowls in a sizzling hot pot — late lunch.','https://www.tiktok.com/@tiktok/video/7573612843942022407'],
+  ['🍚','Lunch — Solsot (솔솥) or Geumdwaeji Sikdang','food','iks','Ikseon-dong','3','안국 Anguk',null,60,'Solsot (🧭 badge): sizzling pot-rice bowls right in Ikseon, crew ⭐3.0 · Geumdwaeji (↗ link): BTS\'s Michelin Bib KBBQ ⭐5.0 from your saves, 2 stops away at Yaksu — its CatchTable queue opens 10 AM sharp, join then.','https://map.naver.com/p/entry/place/37869877'],
   ['🎯','Ikseon Shooting Range — RealShot (리얼샷)','act','iks','Ikseon-dong','3','안국 Anguk',5.0,30,'Indoor range in the hanok alleys — rifles, pistols & archery. ₩5,000–15,000.','https://www.tiktok.com/@searchwithwinfred/video/7599526342945672455'],
   ['🥖','Jayeondo Sogeumppang — salted bread','snack','iks','Ikseon-dong','3','안국 Anguk',5.0,20,'Viral salted bread — grab and go.','https://www.tiktok.com/@daveyscakestravels/video/7496822617878433031'],
   ['☔','Rain Report — indoor rain cafe','cafe','iks','Ikseon-dong','3','안국 Anguk',5.0,45,'Indoor rain every 15 min — K-drama umbrella photos + the famous tissue bread.','https://www.tiktok.com/@angelagiakas/video/7438035533227478279'],
@@ -492,7 +492,7 @@ const BENCH={
   ['👟','Seongsu top-10 shops crawl (@andrewpolo_)','shop','ss','Seongsu','2','성수 Seongsu',4.5,90,'From your IG saves — 8 hours of Seongsu shopping distilled into 10 menswear/accessory shops.','https://www.instagram.com/p/DZKf4o5hoDY/'],
   ['⚾','KBO Baseball — Jamsil Stadium','act','jamsil','Jamsil','2','잠실 Jamsil',3.0,180,'Korean baseball = cheer squads, beer, fried chicken. Check LG/Doosan home schedule.'],
   ['🪖','DMZ Tour (Paju) — half day','sight','gwh','Paju — far north',null,'Tour bus',3.0,420,'Needs advance booking + passport. Eats most of a day.','https://www.tiktok.com/@tiktok/video/7561112214082555158'],
-  ['🥓','Geumdwaeji Sikdang (금돼지식당) — BTS\'s KBBQ','food','elj','Yaksu (Jung-gu)','6','약수 Yaksu',5.0,90,'From your TikTok saves — Michelin Bib Gourmand pork BBQ, BTS-approved. Expect a queue; go early or late.','https://www.tiktok.com/@tiktok/video/7512775342172523818'],
+  null, /* Geumdwaeji Sikdang — now the "or" option on the Tue lunch card; null keeps bench indices stable */
   ['🏙️','Hannam-dong stroll — Seoul\'s trendiest hood','shop','hn','Hannam (Yongsan)','6','한강진 Hangangjin',4.5,90,'From your TikTok saves — fashion, galleries & cafes where the cool kids actually are. Pairs with Odonut + Leeum.','https://www.tiktok.com/@tiktok/video/7512071963284606216'],
   ['🎨','Leeum Museum of Art','sight','hn','Hannam (Yongsan)','6','한강진 Hangangjin',4.0,90,'From your TikTok saves — Samsung\'s world-class art museum, free general admission. Right in Hannam.','https://www.tiktok.com/@tiktok/video/7518355744593366294'],
   ['🍲','Yongga Rotating Hotpot (용가회전훠궈)','food','md','Myeongdong','4','명동 Myeongdong',4.5,60,'From your TikTok saves — solo-booth rotating hotpot buffet, unlimited refills ~₩19-22K. Viral for a reason.','https://www.tiktok.com/@tiktok/video/7513972601346198802'],
