@@ -124,9 +124,33 @@ body{background:var(--bg);color:var(--txt);font-family:'Outfit','Noto Sans KR',-
 .dfoot{display:flex;justify-content:space-between;align-items:center;color:var(--dim2);font-size:12px;padding:12px 4px 0}
 .reset{background:none;border:1px solid var(--line);color:var(--dim);border-radius:999px;padding:5px 12px;font-size:11.5px;cursor:pointer}
 
-/* ---------- bench ---------- */
+/* ---------- bench + votes ---------- */
 #fab{position:fixed;bottom:20px;right:18px;z-index:90;background:var(--grad);color:#fff;border:none;border-radius:999px;
   padding:13px 20px;font-weight:800;font-size:14px;font-family:'Noto Sans KR';box-shadow:0 10px 30px rgba(255,77,109,.35);cursor:pointer}
+#vfab{position:fixed;bottom:74px;right:18px;z-index:90;background:var(--card2);color:var(--gold);border:1px solid rgba(255,209,102,.4);
+  border-radius:999px;padding:11px 18px;font-weight:800;font-size:13.5px;font-family:'Noto Sans KR';box-shadow:0 8px 22px rgba(0,0,0,.5);cursor:pointer}
+#vfab .ct{display:inline-flex;min-width:18px;height:18px;border-radius:9px;background:var(--red);color:#fff;font-size:10.5px;
+  align-items:center;justify-content:center;padding:0 5px;margin-left:6px;vertical-align:1px}
+.suggest{background:rgba(255,209,102,.1);border:1px solid rgba(255,209,102,.35);color:var(--gold);border-radius:999px;
+  padding:5px 12px;font-size:11.5px;cursor:pointer;margin-right:6px}
+.prow{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin-bottom:9px}
+.prow .pt{font-weight:700;font-size:13.5px;font-family:'Noto Sans KR'}
+.prow .pm{font-size:11.5px;color:var(--dim2);margin-top:2px}
+.prow .pn{font-size:12.5px;color:var(--dim);margin-top:5px}
+.prow .pv{display:flex;gap:7px;margin-top:9px;align-items:center;flex-wrap:wrap}
+.vbtn{border:1px solid var(--line);background:var(--bg2);color:var(--txt);border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;cursor:pointer}
+.vbtn.yes{color:var(--mint);border-color:rgba(61,220,151,.4)}
+.vbtn.no{color:var(--red);border-color:rgba(255,77,109,.4)}
+.vtally{font-size:11px;color:var(--dim2);margin-left:auto}
+.pstat{font-size:10.5px;font-weight:800;padding:3px 9px;border-radius:999px}
+.pstat.ok{background:rgba(61,220,151,.15);color:var(--mint)}
+.pstat.no{background:rgba(255,77,109,.15);color:var(--red)}
+.fampick{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.fampick .fp{flex:1;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 8px;font-weight:700;cursor:pointer;font-size:13px}
+.fampick .fp.on{border-color:var(--gold);color:var(--gold)}
+#sheet textarea,#sheet input[type=text]{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--txt);
+  padding:9px 11px;font-size:13px;font-family:'Outfit';margin-top:6px}
+.sendbtn{width:100%;background:var(--grad);color:#fff;border:none;border-radius:12px;padding:12px;font-weight:800;font-size:14px;cursor:pointer;margin-top:12px;font-family:'Noto Sans KR'}
 #sheetbg{position:fixed;inset:0;background:rgba(5,7,12,.7);backdrop-filter:blur(3px);z-index:95}
 #sheet{position:fixed;left:0;right:0;bottom:0;z-index:96;background:var(--bg2);border-radius:22px 22px 0 0;border:1px solid var(--line);
   max-height:74vh;overflow-y:auto;padding:18px 16px 30px;max-width:560px;margin:0 auto}
@@ -212,6 +236,7 @@ footer{text-align:center;color:var(--dim2);font-size:11.5px;padding:30px 0 10px;
   <footer>안전한 여행 되세요 — have a safe trip 🇰🇷🇯🇵<br><span style="opacity:.6">v7 · auto-times are estimates · tap cards for notes &amp; links</span></footer>
 </div>
 <button id="fab" class="hidden">⭐ Bench</button>
+<button id="vfab" class="hidden">💡 Votes</button>
 
 <script>
 /* ================= STATIC DATA ================= */
@@ -503,6 +528,7 @@ const FLIGHTS = [
 let store;
 try{store=JSON.parse(localStorage.getItem('st26v2')||'{}')}catch(e){store={}}
 store.order=store.order||{};store.extra=store.extra||{};store.checks=store.checks||{};store.img=store.img||{};store.wx=store.wx||{};
+store.props=store.props||[];store.family=store.family||null;
 function save(){try{localStorage.setItem('st26v2',JSON.stringify(store))}catch(e){}}
 
 /* ================= ENGINE ================= */
@@ -513,20 +539,46 @@ function cityOf(dayId){return dayId[0]==='s'?'seoul':'tokyo'}
 function tt(city,a,b){return city==='seoul'?T_SEOUL(a,b):T_TOKYO(a,b)}
 function findDay(id){return [...SEOUL_DAYS,...TOKYO_DAYS].find(d=>d.id===id)}
 
+/* approved crew proposals become an "official overlay" everyone sees */
+const VOTE_API='https://st26-api.vercel.app/api/proposals';
+const FAMILIES=['Clearwaters','Brysons','Becksteads'];
+function overlays(){
+  const m={};
+  (store.props||[]).filter(p=>p.status==='approved'&&p.dayId&&(p.order||p.extra))
+    .sort((a,b)=>a.ts-b.ts).forEach(p=>{m[p.dayId]=p});
+  return m;
+}
 function allEntries(day){
   const city=cityOf(day.id);
   const base=day.items.map((it,i)=>({id:String(i),it,bench:false}));
-  const extra=(store.extra[day.id]||[]).map(k=>({id:'b'+k,it:BENCH[city][k],bench:true}));
+  const ov=overlays()[day.id];
+  const ks=[...new Set([...(ov&&ov.extra?ov.extra:[]),...(store.extra[day.id]||[])])];
+  const extra=ks.filter(k=>BENCH[city][k]).map(k=>({id:'b'+k,it:BENCH[city][k],bench:true,official:!!(ov&&ov.extra&&ov.extra.includes(k)&&!(store.extra[day.id]||[]).includes(k))}));
   return base.concat(extra);
 }
 function orderedItems(day){
   const ents=allEntries(day);
-  const ord=store.order[day.id];
+  const ov=overlays()[day.id];
+  const ord=store.order[day.id]||(ov&&ov.order)||null;
   if(!ord)return ents;
   const byId=new Map(ents.map(o=>[o.id,o]));
   const out=ord.filter(i=>byId.has(i)).map(i=>byId.get(i));
   ents.forEach(o=>{if(!ord.includes(o.id))out.push(o)});
   return out;
+}
+async function fetchProps(rerender){
+  try{
+    const r=await fetch(VOTE_API);const j=await r.json();
+    if(Array.isArray(j.proposals)){store.props=j.proposals;save()}
+    updateVoteBadge();
+    if(rerender&&(curView==='seoul'||curView==='tokyo'))renderAll();
+  }catch(e){}
+}
+function pendingCount(){return (store.props||[]).filter(p=>p.status==='pending').length}
+function updateVoteBadge(){
+  const v=document.getElementById('vfab');if(!v)return;
+  const n=pendingCount();
+  v.innerHTML='💡 Votes'+(n?`<span class="ct">${n}</span>`:'');
 }
 function compute(day){
   const city=cityOf(day.id);let t=day.anchor;const rows=[];let prev=null;let transit=0;
@@ -710,7 +762,7 @@ function dayHTML(day){
     <div class="dsub">${day.sub}</div>
     <div class="list" data-day="${day.id}">${rows.map(r=>r.type==='item'?cardHTML(r,city,liveNow):chipHTML(r)).join('')}</div>
     <div class="dfoot"><span>wraps ~<b style="color:var(--txt)">${f.t} ${f.ap}</b> · ${rows.filter(r=>r.type==='item').length} stops · ~${Math.round(transit/60*10)/10} hr transit</span>
-    <button class="reset" data-day="${day.id}">↺ reset</button></div>
+    <span>${(store.order[day.id]||store.extra[day.id])?`<button class="suggest" data-day="${day.id}">💡 suggest to crew</button>`:''}<button class="reset" data-day="${day.id}">↺ reset</button></span></div>
   </section>`;
 }
 function nowBannerHTML(city){
@@ -814,8 +866,10 @@ function renderAll(){
     const days=curView==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
     html=nowBannerHTML(curView)+days.map(dayHTML).join('');
     $('#fab').classList.remove('hidden');
+    $('#vfab').classList.remove('hidden');
   }else{
     $('#fab').classList.add('hidden');
+    $('#vfab').classList.add('hidden');
     if(curView==='map')html=mapHTML();
     else if(curView==='todo')html=todoHTML();
     else html=flightsHTML();
@@ -839,6 +893,7 @@ function bind(){
     delete store.order[b.dataset.day];delete store.extra[b.dataset.day];save();
     rerenderDay(findDay(b.dataset.day));
   });
+  document.querySelectorAll('.suggest').forEach(b=>b.onclick=()=>openSuggest(b.dataset.day));
   document.querySelectorAll('.handle').forEach(h=>{h.onpointerdown=startDrag});
   document.querySelectorAll('.rm').forEach(x=>x.onclick=ev=>{
     ev.stopPropagation();
@@ -940,11 +995,96 @@ function openBench(){
 function closeBench(){document.getElementById('sheetbg')?.remove();document.getElementById('sheet')?.remove()}
 document.getElementById('fab').onclick=openBench;
 
+/* ----- crew votes ----- */
+function sheetShell(html){
+  closeBench();
+  const bg=document.createElement('div');bg.id='sheetbg';
+  const sh=document.createElement('div');sh.id='sheet';sh.innerHTML=html;
+  document.body.append(bg,sh);bg.onclick=closeBench;
+  return sh;
+}
+function ensureFamily(cb){
+  if(store.family)return cb();
+  const sh=sheetShell(`<h3>👋 Who's this?</h3><div class="sub">Pick your family — one vote per family, saved on this phone.</div>
+    <div class="fampick">${FAMILIES.map(f=>`<div class="fp" data-f="${f}">${f}</div>`).join('')}</div>`);
+  sh.querySelectorAll('.fp').forEach(el=>el.onclick=()=>{store.family=el.dataset.f;save();closeBench();cb()});
+}
+function dayLabel(dayId){const d=findDay(dayId);return d?`${cityOf(dayId)==='seoul'?'서울':'東京'} ${d.num}`:dayId}
+function changeSummary(day){
+  const cur=orderedItems(day).map(o=>o.id);
+  const added=(store.extra[day.id]||[]).map(k=>BENCH[cityOf(day.id)][k]).filter(Boolean).map(b=>b[1].split('—')[0].split('(')[0].trim());
+  const nat=allEntries(day).map(o=>o.id);
+  const reordered=store.order[day.id]&&JSON.stringify(cur)!==JSON.stringify(nat);
+  const bits=[];
+  if(added.length)bits.push('+ '+added.join(', '));
+  if(reordered)bits.push('new order');
+  return bits.join(' · ')||'schedule tweak';
+}
+function openSuggest(dayId){
+  ensureFamily(()=>{
+    const day=findDay(dayId);
+    const sh=sheetShell(`<h3>💡 Suggest to the crew</h3>
+      <div class="sub">${dayLabel(dayId)} — ${changeSummary(day)}. If 2 of 3 families vote yes, it becomes the official schedule for everyone.</div>
+      <input type="text" id="sgtitle" value="${dayLabel(dayId)}: ${changeSummary(day)}" maxlength="120">
+      <textarea id="sgnote" rows="2" placeholder="why? (optional — e.g. 'times still work, fits after dinner')"></textarea>
+      <button class="sendbtn" id="sgsend">Send as ${store.family} →</button>`);
+    sh.querySelector('#sgsend').onclick=async()=>{
+      sh.querySelector('#sgsend').textContent='Sending…';
+      try{
+        await fetch(VOTE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+          action:'propose',by:store.family,family:store.family,
+          title:sh.querySelector('#sgtitle').value,note:sh.querySelector('#sgnote').value,
+          dayId,order:orderedItems(day).map(o=>o.id),extra:store.extra[dayId]||[]
+        })});
+        await fetchProps(false);closeBench();openVotes();
+      }catch(e){sh.querySelector('#sgsend').textContent='⚠️ no connection — try again'}
+    };
+  });
+}
+function voteRow(p){
+  const mine=store.family&&p.votes[store.family];
+  const tally=FAMILIES.map(f=>p.votes[f]===1?`${f.slice(0,5)} ✓`:p.votes[f]===-1?`${f.slice(0,5)} ✗`:null).filter(Boolean).join(' · ')||'no votes yet';
+  const when=new Date(p.ts).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  let actions='';
+  if(p.status==='pending'){
+    actions=mine?`<span class="pm">your family voted ${mine>0?'👍':'👎'}</span>`:
+      `<button class="vbtn yes" data-id="${p.id}" data-v="1">👍 yes</button><button class="vbtn no" data-id="${p.id}" data-v="-1">👎 no</button>`;
+    if(store.family===p.family)actions+=` <button class="vbtn" data-wd="${p.id}">withdraw</button>`;
+  }else{
+    actions=`<span class="pstat ${p.status==='approved'?'ok':'no'}">${p.status==='approved'?'✅ approved — live for everyone':p.status==='rejected'?'❌ rejected':'withdrawn'}</span>`;
+  }
+  return `<div class="prow"><div class="pt">${p.title}</div>
+    <div class="pm">${p.by} · ${dayLabel(p.dayId)} · ${when}</div>
+    ${p.note?`<div class="pn">"${p.note}"</div>`:''}
+    <div class="pv">${actions}<span class="vtally">${tally}</span></div></div>`;
+}
+function openVotes(){
+  const ps=(store.props||[]).slice().sort((a,b)=>b.ts-a.ts);
+  const pending=ps.filter(p=>p.status==='pending');
+  const done=ps.filter(p=>p.status!=='pending').slice(0,6);
+  const sh=sheetShell(`<h3>💡 Crew Votes</h3>
+    <div class="sub">Drag a day around, then hit <b style="color:var(--gold)">💡 suggest to crew</b> under it. 2 of 3 families = it's official for everyone.${store.family?` · voting as <b>${store.family}</b>`:''}</div>
+    ${pending.length?pending.map(voteRow).join(''):'<div class="prow"><div class="pn">No open proposals — go stir the pot 🍲</div></div>'}
+    ${done.length?`<div class="bgrp">Recent decisions</div>`+done.map(voteRow).join(''):''}`);
+  sh.querySelectorAll('.vbtn[data-id]').forEach(b=>b.onclick=()=>ensureFamily(async()=>{
+    b.textContent='…';
+    try{await fetch(VOTE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'vote',id:b.dataset.id,family:store.family,vote:+b.dataset.v})});
+    await fetchProps(true);openVotes();}catch(e){b.textContent='⚠️'}
+  }));
+  sh.querySelectorAll('.vbtn[data-wd]').forEach(b=>b.onclick=async()=>{
+    try{await fetch(VOTE_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'withdraw',id:b.dataset.wd,family:store.family})});
+    await fetchProps(true);openVotes();}catch(e){}
+  });
+}
+document.getElementById('vfab').onclick=()=>{fetchProps(false);openVotes()};
+
 /* ================= INIT ================= */
 renderAll();
 tickCountdown();setInterval(tickCountdown,1000);
 setInterval(()=>{if(curView==='seoul'||curView==='tokyo')renderAll()},60000);
 fetchWeather();
+fetchProps(true);setInterval(()=>fetchProps(true),5*60*1000);
+updateVoteBadge();
 </script>
 </body>
 </html>
