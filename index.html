@@ -288,7 +288,7 @@ const ZONES = {
   hn:{n:'Hannam',la:37.5345,lo:127.0017}
  },
  tokyo:{
-  sj:{n:'Shinjuku · 호텔',la:35.6896,lo:139.7006,hotel:1}, hj:{n:'Harajuku',la:35.6702,lo:139.7027},
+  sj:{n:'Nishi-Shinjuku · Park Hyatt',la:35.6852,lo:139.6907,hotel:1}, hj:{n:'Harajuku',la:35.6702,lo:139.7027},
   omo:{n:'Omotesando',la:35.6652,lo:139.7126}, shb:{n:'Shibuya',la:35.6580,lo:139.7016},
   rop:{n:'Roppongi',la:35.6627,lo:139.7307}, min:{n:'Tokyo Tower',la:35.6586,lo:139.7454},
   gz:{n:'Ginza',la:35.6717,lo:139.7650}, tsk:{n:'Tsukiji',la:35.6655,lo:139.7708},
@@ -407,7 +407,7 @@ const SEOUL_DAYS = [
 const TOKYO_DAYS = [
  {id:'t0',num:'ARRIVAL',kr:'수요일',date:'Wed · Sep 2',iso:'2026-09-02',sub:'Arrival & Shinjuku night',anchor:11*60+30,items:[
   ['✈️','Arrive Tokyo Haneda from Seoul','travel','hnd','Haneda','KQ','HND',null,30,'JL90 lands 10:15 AM — by the time you clear arrivals and ride the Keikyu in, it\'s ~11:30. Quick transfer toward the city.',null,1],
-  ['🏨','Check in — Shinjuku hotel','travel','sj','Shinjuku','JR','新宿 Shinjuku',null,30,'Drop bags and freshen up.',null,1],
+  ['🏨','Check in — Park Hyatt Tokyo','travel','sj','Nishi-Shinjuku','JR','新宿 Shinjuku',null,30,'The Lost in Translation hotel, in the Shinjuku Park Tower. ~14-min walk or free shuttle from Shinjuku Station West Exit; Tochomae (Oedo line) is the closest stop. Drop bags and freshen up.',null,1],
   ['🍜','Ichiran Ramen (Shinjuku)','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,45,'Solo-booth ramen — you customize everything. Famous.'],
   ['🌿','Shinjuku Gyoen National Garden','sight','sj','Shinjuku','JR','新宿 Shinjuku',3.0,90,'Japanese garden stroll. ⚠️ September: closes 6 PM, last entry 5:30 — that\'s why this comes before Donki (which never closes).'],
   ['🏪','Don Quijote mega store','shop','sj','Shinjuku','JR','新宿 Shinjuku',5.0,90,'Open 24 hrs — snacks, souvenirs, literally everything. Grab mosquito patches + cooling sheets here (from your IG saves — the Japan-summer essential).','https://www.instagram.com/p/DYlFq4GuSTh/'],
@@ -528,7 +528,7 @@ const BENCH={
 const TODOS=[
  ['c1','✈️','GMP → HND flight — Wed Sep 2 (JL90, 8:00 AM)','ASAP — fares climb','Clearwaters: Nick + Olivia BOTH TICKETED ✓ Sep 2. Brysons + Becksteads: still need to book.'],
  ['c2','✈️','Clearwaters: SFO → ICN','✓ done','United ✓ — same 10:40 AM flight as the Becksteads. All three families booked.'],
- ['c3','🏨','Book Tokyo hotel — Shinjuku','by early July','5 nights Sep 2–7. Shinjuku recommended in the plan.'],
+ ['c3','🏨','Park Hyatt Tokyo — 5 nights Sep 2–7','✓ booked','Nishi-Shinjuku (Shinjuku Park Tower). Both families — same as Seoul, bookend the trip in Park Hyatts.'],
  ['c4','🎨','teamLab Borderless tickets — Fri Sep 4 evening','~Jul 4 (released ~2 mo out)','Sells out fast. <a href="https://borderless.teamlab.art" target="_blank">borderless.teamlab.art</a>'],
  ['c5','🌆','Shibuya Sky tickets — Fri Sep 4 ~1:30 PM','~Aug 7 (4 wks out)','Sunset slots go first. <a href="https://www.shibuya-scramble-square.com/sky/" target="_blank">official site</a>'],
  ['c6','💆','Book Spa Gogyeol — Mon Aug 31, 10 AM','2–3 wks out','Korean wellness massage, from ₩120K.'],
@@ -904,7 +904,7 @@ function flightsHTML(){
   }
   h+=`<div class="fsec">Trip Overview</div><div class="ov">
     <div class="ovc"><div class="city">🇰🇷 서울</div><div class="d">Aug 29 – Sep 2<br>4 nights · Park Hyatt Seoul<br>Gangnam (Samseong, by COEX)</div></div>
-    <div class="ovc"><div class="city">🇯🇵 東京</div><div class="d">Sep 2 – 7<br>5 nights · Hotel TBD<br>Shinjuku (recommended)</div></div>
+    <div class="ovc"><div class="city">🇯🇵 東京</div><div class="d">Sep 2 – 7<br>5 nights · Park Hyatt Tokyo<br>Nishi-Shinjuku</div></div>
   </div>`;
   return h;
 }
