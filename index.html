@@ -271,7 +271,8 @@ const T_TOKYO = M([
  ['hnd','sj',45],['sj','asa',30],['asa','ue',10],['ue','akb',5],['akb','sj',20],
  ['sj','hj',8],['hj','omo',6],['omo','shb',10],['shb','sj',10],['shb','rop',15],['rop','sj',15],
  ['sj','tsk',25],['tsk','min',15],['min','gz',10],['gz','sj',18],['gz','shb',20],['tsk','gz',10],
- ['sj','oda',35],['oda','shb',30],['sj','gz',18],['sj','min',20],['sj','ue',25],['sj','akb',20]
+ ['sj','oda',35],['oda','shb',30],['sj','gz',18],['sj','min',20],['sj','ue',25],['sj','akb',20],
+ ['shb','hj',12]
 ],30);
 
 /* map zone meta: name + lat/lon */
@@ -432,17 +433,17 @@ const TOKYO_DAYS = [
  {id:'t2',num:'DAY 2',kr:'금요일',date:'Fri · Sep 4',iso:'2026-09-04',sub:'Harajuku, Shibuya & the Big Crossing',anchor:8*60,items:[
   ['⛩️','Meiji Shrine','sight','hj','Harajuku','JR','原宿 Harajuku',4.0,90,'Peaceful forest shrine in the heart of Tokyo — go early.'],
   ['🎀','Harajuku Takeshita Street','shop','hj','Harajuku','JR','原宿 Harajuku',4.0,90,'Kawaii fashion, rainbow crepes, cotton candy. Shops open ~10–11 — before that it\'s empty-street photo time; crepes from ~10:30.'],
-  ['🛍️','Omotesando — Tokyo\'s Champs-Élysées','shop','omo','Omotesando','G','表参道 Omotesandō',5.0,60,'Luxury flagships, stunning architecture.'],
+  ['🛍️','Omotesando + Shimokitazawa vintage — Champs-Élysées','shop','omo','Omotesando','G','表参道 Omotesandō',5.0,60,'Luxury flagships & architecture on Omotesando; detour to Shimokitazawa for thrift/vintage. Harajuku food stop: I\'m Donut? (viral fresh-mochi donuts).'],
   ['🍛','Gyukatsu Motomura — fried wagyu cutlet','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Cook your own wagyu on a hot stone — unreal. Viral. ⚠️ Bookable tables (Bunten annex, Tabelog) only exist 3–5 PM — for a noon lunch hit the 11 AM open or split 2×3 across the queue.'],
   ['🚶','Shibuya Crossing + Hachiko','sight','shb','Shibuya','JR','渋谷 Shibuya',7.5,30,'World\'s busiest intersection — iconic.'],
   ['🌆','Shibuya Sky — BOOK AHEAD','sight','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Open-air rooftop above the crossing — book tickets in advance!'],
   ['🍦','Soft serve + rainbow crepes','snack','shb','Shibuya','JR','渋谷 Shibuya',5.0,30,'Soft serve ⭐5.0 + Harajuku crepes ⭐4.5.'],
   ['🏪','Don Quijote Shibuya','shop','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Tax-free snacks, cosmetics, gadgets.'],
   ['🎨','teamLab Borderless — MUST BOOK','sight','rop','Roppongi','H','麻布台 Azabudai',5.0,120,'#1 most viral Tokyo spot — BOOK TICKETS IN ADVANCE.'],
-  ['🍣','Omakase splurge dinner — SPLURGE #2','food','rop','Roppongi','H','六本木 Roppongi',5.0,90,'Chef\'s choice, ~15 courses — bougie.'],
-  ['🌙','Hotel & rest','rest','sj','Shinjuku',null,'—',null,0,'Food coma from omakase.']
+  ['🥟','Gyoza dinner @ Roppongi — ✓ table for 6, 8 PM','food','rop','Roppongi','H','六本木 Roppongi',5.0,90,'Booked: reservation for 6 at 8:00 PM. (The omakase-sushi splurge moved to a Sunday option — see Day 4.)',null,0,20*60],
+  ['🌙','Hotel & rest','rest','sj','Shinjuku',null,'—',null,0,'Gyoza + teamLab coma — rest up.']
  ]},
- {id:'t3',num:'DAY 3',kr:'토요일',date:'Sat · Sep 5',iso:'2026-09-05',sub:'Tsukiji, Tokyo Tower & Ginza',anchor:7*60,items:[
+ {id:'t3',num:'DAY 3',kr:'토요일',date:'Sat · Sep 5',iso:'2026-09-05',sub:'Tsukiji, Ginza & a night at the ballpark ⚾',anchor:7*60,items:[
   ['🍣','Tsukiji Outer Market — street food breakfast','food','tsk','Tsukiji','H','築地 Tsukiji',4.0,120,'Tamagoyaki, fresh sashimi, scallops, uni — GO EARLY.'],
   ['🍣','Sushi Dai — SPLURGE #3','food','tsk','Tsukiji','Y','豊洲 Toyosu',5.0,60,'Legendary omakase, famous tuna set — worth every yen. ⚠️ No reservations ever: all 6 must be in line before ~5 AM for a seating slot; cash only. Honest take: send the 2-3 die-hards, everyone else grazes the outer market.'],
   ['🗼','Tokyo Tower','sight','min','Minato','H','神谷町 Kamiyachō',3.0,60,'Iconic red & white tower — classic photo.'],
@@ -450,9 +451,10 @@ const TOKYO_DAYS = [
   ['🍰','Japanese fruit parfait','snack','gz','Ginza','G','銀座 Ginza',4.5,30,'Strawberry, melon, or seasonal — legendary.'],
   ['😴','Back to Shinjuku — recharge','rest','sj','Shinjuku','JR','新宿 Shinjuku',null,90,'Rest at the hotel before the evening.'],
   ['🍖','Yakiniku late lunch — Daidokoya or Takibiya','food','shb','Shibuya','JR','渋谷 Shibuya',4.5,60,'Japanese BBQ — rated 4.5. ⚠️ Most yakiniku close 3–5 PM; these don\'t: Yakiniku Daidokoya honten (Sat from 1 PM, reservable) or Takibiya (through-service). Chain fallback: Yakiniku Like.',null,0,15*60],
-  ['🎮','Arcades round 2','act','shb','Shibuya','JR','渋谷 Shibuya',5.0,120,'More claw machines — can\'t get enough.'],
-  ['🍜','Farewell ramen (Ichiran or Afuri)','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,45,'One more bowl for the road.',null,0,18*60+30],
-  ['🌃','Neon walk + conbini + pack','night','sj','Shinjuku',null,'—',4.5,90,'Stock up on snacks to bring home.'],
+  ['🎮','Arcades round 2','act','shb','Shibuya','JR','渋谷 Shibuya',5.0,75,'More claw machines — keep it to ~75 min so you make first pitch.'],
+  ['⚾','Baseball @ Meiji Jingu Stadium','act','hj','Jingu Gaien','G','外苑前 Gaienmae',5.0,180,'NEW ⚾ — Tokyo Yakult Swallows night game, first pitch 6 PM. Umbrella-dance celebrations, ballpark food, ice-cold beer. ⚠️ Confirm the Swallows are home Sat Sep 5 & buy tickets ahead.',null,0,18*60],
+  ['🍜','Post-game ramen (Ichiran, open late)','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,45,'One more bowl for the road — Ichiran runs late, perfect after the game.'],
+  ['🌃','Post-game neon walk + conbini + pack','night','sj','Shinjuku',null,'—',4.5,90,'Wind down after the game — stock up on snacks to bring home.'],
   ['🌙','Hotel & rest','rest','sj','Shinjuku',null,'—',null,0,'Last full day tomorrow.']
  ]},
  {id:'t4',num:'DAY 4',kr:'일요일',date:'Sun · Sep 6',iso:'2026-09-06',sub:'Last full day — Odaiba & final night',anchor:8*60,items:[
@@ -461,8 +463,9 @@ const TOKYO_DAYS = [
   ['🛍️','Last-minute souvenir shopping','shop','shb','Shibuya','JR','渋谷 Shibuya',null,90,'Tokyo Banana, Kit Kats, station souvenirs.'],
   ['🍣','Farewell omakase lunch','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,90,'Last big sushi meal — go out with a bang.'],
   ['🍰','Fruit parfait or crepe','snack','shb','Shibuya','JR','渋谷 Shibuya',4.5,30,'One last sweet treat.'],
+  ['💆','Spa / massage — Bitoria (optional)','spa','shb','Shibuya',null,'—',null,60,'NEW — unwind before the last night. Bitoria massage/spa; book a slot if the crew wants it.'],
   ['🚶','Free time — revisit favorites','rest','sj','Shinjuku/Shibuya',null,'—',null,120,'Go back to anything you loved — Donki, arcades, etc.'],
-  ['🍢','Omoide Yokocho round 2 — farewell yakitori','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,90,'Smoky perfection, one last time.',null,0,17*60],
+  ['🍽️','Farewell dinner — Omoide Yokocho or omakase splurge','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,90,'Two ways to end it: Omoide Yokocho yakitori (smoky, cheap, iconic) OR the big omakase-sushi splurge — Sushi Akira or Sushi Saitou (book well ahead). Crew\'s call.',null,0,17*60],
   ['🌃','Final Kabukicho neon walk + conbini haul','night','sj','Shinjuku',null,'—',5.0,90,'Take ALL the photos. Buy ALL the snacks — onigiri for the plane.'],
   ['🌙','Pack up — last night in Tokyo','rest','sj','Shinjuku',null,'—',null,0,'What a trip 🇯🇵']
  ]},
@@ -537,7 +540,9 @@ const TODOS=[
  ['c7','🎨','Book Ecojardin color analysis + headspa','books out weeks ahead','Mon Aug 31 ~3 PM slot (after BBQ lunch — both BBQ spots break mid-afternoon, so lunch comes first). Parkjun Beauty Lab = backup.'],
  ['c8','✨','Pick + book facial clinic','by mid-Aug','Aqua Peel / HydraFacial / Rejuran — Gangnam beauty district.'],
  ['c9','🥩','Reserve Born and Bred ×6 — Tue Sep 1','~Aug 1 — books fast','DECIDED: 3F private room ×6, omakase course (~₩200K/pp ≈ $145), 6:00 PM (Tue lunch dropped — Geumdwaeji moved to Sunday). Call ☎ 02-2294-5005 (12–3 PM KST = 8–11 PM PT) — say: "9월 1일 화요일 저녁 6시, 6명, 3층 프라이빗룸 오마카세 코스로 예약하고 싶어요" — or <a href="https://app.catchtable.co.kr/ct/shop/bandb" target="_blank">CatchTable</a> when the window opens ~Aug 1. Backup: Woo Tender near hotel.'],
- ['c10','🍣','Book Tokyo omakase ×6 — Fri Sep 4','early July (1–2 mo window)','Two that actually take 6 (rare for omakase): <a href="https://www.tablecheck.com/en/shops/sushi-azabu/reserve" target="_blank">Sushi Azabu</a> (Azabudai Hills, ¥9,800–15,000, max 7) or <a href="https://www.tablecheck.com/en/shops/sushitokyo-ten-roppongi/reserve" target="_blank">Sushi Tokyo Ten Roppongi</a> (¥9,900–13,200, max 12). TableCheck, English, foreign cards OK. Strict same-day cancel fees.'],
+ ['c10','🍣','Book omakase splurge ×6 — moved to Sun Sep 6','early July (1–2 mo window)','Off Friday (that\'s gyoza now) → Sunday farewell dinner. Hailey\'s picks: Sushi Akira or Sushi Saitou (book well ahead). Easy 6-tops for foreigners: <a href="https://www.tablecheck.com/en/shops/sushi-azabu/reserve" target="_blank">Sushi Azabu</a> (max 7) or <a href="https://www.tablecheck.com/en/shops/sushitokyo-ten-roppongi/reserve" target="_blank">Sushi Tokyo Ten Roppongi</a> (max 12). TableCheck, English, foreign cards OK.'],
+ ['c21','🥟','Gyoza @ Roppongi ×6 — Fri Sep 4, 8 PM','confirm it\'s locked','Hailey\'s new Friday dinner (replaces the omakase). Reservation for 6 at 8:00 PM.'],
+ ['c22','⚾','Tokyo baseball ×6 — Sat Sep 5, 6 PM','when NPB schedule posts','Tokyo Yakult Swallows @ Meiji Jingu Stadium. ⚠️ First confirm they\'re home Sat Sep 5 on the 2026 NPB schedule, then buy 6 tickets (official site / ticket apps). Nearest station Gaienmae.'],
  ['c15','📲','Install CatchTable Global + TableCheck apps','this week','The two booking apps that work without a Korean phone number. CatchTable Global: bills, Jeju Oktap + remote queues. TableCheck: all the Tokyo bookings.'],
  ['c16','🥩','Reserve Taecho Galbi ×6 — Sat Aug 29 dinner','~Aug 1 (rolling ~30-day window)','Saturday Hongdae slots go fast — book the day the window opens. <a href="https://app.catchtable.co.kr/ct/shop/TaechoGalbi" target="_blank">CatchTable</a> or <a href="https://autoreserve.com/en/restaurants/iFWESVjktHnmqHzSLyv3" target="_blank">AutoReserve</a> (English — books via AI phone call) · ☎ 0507-1337-4590.'],
  ['c17','🥞','Reserve bills Gangnam ×6 — Sun 8/30, 10:00 AM','1–2 wks out','Sunday only, 10 AM (post-run brunch — the crew runs Bukchon at 8). <a href="https://www.catchtable.net/shop/bills_gangnam" target="_blank">CatchTable Global</a> — takes foreigners. Deposit; free cancel ≥2 days out; ⚠️ >10 min late = auto-cancel + forfeit.'],
