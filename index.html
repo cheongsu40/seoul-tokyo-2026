@@ -738,7 +738,7 @@ function applyImages(){
 }
 
 /* ================= RENDER ================= */
-const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOKYO'},{id:'map',kr:'지도',en:'MAP'},{id:'todo',kr:'체크',en:'TO-DO'},{id:'flights',kr:'항공',en:'FLIGHTS'}];
+const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOKYO'},{id:'map',kr:'지도',en:'MAP'},{id:'todo',kr:'체크',en:'TO-DO'},{id:'flights',kr:'항공',en:'FLIGHTS'},{id:'info',kr:'정보',en:'INFO'}];
 let curView='seoul',mapCity='seoul',selZone=null;
 const $=s=>document.querySelector(s);
 
@@ -915,6 +915,33 @@ function flightsHTML(){
   </div>`;
   return h;
 }
+function infoHTML(){
+  const hotels=[
+    {f:'🇰🇷',n:'Park Hyatt Seoul',d:'Aug 29 – Sep 2 · 4 nights',a:'606 Teheran-ro, Gangnam-gu',s:'삼성 Samseong (Line 2), or COEX underground',map:'https://map.naver.com/p/search/Park%20Hyatt%20Seoul'},
+    {f:'🇯🇵',n:'Park Hyatt Tokyo',d:'Sep 2 – 7 · 5 nights',a:'3-7-1-2 Nishi-Shinjuku (Shinjuku Park Tower)',s:'都庁前 Tochomae (Oedo) · ~14-min walk / free shuttle from Shinjuku West',map:'https://www.google.com/maps/search/?api=1&query=Park+Hyatt+Tokyo'}
+  ];
+  let h=`<div class="fsec">Where we sleep</div>`;
+  h+=hotels.map(H=>`<div class="fcard"><div class="who">${H.f} ${H.n}<a class="bdg nav" href="${H.map}" target="_blank" rel="noopener" style="float:right;font-weight:600">🧭 map</a></div>
+    <div class="meta" style="margin-top:7px"><b>${H.d}</b><br>📍 ${H.a}<br>🚇 ${H.s}<br><span style="color:var(--dim2)">Check-in 3 PM · check-out 12 PM</span></div></div>`).join('');
+  h+=`<div class="fsec">Getting around</div>`;
+  h+=`<div class="fcard"><div class="meta">
+    <b style="color:var(--txt)">💳 Transit cards</b> — Korea: T-money (add to Apple Wallet, or grab a TTC+ card). Japan: Suica (adds straight to Apple Wallet). One tap for every subway, bus &amp; conbini.<br><br>
+    <b style="color:var(--txt)">✈️ Airport transfers</b> — ICN→Seoul: AREX express to Seoul Station (~45 min) → Line 2. HND→Shinjuku: Keikyu (~45 min). NRT→Tokyo: Narita Express (~90 min).<br><br>
+    <b style="color:var(--txt)">🗺️ Maps</b> — Korea: use <b style="color:var(--txt)">Naver</b> or KakaoMap (Google Maps is crippled there). Japan: Google Maps is great.
+  </div></div>`;
+  const ess=[
+    ['💴','Currency','KR ₩ · JP ¥<br><span style="color:var(--dim2)">rough: ~₩1,350 &amp; ~¥155 per $1 — check nearer</span>'],
+    ['🙅','Tipping','None — not expected in either country, and it can even offend.'],
+    ['🆘','Emergency','KR 112 / 119 · JP 110 / 119<br><span style="color:var(--dim2)">police / fire-medical</span>'],
+    ['🔌','Plugs','KR 220V type C/F · JP 100V type A — bring both or a universal.'],
+    ['🛍️','Tax-free','Both refund VAT (KR ₩15K+ / JP ¥5K+) — carry your passport.'],
+    ['📦','Luggage','JP takkyubin forwards bags hotel→airport cheap. KR: sea-ship shopping home to dodge baggage fees.']
+  ];
+  h+=`<div class="fsec">Good to know</div><div class="ov">`;
+  h+=ess.map(e=>`<div class="ovc"><div class="city" style="font-size:15px">${e[0]} ${e[1]}</div><div class="d">${e[2]}</div></div>`).join('');
+  h+=`</div><div style="text-align:center;color:var(--dim2);font-size:11px;padding:14px 4px 0">borrowed the reference-tab idea from the Ireland app 🇮🇪</div>`;
+  return h;
+}
 function renderAll(){
   renderTabs();renderPills();
   let html='';
@@ -928,6 +955,7 @@ function renderAll(){
     $('#vfab').classList.add('hidden');
     if(curView==='map')html=mapHTML();
     else if(curView==='todo')html=todoHTML();
+    else if(curView==='info')html=infoHTML();
     else html=flightsHTML();
   }
   $('#content').innerHTML=html;
