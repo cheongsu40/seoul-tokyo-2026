@@ -575,6 +575,7 @@ const TODOS=[
  ['c10','🍣','Book omakase splurge ×6 — moved to Sun Sep 6','early July (1–2 mo window)','Off Friday (that\'s gyoza now) → Sunday farewell dinner. Hailey\'s picks: Sushi Akira or Sushi Saitou (book well ahead). Easy 6-tops for foreigners: <a href="https://www.tablecheck.com/en/shops/sushi-azabu/reserve" target="_blank">Sushi Azabu</a> (max 7) or <a href="https://www.tablecheck.com/en/shops/sushitokyo-ten-roppongi/reserve" target="_blank">Sushi Tokyo Ten Roppongi</a> (max 12). TableCheck, English, foreign cards OK.'],
  ['c21','🥟','Gyoza @ Roppongi ×6 — Fri Sep 4, 8 PM','confirm it\'s locked','Hailey\'s new Friday dinner (replaces the omakase). Reservation for 6 at 8:00 PM.'],
  ['c22','⚾','Tokyo baseball ×6 — Sat Sep 5, 6 PM','when NPB schedule posts','Tokyo Yakult Swallows @ Meiji Jingu Stadium. ⚠️ First confirm they\'re home Sat Sep 5 on the 2026 NPB schedule, then buy 6 tickets (official site / ticket apps). Nearest station Gaienmae.'],
+ ['c23','💆','Bitoria spa/massage — Sun Sep 6 (optional)','a few days ahead if wanted','Hailey\'s new Sunday-afternoon add. Optional group relax before the final night — book a slot if the crew wants it (walk-in may also work).'],
  ['c15','📲','Install CatchTable Global + TableCheck apps','this week','The two booking apps that work without a Korean phone number. CatchTable Global: bills, Jeju Oktap + remote queues. TableCheck: all the Tokyo bookings.'],
  ['c16','🥩','Reserve Taecho Galbi ×6 — Sat Aug 29 dinner','~Aug 1 (rolling ~30-day window)','Saturday Hongdae slots go fast — book the day the window opens. <a href="https://app.catchtable.co.kr/ct/shop/TaechoGalbi" target="_blank">CatchTable</a> or <a href="https://autoreserve.com/en/restaurants/iFWESVjktHnmqHzSLyv3" target="_blank">AutoReserve</a> (English — books via AI phone call) · ☎ 0507-1337-4590.'],
  ['c17','🥞','Reserve bills Gangnam ×6 — Sun 8/30, 10:00 AM','1–2 wks out','Sunday only, 10 AM (post-run brunch — the crew runs Bukchon at 8). <a href="https://www.catchtable.net/shop/bills_gangnam" target="_blank">CatchTable Global</a> — takes foreigners. Deposit; free cancel ≥2 days out; ⚠️ >10 min late = auto-cancel + forfeit.'],
@@ -770,7 +771,7 @@ function applyImages(){
 }
 
 /* ================= RENDER ================= */
-const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOKYO'},{id:'map',kr:'지도',en:'MAP'},{id:'todo',kr:'체크',en:'TO-DO'},{id:'flights',kr:'항공',en:'FLIGHTS'},{id:'info',kr:'정보',en:'INFO'}];
+const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOKYO'},{id:'map',kr:'지도',en:'MAP'},{id:'music',kr:'음악',en:'MUSIC'},{id:'todo',kr:'체크',en:'TO-DO'},{id:'flights',kr:'항공',en:'FLIGHTS'},{id:'info',kr:'정보',en:'INFO'}];
 let curView='seoul',mapCity='seoul',selZone=null;
 const $=s=>document.querySelector(s);
 
@@ -996,6 +997,38 @@ function infoHTML(){
   h+=`</div><div style="text-align:center;color:var(--dim2);font-size:11px;padding:14px 4px 0">borrowed the reference-tab idea from the Ireland app 🇮🇪</div>`;
   return h;
 }
+function musicHTML(){
+  const pls=[
+    {emoji:'🇰🇷',grad:'linear-gradient(135deg,#ff4d6d,#c9184a)',kr:'청수의 K-Pop',en:'K-POP',
+     vibe:'Smooth Korean neo-soul, R&B &amp; city-pop groove — grown &amp; mellow.',
+     hi:'Zion.T · Crush · DEAN · Heize · LeeHi · NewJeans · IVE · SISTAR',
+     collab:'US collabs: JENNIE × Childish Gambino &amp; Kali Uchis · Jung Kook × Latto · Tori Kelly × Kim Chaewon',
+     url:'https://open.spotify.com/playlist/1RhMwfMJxMX4MHSnNUJqBJ'},
+    {emoji:'🇯🇵',grad:'linear-gradient(135deg,#5b8cff,#3a0ca3)',kr:'Japanese Groove Mix',en:'J-POP',
+     vibe:'The J-side, cut to match — Japanese city pop, neo-soul &amp; smooth modern J-pop.',
+     hi:'Fujii Kaze · Suchmos · Nulbarich · imase · Mariya Takeuchi · Utada · Vaundy',
+     collab:'US collabs: Utada Hikaru × Skrillex · KOHH × Frank Ocean · Teriyaki Boyz · Kyu Sakamoto',
+     url:'https://open.spotify.com/playlist/0CI337mPVCiWPRAyAOPIvG'}
+  ];
+  let h=`<div class="fsec">Trip soundtrack 🎶</div>`;
+  h+=`<div class="meta" style="font-size:12.5px;padding:0 2px 12px;line-height:1.6">Two matched playlists for the crew — a smooth, groove-forward Korean set and its Japanese sister mix, both leaning city-pop &amp; neo-soul. Tap either to open in Spotify.</div>`;
+  h+=pls.map(p=>`<a class="fcard" href="${p.url}" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit;padding:0;overflow:hidden">
+    <div style="display:flex;gap:14px;padding:14px 14px 0">
+      <div style="flex:0 0 74px;height:74px;border-radius:14px;background:${p.grad};display:flex;align-items:center;justify-content:center;font-size:33px">${p.emoji}</div>
+      <div style="flex:1;min-width:0">
+        <div class="who" style="font-size:16px">${p.kr}</div>
+        <div style="font-size:9px;letter-spacing:.2em;color:var(--dim2);margin-top:3px;font-weight:800">${p.en} · SPOTIFY</div>
+        <div class="meta" style="margin-top:7px;line-height:1.5">${p.vibe}</div>
+      </div>
+    </div>
+    <div style="padding:12px 14px 14px">
+      <div class="meta" style="font-size:11.5px;color:var(--dim2);line-height:1.65"><b style="color:var(--dim)">Highlights</b> · ${p.hi}<br><span style="color:var(--dim)">${p.collab}</span></div>
+      <div style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;background:#1DB954;color:#03160a;font-weight:800;font-size:13px;padding:9px 17px;border-radius:999px">▶ Open in Spotify</div>
+    </div>
+  </a>`).join('');
+  h+=`<div style="text-align:center;color:var(--dim2);font-size:11px;padding:14px 4px 0">curated for the trip — press play on the plane ✈️</div>`;
+  return h;
+}
 function renderAll(){
   renderTabs();renderPills();
   let html='';
@@ -1008,6 +1041,7 @@ function renderAll(){
     $('#fab').classList.add('hidden');
     $('#vfab').classList.add('hidden');
     if(curView==='map')html=mapHTML();
+    else if(curView==='music')html=musicHTML();
     else if(curView==='todo')html=todoHTML();
     else if(curView==='info')html=infoHTML();
     else html=flightsHTML();
