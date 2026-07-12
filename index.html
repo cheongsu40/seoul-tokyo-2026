@@ -299,6 +299,16 @@ const ZONES = {
 };
 const FRAMES={seoul:{lo0:126.90,lo1:127.12,la0:37.488,la1:37.602},tokyo:{lo0:139.685,lo1:139.812,la0:35.605,la1:35.725}};
 const DAYCOL=['#ffd166','#ff4d6d','#f5a3ff','#5b8cff','#3ddc97','#7ad7f0'];
+/* schematic subway connections [zoneA, zoneB, lineKey] — colored by line */
+const SUBLINES={
+ seoul:[['hd','sc','2'],['sc','elj','2'],['elj','ddp','2'],['ddp','ss','2'],['ss','jamsil','2'],['jamsil','gn','2'],['gn','gns','2'],
+  ['apg','sinsa','3'],['sinsa','bp','3'],['bp','iks','3'],['iks','gwh','3'],
+  ['md','ddp','4'],['mj','ddp','5'],['ddp','gwh','5'],['cdm','bp','7']],
+ tokyo:[['sj','hj','JR'],['hj','shb','JR'],['ue','akb','JR'],['sj','ue','JR'],
+  ['shb','omo','G'],['omo','gz','G'],['gz','asa','G'],
+  ['rop','min','H'],['min','gz','H'],['gz','tsk','H'],['tsk','akb','H'],['oda','gz','RM']]
+};
+const LINELBL={'2':'Line 2','3':'Line 3','4':'Line 4','5':'Line 5','6':'Line 6','7':'Line 7','JR':'JR Yamanote','G':'Ginza','H':'Hibiya','RM':'Rinkai','A':'Asakusa'};
 
 /* typical late-Aug/early-Sep climate (auto-upgrades to live forecast within 16 days) */
 const WX_TYP={
@@ -854,12 +864,31 @@ function zoneVisits(city){
 }
 function mapHTML(){
   const city=mapCity,zs=ZONES[city],visits=zoneVisits(city);
-  const water=city==='seoul'
-    ?`<path d="M670,330 C610,355 600,355 553,358 C480,368 430,400 379,408 C320,416 260,392 204,358 C150,326 110,292 88,256 L30,215" fill="none" stroke="#1c2a45" stroke-width="26" stroke-linecap="round" opacity=".9"/>
-      <text x="330" y="442" fill="#3b4a6b" font-size="13" font-style="italic">한강 Han River</text>`
-    :`<path d="M598,71 C570,140 530,200 495,265 C475,300 470,330 472,360" fill="none" stroke="#1c2a45" stroke-width="16" stroke-linecap="round" opacity=".9"/>
-      <path d="M700,330 C640,360 580,400 540,470 L700,520 Z" fill="#16223a" opacity=".9"/>
-      <text x="585" y="455" fill="#3b4a6b" font-size="13" font-style="italic">Tokyo Bay</text>`;
+  const P=z=>proj(city,zs[z].la,zs[z].lo);
+  // geographically-aligned water
+  let water;
+  if(city==='seoul'){
+    const f=FRAMES.seoul, ry=30+(f.la1-37.517)/(f.la1-f.la0)*460;
+    water=`<path d="M-10,${(ry-12).toFixed(0)} C120,${(ry+20).toFixed(0)} 240,${(ry-16).toFixed(0)} 360,${(ry+10).toFixed(0)} C480,${(ry+30).toFixed(0)} 600,${(ry-8).toFixed(0)} 710,${(ry+16).toFixed(0)}" fill="none" stroke="#16273f" stroke-width="30" stroke-linecap="round" opacity=".85"/>
+      <text x="352" y="${(ry+6).toFixed(0)}" text-anchor="middle" fill="#41506f" font-size="12" font-style="italic">한강 Han River</text>`;
+  }else{
+    water=`<path d="M710,280 C650,320 570,355 505,460 C500,485 500,512 506,540 L710,540 Z" fill="#132033" opacity=".92"/>
+      <path d="M600,55 C598,150 586,255 560,362" fill="none" stroke="#16273f" stroke-width="9" stroke-linecap="round" opacity=".8"/>
+      <text x="632" y="500" text-anchor="middle" fill="#41506f" font-size="12" font-style="italic">Tokyo Bay</text>
+      <text x="612" y="150" fill="#3b4a6b" font-size="10" font-style="italic" transform="rotate(12 612 150)">隅田川 Sumida</text>`;
+  }
+  // subway lines (drawn under pins)
+  const lines=(SUBLINES[city]||[]).map(([a,b,ln])=>{
+    if(!zs[a]||!zs[b])return '';
+    const pa=P(a),pb=P(b);
+    return `<line x1="${pa.x.toFixed(1)}" y1="${pa.y.toFixed(1)}" x2="${pb.x.toFixed(1)}" y2="${pb.y.toFixed(1)}" stroke="${LINES[ln]||'#555'}" stroke-width="4" stroke-linecap="round" opacity=".72"/>`;
+  }).join('');
+  // faint landmarks
+  const lm=(city==='seoul'
+    ?[[37.5512,126.9882,'🗼 N Seoul Tower']]
+    :[[35.6852,139.7528,'Imperial Palace'],[35.6812,139.7671,'Tokyo Stn']])
+    .map(([la,lo,t])=>{const p=proj(city,la,lo);return `<text x="${p.x.toFixed(0)}" y="${p.y.toFixed(0)}" text-anchor="middle" fill="#4a5675" font-size="9.5" font-style="italic">${t}</text>`;}).join('');
+  const compass=`<g transform="translate(662,50)" opacity=".85"><circle r="15" fill="#0e1119" stroke="#2b3350"/><path d="M0,-9 L4,4 L0,1 L-4,4 Z" fill="#ff4d6d"/><text y="13" text-anchor="middle" fill="#8a92ab" font-size="8" font-weight="700">N</text></g>`;
   const pins=Object.keys(zs).map(z=>{
     const p=proj(city,zs[z].la,zs[z].lo);
     const v=visits[z]||[];
@@ -875,6 +904,8 @@ function mapHTML(){
   }).join('');
   const days=city==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
   const legend=days.map((d,i)=>`<span><i style="background:${DAYCOL[i%DAYCOL.length]}"></i>${d.num}</span>`).join('');
+  const usedLines=[...new Set((SUBLINES[city]||[]).map(x=>x[2]))];
+  const linelegend=usedLines.map(ln=>`<span><i style="background:${LINES[ln]||'#555'};width:16px;height:4px;border-radius:2px"></i>${LINELBL[ln]||ln}</span>`).join('');
   let panel='';
   if(selZone&&visits[selZone]){
     panel=`<div class="ph">📍 ${zs[selZone].n} — ${visits[selZone].length} stop${visits[selZone].length>1?'s':''}</div>`+
@@ -882,8 +913,9 @@ function mapHTML(){
         <span>${v.it[0]} ${v.it[1].split('—')[0].trim()}</span><span class="tm">${fmt(v.start).t} ${fmt(v.start).ap}</span></div>`).join('');
   }else panel=`<div class="ph" style="color:var(--dim2)">tap a pin to see what's happening there</div>`;
   return `<div class="mapwrap"><svg viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg">
-    <rect width="700" height="520" rx="14" fill="#0e1119"/>${water}${pins}</svg>
-    <div class="mlegend">${legend}<span><i style="background:#3a4258"></i>bench spot</span></div></div>
+    <rect width="700" height="520" rx="14" fill="#0e1119"/>${water}${lines}${lm}${pins}${compass}</svg>
+    <div class="mlegend">${legend}<span><i style="background:#3a4258"></i>bench</span></div>
+    <div class="mlegend" style="border-top:1px solid var(--line);margin-top:4px;padding-top:8px">🚇 ${linelegend}</div></div>
     <div id="mpanel">${panel}</div>`;
 }
 
