@@ -842,16 +842,17 @@ function cardHTML(row,city,liveNow){
   const f=fmt(row.start),c=CAT[cat];
   const slug=wikiFor(title);
   const isNow=liveNow!=null&&liveNow>=row.start&&liveNow<row.start+(d||30);
+  const lbl=link?(link.includes('tiktok')?'▶ TikTok':link.includes('instagram')?'▶ Instagram':'↗ map / link'):'';
   const badges=[
     `<span class="bdg cat" style="background:${c.c}">${c.l}</span>`,
     line?`<span class="bdg line" style="background:${LINES[line]||'#555'}">${/^\d/.test(line)?'Line '+line:line}</span>`:'',
     stn&&stn!=='—'?`<span class="bdg">${stn}</span>`:'',
     starLabel(r)?`<span class="bdg star">${starLabel(r)}</span>`:'',
     durLabel(d)?`<span class="bdg dur">⏱ ${durLabel(d)}</span>`:'',
-    (cat!=='travel'&&cat!=='rest')?`<a class="bdg nav" href="${navLink(city,it)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🧭 ${city==='seoul'?'Naver':'GMaps'}</a>`:''
+    (cat!=='travel'&&cat!=='rest')?`<a class="bdg nav" href="${navLink(city,it)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🧭 ${city==='seoul'?'Naver':'GMaps'}</a>`:'',
+    link?`<a class="bdg nav" href="${link}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${lbl}</a>`:''
   ].filter(Boolean).join('');
-  const lbl=link?(link.includes('tiktok')?'▶ TikTok':link.includes('instagram')?'▶ Instagram':'↗ map / link'):'';
-  const noteHtml=(note||'')+(link?` <a href="${link}" target="_blank" rel="noopener">${lbl}</a>`:'');
+  const noteHtml=note||'';
   return `<div class="card ${locked?'locked':''} ${isNow?'now':''}" data-idx="${row.id}" ${slug?`data-wiki="${slug}"`:''}>
     ${row.bench?'<div class="rm" title="remove">✕</div>':''}
     <div class="row">
