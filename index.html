@@ -16,6 +16,7 @@
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
@@ -1044,6 +1045,11 @@ function applyMode(){document.body.classList.toggle('desk',MODE==='desk');
   const b=document.getElementById('modetoggle');if(b)b.textContent=MODE==='desk'?'📱 Phone view':'🖥 Desktop view';}
 function toggleMode(){MODE=MODE==='desk'?'mob':'desk';store.mode=MODE;save();applyMode()}
 window.addEventListener('resize',()=>{if(store.mode)return;const m=detectMode();if(m!==MODE){MODE=m;applyMode()}});
+
+/* ---- offline (PWA) ---- */
+if('serviceWorker' in navigator&&location.protocol==='https:'){
+  addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
 
 renderAll();
 applyMode();

@@ -1,0 +1,14 @@
+{
+  "name": "서울 ✕ 東京 · Seoul–Tokyo 2026",
+  "short_name": "Seoul–Tokyo",
+  "description": "The official trip app — Aug 28 – Sep 7, 2026",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0d14",
+  "theme_color": "#0b0d14",
+  "icons": [
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "maskable" }
+  ]
+}
