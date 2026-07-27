@@ -710,6 +710,9 @@ function renderPills(){
   }else $('#pills').innerHTML='';
 }
 function starLabel(r){return r==null?null:'⭐ '+(r%1?r.toFixed(1):r+'.0')}
+/* Korean phone → tap-to-dial that works from a US/intl phone: +82, leading 0 dropped */
+function telify(s){return (s||'').replace(/(?<![\d>])(0\d{1,3}-\d{3,4}-\d{4})(?!\d)/g,
+  m=>`<a href="tel:+82${m.slice(1).replace(/-/g,'')}" onclick="event.stopPropagation()">${m} 📞</a>`)}
 function navLink(city,it){
   if(city==='seoul'){
     const m=NAVER.find(n=>it[1].includes(n[0]));
@@ -735,7 +738,7 @@ function cardHTML(row,city,liveNow){
     (cat!=='travel'&&cat!=='rest')?`<a class="bdg nav" href="${navLink(city,it)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🧭 ${city==='seoul'?'Naver':'GMaps'}</a>`:'',
     link?`<a class="bdg nav" href="${link}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${lbl}</a>`:''
   ].filter(Boolean).join('');
-  const noteHtml=note||'';
+  const noteHtml=telify(note||'');
   return `<div class="card ${isNow?'now':''}" data-idx="${row.id}">
     ${row.bench?'<div class="rm" title="remove">✕</div>':''}
     <div class="row">
@@ -867,7 +870,7 @@ function todoHTML(){
     const lk=!!t[5],on=lk||!!store.checks[t[0]];
     return `<div class="todo ${on?'done':''}" data-t="${t[0]}" ${lk?'data-lk="1"':''}>
       <div class="cb">${on?'✓':''}</div>
-      <div><div class="tt">${t[1]} ${t[2]}</div><div class="due">📅 ${t[3]}</div><div class="nt">${t[4]}</div></div>
+      <div><div class="tt">${t[1]} ${t[2]}</div><div class="due">📅 ${t[3]}</div><div class="nt">${telify(t[4])}</div></div>
     </div>`;
    }).join('');
 }
