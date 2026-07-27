@@ -553,8 +553,8 @@ const TODOS=[
  ['c1','✈️','GMP → HND — Brysons & Becksteads still to book','ASAP — fares climb','Clearwaters (Nick + Olivia) ticketed ✓ Sep 2 on JL90. Brysons + Becksteads: book the same morning GMP→HND.'],
  ['c4','🎨','teamLab Borderless tickets — Fri Sep 4 evening','~Jul 4 (released ~2 mo out)','Sells out fast. <a href="https://borderless.teamlab.art" target="_blank">borderless.teamlab.art</a>'],
  ['c5','🌆','Shibuya Sky tickets — Fri Sep 4 ~1:30 PM','~Aug 7 (4 wks out)','Sunset slots go first. <a href="https://www.shibuya-scramble-square.com/sky/" target="_blank">official site</a>'],
- ['c6','💆','Spa Gogyeol — Mon Aug 31, 12/12:30 PM ✓ BOOKED','—','Cheongdam branch (J&C Building) — Package 1, 150 min, ×6: 4 @ 12:00 PM + 2 @ 12:30 PM. From ₩120K. Confirmed via Instagram. ⚠️ Conflicts with the 3 PM Ecojardin booking — see that item.'],
- ['c7','🎨','Ecojardin color analysis + headspa ✓ BOOKED','—','Coex branch, Mon Aug 31, 3:00 PM, ×3 — color analysis + 18-step scalp treatment. Confirmed via WhatsApp.'],
+ ['c6','💆','Spa Gogyeol — Mon Aug 31, 12/12:30 PM ✓ BOOKED','—','Cheongdam branch (J&C Building) — Package 1, 150 min, ×6: 4 @ 12:00 PM + 2 @ 12:30 PM. From ₩120K. Confirmed via Instagram. ⚠️ Conflicts with the 3 PM Ecojardin booking — see that item.',1],
+ ['c7','🎨','Ecojardin color analysis + headspa ✓ BOOKED','—','Coex branch, Mon Aug 31, 3:00 PM, ×3 — color analysis + 18-step scalp treatment. Confirmed via WhatsApp.',1],
  ['c8','✨','Pick + book facial clinic','by mid-Aug','Aqua Peel / HydraFacial / Rejuran — Gangnam beauty district.'],
  ['c9','🥩','Reserve Born and Bred ×6 — Tue Sep 1, 7:00 PM','~Aug 1 — books fast','DECIDED: 3F private room ×6, omakase course (~₩200K/pp ≈ $145), <b>7:00 PM</b> (moved back from 6:00 so the full Seoul City Tour Bus loop fits). Call ☎ 02-2294-5005 (12–3 PM KST = 8–11 PM PT) — say: "9월 1일 화요일 저녁 7시, 6명, 3층 프라이빗룸 오마카세 코스로 예약하고 싶어요" — or <a href="https://app.catchtable.co.kr/ct/shop/bandb" target="_blank">CatchTable</a> when the window opens ~Aug 1. Backup: Woo Tender near hotel.'],
  ['c10','🍣','Book omakase splurge ×6 — moved to Sun Sep 6','early July (1–2 mo window)','Off Friday (that\'s gyoza now) → Sunday farewell dinner. Hailey\'s picks: Sushi Akira or Sushi Saitou (book well ahead). Easy 6-tops for foreigners: <a href="https://www.tablecheck.com/en/shops/sushi-azabu/reserve" target="_blank">Sushi Azabu</a> (max 7) or <a href="https://www.tablecheck.com/en/shops/sushitokyo-ten-roppongi/reserve" target="_blank">Sushi Tokyo Ten Roppongi</a> (max 12). TableCheck, English, foreign cards OK.'],
@@ -691,7 +691,7 @@ const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOK
 let curView='seoul',mapCity='seoul',selZone=null;
 const $=s=>document.querySelector(s);
 
-function todoLeft(){return TODOS.filter(t=>!store.checks[t[0]]).length}
+function todoLeft(){return TODOS.filter(t=>!t[5]&&!store.checks[t[0]]).length}
 function renderTabs(){
   $('#tabs').innerHTML=VIEWS.map(v=>{
     const badge=v.id==='todo'&&todoLeft()?`<span class="bdgct">${todoLeft()}</span>`:'';
@@ -864,8 +864,8 @@ function todoHTML(){
   return `<div class="tprog"><div class="bar"><div class="fill" style="width:${pct}%"></div></div>
     <div class="lbl">${done}/${TODOS.length} booked · ${pct===100?'완료! all set 🎉':'keep going — the trip thanks you'}</div></div>`+
    TODOS.map(t=>{
-    const on=!!store.checks[t[0]];
-    return `<div class="todo ${on?'done':''}" data-t="${t[0]}">
+    const lk=!!t[5],on=lk||!!store.checks[t[0]];
+    return `<div class="todo ${on?'done':''}" data-t="${t[0]}" ${lk?'data-lk="1"':''}>
       <div class="cb">${on?'✓':''}</div>
       <div><div class="tt">${t[1]} ${t[2]}</div><div class="due">📅 ${t[3]}</div><div class="nt">${t[4]}</div></div>
     </div>`;
@@ -990,7 +990,7 @@ function bind(){
     selZone=selZone===p.dataset.z?null:p.dataset.z;renderAll();
   });
   document.querySelectorAll('.todo').forEach(t=>t.onclick=ev=>{
-    if(ev.target.tagName==='A')return;
+    if(ev.target.tagName==='A'||t.dataset.lk)return;
     store.checks[t.dataset.t]=!store.checks[t.dataset.t];save();renderAll();
   });
 }
