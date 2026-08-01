@@ -165,6 +165,52 @@ body{background:var(--bg);color:var(--txt);font-family:'Outfit','Noto Sans KR',-
 .tprog .fill{height:100%;background:var(--grad);border-radius:99px;transition:width .4s}
 .tprog .lbl{font-size:12px;color:var(--dim);margin-top:6px}
 
+/* ---------- reservations ---------- */
+.rsum{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:2px 0 14px}
+.rsum .rs{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:9px 6px;text-align:center}
+.rsum .rs .n{font-weight:800;font-size:20px;line-height:1.1}
+.rsum .rs .l{font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--dim2);font-weight:700;margin-top:3px}
+.rfilt{display:flex;gap:6px;overflow-x:auto;padding:0 0 12px;scrollbar-width:none}
+.rfilt::-webkit-scrollbar{display:none}
+.rfilt .rf{flex:0 0 auto;padding:6px 13px;border-radius:999px;background:var(--card);border:1px solid var(--line);
+  color:var(--dim);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.rfilt .rf.on{background:var(--card2);color:#fff;border-color:var(--dim2)}
+.rgrp{font-size:11px;letter-spacing:.16em;color:var(--dim2);text-transform:uppercase;font-weight:800;margin:18px 0 9px}
+.rcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 13px;margin-bottom:9px;
+  position:relative;overflow:hidden;cursor:pointer}
+.rcard::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--dim2)}
+.rcard.st-book::before{background:var(--red)}
+.rcard.st-done::before{background:var(--mint)}
+.rcard.st-walk::before{background:var(--dim2)}
+.rcard.st-decide::before{background:var(--gold)}
+.rcard.done{opacity:.55}
+.rcard .rtop{display:flex;align-items:flex-start;gap:9px}
+.rcard .rcb{flex:0 0 22px;height:22px;border-radius:7px;border:2px solid var(--line);display:flex;align-items:center;
+  justify-content:center;font-size:12px;color:#0b0d14;margin-top:1px}
+.rcard.done .rcb{background:var(--mint);border-color:var(--mint)}
+.rcard .rmain{flex:1;min-width:0}
+.rcard .rwhen{font-size:10.5px;font-weight:800;letter-spacing:.08em;color:var(--dim2);text-transform:uppercase}
+.rcard .rname{font-weight:700;font-size:14.5px;font-family:'Noto Sans KR';margin-top:2px}
+.rcard.done .rname{text-decoration:line-through;color:var(--dim2)}
+.rcard .rtags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;align-items:center}
+.rtag{font-size:10.5px;padding:2.5px 8px;border-radius:999px;background:var(--bg2);border:1px solid var(--line);
+  color:var(--dim);font-weight:700;text-decoration:none}
+.rtag.go{background:var(--red);border-color:transparent;color:#fff}
+.rtag.ok{color:var(--mint);border-color:rgba(61,220,151,.35)}
+.rtag.warn{color:var(--gold);border-color:rgba(255,209,102,.3)}
+.rtag.act{color:var(--blue);border-color:rgba(91,140,255,.35)}
+.rcard .rwhy{display:none;margin-top:9px;font-size:12.5px;color:var(--dim);border-top:1px dashed var(--line);padding-top:9px}
+.rcard.open .rwhy{display:block}
+.rcard .rwhy a{color:var(--blue);text-decoration:none;font-weight:600}
+.rcard .rwhy b{color:var(--txt)}
+.rscript{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin-top:8px;
+  font-size:12.5px;line-height:1.55;color:var(--txt);font-family:'Noto Sans KR'}
+.rscript .sl{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim2);
+  font-weight:800;margin-bottom:4px;font-family:'Outfit'}
+.rnote{background:rgba(255,209,102,.08);border:1px solid rgba(255,209,102,.25);color:#ffd166;border-radius:12px;
+  padding:10px 13px;font-size:12.5px;margin-bottom:14px;line-height:1.5}
+.rnote b{color:#fff}
+
 /* ---------- flights ---------- */
 .fsec{margin:18px 0 8px;font-weight:800;letter-spacing:.14em;font-size:12px;color:var(--dim);text-transform:uppercase}
 .fcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:10px}
@@ -204,6 +250,13 @@ body.desk .maplayout{display:grid;grid-template-columns:minmax(0,440px) 1fr;gap:
 body.desk .maplayout .mapwrap{position:sticky;top:120px}
 body.desk #mpanel{margin-top:0}
 body.desk .fcard,body.desk .fsec,body.desk .todo,body.desk .tprog,body.desk .ov{max-width:840px;margin-left:auto;margin-right:auto}
+body.desk .rcard,body.desk .rgrp,body.desk .rsum,body.desk .rfilt,body.desk .rnote{max-width:840px;margin-left:auto;margin-right:auto}
+body.desk .rcard{padding:15px 17px;border-radius:18px}
+body.desk .rcard .rname{font-size:17px}
+body.desk .rcard .rwhy{font-size:14.5px}
+body.desk .rscript{font-size:14px}
+body.desk .rtag{font-size:12px;padding:3px 10px}
+body.desk .rsum .rs .n{font-size:26px}
 /* desk: proportional type & spacing for full-width day cards */
 body.desk{font-size:17px}
 body.desk .tab{font-size:16px;padding:12px 0;border-radius:15px}
@@ -252,7 +305,7 @@ body.desk .reset{font-size:13px;padding:6px 15px}
   <div class="pills" id="pills"></div>
   <div id="content"></div>
 
-  <footer>안전한 여행 되세요 — have a safe trip 🇰🇷🇯🇵<br><span style="opacity:.6">v8 · auto-times are estimates · tap cards for notes &amp; links</span></footer>
+  <footer>안전한 여행 되세요 — have a safe trip 🇰🇷🇯🇵<br><span style="opacity:.6">v9 · 예약 TABLES = every lunch &amp; dinner with its booking channel · tap cards for notes</span></footer>
 </div>
 <button id="fab" class="hidden">⭐ Bench</button>
 
@@ -411,7 +464,7 @@ const SEOUL_DAYS = [
   ['🥖','Jayeondo Sogeumppang — salted bread','snack','iks','Ikseon-dong','3','안국 Anguk',5.0,20,'Viral salted bread — grab and go. Open till 10 PM, but popular flavors can sell out — if you pass it earlier in the Ikseon loop, buy then.','https://www.tiktok.com/@daveyscakestravels/video/7496822617878433031'],
   ['☔','Rain Report — indoor rain cafe','cafe','iks','Ikseon-dong','3','안국 Anguk',5.0,45,'Indoor rain every 15 min — K-drama umbrella photos + the famous tissue bread.','https://www.tiktok.com/@angelagiakas/video/7438035533227478279'],
   ['🚌','Seoul City Tour Bus — full loop, ride it all the way round','sight','gwh','Gwanghwamun','5','광화문 Gwanghwamun',null,90,'TOUR01 "Downtown, Palaces & Namsan" — the full ~90-min circuit, staying aboard the whole way and back to where you started. Board at the Gwanghwamun Stop; exchange your reserved ticket for a physical one at the booth first (68-2 Taepyeong-ro 1-ga). Buses every 30 min, first 9:20 AM, <b>last bus 4:50 PM</b>, closed Mondays. Open-top double-decker — bring a hat/sunscreen, late-Aug sun is strong up top. ☎ 02-777-6090.<br><br>⚠️ <b>Tight:</b> current pace has you reaching Gwanghwamun ~4:49 PM against that hard 4:50 last-bus cutoff — a 1-minute margin with no ticket-exchange buffer. If the day is running even slightly behind, cut Rain Report short and head over early; missing the last bus kills the whole plan.<br><br><b>The full 15-stop loop, in order:</b><br>• 1. Gwanghwamun Station (board here)<br>• 2. Myeong-dong<br>• 3. Namsangol Hanok Village<br>• 4. Ambassador Seoul Pullman Hotel<br>• 5. Shilla Hotel, Jangchungdan Park<br>• 6. N Seoul Tower<br>• 7. Hyatt Hotel<br>• 8. DDP, Dongdaemun Market<br>• 9. Daehak-ro<br>• 10. Changgyeonggung Palace<br>• 11. Changdeokgung Palace<br>• 12. Insa-dong, Bukchon<br>• 13. Cheongwadae (Blue House)<br>• 14. Gyeongbokgung, Folk Museum, MMCA<br>• 15. Sejong Center, Gwanghwamun Square<br>• → back to Gwanghwamun, hop off<br><br><b>Off at:</b> Stop 1/Gwanghwamun where you started, ~6:20 PM. Then ~35 min to Majang for dinner.','https://en.seoulcitybus.com/'],
-  ['🥩','Born and Bred — premium hanwoo beef','food','mj','Majang','5','마장 Majang',5.0,90,'Michelin-rated hanwoo by Majang Meat Market — last dinner in Seoul! 🇰🇷 Plan: 3F private room ×6, omakase course (~$145pp), <b>7:00 PM</b> — moved back from 6 to fit the full tour-bus loop. Booking details in checklist.','https://www.tiktok.com/@tiktok/video/7462314178645331218',0,19*60],
+  ['🥩','Born and Bred — premium hanwoo beef','food','mj','Majang','5','마장 Majang',5.0,90,'⚠️⚠️ <b>THIS CANNOT HAPPEN TONIGHT — Born and Bred is closed every Tuesday, and Sep 1 is a Tuesday.</b> Hours: Thu–Mon 12:00–15:00 &amp; 18:00–22:30, Wed dinner only, Tue closed.<br><br>Fix: move it to <b>Mon Aug 31, 7:00 PM</b> (a service day, and Monday dinner is currently empty), and make tonight <b>Geumdwaeji Sikdang</b> instead — Michelin Bib pork BBQ, no afternoon break, already on the bench, and it does not need a hard 7:00 PM start so the tour-bus timing relaxes.<br><br>⚠️ 3F private room carries a <b>minimum spend</b> (~₩1.5M for 2–4, ₩3M+ for 7+) — six on the ₩200K omakase may fall under it. See the 예약 TABLES tab.','https://www.tiktok.com/@tiktok/video/7462314178645331218',0,19*60],
   ['🎤','Su Noraebang (수노래방) — Gangnam','night','gns','Gangnam Stn','2','강남 Gangnam',null,90,'The crowd-favourite pick over a random coin noraebang: proper private rooms, clean, big regularly-updated song list (strong on English tracks), and genuinely foreigner-friendly — staff speak some English. ~₩20K/hr per room, and about +₩1,000/person gets you free-flow soft drinks, ice cream and popcorn. No alcohol served, open late. ⚠️ A few foreign reviewers have flagged inconsistent pricing — agree the room rate and per-hour total up front before you start singing.','https://www.tiktok.com/@erinasimon/video/7504416082028006698'],
   ['🌙','Last night at Park Hyatt — pack for Tokyo','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Pack tonight — 5:30 AM start tomorrow ✈️']
  ]},
@@ -440,7 +493,7 @@ const TOKYO_DAYS = [
   ['🛍️','Nakamise Shopping Street','shop','asa','Asakusa','A','浅草 Asakusa',4.0,45,'Traditional souvenirs, senbei crackers — right at the temple.','https://www.tiktok.com/@gwenslays/video/7491261024478481682'],
   ['🍞','Street breakfast — melon pan + dango + taiyaki','snack','asa','Asakusa','A','浅草 Asakusa',5.0,30,'Fresh melon pan (Kagetsudo), taiyaki, dango — all rated 5.0. Kagetsudo opens 9 AM sharp; dango/taiyaki stalls roll up ~10 — melon pan first, sweets on the loop back.','https://www.tiktok.com/@thefoodinbox/video/7418839509627849992'],
   ['🌿','Ueno Park & Museums','sight','ue','Ueno','JR','上野 Ueno',3.0,90,'Beautiful park, Tokyo National Museum, shrines.','https://www.tiktok.com/@laetitiaonlyjap0/video/7623464352598854934'],
-  ['🍣','Sushi no Midori — SPLURGE #1 (⚠️ branch TBD)','food','ue','Ueno','JR','上野 Ueno',5.0,60,'Best-value omakase in Tokyo — but ⚠️ there\'s NO Ueno branch (closest real ones: Shibuya Mark City, Ginza). Bookings cap at 4 — split 4+2, or grab a LINE/ticket-machine number right at 10 AM (lunch 11–3, LO 2:30). Crew may want to swap in an actual Ueno sushi spot for this slot.'],
+  ['🍣','Sushi no Midori — SPLURGE #1 (→ go to Ginza)','food','ue','Ueno','JR','上野 Ueno',5.0,60,'Best-value omakase in Tokyo. ⚠️ Confirmed against their official shop list: <b>there is no Ueno branch</b> — the real ones are Umegaoka, Ginza, Shibuya Mark City, Akasaka, Tamagawa, Kichijōji and a few more.<br><br><b>Go to the Ginza branch, not Shibuya</b> — the Ginza Line runs Ueno→Ginza direct, about half the travel. Ginza 8-3, 山下빌딩 1F, 4 min from Ginza Stn, open 11:00–20:00 daily. ☎ 03-5568-1212.<br><br>⚠️ TableCheck caps table bookings at <b>4 people</b> and won\'t join tables. The channel that takes all 6 is the <b>smartphone queue ticket (整理券)</b>, issued weekdays 10:00–13:30 for parties up to 10 — Thursday qualifies. Pull it at 10 AM. See the 예약 TABLES tab.'],
   ['🎮','Akihabara — Electric Town','sight','akb','Akihabara','JR','秋葉原 Akihabara',4.0,150,'Anime, arcades, retro games, maid cafes — sensory overload.','https://www.tiktok.com/@denniscollects/video/7299516368355937582'],
   ['🍦','Taiyaki & soft serve break','snack','akb','Akihabara','JR','秋葉原 Akihabara',5.0,30,'Fish-shaped custard waffle + Japanese soft serve.'],
   ['🍛','Afuri Ramen — yuzu shio','food','sj','Shinjuku','JR','新宿 Shinjuku',4.5,45,'Light yuzu-citrus ramen — totally different vibe from Ichiran.','https://www.tiktok.com/@jovin_wong/video/7310171680880561410',0,17*60],
@@ -451,13 +504,13 @@ const TOKYO_DAYS = [
   ['⛩️','Meiji Shrine','sight','hj','Harajuku','JR','原宿 Harajuku',4.0,90,'Peaceful forest shrine in the heart of Tokyo — go early.','https://www.instagram.com/reel/C3GBxouOQsc/'],
   ['🎀','Harajuku Takeshita Street','shop','hj','Harajuku','JR','原宿 Harajuku',4.0,90,'Kawaii fashion, rainbow crepes, cotton candy. Shops open ~10–11 — before that it\'s empty-street photo time; crepes from ~10:30.','https://www.tiktok.com/@kanainlosangeles/video/7440708716825021726'],
   ['🛍️','Omotesando + Shimokitazawa vintage — Champs-Élysées','shop','omo','Omotesando','G','表参道 Omotesandō',5.0,60,'Luxury flagships & architecture on Omotesando; detour to Shimokitazawa for thrift/vintage. Harajuku food stop: I\'m Donut? (viral fresh-mochi donuts).','https://www.tiktok.com/@freya.jasmine/video/7188353663809735938'],
-  ['🍛','Gyukatsu Motomura — fried wagyu cutlet','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Cook your own wagyu on a hot stone — unreal. Viral. ⚠️ Bookable tables (Bunten annex, Tabelog) only exist 3–5 PM — for a noon lunch hit the 11 AM open or split 2×3 across the queue.','https://www.instagram.com/reel/C1ELCQ6vNME/'],
+  ['🍛','Gyukatsu Motomura — fried wagyu cutlet','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Cook your own wagyu on a hot stone — unreal. Viral. ✅ Correction: <b>both Shibuya branches take bookings on TableCheck in English</b> (the "annex-only, 3–5 PM" note was wrong), and the chain only accepts reservations for <b>parties of 3+</b> — which works in our favour. Budget a ¥600/person seat fee on reserved tables. Book 6 at noon; if that\'s greyed out, try the 渋谷分店 annex, or just hit the 11 AM open.','https://www.instagram.com/reel/C1ELCQ6vNME/'],
   ['🚶','Shibuya Crossing + Hachiko','sight','shb','Shibuya','JR','渋谷 Shibuya',7.5,30,'World\'s busiest intersection — iconic.','https://www.instagram.com/reel/DXMaIyUiVu9/'],
   ['🌆','Shibuya Sky — BOOK AHEAD','sight','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Open-air rooftop above the crossing — book tickets in advance!','https://www.instagram.com/reel/DSXcEhaDJyB/'],
   ['🍦','Soft serve + rainbow crepes','snack','shb','Shibuya','JR','渋谷 Shibuya',5.0,30,'Soft serve ⭐5.0 + Harajuku crepes ⭐4.5.'],
   ['🏪','Don Quijote Shibuya','shop','shb','Shibuya','JR','渋谷 Shibuya',5.0,60,'Tax-free snacks, cosmetics, gadgets.','https://www.tiktok.com/@annietamaki/video/7285425316011674926'],
   ['🎨','teamLab Borderless — MUST BOOK','sight','rop','Roppongi','H','麻布台 Azabudai',5.0,120,'#1 most viral Tokyo spot — BOOK TICKETS IN ADVANCE.','https://www.instagram.com/reel/DKpVW37NSWj/'],
-  ['🥟','Gyoza dinner @ Roppongi — ✓ table for 6, 8 PM','food','rop','Roppongi','H','六本木 Roppongi',5.0,90,'Booked: reservation for 6 at 8:00 PM. (The omakase-sushi splurge moved to a Sunday option — see Day 4.)',null,0,20*60],
+  ['🥟','Gyoza dinner @ Roppongi — ⚠️ unnamed booking','food','rop','Roppongi','H','六本木 Roppongi',5.0,90,'Listed as "reservation for 6 at 8:00 PM" — but <b>no restaurant is named anywhere in the plan</b>, so nobody can confirm or change it. Ask Hailey for the venue and a confirmation number.<br><br>Almost certainly <b>GYOPAO 餃包 六본木交차점</b> — Tripadvisor\'s #1 dumpling spot in Tokyo, soup gyoza, 4-9-8 Roppongi, 114 m from the station, open 11 AM–7 AM daily. ☎ 050-1793-5544. ⚠️ They warn 7–10 PM is regularly full with a queue, so 8 PM Friday genuinely needs the booking — it\'s on TableCheck in English, so just book it and cancel the duplicate if Hailey\'s turns out real.',null,0,20*60],
   ['🌙','Hotel & rest','rest','sj','Shinjuku',null,'—',null,0,'Gyoza + teamLab coma — rest up.']
  ]},
  {id:'t3',num:'DAY 3',kr:'토요일',date:'Sat · Sep 5',iso:'2026-09-05',sub:'Tsukiji, Ginza & a night at the ballpark ⚾',anchor:7*60,items:[
@@ -467,7 +520,7 @@ const TOKYO_DAYS = [
   ['🛍️','Ginza — 12-floor Uniqlo flagship','shop','gz','Ginza','G','銀座 Ginza',3.0,90,'Japan-exclusive items + tax-free.','https://www.tiktok.com/@happiestdentist/video/7341084544839486766'],
   ['🍰','Japanese fruit parfait','snack','gz','Ginza','G','銀座 Ginza',4.5,30,'Strawberry, melon, or seasonal — legendary.','https://www.tiktok.com/@heysukitravel/video/7249692845118885166'],
   ['😴','Back to Shinjuku — recharge','rest','sj','Shinjuku','JR','新宿 Shinjuku',null,90,'Rest at the hotel before the evening.'],
-  ['🍖','Yakiniku late lunch — Daidokoya or Takibiya','food','shb','Shibuya','JR','渋谷 Shibuya',4.5,60,'Japanese BBQ — rated 4.5. ⚠️ Most yakiniku close 3–5 PM; these don\'t: Yakiniku Daidokoya honten (Sat from 1 PM, reservable) or Takibiya (through-service). Chain fallback: Yakiniku Like.','https://www.tiktok.com/@japanbyfood/video/7382507730612915474',0,15*60],
+  ['🍖','Yakiniku late lunch — book KINTAN for 2 PM','food','shb','Shibuya','JR','渋谷 Shibuya',4.5,60,'Japanese BBQ before first pitch. ⚠️ <b>Daidokoya doesn\'t exist in Shibuya</b> — the 大同苑 in Roppongi is permanently closed and the others are in Ōyama, Shin-Koiwa, Hachiōji, Morioka. Drop that name.<br><br>✅ <b>Takibiya is real</b> (肉のヒマ라야 焚火家 渋谷店) and runs continuously 11:30–23:00 on Saturdays, so 3 PM is served — but it books via Hot Pepper in Japanese, usually needing a JP phone. ☎ 03-5778-3039 via the concierge.<br><br><b>Easier: KINTAN Shibuya PARCO 7F</b> — books in English on TableCheck, 94 seats. Saturday service ends 15:30 with a 2-hr limit, so <b>book 2:00 PM, not 3:00</b>. Still leaves plenty before the 6 PM game.','https://www.tiktok.com/@japanbyfood/video/7382507730612915474',0,14*60],
   ['🎮','Arcades round 2','act','shb','Shibuya','JR','渋谷 Shibuya',5.0,75,'More claw machines — keep it to ~75 min so you make first pitch.'],
   ['⚾','Baseball @ Meiji Jingu Stadium','act','hj','Jingu Gaien','G','外苑前 Gaienmae',5.0,180,'NEW ⚾ — Tokyo Yakult Swallows night game, first pitch 6 PM. Umbrella-dance celebrations, ballpark food, ice-cold beer. ⚠️ Confirm the Swallows are home Sat Sep 5 & buy tickets ahead.','https://www.instagram.com/reel/DUtVExnEjVV/',0,18*60],
   ['🍜','Post-game ramen (Ichiran, open late)','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,45,'One more bowl for the road — Ichiran runs late, perfect after the game.','https://www.tiktok.com/@danielparkmusic/video/7229371334428544258'],
@@ -478,16 +531,16 @@ const TOKYO_DAYS = [
   ['🍳','Conbini breakfast','snack','sj','Shinjuku',null,'—',4.5,30,'Onigiri, egg sando, melon pan — hits different.'],
   ['🤖','Odaiba — waterfront & life-size Gundam','sight','oda','Odaiba','RM','東京テレポート Teleport',2.0,120,'Waterfront views, Rainbow Bridge, Gundam statue (outdoors, always up — transformation shows 11 AM/1/3/5). Mall + Gundam Base open at 10, so the first hour is statue + promenade.','https://www.tiktok.com/@jezzailagan/video/7310599321378966790'],
   ['🛍️','Last-minute souvenir shopping','shop','shb','Shibuya','JR','渋谷 Shibuya',null,90,'Tokyo Banana, Kit Kats, station souvenirs.'],
-  ['🍣','Farewell omakase lunch','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,90,'Last big sushi meal — go out with a bang.'],
+  ['🍣','Farewell omakase lunch','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,90,'⚠️ <b>Double-booked sushi:</b> the omakase splurge moved to <i>tonight\'s</i> farewell dinner (checklist c10), so as written Sunday is omakase at lunch AND omakase at dinner — two big sushi bills in one day. Pick one. Recommended: keep the splurge at dinner and make this lunch something else in Shibuya — <b>Hikiniku to Come (挽肉と米)</b> hamburg steak is already on the bench, right here, and crew-rated 5.0. See the 예약 TABLES tab.'],
   ['🍰','Fruit parfait or crepe','snack','shb','Shibuya','JR','渋谷 Shibuya',4.5,30,'One last sweet treat.'],
   ['💆','Spa / massage — Bitoria (optional)','spa','shb','Shibuya',null,'—',null,60,'NEW — unwind before the last night. Bitoria massage/spa; book a slot if the crew wants it.'],
   ['🚶','Free time — revisit favorites','rest','sj','Shinjuku/Shibuya',null,'—',null,120,'Go back to anything you loved — Donki, arcades, etc.'],
-  ['🍽️','Farewell dinner — Omoide Yokocho or omakase splurge','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,90,'Two ways to end it: Omoide Yokocho yakitori (smoky, cheap, iconic) OR the big omakase-sushi splurge — Sushi Akira or Sushi Saitou (book well ahead). Crew\'s call.','https://www.tiktok.com/@bigjohnjiak/video/7551784335146355986',0,17*60],
+  ['🍽️','Farewell dinner — Omoide Yokocho or omakase splurge','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,90,'Two ways to end it: Omoide Yokocho yakitori (smoky, cheap, iconic, no booking) OR the omakase splurge. ⚠️ If it\'s the splurge, <b>book SUSHI TOKYO TEN Roppongi</b> — 26 seats, open Sundays, TableCheck in English, ¥9,900–13,200. ☎ +81-3-5843-1690 for groups. Backup: Sushi Azabu (fixed 17:30/19:45 seatings).<br><br>❌ <b>Sushi Saitou is unbookable</b> — 8 seats, introduction-only, no path at 5 weeks. ⚠️ Sushi Akira is only 7 seats (6 = full buyout, ¥16.5–23.5K pp) and was closed Jul–late Aug 2026 with releases suspended. Don\'t build the last night on either.','https://www.tiktok.com/@bigjohnjiak/video/7551784335146355986',0,17*60],
   ['🌃','Final Kabukicho neon walk + conbini haul','night','sj','Shinjuku',null,'—',5.0,90,'Take ALL the photos. Buy ALL the snacks — onigiri for the plane.'],
   ['🌙','Pack up — last night in Tokyo','rest','sj','Shinjuku',null,'—',null,0,'What a trip 🇯🇵']
  ]},
  {id:'t5',num:'DEPART',kr:'월요일',date:'Mon · Sep 7',iso:'2026-09-07',sub:'Sayonara Tokyo ✈️ separate flights home',anchor:8*60,items:[
-  ['🍳','Breakfast — bills Omotesando or near hotel','food','sj','Shinjuku',null,'—',5.0,60,'⚠️ No bills in Shinjuku, and none open before 8:30 on weekdays. Omotesando branch (8:30, 10 min on JR) works if you keep it brisk — otherwise depachika/conbini by the hotel and keep the morning loose.',null,1,8*60+30],
+  ['🍳','Breakfast — bills Omotesando or near hotel','food','sj','Shinjuku',null,'—',5.0,60,'⚠️ No bills in Shinjuku. ✅ Omotesando <b>opens 8:30 daily including Monday</b> and takes bookings on TableCheck in English (Tokyu Plaza Omotesando Harajuku 7F) — so the 8:30 first seating for 6 is genuinely available if you want it. Honest call: skip it. Two different airports today, and it buys a 10-min JR hop each way for pancakes you\'ve had twice in Seoul. Depachika + conbini downstairs keep the morning loose.',null,1,8*60+30],
   ['🛍️','Last shopping / free time','shop','sj','Shinjuku',null,'—',null,60,'Station shops have great stuff.',null,1],
   ['🍜','Last Tokyo meal — ramen or quick sushi','food','sj','Shinjuku',null,'—',5.0,60,'One final bowl before splitting up.',null,1],
   ['🧳','Check out — head to airports','travel','sj','Shinjuku',null,'—',null,30,'Brysons → Haneda (Keikyu, ~30 min, arrive by 2 PM). Clearwaters → Narita (NEX, ~1.5 hr).',null,1],
@@ -549,6 +602,115 @@ const BENCH={
  ]
 };
 
+/* ===== MEAL RESERVATIONS =====
+   Every lunch & dinner on the itinerary, with the one booking channel that works
+   for 6 foreigners with no Korean/Japanese phone number.
+   status: book (bookable, not yet done) · done (confirmed) · walk (no booking exists) · decide (venue not picked yet)
+   contact email on all bookings: clearwaternk@naver.com */
+const RESV_EMAIL='clearwaternk@naver.com';
+const RESV=[
+/* ---------- SEOUL ---------- */
+{id:'v1',city:'seoul',iso:'2026-08-29',when:'Sat Aug 29 · first dinner',time:'5:30 PM',pax:6,
+ name:'Taecho Galbi 태초갈비 — Hongdae',status:'book',chan:'CatchTable Global',opens:'2026-07-30',tel:'0507-1337-4590',
+ links:[['CatchTable','https://app.catchtable.co.kr/ct/shop/TaechoGalbi'],['AutoReserve (English)','https://autoreserve.com/en/restaurants/iFWESVjktHnmqHzSLyv3']],
+ why:'Saturday night in Hongdae at 6–8 PM is the hardest slot of the Seoul leg, and the ~30-day window is already open. Book 5:30 rather than 6:00 — ahead of the peak wall, and it protects the nightlife block after it.<br><br>⚠️ <b>Book the Hongdae branch, not Myeongdong.</b> There are two Taecho Galbi locations and the Myeongdong one (6F, 명동10길 18) is the wrong side of the city.<br><br>⚠️ <b>The English CatchTable Global listing could not be confirmed</b> for this branch — the lookalike slug catchtable.net/shop/TAECHO is actually a different restaurant (The Roof Seoul, Myeongdong). If Taecho Hongdae does not appear in the Global app, use <b>AutoReserve</b> instead: it books by placing a Korean-language phone call on your behalf, so no Korean number is needed. That is the reliable path here.<br><br>Open 12:00–23:30 daily (last order ~22:30), 마포구 어울마당로 122, 2F.',
+ script:{l:'If you call — say this',t:'8월 29일 토요일 저녁 5시 30분, 6명 예약하고 싶습니다.<br>외국인이라 한국 번호가 없어요 — 이메일로 확인 보내주시겠어요? '+RESV_EMAIL+'<br><br><span style="opacity:.65">Sat Aug 29, 5:30 PM, party of 6. No Korean number — please confirm by email.</span>'}},
+
+{id:'v2',city:'seoul',iso:'2026-08-30',when:'Sun Aug 30 · breakfast',time:'9:00 AM',pax:6,
+ name:'bills 빌즈 강남 — ricotta pancakes',status:'book',chan:'CatchTable Global',opens:null,
+ links:[['CatchTable Global','https://www.catchtable.net/shop/bills_gangnam']],
+ why:'The easiest booking on this whole list. bills is on CatchTable Global with a full English page, takes foreign cards, and — per bills\' own copy — <b>always keeps room for walk-ins</b>. So this is low-stakes either way. Open from 9:00 AM daily; you want that first seating, because the Sunday plan (Seongsu crawl → 1:30 lunch) depends on leaving by 10.<br><br>⚠️ <b>It is at Yeoksam, not Samseong.</b> 강남구 테헤란로 142, ArcPlace 2F — one minute from <b>Yeoksam Stn exit 2</b>. Gangnam Station is a 10-minute walk away and the itinerary card says Samseong; do not navigate to either.<br><br>⚠️ Arrive <b>more than 10 minutes late and the table auto-cancels</b>. Set an 8:15 alarm.<br><br>This is one of <b>two separate bills bookings</b> — see Monday below.'},
+
+{id:'v3',city:'seoul',iso:'2026-08-30',when:'Sun Aug 30 · lunch',time:'1:30 PM',pax:6,
+ name:'놀부보쌈&부대찌개 을지로6가점 — budae jjigae',status:'book',chan:'Phone only',opens:null,tel:'0507-1363-1669',
+ why:'Phone only — confirmed: no CatchTable listing, no Naver booking widget, no AutoReserve. But it is a large 2F franchise outlet open 10:00–23:00 with no break, and <b>1:30 PM on a Sunday is past the lunch rush</b>, so a 6-top is routine and walking in is genuinely low risk.<br><br>Worth one call anyway, a day or two ahead, because six people plus a spa booked afterwards is not a queue you want to discover. If nobody in the crew speaks Korean, <b>ask the Park Hyatt concierge to place the call</b> — that is the path of least friction.<br><br>~200 m from DDP Exit 14 (same exit as Sparex), 2F of the 삼영빌딩, 서울 중구 을지로43길 34.',
+ script:{l:'Phone script',t:'8월 30일 일요일 오후 1시 30분, 6명 자리 있을까요?<br><br><span style="opacity:.65">Sun Aug 30, 1:30 PM, table for 6 — do you have room?</span>'}},
+
+{id:'v4',city:'seoul',iso:'2026-08-30',when:'Sun Aug 30 · dinner',time:'5:00 PM',pax:6,
+ name:'Myeongdong Kyoja 명동교자',status:'walk',chan:'No reservations',opens:null,
+ why:'Michelin-listed and <b>never takes reservations</b> — not even for groups, and there is no sign-up sheet. You queue on the street and are seated in arrival order. It does appear on CatchTable, but that is an on-site waitlist listing, not advance booking.<br><br>It does not matter: four items on the menu, three floors, and food lands in minutes. Two things that make it painless for 6 — <b>arrive ~4:30 PM</b>, the trough between lunch and dinner peaks, and know that <b>parties of 3+ get routed upstairs to 3F</b> (1F is for ones and twos), so your six will be seated together.<br><br>Open 10:30–21:00 daily, no break.'},
+
+{id:'v5',city:'seoul',iso:'2026-08-31',when:'Mon Aug 31 · breakfast',time:'9:00 AM',pax:6,
+ name:'bills 빌즈 강남 — second seating',status:'decide',chan:'CatchTable Global',opens:null,
+ links:[['CatchTable Global','https://www.catchtable.net/shop/bills_gangnam']],
+ why:'<b>Do not book this yet.</b> It is a straight repeat of Sunday\'s bills, and it is the designated flex item: if an <b>SMCC morning coffee rave</b> lands on Mon 8/31, this is what gets dropped to make room (the spa is not until 12:00, so the morning is free).<br><br>SMCC posts its weekly schedule around <b>Aug 27</b> for that week. Decide then — if no rave, book bills; if a rave drops, register all 6 and skip this. Booking it now just means a deposit you have to cancel.'},
+
+{id:'v7',crit:true,city:'seoul',iso:'2026-09-01',when:'Tue Sep 1 · last Seoul dinner',time:'7:00 PM',pax:6,sort:-9,
+ name:'⚠️ Born and Bred — CLOSED on the Tuesday it is booked for',status:'decide',chan:'Must move the date',opens:null,tel:'02-2294-5005',
+ links:[['CatchTable','https://app.catchtable.co.kr/ct/shop/bandb'],['CatchTable Global','https://www.catchtable.net/shop/bandb']],
+ why:'<b>Read this before booking anything else.</b> Born and Bred is <b>closed every Tuesday</b> — and Sep 1, 2026 is a Tuesday. Their hours are Thu–Mon 12:00–15:00 &amp; 18:00–22:30, Wed dinner only, <b>Tuesday closed</b>. The headline meal of the Seoul leg cannot happen as scheduled, and no amount of calling will change that.<br><br><b>The clean fix: move it to Mon Aug 31, 7:00 PM.</b> Monday is a service day for them, and Monday dinner is currently the one empty slot in Seoul (see below) — so the swap fills a hole instead of creating one. Majang sits right next to Seongsu, so Break Silence still works after. Tuesday\'s last-Seoul-dinner then becomes <b>Geumdwaeji Sikdang</b> (Michelin Bib pork BBQ, serves through the afternoon, already on the bench) — which also relieves the tight Seoul City Tour Bus timing, since it does not need a 7:00 PM hard start.<br><br>⚠️ <b>Budget warning on the 3F private room.</b> It is booked as a private venue with a <b>minimum spend</b> — roughly ₩1.5M for 2–4 guests, scaling past ₩3M for 7+. Six people on the ₩200K omakase is ₩1.2M, which is likely <i>below</i> the room minimum. Budget to the minimum, not the headcount, or take a regular floor table instead.<br><br>Booking is <b>CatchTable only</b> — the phone line is for enquiries, not reservations. The 3F room releases <b>on the 1st of the month, two months out</b>, so September is already open. Deposit required; <b>15 minutes late auto-cancels and forfeits it</b>.',
+ script:{l:'If you call to ask about the room',t:'8월 31일 월요일 저녁 7시, 6명, 3층 프라이빗룸 오마카세 코스 가능할까요? 최소 이용 금액도 알려주세요.<br>확인은 이메일로 부탁드립니다 — '+RESV_EMAIL+'<br><br><span style="opacity:.65">Mon Aug 31, 7 PM, 6 people, 3F private room omakase — is it available, and what is the minimum spend? Please confirm by email.</span>'}},
+
+{id:'v6',city:'seoul',iso:'2026-08-31',when:'Mon Aug 31 · dinner',time:'~7:00 PM',pax:6,sort:-8,
+ name:'Monday dinner — nothing booked (put Born and Bred here)',status:'decide',chan:'Pick one, then book',opens:null,tel:'02-540-0440',
+ why:'Monday runs spa → Ecojardin → Shake Shack at 5 → Break Silence → Euljiro. Shake Shack is a 5 PM stopgap, not a dinner, and <b>nothing is booked</b>.<br><br><b>First choice: move Born and Bred here.</b> It solves two problems at once — the Tuesday closure above, and this empty slot. Majang is next door to Seongsu, so Break Silence (open till midnight Mondays) still works after.<br><br>If the crew would rather keep the splurge for the last night, two easy Monday fallbacks, both already on the bench:<br>• <b>놀부부대찌개 압구정점</b> — Cheongsu\'s favourite, army stew. Phone only, ☎ 02-540-0440, call a day ahead. Apgujeong is on the way to Seongsu.<br>• <b>Geumdwaeji Sikdang 금돼지식당</b> — the Becksteads\' pick, Michelin Bib pork BBQ, no afternoon break.',
+ script:{l:'Phone script (Nolboo Apgujeong)',t:'8월 31일 월요일 저녁 6시 30분, 6명 예약 부탁드립니다.<br><br><span style="opacity:.65">Mon Aug 31, 6:30 PM, party of 6 please.</span>'}},
+
+{id:'v6b',city:'seoul',iso:'2026-08-31',when:'Mon Aug 31 · 5 PM stopgap',time:'5:00 PM',pax:6,
+ name:'Shake Shack Gangnam-daero',status:'walk',chan:'No reservations',opens:null,
+ why:'⚠️ The itinerary card says this is bookable via CatchTable. <b>It is not</b> — no Shake Shack Korea location takes table reservations. Their only group mechanism is 빅오더 (Big Order), which is bulk catering pickup, not a table.<br><br>No matter: counter order, find your own table, and 5 PM Monday is dead time between rushes. Send one person ahead to claim a table while the rest order. Gangnam Stn exit 10, 2 min. Open 10:30–22:00.'},
+
+{id:'v6c',city:'seoul',iso:'2026-08-31',when:'Mon Aug 31 · mid-morning',time:'10:30 AM',pax:6,
+ name:'Twelve Wonder Bar — House of Shinsegae',status:'walk',chan:'No reservations',opens:null,
+ why:'Worth knowing what this actually is: a <b>smoothie and fresh-pressed juice counter</b> on B1F of House of Shinsegae Cheongdam — about 40 varieties, next to Twelve Kitchen. It is a food-hall counter, not a sit-down restaurant, so there is nothing to reserve.<br><br>AutoReserve lists it as bookable, but AutoReserve auto-generates listings for venues it has scraped; that is not evidence the venue takes bookings. No CatchTable listing exists in either the Korean or Global app.<br><br>Opens <b>10:30</b> — the itinerary already targets the opening minute, so there will be no queue at all.'},
+
+{id:'v7b',city:'seoul',iso:'2026-09-01',when:'Tue Sep 1 · lunch',time:'~12:30 PM',pax:6,
+ name:'Cafe Pokpo 카페 폭포 — waterfall cafe',status:'walk',chan:'No reservations',opens:null,
+ why:'No reservation system exists — it is <b>run by the Seodaemun district office</b> (proceeds fund local scholarships) and terrace seating is explicitly first-come-first-served.<br><br>For a party of 6 the realistic plan is <b>two tables of 3</b> near the water rather than one six-top on the terrace. A Tuesday midday arrival is already the right side of the crowd; weekday mornings and late afternoons are the quiet windows.<br><br>Open 10:00–21:00 daily. 서대문구 연희로 262-24 — <b>no parking</b>, and it is a ~15-min walk from Hongje Stn (Line 3) exit 3.'},
+
+/* ---------- TOKYO ---------- */
+{id:'v8',city:'tokyo',iso:'2026-09-02',when:'Wed Sep 2 · arrival lunch & dinner',time:'—',pax:6,
+ name:'Ichiran Shinjuku + Omoide Yokocho',status:'walk',chan:'No seat reservations',opens:null,
+ links:[['Ichiran FastPass','https://www.tablecheck.com/en/ichiran-shinjuku-kabukicho/reserve']],
+ why:'Neither takes seat reservations, but there is <b>one lever worth knowing</b>: Ichiran now sells a <b>TableCheck FastPass</b> — ¥500 per person, non-refundable, buyable from 3 days out. It is a front-of-line pass, not a seat, and it <b>caps at 5 people</b>, so six of you would have to split. On a Wednesday arrival afternoon the queue is not bad; skip it unless you land to a wall.<br><br><b>Omoide Yokocho</b> is the one to plan around: stalls seat 6–10 people <i>total</i>, so a party of 6 will not fit at one counter. Go expecting to <b>split 2+2+2 or 3+3</b> and hop between them — that is how the alley is meant to be eaten anyway. Before 7 PM or after 9 avoids the worst crush. If you want one guaranteed anchor table, a few individual shops in the alley do take Tabelog bookings.'},
+
+{id:'v9',crit:true,city:'tokyo',iso:'2026-09-03',when:'Thu Sep 3 · lunch',time:'~12:30 PM',pax:6,sort:-5,
+ name:'Sushi no Midori — ⚠️ the Ueno branch does not exist',status:'decide',chan:'Queue ticket / TableCheck',opens:null,tel:'03-5568-1212',
+ links:[['TableCheck Ginza','https://www.tablecheck.com/en/shops/sushinomidori-ginza/reserve']],
+ why:'Confirmed against their official shop list: the branches are Umegaoka (honten), <b>Ginza</b>, Shibuya Mark City, Akasaka, Tamagawa, Kichijōji, Setagaya, Seijō, Shin-Yurigaoka and Nagoya. <b>There is no Ueno branch</b>, so this slot cannot be booked as written.<br><br><b>Go to Ginza, not Shibuya.</b> The plan\'s fallback was Shibuya Mark City, but Ginza is the better fit for an Asakusa→Ueno→Akihabara day — the <b>Ginza Line runs Ueno→Ginza direct</b>, roughly half the travel of Shibuya. Ginza 8-3, 山下ビル 1F, 4 min from Ginza Stn. Open 11:00–20:00 daily.<br><br><b>How to actually get all 6 in:</b> TableCheck seats table parties at <b>max 4 per booking</b> and will not join them. The channel that takes six in one group is the <b>smartphone queue ticket (整理券)</b> — issued weekdays 10:00–13:30, for parties up to 10. Sep 3 is a Thursday, so it is live. Pull the ticket at 10:00 that morning.<br><br>Belt and braces: book two 3-person TableCheck slots at Ginza now as a backstop, and drop them if the queue ticket comes through. Cancellation is free up to 3 days out.'},
+
+{id:'v9b',city:'tokyo',iso:'2026-09-03',when:'Thu Sep 3 · dinner',time:'5:00 PM',pax:6,
+ name:'AFURI Shinjuku — yuzu shio ramen',status:'walk',chan:'No reservations',opens:null,
+ why:'No bookings, and none needed. You buy from the <b>ticket machine at the entrance</b> — touchscreen with an English mode, cards accepted — then wait on the bench for a counter seat. Applies to both the Lumine 1 and Sumitomo Building branches.<br><br>⚠️ Ignore anything you find at afuriramen.com about a reservation waitlist — <b>that is the Portland, Oregon AFURI</b>, a legally separate company.'},
+
+{id:'v12b',city:'tokyo',iso:'2026-09-05',when:'Sat Sep 5 · breakfast',time:'~7:00 AM',pax:6,
+ name:'Tsukiji Outer Market — street food breakfast',status:'walk',chan:'No reservations',opens:null,
+ why:'Retail stalls and standing counters — nothing here takes bookings. Most shops run <b>05:00–14:00, Monday to Saturday</b>, so a Saturday works; Sundays and some Wednesdays see far fewer open.<br><br>Timing is the whole game: <b>peak is 07:00–09:00</b>, and the famous stalls hit 1–2 hour queues between 09:00 and noon. Arrive at 07:00 and graze rather than committing to one line, and six people can spread out and share instead of queueing as a block.'},
+
+{id:'v10',city:'tokyo',iso:'2026-09-04',when:'Fri Sep 4 · lunch',time:'12:00 PM',pax:6,
+ name:'Gyukatsu Motomura 牛カツもと村 — Shibuya',status:'book',chan:'TableCheck',opens:null,
+ links:[['TableCheck Shibuya','https://www.tablecheck.com/en/shops/gyukatsu-motomura-shibuya/reserve'],['Shibuya Annex','https://www.tablecheck.com/en/gyukatsu-motomura-shibuya-annex']],
+ why:'The plan says bookings exist only at the Bunten annex and only 3–5 PM. <b>That is wrong</b> — both Shibuya locations (渋谷店 and the 渋谷分店 annex, 11:00–22:00) have live TableCheck pages in English, no Japanese phone needed.<br><br>Better still, the chain <b>only accepts reservations for parties of 3 or more</b> — which is normally an obstacle and here works entirely in your favour. Budget a <b>¥600 per person seat fee</b> on reserved tables (+¥3,600 for six); that is the trade for not queueing 45–60 minutes at peak.<br><br>Try the main Shibuya page for 6 at 12:00 first; if noon is greyed out, try the annex. If both only open afternoon slots, there is a <b>Ueno branch</b> that would fit Thursday\'s route instead — or just be at the 11:00 open and walk in.'},
+
+{id:'v11',city:'tokyo',iso:'2026-09-04',when:'Fri Sep 4 · dinner',time:'8:00 PM',pax:6,sort:-6,
+ name:'GYOPAO Gyoza Roppongi — ⚠️ confirm the mystery booking',status:'book',chan:'TableCheck',opens:null,tel:'050-1793-5544',
+ links:[['TableCheck GYOPAO','https://www.tablecheck.com/en/shops/gyopao/reserve']],
+ why:'The itinerary says "✓ table for 6, 8:00 PM" and the checklist says "confirm it\'s locked" — but <b>the restaurant is named nowhere in the plan</b>. A reservation nobody can name is not a reservation. It arrived with Hailey\'s Friday swap, so she is the one to ask for a name and a confirmation number.<br><br>The near-certain venue is <b>GYOPAO 餃包 六本木交差点</b> — Tripadvisor\'s top-ranked dumpling restaurant in Tokyo, soup gyoza, 4-9-8 Roppongi, 114 m from the station, open <b>11:00 until 07:00</b> the next morning, 365 days a year.<br><br>⚠️ The restaurant itself warns that <b>19:00–22:00 is regularly full with a queue</b>, so 8 PM Friday genuinely needs the booking. It is on TableCheck in English with no Japanese phone required — <b>just book it for 6 at 20:00 now</b>. If Hailey\'s reservation turns out to be real, cancel one; a duplicate costs nothing and an empty Friday night in Roppongi costs the evening.'},
+
+{id:'v12',city:'tokyo',iso:'2026-09-05',when:'Sat Sep 5 · dawn',time:'~4:30 AM',pax:6,
+ name:'Sushi Dai 寿司大 — Toyosu',status:'walk',chan:'No reservations, ever',opens:null,
+ why:'Nothing has changed and nothing will: <b>no reservations, queue only</b>. The reality on the ground is that by 04:45 there are already 20–30 people ahead; at <b>05:00 a guard walks the line</b> and takes the day\'s seating order. Miss that and you are pushed to the ~07:30 seating.<br><br>Good news: Sep 5 is a Saturday and a confirmed <b>Toyosu trading day</b> (the market closes Sundays and Wednesdays — Sep 2, 9, 16 and 30 in 2026). Open 05:30–14:00. <b>Cash only</b> — bring ~¥6,000 per person; the omakase runs ¥4,500–5,500.<br><br>⚠️ The counter is tiny and <b>six will almost certainly be split across seatings</b>. Honest read: this is a three-hour commitment starting in the dark on a day that ends with a 6 PM ballgame. Send the two or three who genuinely want it, have them in line by <b>04:30</b>, and let everyone else graze Tsukiji Outer Market. If you want all six seated together, book Daiwa Sushi or another market counter instead.<br><br>(The lottery you may have read about is for the <i>tuna-auction viewing deck</i>, not the restaurant — different thing entirely.)'},
+
+{id:'v13',crit:true,city:'tokyo',iso:'2026-09-05',when:'Sat Sep 5 · late lunch',time:'2:00 PM',pax:6,sort:-4,
+ name:'Yakiniku before the ballgame — ⚠️ one named venue does not exist',status:'book',chan:'TableCheck',opens:null,tel:'03-5778-3039',
+ links:[['KINTAN Shibuya (English)','https://www.tablecheck.com/en/shops/kintan-shibuya-yakiniku/reserve'],['Takibiya (Hot Pepper, JP)','https://www.hotpepper.jp/strJ001275394/']],
+ why:'The 3 PM slot exists because most yakiniku shuts 15:00–17:00 — exactly when you want to eat. Of the two names in the plan, <b>only one is real</b>.<br><br>❌ <b>Daidokoya does not exist in Shibuya.</b> The 大同苑 in Roppongi is permanently closed and the other 大同苑/大幸苑 are in Ōyama, Shin-Koiwa, Hachiōji, Morioka and elsewhere. It may be a garbled reference to 韓の台所 in Shibuya — but that closes 15:00–17:30, so it fails anyway.<br><br>✅ <b>Takibiya is real and does serve through.</b> 肉のヒマラヤ 焚火家 渋谷店 runs <b>continuously 11:30–23:00 on Saturdays</b> (only weekdays break 15:00–17:00), so a 15:00 Saturday start is served. ⚠️ But it books through <b>Hot Pepper, in Japanese, generally wanting a Japanese phone</b> — a US-only party may not be able to self-book. Concierge call to 03-5778-3039 is the way in.<br><br><b>Recommended instead: KINTAN Shibuya PARCO 7F</b> — books in English on TableCheck, 94 seats, easy 6-top. One catch: Saturday service is 11:00–<b>15:30</b>, with a 2-hour seating limit and last order 30 min before close. So <b>book 14:00, not 15:00</b> — which still leaves plenty of room before first pitch at 6.'},
+
+{id:'v14',crit:true,city:'tokyo',iso:'2026-09-06',when:'Sun Sep 6 · lunch',time:'~1:00 PM',pax:6,
+ name:'Sunday lunch — ⚠️ double-booked with dinner',status:'decide',chan:'Pick one, then book',opens:null,
+ why:'As written, Sunday has an <b>omakase lunch AND an omakase-splurge dinner</b> — two large sushi bills in one day, which is almost certainly not intended: the splurge was moved <i>to</i> Sunday dinner in checklist c10 and this lunch card was never updated.<br><br>Recommended: <b>keep the splurge at dinner</b> and make lunch something else in Shibuya. <b>Hikiniku to Come (挽肉と米)</b> is already on the bench, is in Shibuya, and is crew-rated 5.0 — fresh-ground hamburg steak grilled in front of you. ⚠️ It books by <b>online lottery</b> and fills fast, so enter the moment the window opens rather than planning on it.<br><br>Simplest alternative, and no worse: leave lunch as a light walk-in — Genki Sushi, a fruit parfait, a conbini raid — and put the whole budget into dinner.'},
+
+{id:'v15',city:'tokyo',iso:'2026-09-06',when:'Sun Sep 6 · farewell dinner',time:'5:30 PM',pax:6,sort:-7,
+ name:'Farewell omakase — book SUSHI TOKYO TEN',status:'book',chan:'TableCheck + phone',opens:null,tel:'03-5843-1690',
+ links:[['Sushi Tokyo Ten (best odds)','https://www.tablecheck.com/en/shops/sushitokyo-ten-roppongi/reserve'],['Sushi Azabu','https://www.tablecheck.com/en/shops/sushi-azabu/reserve']],
+ why:'The last dinner of the trip, and <b>nothing is booked</b>. Of the four names floated, here is what actually survives contact:<br><br>✅ <b>SUSHI TOKYO TEN, Roppongi — book this one.</b> Tokyo Midtown Garden Terrace 1F. <b>26 seats</b>, the largest of the four by far, open <b>every Sunday</b> (dinner 17:00–21:30), TableCheck in English, no table charge, no booking fee. Omakase ¥9,900–13,200. ⚠️ The shop asks that <b>group bookings go by phone</b>, so if the site will not take 6, call +81-3-5843-1690.<br><br>✅ <b>Sushi Azabu</b> — solid backup, also open Sundays but on <b>fixed seatings: 17:30 or 19:45</b>. Dinner omakase ¥9,800. Cancel 3+ days ahead or pay 100%; 15 minutes late is a no-show.<br><br>⚠️ <b>Sushi Akira</b> — only 7 seats, so a party of 6 is effectively a <b>full buyout</b>, at ¥16,500–23,500pp. Books on OMAKASE, released the 1st of each month. And it was listed as <b>temporarily closed from Jul 12 to late Aug 2026</b> with releases suspended — September inventory may have dropped today or may not exist yet. Too fragile for the last night.<br><br>❌ <b>Sushi Saitou — give up on it.</b> Eight seats, introduction-only, and has been for years. There is no path for a first-time foreign diner at five weeks\' notice. Do not build the last night on it.<br><br>Zero-stress alternative if the splurge does not come together: <b>Omoide Yokocho yakitori</b> — no booking, and arguably a better last night than an expensive counter.'},
+
+{id:'v16',city:'tokyo',iso:'2026-09-07',when:'Mon Sep 7 · departure breakfast',time:'8:30 AM',pax:6,
+ name:'bills Omotesando — bookable, but consider skipping',status:'decide',chan:'TableCheck',opens:null,
+ links:[['TableCheck bills Omotesando','https://www.tablecheck.com/en/shops/bills-omotesando/reserve']],
+ why:'Correcting the itinerary note: bills Omotesando <b>opens 08:30 every day including Monday</b>, takes bookings weekdays, and is on TableCheck in English — so an 8:30 first seating for 6 is genuinely available. Tokyu Plaza Omotesando Harajuku 7F. ⚠️ Reconfirm the address printed on your confirmation; the venue could not be independently re-verified for 2026.<br><br>Still — the honest recommendation is <b>skip it</b>. This is a day with two different airports to reach (Brysons to Haneda, Clearwaters to Narita), and it buys a 10-minute JR hop each way for pancakes you will already have eaten twice in Seoul. The Shinjuku Park Tower depachika and the conbini downstairs are genuinely good and cost nothing in transit.<br><br>If the crew wants the ritual anyway, book it — just do it now rather than deciding at 7 AM that morning.'}
+];
+
 /* ===== Booking checklist ===== */
 const TODOS=[
  ['c1','✈️','GMP → HND — Brysons & Becksteads still to book','ASAP — fares climb','Clearwaters (Nick + Olivia) ticketed ✓ Sep 2 on JL90. Brysons + Becksteads: book the same morning GMP→HND.'],
@@ -557,16 +719,19 @@ const TODOS=[
  ['c6','💆','Spa Gogyeol — Mon Aug 31, 12/12:30 PM ✓ BOOKED','—','Cheongdam branch (J&C Building) — Package 1, 150 min, ×6: 4 @ 12:00 PM + 2 @ 12:30 PM. From ₩120K. Confirmed via Instagram. ⚠️ Conflicts with the 3 PM Ecojardin booking — see that item.',1],
  ['c7','🎨','Ecojardin color analysis + headspa ✓ BOOKED','—','Coex branch, Mon Aug 31, 3:00 PM, ×3 — color analysis + 18-step scalp treatment. Confirmed via WhatsApp.',1],
  ['c8','✨','Pick + book facial clinic','by mid-Aug','Aqua Peel / HydraFacial / Rejuran — Gangnam beauty district.'],
- ['c9','🥩','Reserve Born and Bred ×6 — Tue Sep 1, 7:00 PM','~Aug 1 — books fast','DECIDED: 3F private room ×6, omakase course (~₩200K/pp ≈ $145), <b>7:00 PM</b> (moved back from 6:00 so the full Seoul City Tour Bus loop fits). Call ☎ 02-2294-5005 (12–3 PM KST = 8–11 PM PT) — say: "9월 1일 화요일 저녁 7시, 6명, 3층 프라이빗룸 오마카세 코스로 예약하고 싶어요" — or <a href="https://app.catchtable.co.kr/ct/shop/bandb" target="_blank">CatchTable</a> when the window opens ~Aug 1. Backup: Woo Tender near hotel.'],
- ['c10','🍣','Book omakase splurge ×6 — moved to Sun Sep 6','early July (1–2 mo window)','Off Friday (that\'s gyoza now) → Sunday farewell dinner. Hailey\'s picks: Sushi Akira or Sushi Saitou (book well ahead). Easy 6-tops for foreigners: <a href="https://www.tablecheck.com/en/shops/sushi-azabu/reserve" target="_blank">Sushi Azabu</a> (max 7) or <a href="https://www.tablecheck.com/en/shops/sushitokyo-ten-roppongi/reserve" target="_blank">Sushi Tokyo Ten Roppongi</a> (max 12). TableCheck, English, foreign cards OK.'],
- ['c21','🥟','Gyoza @ Roppongi ×6 — Fri Sep 4, 8 PM','confirm it\'s locked','Hailey\'s new Friday dinner (replaces the omakase). Reservation for 6 at 8:00 PM.'],
+ ['c9','🥩','⚠️ Born and Bred is CLOSED Tuesdays — move it off Sep 1','decide today','<b>Sep 1, 2026 is a Tuesday and Born and Bred closes every Tuesday</b> (Thu–Mon 12–3 &amp; 6–10:30, Wed dinner only). The headline Seoul dinner cannot happen as booked.<br><br><b>Fix: move it to Mon Aug 31, 7:00 PM</b> — a service day, and Monday dinner is currently empty, so the swap fills a hole. Tuesday then becomes <b>Geumdwaeji Sikdang</b> (benched, no afternoon break), which also relieves the tight tour-bus timing.<br><br>Booking is <b>CatchTable only</b> — the phone line is enquiries, not reservations. 3F room releases on the 1st of the month, 2 months out, so September is open now. ⚠️ 3F carries a <b>minimum spend</b> (~₩1.5M for 2–4, ₩3M+ for 7+); six on the ₩200K omakase may fall under it. Deposit required; 15 min late = auto-cancel + forfeit. ☎ 02-2294-5005 for the room question. <a href="https://www.catchtable.net/shop/bandb" target="_blank">CatchTable Global</a>'],
+ ['c10','🍣','Book the farewell omakase ×6 — Sun Sep 6','this week','<b>Book <a href="https://www.tablecheck.com/en/shops/sushitokyo-ten-roppongi/reserve" target="_blank">SUSHI TOKYO TEN Roppongi</a></b> — 26 seats (biggest of the candidates), open every Sunday 5–9:30 PM, TableCheck in English, no table charge, ¥9,900–13,200. Groups are routed to phone: ☎ +81-3-5843-1690.<br><br>Backup: <a href="https://www.tablecheck.com/en/shops/sushi-azabu/reserve" target="_blank">Sushi Azabu</a> — open Sundays but fixed seatings 17:30/19:45, ¥9,800, cancel 3+ days ahead or pay 100%.<br><br>❌ <b>Sushi Saitou: drop it.</b> 8 seats, introduction-only, no path for first-time foreign diners. ⚠️ Sushi Akira: 7 seats so 6 = full buyout at ¥16.5–23.5K pp, and it was closed Jul 12–late Aug 2026 with releases suspended.'],
+ ['c21','🥟','Gyoza @ Roppongi ×6 — Fri Sep 4, 8 PM','name the venue, then book','⚠️ <b>Nobody has named this restaurant.</b> Ask Hailey for the venue + confirmation number. Almost certainly <b>GYOPAO 餃包 六本木交差点</b> — Tripadvisor #1 dumplings in Tokyo, 4-9-8 Roppongi, open 11 AM–7 AM daily, ☎ 050-1793-5544. They warn 7–10 PM is regularly full with a queue, so just <a href="https://www.tablecheck.com/en/shops/gyopao/reserve" target="_blank">book it on TableCheck</a> (English, no JP phone) and cancel the duplicate if Hailey\'s turns out real.'],
  ['c22','⚾','Tokyo baseball ×6 — Sat Sep 5, 6 PM','when NPB schedule posts','Tokyo Yakult Swallows @ Meiji Jingu Stadium. ⚠️ First confirm they\'re home Sat Sep 5 on the 2026 NPB schedule, then buy 6 tickets (official site / ticket apps). Nearest station Gaienmae.'],
  ['c23','💆','Bitoria spa/massage — Sun Sep 6 (optional)','a few days ahead if wanted','Hailey\'s new Sunday-afternoon add. Optional group relax before the final night — book a slot if the crew wants it (walk-in may also work).'],
  ['c15','📲','Install CatchTable Global + TableCheck apps','this week','The two booking apps that work without a Korean phone number. CatchTable Global: bills, Jeju Oktap + remote queues. TableCheck: all the Tokyo bookings.'],
- ['c16','🥩','Reserve Taecho Galbi ×6 — Sat Aug 29 dinner','~Aug 1 (rolling ~30-day window)','Saturday Hongdae slots go fast — book the day the window opens. <a href="https://app.catchtable.co.kr/ct/shop/TaechoGalbi" target="_blank">CatchTable</a> or <a href="https://autoreserve.com/en/restaurants/iFWESVjktHnmqHzSLyv3" target="_blank">AutoReserve</a> (English — books via AI phone call) · ☎ 0507-1337-4590.'],
- ['c17','🥞','Reserve bills Gangnam ×6 — Sun 8/30 AND Mon 8/31, 9:00 AM','1–2 wks out','Two separate bookings needed — bills is open 9am-10pm daily per billskorea.com (no weekday/weekend split). Sun: NB Run Hub Bukchon got benched to make room for this. Mon: pairs with a Twelve smoothie right after. <a href="https://www.catchtable.net/shop/bills_gangnam" target="_blank">CatchTable Global</a> — takes foreigners. Deposit; free cancel ≥2 days out; ⚠️ >10 min late = auto-cancel + forfeit.'],
- ['c18','🍣','Sushi no Midori — pick a real branch + split 4+2','by mid-Aug','⚠️ There is NO Ueno branch (despite the plan). Nearest real options: Shibuya Mark City or Ginza. TableCheck caps bookings at 4 and won\'t join tables — book 4+2 back-to-back, or all 6 hit the Shibuya ticket machine at 10 AM for the 11 AM open. <a href="https://www.tablecheck.com/en/shops/sushinomidori-shibuya/reserve" target="_blank">TableCheck Shibuya</a>.'],
- ['c19','📞','Call Nolboo Apgujeong for 6 — Mon Aug 31, 6:30 PM','day or two before','No booking platform — phone only: ☎ 02-540-0440. Easy table on a Monday.'],
+ ['c16','🥩','Reserve Taecho Galbi ×6 — Sat Aug 29, 5:30 PM','window is open NOW','Saturday Hongdae 6–8 PM is the hardest slot of the Seoul leg and the ~30-day window is already open. ⚠️ <b>Book the Hongdae branch</b> (마포구 어울마당로 122, 2F) — there\'s a Myeongdong one too. Open 12:00–23:30.<br><br>⚠️ The English CatchTable Global listing couldn\'t be confirmed for this branch (catchtable.net/shop/TAECHO is a <i>different</i> restaurant). If it doesn\'t show in the Global app, use <a href="https://autoreserve.com/en/restaurants/iFWESVjktHnmqHzSLyv3" target="_blank">AutoReserve</a> — it books by placing a Korean phone call for you, so no Korean number needed. <a href="https://app.catchtable.co.kr/ct/shop/TaechoGalbi" target="_blank">CatchTable KR</a> · ☎ 0507-1337-4590.'],
+ ['c17','🥞','Reserve bills ×6 — Sun 8/30 (and maybe Mon 8/31), 9:00 AM','now — low risk','On <a href="https://www.catchtable.net/shop/bills_gangnam" target="_blank">CatchTable Global</a> with a full English page and foreign cards. bills says they <b>always keep room for walk-ins</b>, so this is low-stakes either way.<br><br>⚠️ <b>It\'s at Yeoksam, not Samseong</b> — 강남구 테헤란로 142 ArcPlace 2F, 1 min from Yeoksam Stn exit 2. ⚠️ >10 min late = auto-cancel.<br><br>Book <b>Sunday</b> now. <b>Hold off on Monday</b> — it\'s a duplicate and the designated flex item: if an SMCC coffee rave lands Mon 8/31 it gets dropped. Decide after the ~Aug 27 schedule drop.'],
+ ['c18','🍣','Sushi no Midori — go to GINZA, pull a queue ticket for 6','by mid-Aug','⚠️ Confirmed: there is <b>no Ueno branch</b>. <b>Use Ginza, not Shibuya</b> — the Ginza Line runs Ueno→Ginza direct, about half the travel. Ginza 8-3 山下빌딩 1F, open 11–8 daily, ☎ 03-5568-1212.<br><br>TableCheck caps table bookings at <b>4</b> and won\'t join them. The only channel that takes all 6 in one group is the <b>smartphone queue ticket (整理券)</b> — weekdays 10:00–13:30, parties up to 10. Thu Sep 3 qualifies: pull it at 10 AM. Backstop: book two 3-person <a href="https://www.tablecheck.com/en/shops/sushinomidori-ginza/reserve" target="_blank">TableCheck Ginza</a> slots now (free cancel 3+ days out).'],
+ ['c19','📞','Monday Aug 31 dinner — still empty','after the c9 decision','Monday runs spa → Ecojardin → Shake Shack at 5 → Break Silence → Euljiro. Shake Shack is a 5 PM stopgap, not a dinner, and nothing is booked.<br><br><b>First choice: put Born and Bred here</b> (see c9) — it fixes the Tuesday closure and fills this slot at once; Majang is next door to Seongsu so Break Silence still works after.<br><br>Otherwise, phone-only fallbacks, both benched: <b>놀부부대찌개 압구정점</b> ☎ 02-540-0440 (call a day ahead) or <b>Geumdwaeji Sikdang</b> (no afternoon break).'],
+ ['c24','🍜','Call Nolboo Euljiro 6-ga ×6 — Sun Aug 30, 1:30 PM','a day or two before','Phone only — no CatchTable, no Naver widget: ☎ 0507-1363-1669. Large 2F franchise outlet, open 10–11 daily, and 1:30 PM Sunday is past the rush, so walking in is low risk — but six people with a spa booked after is not a queue you want to discover. Ask the Park Hyatt concierge to place the call if nobody speaks Korean.'],
+ ['c25','🍛','Book Gyukatsu Motomura ×6 — Fri Sep 4, 12:00','anytime','✅ Correction: <b>both Shibuya branches book on TableCheck in English</b> (the "annex-only, 3–5 PM" note was wrong), and the chain only takes reservations for <b>parties of 3+</b> — which suits us. ¥600/person seat fee on reserved tables. <a href="https://www.tablecheck.com/en/shops/gyukatsu-motomura-shibuya/reserve" target="_blank">TableCheck Shibuya</a> · <a href="https://www.tablecheck.com/en/gyukatsu-motomura-shibuya-annex" target="_blank">annex</a> if noon is greyed out.'],
+ ['c26','🍖','Book yakiniku ×6 — Sat Sep 5, 2:00 PM (not 3:00)','anytime','⚠️ <b>Daidokoya doesn\'t exist in Shibuya</b> — drop that name. Takibiya is real and serves through Saturday afternoon, but books via Hot Pepper in Japanese (☎ 03-5778-3039, concierge call).<br><br>Easier: <b><a href="https://www.tablecheck.com/en/shops/kintan-shibuya-yakiniku/reserve" target="_blank">KINTAN Shibuya PARCO 7F</a></b> — English, TableCheck, 94 seats. Saturday service ends 15:30 with a 2-hr limit, so <b>book 2:00 PM</b>. Still comfortable before the 6 PM first pitch.'],
  ['c20','🎧','Coffee rave: catch SMCC\'s weekly schedule drop','~Aug 20 and ~Aug 27','Verified on their IG: SMCC posts a <b>WEEKLY SCHEDULE</b> story (Mon–Sun, with registration) roughly <b>3–5 days before each week starts</b>, historically on a Thursday — not the old "monthly, 1–2 weeks out" assumption.<br><br><b>Two drops to watch</b> (calendar reminders set): ~<b>Aug 20</b> covers Sat 8/29 + Sun 8/30 · ~<b>Aug 27</b> covers Mon 8/31 + Tue 9/1. Register all 6 the moment it posts.<br><br><b>Preferred slot: Mon Aug 31, before the spa day.</b> Spa Gogyeol is 12:00, and Monday\'s bills is a duplicate of Sunday\'s and isn\'t booked yet — so drop Monday bills and go rave → Twelve → spa. No rebooking needed. Sun 8/30 is the backup (likelier to be a true rave, but collides with the 9 AM bills booking).<br><br>⚠️ Every confirmed rave-format event fell on a <b>Saturday</b>; weekday Seoul events skew smaller (Coffee Chat / Espresso Run / Ritual) and I found no Monday example. <a href="https://www.instagram.com/seoulmorningcoffeeclub/" target="_blank">@seoulmorningcoffeeclub</a> · Fallback needs no ticket: MTL Hannam cafe DJ sets every Fri–Sun.'],
  ['c11','📱','eSIMs for Korea + Japan','week before','Airalo / Ubigi — one per phone, install before flying.'],
  ['c12','💳','Transit cards — T-money/TTC+ + Suica','before landing','From your TikTok saves: skip the plastic card — add T-money to iPhone Apple Wallet in 30 sec (or grab the new TTC+ prepaid card). Suica also adds straight from Apple Wallet for Tokyo.'],
@@ -688,14 +853,16 @@ async function fetchWeather(){
 }
 
 /* ================= RENDER ================= */
-const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOKYO'},{id:'map',kr:'지도',en:'MAP'},{id:'music',kr:'음악',en:'MUSIC'},{id:'todo',kr:'체크',en:'TO-DO'},{id:'flights',kr:'항공',en:'FLIGHTS'},{id:'info',kr:'정보',en:'INFO'}];
+const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOKYO'},{id:'resv',kr:'예약',en:'TABLES'},{id:'map',kr:'지도',en:'MAP'},{id:'music',kr:'음악',en:'MUSIC'},{id:'todo',kr:'체크',en:'TO-DO'},{id:'flights',kr:'항공',en:'FLIGHTS'},{id:'info',kr:'정보',en:'INFO'}];
 let curView='seoul',mapCity='seoul',selZone=null;
 const $=s=>document.querySelector(s);
 
 function todoLeft(){return TODOS.filter(t=>!t[5]&&!store.checks[t[0]]).length}
+function resvLeft(){return RESV.filter(r=>r.status!=='walk'&&r.status!=='done'&&!store.checks['rv_'+r.id]).length}
 function renderTabs(){
   $('#tabs').innerHTML=VIEWS.map(v=>{
-    const badge=v.id==='todo'&&todoLeft()?`<span class="bdgct">${todoLeft()}</span>`:'';
+    const n=v.id==='todo'?todoLeft():v.id==='resv'?resvLeft():0;
+    const badge=n?`<span class="bdgct">${n}</span>`:'';
     return `<div class="tab ${v.id===curView?'on':''}" data-c="${v.id}">${v.kr}<small>${v.en}</small>${badge}</div>`;
   }).join('');
   document.querySelectorAll('.tab').forEach(el=>el.onclick=()=>{curView=el.dataset.c;renderAll();window.scrollTo({top:0})});
@@ -712,8 +879,8 @@ function renderPills(){
 }
 function starLabel(r){return r==null?null:'⭐ '+(r%1?r.toFixed(1):r+'.0')}
 /* Korean phone → tap-to-dial that works from a US/intl phone: +82, leading 0 dropped */
-function telify(s){return (s||'').replace(/(?<![\d>])(0\d{1,3}-\d{3,4}-\d{4})(?!\d)/g,
-  m=>`<a href="tel:+82${m.slice(1).replace(/-/g,'')}" onclick="event.stopPropagation()">${m} 📞</a>`)}
+function telify(s,cc){cc=cc||'82';return (s||'').replace(/(?<![\d>])(0\d{1,3}-\d{3,4}-\d{4})(?!\d)/g,
+  m=>`<a href="tel:+${cc}${m.slice(1).replace(/-/g,'')}" onclick="event.stopPropagation()">${m} 📞</a>`)}
 function navLink(city,it){
   if(city==='seoul'){
     const m=NAVER.find(n=>it[1].includes(n[0]));
@@ -875,6 +1042,83 @@ function todoHTML(){
     </div>`;
    }).join('');
 }
+/* ----- reservations ----- */
+const RSTAT={
+  book:{l:'BOOK IT',c:'go'}, done:{l:'LOCKED IN ✓',c:'ok'},
+  walk:{l:'WALK-IN',c:''}, decide:{l:'DECIDE FIRST',c:'warn'}
+};
+let resvFilter='todo';
+function resvDone(r){return r.status==='done'||!!store.checks['rv_'+r.id]}
+function windowOpen(r){
+  if(!r.opens)return true;
+  return new Date().toISOString().slice(0,10)>=r.opens;
+}
+function resvGroup(r){
+  if(resvDone(r))return 5;
+  if(r.crit)return 0;
+  if(r.status==='walk')return 4;
+  if(r.status==='decide')return 3;
+  return windowOpen(r)?1:2;
+}
+const RGRPLBL=[
+  '🚨 Broken as written — fix these before booking anything',
+  '🔴 Book now — the window is open',
+  '🟡 Window opens later — set a reminder',
+  '🟠 Pick the restaurant first, then book',
+  '⚪ Walk-in only — no booking exists',
+  '🟢 Locked in'
+];
+function daysUntil(iso){
+  const d=Math.round((new Date(iso+'T12:00:00Z')-new Date())/864e5);
+  return d;
+}
+function resvHTML(){
+  const g=n=>RESV.filter(r=>resvGroup(r)===n).length;
+  let h=`<div class="rsum">
+    <div class="rs"><div class="n" style="color:#ff2d55">${g(0)}</div><div class="l">fix first</div></div>
+    <div class="rs"><div class="n" style="color:var(--red)">${g(1)+g(2)}</div><div class="l">book now</div></div>
+    <div class="rs"><div class="n" style="color:var(--gold)">${g(3)}</div><div class="l">decide</div></div>
+    <div class="rs"><div class="n" style="color:var(--mint)">${g(5)}</div><div class="l">locked</div></div>
+  </div>`;
+  h+=`<div class="rnote">Every lunch &amp; dinner on the itinerary is listed here with the <b>one channel that actually works for 6 foreigners</b> — no Korean or Japanese phone number needed. Tap a card for the booking link, the phone number, and a copy-paste script in Korean or Japanese. Tap the checkbox once it's confirmed.</div>`;
+  const filts=[['todo','Still to book'],['all','All meals'],['seoul','🇰🇷 Seoul'],['tokyo','🇯🇵 Tokyo']];
+  h+=`<div class="rfilt">${filts.map(([k,l])=>`<div class="rf ${k===resvFilter?'on':''}" data-rf="${k}">${l}</div>`).join('')}</div>`;
+  let list=RESV.slice();
+  if(resvFilter==='todo')list=list.filter(r=>!resvDone(r)&&r.status!=='walk');
+  else if(resvFilter==='seoul'||resvFilter==='tokyo')list=list.filter(r=>r.city===resvFilter);
+  list.sort((a,b)=>resvGroup(a)-resvGroup(b)||a.iso.localeCompare(b.iso)||(a.sort||0)-(b.sort||0));
+  let lastG=-1;
+  if(!list.length)h+=`<div style="text-align:center;color:var(--dim2);padding:30px 0">Nothing left in this filter 🎉</div>`;
+  for(const r of list){
+    const g=resvGroup(r);
+    if(g!==lastG){h+=`<div class="rgrp">${RGRPLBL[g]}</div>`;lastG=g}
+    const dn=resvDone(r),st=RSTAT[dn?'done':r.status];
+    const dl=daysUntil(r.iso);
+    const dupChan=r.chan&&(r.links||[]).some(([l])=>l.toLowerCase().includes(r.chan.toLowerCase()));
+    const tags=[
+      `<span class="rtag ${st.c}">${st.l}</span>`,
+      `<span class="rtag">×${r.pax}</span>`,
+      r.time?`<span class="rtag">${r.time}</span>`:'',
+      `<span class="rtag ${dl<=14?'warn':''}">${dl>0?'in '+dl+' days':'today'}</span>`,
+      r.chan&&!dupChan?`<span class="rtag act">${r.chan}</span>`:'',
+      !dn&&r.opens&&!windowOpen(r)?`<span class="rtag warn">opens ${r.opens.slice(5)}</span>`:'',
+      ...(r.links||[]).map(([l,u])=>`<a class="rtag act" href="${u}" target="_blank" rel="noopener" onclick="event.stopPropagation()">↗ ${l}</a>`),
+      r.tel?`<a class="rtag" href="tel:+${r.city==='tokyo'?'81':'82'}${r.tel.slice(1).replace(/-/g,'')}" onclick="event.stopPropagation()">📞 ${r.tel}</a>`:''
+    ].filter(Boolean).join('');
+    h+=`<div class="rcard st-${dn?'done':r.status} ${dn?'done':''}" data-rv="${r.id}">
+      <div class="rtop">
+        <div class="rcb">${dn?'✓':''}</div>
+        <div class="rmain">
+          <div class="rwhen">${r.when}</div>
+          <div class="rname">${r.name}</div>
+          <div class="rtags">${tags}</div>
+          <div class="rwhy">${telify(r.why||'',r.city==='tokyo'?'81':'82')}${r.script?`<div class="rscript"><span class="sl">${r.script.l}</span>${r.script.t}</div>`:''}</div>
+        </div>
+      </div>
+    </div>`;
+  }
+  return h;
+}
 function flightsHTML(){
   let h='';
   for(const g of FLIGHTS){
@@ -960,12 +1204,15 @@ function renderAll(){
     if(curView==='map')html=mapHTML();
     else if(curView==='music')html=musicHTML();
     else if(curView==='todo')html=todoHTML();
+    else if(curView==='resv')html=resvHTML();
     else if(curView==='info')html=infoHTML();
     else html=flightsHTML();
   }
   const open=new Set([...document.querySelectorAll('.card.open')].map(el=>el.closest('.list')?.dataset.day+'|'+el.dataset.idx));
+  const ropen=new Set([...document.querySelectorAll('.rcard.open')].map(el=>el.dataset.rv));
   $('#content').innerHTML=html;
   open.forEach(k=>{const [d,i]=k.split('|');document.querySelector(`.list[data-day="${d}"] .card[data-idx="${i}"]`)?.classList.add('open')});
+  ropen.forEach(k=>document.querySelector(`.rcard[data-rv="${k}"]`)?.classList.add('open'));
   bind();
 }
 function rerenderDay(day){
@@ -996,6 +1243,14 @@ function bind(){
   document.querySelectorAll('.todo').forEach(t=>t.onclick=ev=>{
     if(ev.target.tagName==='A'||t.dataset.lk)return;
     store.checks[t.dataset.t]=!store.checks[t.dataset.t];save();renderAll();
+  });
+  document.querySelectorAll('.rf').forEach(f=>f.onclick=()=>{resvFilter=f.dataset.rf;renderAll()});
+  document.querySelectorAll('.rcard').forEach(c=>c.onclick=ev=>{
+    if(ev.target.tagName==='A')return;
+    if(ev.target.closest('.rcb')){
+      const k='rv_'+c.dataset.rv;store.checks[k]=!store.checks[k];save();renderAll();return;
+    }
+    c.classList.toggle('open');
   });
 }
 
