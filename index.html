@@ -200,7 +200,8 @@ body.desk .pills{justify-content:center}
 body.desk .nowbar{max-width:820px;margin:2px auto 14px}
 body.desk .daygrid{display:grid;grid-template-columns:1fr;gap:24px;align-items:start}
 body.desk .day{margin:6px 0 6px}
-body.desk .maplayout{display:grid;grid-template-columns:minmax(0,440px) 1fr;gap:24px;align-items:start}
+body.desk .maplayout{display:grid;grid-template-columns:minmax(0,880px) 1fr;gap:28px;align-items:start}
+body.desk.view-map .wrap{max-width:1560px}
 body.desk .maplayout .mapwrap{position:sticky;top:120px}
 body.desk #mpanel{margin-top:0}
 body.desk .fcard,body.desk .fsec,body.desk .todo,body.desk .tprog,body.desk .ov{max-width:840px;margin-left:auto;margin-right:auto}
@@ -231,7 +232,9 @@ body.desk .chip{font-size:14px;padding:7px 0 7px 96px}
 body.desk .chip .ln{height:26px}
 body.desk .dfoot{font-size:14px}
 body.desk .reset{font-size:13px;padding:6px 15px}
-@media (max-width:980px){body.desk .daygrid{grid-template-columns:1fr}body.desk .maplayout{grid-template-columns:1fr}body.desk .maplayout .mapwrap{position:static}}
+@media (max-width:980px){body.desk .daygrid{grid-template-columns:1fr}}
+/* map is 880px wide on desk, so it needs more room before the side panel fits beside it */
+@media (max-width:1460px){body.desk .maplayout{grid-template-columns:1fr}body.desk .maplayout .mapwrap{position:static}}
 </style>
 </head>
 <body>
@@ -950,6 +953,7 @@ function musicHTML(){
 }
 function renderAll(){
   renderTabs();renderPills();
+  document.body.classList.toggle('view-map',curView==='map');
   let html='';
   if(curView==='seoul'||curView==='tokyo'){
     const days=curView==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
