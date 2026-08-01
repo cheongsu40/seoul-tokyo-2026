@@ -56,7 +56,8 @@ body{background:var(--bg);color:var(--txt);font-family:'Outfit','Noto Sans KR',-
 .tab.on{color:#fff;background:var(--card2);border-color:transparent}
 .tab.on::after{content:'';position:absolute;inset:-1px;border-radius:13px;padding:1.5px;background:var(--grad);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-.tab small{display:block;font-size:8.5px;letter-spacing:.14em;color:var(--dim2);font-family:'Outfit'}
+.tab small{display:block;font-size:8.5px;letter-spacing:.14em;color:var(--dim2);font-family:'Outfit';white-space:nowrap}
+@media (max-width:420px){.tabs{gap:4px}.tab small{letter-spacing:.06em;font-size:8px}}
 .tab .bdgct{position:absolute;top:-6px;right:-4px;background:var(--red);color:#fff;font-size:10px;font-weight:800;
   min-width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px}
 
@@ -164,6 +165,15 @@ body{background:var(--bg);color:var(--txt);font-family:'Outfit','Noto Sans KR',-
 .tprog .bar{height:8px;border-radius:99px;background:var(--card);border:1px solid var(--line);overflow:hidden}
 .tprog .fill{height:100%;background:var(--grad);border-radius:99px;transition:width .4s}
 .tprog .lbl{font-size:12px;color:var(--dim);margin-top:6px}
+
+/* ---------- pointers ---------- */
+.prow{display:flex;gap:12px;padding:8px 0;border-top:1px solid var(--line);align-items:flex-start}
+.prow:first-child{border-top:0;padding-top:2px}
+.pk{flex:0 0 34%;font-weight:700;color:var(--txt);font-size:12.5px;line-height:1.45}
+.pv{flex:1;min-width:0;color:var(--dim);font-size:12.5px;line-height:1.6}
+body.desk .pk,body.desk .pv{font-size:15px}
+body.desk .pk{flex-basis:28%}
+@media (max-width:430px){.prow{flex-direction:column;gap:2px}.pk{flex-basis:auto}}
 
 /* ---------- flights ---------- */
 .fsec{margin:18px 0 8px;font-weight:800;letter-spacing:.14em;font-size:12px;color:var(--dim);text-transform:uppercase}
@@ -691,7 +701,7 @@ async function fetchWeather(){
 }
 
 /* ================= RENDER ================= */
-const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOKYO'},{id:'map',kr:'지도',en:'MAP'},{id:'music',kr:'음악',en:'MUSIC'},{id:'todo',kr:'체크',en:'TO-DO'},{id:'flights',kr:'항공',en:'FLIGHTS'},{id:'info',kr:'정보',en:'INFO'}];
+const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOKYO'},{id:'map',kr:'지도',en:'MAP'},{id:'music',kr:'음악',en:'MUSIC'},{id:'todo',kr:'체크',en:'TO-DO'},{id:'flights',kr:'항공',en:'FLIGHTS'},{id:'pointers',kr:'꿀팁',en:'TIPS'},{id:'info',kr:'정보',en:'INFO'}];
 let curView='seoul',mapCity='seoul',selZone=null;
 const $=s=>document.querySelector(s);
 
@@ -892,6 +902,116 @@ function flightsHTML(){
   </div>`;
   return h;
 }
+/* ===== Pointers / crew briefing ===== */
+function pointersHTML(){
+  const P=(k,v)=>`<div class="prow"><div class="pk">${k}</div><div class="pv">${v}</div></div>`;
+  let h=`<div style="text-align:center;color:var(--dim);font-size:13.5px;padding:2px 6px 4px;line-height:1.65">
+    A 5-minute skim so nobody's guessing. Korea and Japan are <b style="color:var(--txt)">not</b> interchangeable —
+    a few things are exact opposites, and those are flagged 🔁.</div>`;
+
+  /* --- the short version --- */
+  h+=`<div class="fsec">If you read nothing else</div><div class="ov">`;
+  h+=[
+    ['🙅','Never tip','Neither country. In Japan it can genuinely offend. Service is included, full stop.'],
+    ['🙌','Two hands','Korea: give &amp; receive anything — cards, money, drinks, gifts — with two hands. Reads as respect.'],
+    ['🤫','Trains are quiet','Japan especially: no phone calls, ringer off. Korea is a bit looser but still not loud.'],
+    ['🗺️','Google Maps is broken in Korea','Download <b style="color:var(--txt)">Naver Map</b> before you fly. In Japan, Google Maps is excellent.'],
+    ['🗑️','There are no bins','Both countries. Carry your trash until you find a convenience store.'],
+    ['👟','Shoes come off','Spa, temples, some restaurants, any raised wooden floor. Wear socks you don’t hate.']
+  ].map(e=>`<div class="ovc"><div class="city" style="font-size:15px">${e[0]} ${e[1]}</div><div class="d">${e[2]}</div></div>`).join('');
+  h+=`</div>`;
+
+  /* --- the flips --- */
+  h+=`<div class="fsec">🔁 Where the two countries are opposite</div>`;
+  h+=`<div class="fcard" style="border-color:#8b5cf6"><div class="meta">
+    ${P('Escalators','🇰🇷 Seoul: stand <b style="color:var(--txt)">right</b>. &nbsp;🇯🇵 Tokyo: stand <b style="color:var(--txt)">left</b>. (Osaka flips again — but we’re not going.) Getting this wrong is the #1 tourist tell.')}
+    ${P('Rice bowls','🇰🇷 Leave the bowl <b style="color:var(--txt)">on the table</b> and use a spoon — lifting it is rude. &nbsp;🇯🇵 <b style="color:var(--txt)">Lift the bowl</b> to your mouth — leaving it down is rude.')}
+    ${P('Chopsticks','🇰🇷 Metal, heavier, paired with a spoon that does the real work. &nbsp;🇯🇵 Wood, and used for basically everything.')}
+    ${P('Pouring','🇰🇷 Never pour your own — fill others’ glasses, they fill yours. &nbsp;🇯🇵 Same instinct, much less ceremony.')}
+    ${P('Cash','🇰🇷 Nearly cashless — card or phone everywhere. &nbsp;🇯🇵 Still carry ¥ — small restaurants, shrines and older shops are cash-only.')}
+  </div></div>`;
+
+  /* --- Korea --- */
+  h+=`<div class="fsec">🇰🇷 Korea — the etiquette that matters</div>`;
+  h+=`<div class="fcard"><div class="meta">
+    ${P('Drinking','Turn your head away from elders when you sip. Hold your glass with two hands while someone pours. <b style="color:var(--txt)">Somaek</b> = soju + beer, and someone will make you one.')}
+    ${P('Calling a server','Say <b style="color:var(--txt)">저기요 (jeo-gi-yo)</b> loudly, or press the table buzzer. Waving quietly and waiting politely will get you nothing — this is the single most useful thing on this page.')}
+    ${P('Banchan','The little side dishes are free and <b style="color:var(--txt)">refillable</b>. Ask for more. Don’t take them home.')}
+    ${P('Chopsticks','Never stand them upright in rice — it’s a funeral image. Don’t pass food chopstick-to-chopstick.')}
+    ${P('Subway','Priority seats stay empty even on a packed train. Genuinely — don’t sit.')}
+    ${P('The spa','Bath areas are gender-separated and <b style="color:var(--txt)">fully nude</b> — that’s normal, nobody is looking. Shower thoroughly <i>before</i> getting in. Large tattoos: fine at most modern spots, but worth a heads-up.')}
+    ${P('Photos','Ask before shooting people. Plenty of cafes and shops ban photography outright — look for the sign.')}
+    ${P('Getting drunk','Socially fine, even expected. Being loud on the subway afterwards is not.')}
+  </div></div>`;
+
+  /* --- Japan --- */
+  h+=`<div class="fsec">🇯🇵 Japan — the etiquette that matters</div>`;
+  h+=`<div class="fcard"><div class="meta">
+    ${P('Sumimasen','すみません does everything — excuse me, sorry, thank you, and hello-I-need-a-server. If you learn one word, learn this one.')}
+    ${P('Eating on the move','Don’t. Eat your conbini haul standing by the shop, or wait. Same for drinking.')}
+    ${P('Slurping','Ramen and soba: slurp away, it’s fine and arguably correct. Blowing your nose at the table is the offensive one.')}
+    ${P('Money','Don’t hand cash to a cashier — put it in the little tray. Same for your card.')}
+    ${P('Queues','Immaculate and taken seriously. Find the end of the line, including the painted markers on train platforms.')}
+    ${P('Tattoos','Still a real barrier at onsen and some gyms/pools. Our itinerary doesn’t hit an onsen, so this is mostly a non-issue — but cover up if one gets added.')}
+    ${P('Escalator, again','Tokyo stands <b style="color:var(--txt)">left</b>. You will have just spent five days training yourself to stand right in Seoul. 🔁')}
+  </div></div>`;
+
+  /* --- clothing --- */
+  h+=`<div class="fsec">👕 What to actually wear</div>`;
+  h+=`<div class="fcard"><div class="meta">
+    <b style="color:var(--txt)">The weather is the headline:</b> late Aug Seoul and early Sep Tokyo both run <b style="color:var(--txt)">30–33°C (86–92°F) and brutally humid</b>. It is peak typhoon season. Expect to sweat through a shirt a day and to get rained on at least once.<br><br>
+    ${P('Bring','Breathable natural fabrics, more shirts than days, a <b style="color:var(--txt)">compact umbrella</b>, and genuinely broken-in walking shoes — 15–20k steps a day is normal on this itinerary.')}
+    ${P('Also bring','A light layer. Indoor AC in Korea is <i>arctic</i> and you’ll go from 33°C to 20°C in one step.')}
+    ${P('Shoes','Slip-ons earn their keep — you’ll take them off at the spa, temples and some restaurants. Sandals are fine for daytime.')}
+    ${P('The dress code','Seoul dresses <b style="color:var(--txt)">up</b>. Gangnam and Cheongdam especially — think smart-casual, not vacation-casual. Hongdae is young and anything goes. Nobody wears gym clothes to dinner.')}
+    ${P('Modesty','Legs are unremarkable; <b style="color:var(--txt)">low-cut tops read as much more risqué</b> in Korea than in the US. Shoulders and knees covered for temples.')}
+    ${P('For Born and Bred','Michelin-listed. Smart-casual — collared shirt or a nice top. Skip shorts and flip-flops.')}
+    ${P('For teamLab','⚠️ The floors are <b style="color:var(--txt)">mirrored</b>. Wear shorts or trousers, not a skirt or dress. There are barefoot water sections too, so easy shoes.')}
+  </div></div>`;
+
+  /* --- language --- */
+  const kr=[['안녕하세요','an-nyeong-ha-se-yo','Hello'],['감사합니다','kam-sa-ham-ni-da','Thank you'],
+    ['저기요','jeo-gi-yo','Excuse me / server!'],['계산해 주세요','gye-san-hae ju-se-yo','Check, please'],
+    ['얼마예요?','eol-ma-ye-yo','How much?'],['화장실 어디예요?','hwa-jang-sil eo-di-ye-yo','Where’s the bathroom?'],
+    ['맛있어요!','ma-si-sseo-yo','Delicious!'],['하나 더 주세요','ha-na deo ju-se-yo','One more, please'],
+    ['안 매운 거 있어요?','an mae-un geo i-sseo-yo','Anything not spicy?'],['영어 메뉴 있어요?','yeong-eo me-nyu i-sseo-yo','English menu?']];
+  const jp=[['こんにちは','kon-nichi-wa','Hello'],['ありがとうございます','a-ri-ga-tou go-zai-mas','Thank you'],
+    ['すみません','su-mi-ma-sen','Excuse me / sorry / server!'],['お会計お願いします','o-kai-kei o-ne-gai-shi-mas','Check, please'],
+    ['いくらですか？','i-ku-ra des-ka','How much?'],['トイレはどこですか？','toi-re wa do-ko des-ka','Where’s the bathroom?'],
+    ['おいしい！','oi-shii','Delicious!'],['英語のメニューありますか？','ei-go no menyu a-ri-mas-ka','English menu?'],
+    ['大丈夫です','dai-jou-bu des','I’m fine / no thanks']];
+  const tbl=rows=>`<div class="meta">`+rows.map(r=>`<div class="prow"><div class="pk" style="min-width:0;flex:0 0 44%"><b style="color:var(--txt);font-family:'Noto Sans KR'">${r[0]}</b><br><span style="color:var(--dim2);font-size:11.5px">${r[1]}</span></div><div class="pv">${r[2]}</div></div>`).join('')+`</div>`;
+  h+=`<div class="fsec">🗣️ Say this</div>`;
+  h+=`<div class="fcard"><div class="who">🇰🇷 Korean</div>${tbl(kr)}</div>`;
+  h+=`<div class="fcard"><div class="who">🇯🇵 Japanese</div>${tbl(jp)}</div>`;
+  h+=`<div class="fcard"><div class="meta"><b style="color:var(--txt)">Apps that actually work:</b> <b style="color:var(--txt)">Papago</b> beats Google Translate for Korean by a mile, and its camera mode reads menus. In Japan, Google Translate is fine. Both do live conversation mode — just hand your phone over, everyone does it.</div></div>`;
+
+  /* --- fun --- */
+  h+=`<div class="fsec">🎉 The fun stuff</div>`;
+  h+=`<div class="fcard"><div class="meta">
+    ${P('Noraebang','Songs are queued by <b style="color:var(--txt)">number</b> from a book — find it fast. There’s a tambourine and using it is mandatory. If the staff like you they’ll add 서비스 (free time) to your room.')}
+    ${P('Convenience stores','A genuine destination, not a fallback. Korea: CU &amp; GS25 — cup ramen with the hot-water machine and a plastic table out front is a legitimate meal. Japan: 7-Eleven’s egg salad sando has a cult following for good reason.')}
+    ${P('Photo booths','인생네컷 (“life four cuts”) booths are everywhere in Hongdae. Cheap, fast, and the single best souvenir of the trip. Do it the first night.')}
+    ${P('KBBQ','At Taecho Galbi the staff grill for you — let them. Wrap the meat in lettuce with ssamjang, eat it in one bite. Two hands on the glass.')}
+    ${P('Cafes','Sitting for three hours over one coffee is completely normal in Seoul. The cafe <i>is</i> the activity.')}
+    ${P('⚾ Yakult Swallows','Sat Sep 5. Japanese baseball is organized chanting per batter, beer poured from backpack kegs, and — Swallows-specific — when they score, <b style="color:var(--txt)">every fan opens a tiny umbrella</b> and sings. Buy the mini umbrella at the stadium. Don’t be the only one without one.')}
+    ${P('🌆 Shibuya Sky','Open-air rooftop, so it shuts in bad weather. Loose items and umbrellas aren’t allowed up top — there are free lockers.')}
+  </div></div>`;
+
+  /* --- our bookings --- */
+  h+=`<div class="fsec">⚠️ Our reservations have teeth</div>`;
+  h+=`<div class="fcard" style="border-color:var(--red)"><div class="meta">
+    ${P('Born and Bred','Mon Aug 31, 6:00 PM. Hard <b style="color:var(--txt)">2-hour</b> seating and the time can’t be changed. More than <b style="color:var(--txt)">15 min late = auto-cancelled and the ₩300,000 deposit is gone.</b> Leave Coex by 5:15.')}
+    ${P('bills Gangnam','Sun Aug 30, 9:00 AM. More than <b style="color:var(--txt)">10 min late</b> and it auto-cancels.')}
+    ${P('Taecho Galbi','Sat Aug 29, 8:00 PM — a request, not yet confirmed by the restaurant. Check before we fly.')}
+    ${P('Everything','is booked under <b style="color:var(--txt)">서청수 / Seo Cheongsu</b>. That’s the name to give at every door.')}
+  </div></div>`;
+
+  h+=`<div style="text-align:center;color:var(--dim2);font-size:11px;padding:16px 4px 0">
+    Bring an appetite and comfortable shoes. 잘 먹겠습니다 🇰🇷 · いただきます 🇯🇵</div>`;
+  return h;
+}
+
 function infoHTML(){
   const hotels=[
     {f:'🇰🇷',n:'Park Hyatt Seoul',d:'Aug 29 – Sep 2 · 4 nights',a:'606 Teheran-ro, Gangnam-gu',s:'삼성 Samseong (Line 2), or COEX underground',map:'https://map.naver.com/p/search/Park%20Hyatt%20Seoul'},
@@ -964,6 +1084,7 @@ function renderAll(){
     if(curView==='map')html=mapHTML();
     else if(curView==='music')html=musicHTML();
     else if(curView==='todo')html=todoHTML();
+    else if(curView==='pointers')html=pointersHTML();
     else if(curView==='info')html=infoHTML();
     else html=flightsHTML();
   }
