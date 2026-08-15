@@ -284,7 +284,7 @@ const LINES = {
 function M(pairs,def){const m={};for(const[a,b,v]of pairs){(m[a]=m[a]||{})[b]=v;(m[b]=m[b]||{})[a]=v}
   return (a,b)=>a===b?0:((m[a]&&m[a][b])??def)}
 const T_SEOUL = M([
- ['ich','gn',95],['ich','hd',75],['ich','md',80],['ich','gwh',80],
+ ['ich','gn',95],['ich','hd',75],['ich','md',80],['ich','gwh',80],['gmp','gn',40],
  ['gn','hd',45],['gn','sc',45],['gn','ss',25],['gn','ddp',25],['gn','md',35],['gn','gwh',40],
  ['gn','iks',35],['gn','mj',30],['gn','apg',15],['gn','sinsa',20],['gn','cdm',10],['gn','bp',20],
  ['gn','gns',12],['gn','elj',30],['gn','jamsil',10],
@@ -378,13 +378,13 @@ const SEOUL_DAYS = [
  {id:'s0',num:'ARRIVAL',kr:'토요일',date:'Sat · Aug 29',iso:'2026-08-29',sub:'Touch down, bag drop & Hongdae Saturday night 🎶',anchor:15*60,items:[
   ['✈️','Arrive Incheon International Airport','travel','ich','Incheon','AREX','ICN T1',null,45,'Immigration + bags — the usual drill. Both families land ~3:00–3:50 PM.',null,1],
   ['🏨','Drop bags at Park Hyatt Seoul','travel','gn','Gangnam','2','삼성 Samseong',null,15,'AREX Express → Seoul Station → Line 2 to Samseong. Quick bag drop — don\'t unpack, just dump and go!',null,1],
-  ['🥩','Taecho Galbi (태초갈비)','food','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,90,'Korean beef galbi in Hongdae — perfect Saturday-night first dinner. ⏳ <b>8:00 PM requested for 6</b> (CatchTable Global, under 서청수) — awaiting the restaurant\'s OK; see the booking checklist for the confirmation link. 5:30 was never on offer: the whole 5:30–7:30 peak was gone, and 8 PM lands better anyway after a 3 PM ICN arrival.','https://www.instagram.com/taecho_beef'],
+  ['🥩','Taecho Galbi (태초갈비)','food','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,90,'Korean beef galbi in Hongdae — perfect Saturday-night first dinner. ⏳ <b>8:00 PM requested for 6</b> (CatchTable Global, under 서청수) — awaiting the restaurant\'s OK; see the booking checklist for the confirmation link. 5:30 was never on offer: the whole 5:30–7:30 peak was gone, and 8 PM lands better anyway after a 3 PM ICN arrival. The pre-dinner window is free Hongdae wandering — the street energy starts before dark.','https://www.instagram.com/taecho_beef',0,20*60],
   ['🎶','Hongdae nightlife — buskers, shops, street energy','night','hd','Hongdae','2','홍대입구 Hongik Univ',5.0,120,'Saturday night = peak energy. Street performers, vintage shops open late, arcades + photo booths — and coin noraebang everywhere if the crew wants a warm-up sing before Tuesday\'s real karaoke night.','https://www.tiktok.com/@visitseoul/video/7221798180227271937'],
   ['🧥','24/7 Vintage Store — open all night','shop','hd','Hongdae','2','홍대입구 Hongik Univ',4.0,45,'From your TikTok saves — ₩10K/₩30K racks, open 24 hours. ⚠️ The viral unmanned shop (와우산로23길 35-3) is liquidating through June — if it\'s gone by Aug, the Naver badge searches Hongdae\'s other late-night vintage spots.','https://www.tiktok.com/@tiktok/video/7585035222543125781'],
   ['🌙','Return to Park Hyatt & crash','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Line 2 direct to Samseong. Bags already there — crash out 🇰🇷']
  ]},
- {id:'s1',num:'DAY 1',kr:'일요일',date:'Sun · Aug 30',iso:'2026-08-30',sub:'DDP, Seongsu shopping & Myeongdong night',anchor:7*60+30,items:[
-  ['🥞','Bills — Ricotta Pancakes','food','gn','Gangnam','2','삼성 Samseong',5.0,60,'"Unreal" ricotta pancakes — rated 5.0 by everyone. Reserve 9:00 AM sharp — open daily 9am-10pm per billskorea.com. Via CatchTable Global.','https://www.catchtable.net/shop/bills_gangnam',0,9*60],
+ {id:'s1',num:'DAY 1',kr:'일요일',date:'Sun · Aug 30',iso:'2026-08-30',sub:'DDP, Seongsu shopping & Myeongdong night',anchor:9*60,items:[
+  ['🥞','Bills — Ricotta Pancakes ✓','food','gn','Gangnam','2','삼성 Samseong',5.0,60,'"Unreal" ricotta pancakes — rated 5.0 by everyone. ✓ <b>BOOKED — 9:00 AM ×6</b> (CatchTable Global, under 서청수). ⚠️ >10 min late = auto-cancel — it\'s a 5-min walk from the hotel, so just be up.','https://www.catchtable.net/shop/bills_gangnam',0,9*60],
   ['🛍️','Seongsu — "Brooklyn of Seoul"','shop','ss','Seongsu','2','성수 Seongsu',4.0,15,'Orientation stroll, then work the shops below — this is the shopping block of the trip, hit right after breakfast while it\'s cool out. Trimmed to a brisk pace so lunch lands ~1:30. Your saved one-day Seongsu itinerary linked.','https://www.tiktok.com/@tiktok/video/7490808472691363090'],
   ['🛍️','Musinsa Seongsu — K-fashion flagship','shop','ss','Seongsu','2','성수 Seongsu',5.0,25,'150+ Korean brands — "Korean Uniqlo." Rooftop café upstairs.','https://www.tiktok.com/@middleclass.sg/video/7630840634403720468'],
   ['🏍️','PHYPS — Honda moto concept store','shop','ss','Seongsu','2','성수 Seongsu',5.0,15,'Motorcycle-inspired streetwear.'],
@@ -430,8 +430,8 @@ const SEOUL_DAYS = [
  ]},
  {id:'s4',num:'DEPART',kr:'수요일',date:'Wed · Sep 2',iso:'2026-09-02',sub:'Early flight to Tokyo ✈️',anchor:5*60,items:[
   ['🏨','Wake up & check out Park Hyatt','travel','gn','Gangnam','2','삼성 Samseong',null,30,'Early start! Grab a conbini breakfast on the way.',null,1],
-  ['🛫','To the airport — check in','travel','ich','Incheon',null,'GMP ✓',null,60,'Gimpo it is — JL90 departs 8:00 AM, so be at GMP by ~6:00–6:30 AM for international check-in.',null,1],
-  ['✈️','Flight Seoul → Tokyo (HND)','travel','ich','→ Tokyo',null,'JL 90 · 8:00 AM',null,135,'Annyeong Seoul 🇰🇷 → Konnichiwa Tokyo 🇯🇵. BOOKED for Clearwaters — JL90 GMP→HND 8:00 AM → 10:15 AM ✓. Olivia\'s booking is in the American app (conf AT8KZG); Nick\'s in the Alaska app (conf SPCOSK). Same JAL flight — check in on the JAL site.',null,1]
+  ['🛫','To the airport — check in','travel','gmp','Gimpo',null,'GMP ✓',null,60,'Gimpo it is — JL90 departs 8:00 AM, so be at GMP by ~6:00–6:30 AM for international check-in. (~40 min by taxi from the Park Hyatt at that hour.)',null,1],
+  ['✈️','Flight Seoul → Tokyo (HND)','travel','gmp','→ Tokyo',null,'JL 90 · 8:00 AM',null,135,'Annyeong Seoul 🇰🇷 → Konnichiwa Tokyo 🇯🇵. BOOKED for Clearwaters — JL90 GMP→HND 8:00 AM → 10:15 AM ✓. Olivia\'s booking is in the American app (conf AT8KZG); Nick\'s in the Alaska app (conf SPCOSK). Same JAL flight — check in on the JAL site.',null,1,8*60]
  ]}
 ];
 
@@ -494,12 +494,11 @@ const TOKYO_DAYS = [
   ['🍣','Farewell omakase lunch','food','shb','Shibuya','JR','渋谷 Shibuya',5.0,90,'Last big sushi meal — go out with a bang.'],
   ['🍰','Fruit parfait or crepe','snack','shb','Shibuya','JR','渋谷 Shibuya',4.5,30,'One last sweet treat.'],
   ['💆','Spa / massage — Bitoria (optional)','spa','shb','Shibuya',null,'—',null,60,'NEW — unwind before the last night. Bitoria massage/spa; book a slot if the crew wants it.'],
-  ['🚶','Free time — revisit favorites','rest','sj','Shinjuku/Shibuya',null,'—',null,120,'Go back to anything you loved — Donki, arcades, etc.'],
   ['🍽️','Farewell dinner — Omoide Yokocho or omakase splurge','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,90,'Two ways to end it: Omoide Yokocho yakitori (smoky, cheap, iconic) OR the big omakase-sushi splurge — Sushi Akira or Sushi Saitou (book well ahead). Crew\'s call.','https://www.tiktok.com/@bigjohnjiak/video/7551784335146355986',0,17*60],
   ['🌃','Final Kabukicho neon walk + conbini haul','night','sj','Shinjuku',null,'—',5.0,90,'Take ALL the photos. Buy ALL the snacks — onigiri for the plane.'],
   ['🌙','Pack up — last night in Tokyo','rest','sj','Shinjuku',null,'—',null,0,'What a trip 🇯🇵']
  ]},
- {id:'t5',num:'DEPART',kr:'월요일',date:'Mon · Sep 7',iso:'2026-09-07',sub:'Sayonara Tokyo ✈️ separate flights home',anchor:8*60,items:[
+ {id:'t5',num:'DEPART',kr:'월요일',date:'Mon · Sep 7',iso:'2026-09-07',sub:'Sayonara Tokyo ✈️ separate flights home',anchor:8*60+30,items:[
   ['🍳','Breakfast — bills Omotesando or near hotel','food','sj','Shinjuku',null,'—',5.0,60,'⚠️ No bills in Shinjuku, and none open before 8:30 on weekdays. Omotesando branch (8:30, 10 min on JR) works if you keep it brisk — otherwise depachika/conbini by the hotel and keep the morning loose.',null,1,8*60+30],
   ['🛍️','Last shopping / free time','shop','sj','Shinjuku',null,'—',null,60,'Station shops have great stuff.',null,1],
   ['🍜','Last Tokyo meal — ramen or quick sushi','food','sj','Shinjuku',null,'—',5.0,60,'One final bowl before splitting up.',null,1],
