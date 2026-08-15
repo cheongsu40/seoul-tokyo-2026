@@ -762,10 +762,9 @@ function cardHTML(row,city,liveNow){
   </div>`;
 }
 function chipHTML(row){
-  if(row.type==='gap'){
-    const l=row.mins>=60?(Math.round(row.mins/60*10)/10)+' hr':row.mins+' min';
-    return `<div class="chip" style="color:var(--gold)"><span class="ln"></span><span>✨ <b style="color:var(--gold)">free time · ~${l}</b> — wander, shop, café</span></div>`;
-  }
+  /* gap rows still advance the clock in compute() so anchored events start on time,
+     but they render as nothing — the crew fills open windows themselves. */
+  if(row.type==='gap')return '';
   const icon=row.walk?'🚶':'🚇',lbl=row.walk?'walk':'subway';
   return `<div class="chip"><span class="ln"></span><span>${icon} <b>~${row.mins} min</b> ${lbl}</span></div>`;
 }
