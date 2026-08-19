@@ -1,0 +1,10 @@
+{
+  "name": "seoul-tokyo-2026-qa",
+  "private": true,
+  "scripts": {
+    "test": "node qa.check.js"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0"
+  }
+}
