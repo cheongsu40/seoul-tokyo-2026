@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b0d14">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>서울 ✕ 東京 · Seoul–Tokyo 2026</title>
@@ -265,7 +266,7 @@ body.desk .reset{font-size:13px;padding:6px 15px}
   <div class="pills" id="pills"></div>
   <div id="content"></div>
 
-  <footer>안전한 여행 되세요 — have a safe trip 🇰🇷🇯🇵<br><span style="opacity:.6">v9 · auto-times are estimates · tap cards for notes &amp; links</span></footer>
+  <footer>안전한 여행 되세요 — have a safe trip 🇰🇷🇯🇵<br><span style="opacity:.6">v10 · auto-times are estimates · tap cards for notes &amp; links</span></footer>
 </div>
 <button id="fab" class="hidden">⭐ Bench</button>
 
@@ -418,11 +419,11 @@ const SEOUL_DAYS = [
   ['🛕','Seoul Temple','sight','sc','Shinchon','2','신촌 Sinchon',7.5,90,'Rated 7.5 (Bryson gave it a 10 🤣) — peaceful morning visit.'],
   ['🏹','Shinchon Robinhood Archery Café','act','sc','Shinchon','2','신촌 Sinchon',4.0,45,'Archery café near the temple — friendly competition. Opens around noon — confirm via IG @sinchonrobinhood before locking the time.','https://www.tiktok.com/@clovchoi/video/7597972816776023327'],
   ['☕','Cafe Pokpo (카페 폭포) — waterfall cafe','cafe','sc','Seodaemun','2','신촌 Sinchon',5.7,60,'Coffee + bakery in front of an actual waterfall — killer photo ops. This doubles as Tuesday\'s café-lunch: graze here and at the Ikseon bakeries later, dinner is the 6 PM event.','https://www.tiktok.com/@tiktok/video/7525417758851337489'],
-  ['🏛️','Gyeongbokgung Palace — photo stop','sight','gwh','Gwanghwamun','3','경복궁 Gyeongbokgung',2.7,30,'Quick photo at the palace gate — not going inside. (Good thing: the palace itself is closed Tuesdays, and the guard ceremony doesn\'t run Tue — but the gate + plaza are public and always photo-able.)','https://www.tiktok.com/@dhxhra/video/7197150004518178090'],
-  ['📚','Kyobo Book Centre — Gwanghwamun flagship','shop','gwh','Gwanghwamun','5','광화문 Gwanghwamun',3.0,30,'Korea\'s biggest bookstore — stationery, K-books, souvenirs.','https://www.tiktok.com/@gisselle_val/video/7392572302761790753'],
+  ['🏛️','Gyeongbokgung Palace — gate photo stop','sight','gwh','Gwanghwamun','3','경복궁 Gyeongbokgung',2.7,15,'Quick photo at the palace gate — not going inside. The palace and guard ceremony are closed Tuesdays, but Gwanghwamun Square and the exterior gate view remain accessible. Keep this to 15 minutes so the final tour bus is comfortable, not a sprint.','https://royal.khs.go.kr/ROYAL/contents/R702000000.do'],
+  ['📚','Kyobo Book Centre — Gwanghwamun flagship','shop','gwh','Gwanghwamun','5','광화문 Gwanghwamun',3.0,20,'Korea\'s biggest bookstore — stationery, K-books, souvenirs. A focused 20-minute browse preserves the City Tour Bus buffer.','https://www.tiktok.com/@gisselle_val/video/7392572302761790753'],
   ['🥖','Jayeondo Sogeumppang — salted bread','snack','iks','Ikseon-dong','3','안국 Anguk',5.0,20,'Viral salted bread — grab and go. Open till 10 PM, but popular flavors can sell out — if you pass it earlier in the Ikseon loop, buy then.','https://www.tiktok.com/@daveyscakestravels/video/7496822617878433031'],
-  ['☔','Rain Report — indoor rain cafe','cafe','iks','Ikseon-dong','3','안국 Anguk',5.0,45,'Indoor rain every 15 min — K-drama umbrella photos + the famous tissue bread.','https://www.tiktok.com/@angelagiakas/video/7438035533227478279'],
-  ['🚌','Seoul City Tour Bus — full loop, ride it all the way round','sight','gwh','Gwanghwamun','5','광화문 Gwanghwamun',null,90,'TOUR01 "Downtown, Palaces & Namsan" — the full ~90-min circuit, staying aboard the whole way and back to where you started. Board at the Gwanghwamun Stop; exchange your reserved ticket for a physical one at the booth first (68-2 Taepyeong-ro 1-ga). Buses every 30 min, first 9:20 AM, <b>last bus 4:50 PM</b>, closed Mondays. Open-top double-decker — bring a hat/sunscreen, late-Aug sun is strong up top. ☎ 02-777-6090.<br><br>⚠️ <b>Tight:</b> current pace has you reaching Gwanghwamun ~4:49 PM against that hard 4:50 last-bus cutoff — a 1-minute margin with no ticket-exchange buffer. If the day is running even slightly behind, cut Rain Report short and head over early; missing the last bus kills the whole plan.<br><br><b>The full 15-stop loop, in order:</b><br>• 1. Gwanghwamun Station (board here)<br>• 2. Myeong-dong<br>• 3. Namsangol Hanok Village<br>• 4. Ambassador Seoul Pullman Hotel<br>• 5. Shilla Hotel, Jangchungdan Park<br>• 6. N Seoul Tower<br>• 7. Hyatt Hotel<br>• 8. DDP, Dongdaemun Market<br>• 9. Daehak-ro<br>• 10. Changgyeonggung Palace<br>• 11. Changdeokgung Palace<br>• 12. Insa-dong, Bukchon<br>• 13. Cheongwadae (Blue House)<br>• 14. Gyeongbokgung, Folk Museum, MMCA<br>• 15. Sejong Center, Gwanghwamun Square<br>• → back to Gwanghwamun, hop off<br><br><b>Off at:</b> Stop 1/Gwanghwamun where you started, ~6:20 PM. Then ~30 min to Gangnam Station for Shake Shack (Line 3 → 9). Dinner is a walk-in now, so overrunning here costs you nothing.','https://en.seoulcitybus.com/'],
+  ['☔','Rain Report — indoor rain cafe','cafe','iks','Ikseon-dong','3','안국 Anguk',5.0,35,'Indoor rain every 15 min — K-drama umbrella photos + the famous tissue bread. One rain cycle plus photos is enough; leave on time for the bus.','https://www.tiktok.com/@angelagiakas/video/7438035533227478279'],
+  ['🚌','Seoul City Tour Bus — full loop, ride it all the way round','sight','gwh','Gwanghwamun','5','광화문 Gwanghwamun',null,90,'TOUR01 "Downtown, Palaces & Namsan" — the full ~90-min circuit, staying aboard the whole way and back to where you started. Board at the Gwanghwamun Stop; exchange your reserved ticket for a physical one at the booth first (68-2 Taepyeong-ro 1-ga). Buses every 30 min, first 9:20 AM, <b>last bus 4:50 PM</b>, closed Mondays. Open-top double-decker — bring a hat/sunscreen. ☎ 02-777-6090.<br><br>✅ <b>Built-in buffer:</b> the tightened palace/bookstore/cafe stops target Gwanghwamun around <b>4:15 PM</b>, leaving roughly 35 minutes for delays and ticket exchange. Aim to board by 4:30 rather than treating 4:50 as the plan; if the day slips, skip the bookstore or leave Rain Report after one rain cycle.<br><br><b>The full 15-stop loop, in order:</b><br>• 1. Gwanghwamun Station (board here)<br>• 2. Myeong-dong<br>• 3. Namsangol Hanok Village<br>• 4. Ambassador Seoul Pullman Hotel<br>• 5. Shilla Hotel, Jangchungdan Park<br>• 6. N Seoul Tower<br>• 7. Hyatt Hotel, Gangnam<br>• 8. DDP, Dongdaemun Market<br>• 9. Daehak-ro<br>• 10. Changgyeonggung Palace<br>• 11. Changdeokgung Palace<br>• 12. Insa-dong, Bukchon<br>• 13. Cheongwadae (Blue House)<br>• 14. Gyeongbokgung, Folk Museum, MMCA<br>• 15. Sejong Center, Gwanghwamun Square<br>• → back to Gwanghwamun, hop off<br><br><b>Off at:</b> Stop 1/Gwanghwamun where you started, around 6 PM. Then ~30 min to Gangnam Station for Shake Shack (Line 3 → 9). Dinner is a walk-in, so a small overrun is harmless.','https://en.seoulcitybus.com/customer/faq.php'],
   ['🍔','Shake Shack — Gangnam-daero','food','gns','Gangnam Stn','2','강남 Gangnam',5.0,60,'<b>Swapped onto Tuesday from Monday</b> — Born and Bred is closed Tuesdays, so the two traded nights. The original Korea flagship (opened 2016) — 2 min walk from Gangnam Station Exit 10, 서울 서초구 강남대로 421. Open 10:30 AM–10 PM daily. ☎ 0507-1413-4409. Walk-in is fine, no booking needed — which also takes the pressure off the tour-bus timing. Gwanghwamun → Gangnam Stn is ~30 min (Line 3 → 9).','https://app.catchtable.co.kr/ct/shop/shakeshack_gangnam',0,19*60],
   ['💫','Apgujeong Rodeo — evening stroll','shop','apg','Apgujeong','3','압구정 Apgujeong',4.0,45,'Moved off Monday (Born and Bred night). Evening flavor now: K-fashion window displays, designer storefronts, late cafes — the streets stay alive even as boutiques wind down. ⚠️ If anyone\'s hunting the IG streetwear list (Supreme Seoul at Dosan Park closes 8 PM), that needs a daytime visit — this slot is for the vibe, not the haul.','https://www.tiktok.com/@thejesscheng/video/7321431494440865057'],
   ['🎤','Su Noraebang (수노래방) — Gangnam','night','gns','Gangnam Stn','2','강남 Gangnam',null,90,'The crowd-favourite pick over a random coin noraebang: proper private rooms, clean, big regularly-updated song list (strong on English tracks), and genuinely foreigner-friendly — staff speak some English. ~₩20K/hr per room, and about +₩1,000/person gets you free-flow soft drinks, ice cream and popcorn. No alcohol served, open late. ⚠️ A few foreign reviewers have flagged inconsistent pricing — agree the room rate and per-hour total up front before you start singing.','https://www.tiktok.com/@erinasimon/video/7504416082028006698'],
@@ -482,7 +483,7 @@ const TOKYO_DAYS = [
   ['😴','Back to Shinjuku — recharge','rest','sj','Shinjuku','JR','新宿 Shinjuku',null,90,'Rest at the hotel before the evening.'],
   ['🍖','Yakiniku late lunch — Daidokoya or Takibiya','food','shb','Shibuya','JR','渋谷 Shibuya',4.5,60,'Japanese BBQ — rated 4.5. ⚠️ Most yakiniku close 3–5 PM; these don\'t: Yakiniku Daidokoya honten (Sat from 1 PM, reservable) or Takibiya (through-service). Chain fallback: Yakiniku Like.','https://www.tiktok.com/@japanbyfood/video/7382507730612915474',0,15*60],
   ['🎮','Arcades round 2','act','shb','Shibuya','JR','渋谷 Shibuya',5.0,75,'More claw machines — keep it to ~75 min so you make first pitch.'],
-  ['⚾','Baseball @ Meiji Jingu Stadium','act','hj','Jingu Gaien','G','外苑前 Gaienmae',5.0,180,'NEW ⚾ — Tokyo Yakult Swallows night game, first pitch 6 PM. Umbrella-dance celebrations, relentless crowd chanting, great ballpark food. ⚠️ Confirm the Swallows are home Sat Sep 5 & buy tickets ahead.','https://www.instagram.com/reel/DUtVExnEjVV/',0,18*60],
+  ['⚾','Yakult Swallows vs Chunichi Dragons @ Meiji Jingu','act','hj','Jingu Gaien','G','外苑前 Gaienmae',5.0,180,'⚾ <b>Official 2026 NPB schedule confirmed:</b> Tokyo Yakult Swallows vs Chunichi Dragons, Sat Sep 5 at 6:00 PM, Meiji Jingu Stadium. Umbrella-dance celebrations, relentless crowd chanting and great ballpark food. The game is confirmed; the remaining action is buying 6 tickets.','https://npb.jp/bis/eng/2026/games/gm20260905.html',0,18*60],
   ['🍜','Post-game ramen (Ichiran, open late)','food','sj','Shinjuku','JR','新宿 Shinjuku',5.0,45,'One more bowl for the road — Ichiran runs late, perfect after the game.','https://www.tiktok.com/@danielparkmusic/video/7229371334428544258'],
   ['🌃','Post-game neon walk + conbini + pack','night','sj','Shinjuku',null,'—',4.5,90,'Wind down after the game — stock up on snacks to bring home.'],
   ['🌙','Hotel & rest','rest','sj','Shinjuku',null,'—',null,0,'Last full day tomorrow.']
@@ -566,26 +567,29 @@ const BENCH={
 const TODOS=[
  ['c1','✈️','GMP → HND — all three families ticketed ✓','—','<b>Closed 1 Aug — everyone has booked.</b> Clearwaters (Nick + Olivia) on JL90 Sep 2, 8:00 AM (Nick: Alaska SPCOSK / JAL ATA2ZD · Olivia: American AT8KZG). Brysons + Becksteads confirmed booked by Nick — their flight numbers and conf codes were never captured here, so grab them before the trip if you want everything in one place.',1],
  ['c4','🎨','teamLab Borderless ✓ BOOKED (Hailey) — ⚠️ confirm the entry time','check w/ Hailey','Hailey confirmed in the KOJA chat (late July): "TeamLab tickets booked 🎟". ⚠️ <b>One thing to verify: the entry-time slot.</b> Friday now runs sushi class 1:00–2:45 → Shibuya Sky ~3:30 → teamLab → gyoza 8:00, which means the schedule wants a <b>~5:00–5:15 PM entry</b>. If her tickets say something else, Friday needs re-flowing — ask her for the confirmation email. <a href="https://borderless.teamlab.art" target="_blank">borderless.teamlab.art</a>',1],
+ ['c26','🎟️','Confirm the teamLab entry time with Hailey','before flying','The tickets are booked, but the app still needs the exact entry slot. Friday only works cleanly with a <b>~5:00–5:15 PM entry</b> between Shibuya Sky and the 8:00 PM gyoza reservation.'],
  ['c5','🌆','Shibuya Sky tickets — Fri Sep 4 ~3:30 PM','~Aug 7 (4 wks out)','⚠️ Time moved: the 1:00–2:45 sushi class now owns early afternoon, so book <b>~3:30 PM</b>. Sunset slots go first. <a href="https://www.shibuya-scramble-square.com/sky/" target="_blank">official site</a>'],
  ['c24','🍣','Sushi-making class ×6 — Fri Sep 4, 1:00–2:45 PM ✓ BOOKED','—','Airbnb Experience "Roll your own nigiri, tamagoyaki sushi and Maki," hosted by Kazuki. 160-0007 Tokyo, Shinjuku City, <b>2-18 Arakichō</b>. Doubles as Friday lunch. Manage/cancel via the Airbnb app.',1],
  ['c25','🤼','Sumo Show & Experience ×6 — Wed Sep 2, 5:30 PM ✓ BOOKED','—','Shinjuku (Kabukicho) sumo show with photo, 1.5 hr, English, 6 adults — <b>$343.14 paid</b>. Arrival-day evening anchor; Omoide Yokocho dinner follows. Manage via the booking app (GetYourGuide-style listing).',1],
  ['c6','💆','Spa Gogyeol — Mon Aug 31, 12/12:30 PM ✓ BOOKED','—','Cheongdam branch (J&C Building) — Package 1, 150 min, ×6: 4 @ 12:00 PM + 2 @ 12:30 PM. From ₩120K. Confirmed via Instagram. ⚠️ Conflicts with the 3 PM Ecojardin booking — see that item.',1],
  ['c7','🎨','Ecojardin color analysis + headspa ✓ BOOKED','—','Coex branch, Mon Aug 31, 3:00 PM, ×3 — color analysis + 18-step scalp treatment. Confirmed via WhatsApp.',1],
  ['c8','✨','Facial clinic — booked ✓','—','<b>Closed 1 Aug.</b> Nick confirmed all the treatments are booked. Clinic name, time and address were never captured here — worth adding before you fly, since <b>Mon Aug 31 is already tight</b>: Spa Gogyeol 12:00/12:30 (150 min), Ecojardin 3:00 PM, then Born and Bred in Majang at 6:00 PM with a hard 2-hour seating and a forfeited deposit if you are >15 min late.',1],
+ ['c27','📍','Capture the facial clinic name, time and address','before flying','The treatment is booked, but its identifying details are missing from the app. Add them before departure so Monday can be checked against Spa Gogyeol, Ecojardin and the hard 6:00 PM Born and Bred reservation.'],
  ['c9','🥩','Born and Bred ×6 — Mon Aug 31, 6:00 PM ✓ BOOKED &amp; PAID','—','Booked 1 Aug on <b>CatchTable Global</b> under <b>서청수 / Seo Cheongsu</b>, +1 650-505-7787. <a href="https://www.catchtable.net/customer/reservation/detail/-hrAniL9Cx_Q6erPuQsBCA" target="_blank">📋 Open confirmation</a> (sign in to CatchTable Global first).<br><br><b>2F Casual Dining</b> · <b>Casual Tasting Menu ×6</b> — 5 courses, ₩165,000/pp · <b>₩300,000 deposit prepaid</b>, deducted from the final bill.<br><br>⚠️ <b>Tue Sep 1 was impossible — Born and Bred closes every Tuesday.</b> Swapped nights with Shake Shack, which moved to Tuesday. The <b>3F private room was fully booked all three Seoul nights</b> (Aug 29/30/31), so the original private-room omakase plan is off — this is the 2F hall.<br><br>⚠️ Dining is a hard <b>2 hours</b>; reservation time cannot be changed; <b>>15 min late = auto-cancel + deposit forfeited</b>. <b>Free cancellation with full refund until Aug 23.</b><br><br>Still want the 3F private room? Call ☎ 02-2294-5005 (12–3 PM KST = 8–11 PM PT) — restaurants often hold private rooms back from CatchTable.',1],
  ['c10','🍣','Book omakase splurge ×6 — moved to Sun Sep 6','early July (1–2 mo window)','Off Friday (that\'s gyoza now) → Sunday farewell dinner. Hailey\'s picks: Sushi Akira or Sushi Saitou (book well ahead). Easy 6-tops for foreigners: <a href="https://www.tablecheck.com/en/shops/sushi-azabu/reserve" target="_blank">Sushi Azabu</a> (max 7) or <a href="https://www.tablecheck.com/en/shops/sushitokyo-ten-roppongi/reserve" target="_blank">Sushi Tokyo Ten Roppongi</a> (max 12). TableCheck, English, foreign cards OK.'],
  ['c21','🥟','Gyoza @ Roppongi ×6 — Fri Sep 4, 8 PM','confirm it\'s locked','Hailey\'s new Friday dinner (replaces the omakase). Reservation for 6 at 8:00 PM.'],
- ['c22','⚾','Tokyo baseball ×6 — Sat Sep 5, 6 PM','when NPB schedule posts','Tokyo Yakult Swallows @ Meiji Jingu Stadium. ⚠️ First confirm they\'re home Sat Sep 5 on the 2026 NPB schedule, then buy 6 tickets (official site / ticket apps). Nearest station Gaienmae.'],
+ ['c22','⚾','Buy Tokyo baseball tickets ×6 — Sat Sep 5, 6 PM','buy now','The official 2026 NPB schedule confirms <b>Tokyo Yakult Swallows vs Chunichi Dragons</b> at Meiji Jingu Stadium. The game is locked; buy 6 tickets through the official Swallows ticket channel. Nearest station: Gaienmae. <a href="https://npb.jp/bis/eng/2026/games/gm20260905.html" target="_blank">Official game listing</a>.'],
  ['c23','💆','Bitoria spa/massage — Sun Sep 6 (optional)','a few days ahead if wanted','Hailey\'s new Sunday-afternoon add. Optional group relax before the final night — book a slot if the crew wants it (walk-in may also work).'],
  ['c15','📲','Install CatchTable Global + TableCheck apps','this week','The two booking apps that work without a Korean phone number. CatchTable Global: bills, Jeju Oktap + remote queues. TableCheck: all the Tokyo bookings.'],
- ['c16','🥩','Taecho Galbi ×6 — Sat Aug 29, 8:00 PM ⏳ REQUESTED','awaiting restaurant OK','Booked 1 Aug on <b>CatchTable Global</b> under <b>서청수 / Seo Cheongsu</b>, +1 650-505-7787. Status: <b>Request → Checking → Confirm</b> — currently <b>Checking</b>; the restaurant has to accept it and CatchTable emails clearwaternk@gmail.com when they do. <a href="https://www.catchtable.net/customer/reservation/detail/mKwHAB75mcsXO3qSv3Y2Bg" target="_blank">📋 Open confirmation</a> (sign in to CatchTable Global first).<br><br>⚠️ <b>5:30 PM was never available</b> — Sat Aug 29 offered 12:00–5:00 PM, then nothing until 8:00 PM. 8 PM also fits better: we land ICN 3 PM, and Samseong→Hongik Univ is ~40 min after bag drop. Rolls straight into Hongdae nightlife.<br><br><b>Only one booking exists — the CatchTable one above.</b> Nothing is booked on AutoReserve; it is listed purely as a backup to use <i>only if</i> Taecho Galbi declines: <a href="https://autoreserve.com/en/restaurants/iFWESVjktHnmqHzSLyv3" target="_blank">AutoReserve</a> (English, AI phone call) · or call ☎ 0507-1337-4590 direct.',1],
+ ['c16','🥩','Taecho Galbi ×6 — Sat Aug 29, 8:00 PM ⏳ REQUESTED','awaiting restaurant OK','Booked 1 Aug on <b>CatchTable Global</b> under <b>서청수 / Seo Cheongsu</b>, +1 650-505-7787. Status: <b>Request → Checking → Confirm</b> — currently <b>Checking</b>; the restaurant has to accept it and CatchTable emails clearwaternk@gmail.com when they do. <a href="https://www.catchtable.net/customer/reservation/detail/mKwHAB75mcsXO3qSv3Y2Bg" target="_blank">📋 Open confirmation</a> (sign in to CatchTable Global first).<br><br>⚠️ <b>5:30 PM was never available</b> — Sat Aug 29 offered 12:00–5:00 PM, then nothing until 8:00 PM. 8 PM also fits better: we land ICN 3 PM, and Samseong→Hongik Univ is ~40 min after bag drop. Rolls straight into Hongdae nightlife.<br><br><b>Only one booking exists — the CatchTable one above.</b> Nothing is booked on AutoReserve; it is listed purely as a backup to use <i>only if</i> Taecho Galbi declines: <a href="https://autoreserve.com/en/restaurants/iFWESVjktHnmqHzSLyv3" target="_blank">AutoReserve</a> (English, AI phone call) · or call ☎ 0507-1337-4590 direct.'],
  ['c17','🥞','bills Gangnam ×6 — Sun Aug 30, 9:00 AM ✓ BOOKED','—','<b>Confirmed instantly</b> 1 Aug on <b>CatchTable Global</b> under <b>서청수 / Seo Cheongsu</b>, +1 650-505-7787. <a href="https://www.catchtable.net/customer/reservation/detail/F5f7pq--oPRb8ZKheC3iDQ" target="_blank">📋 Open confirmation</a> (sign in to CatchTable Global first).<br><br><b>Monday 8/31 deliberately NOT booked</b> — it was a duplicate of Sunday, and per the coffee-rave plan we drop it to keep the morning free (rave → Twelve → spa).<br><br>⚠️ Cancel ≥2 days out for a full deposit refund · >10 min late = auto-cancel + deposit forfeited.',1],
  ['c18','🍣','Sushi no Midori — pick a real branch + split 4+2','by mid-Aug','⚠️ There is NO Ueno branch (despite the plan). Nearest real options: Shibuya Mark City or Ginza. TableCheck caps bookings at 4 and won\'t join tables — book 4+2 back-to-back, or all 6 hit the Shibuya ticket machine at 10 AM for the 11 AM open. <a href="https://www.tablecheck.com/en/shops/sushinomidori-shibuya/reserve" target="_blank">TableCheck Shibuya</a>.'],
  ['c19','📞','Nolboo Apgujeong — superseded, no call needed','—','<b>Monday 8/31 6:30 PM is gone</b> — Born and Bred now holds that night at 6:00 PM with a prepaid ₩300K deposit and a hard 2-hour seating, so the two collided head-on.<br><br>Not moved to Tuesday either: Tue Sep 1 dinner is now Shake Shack in Gangnam, and stacking Nolboo on top just recreates the same double-dinner problem.<br><br><b>Kept as a live fallback</b> — phone only, no platform: ☎ 02-540-0440. Easy walk-up table. Worth the call if Born and Bred falls through (free cancel until Aug 23), or if a night frees up.',1],
  ['c20','🎧','Coffee rave: catch SMCC\'s weekly schedule drop','~Aug 20 and ~Aug 27','Verified on their IG: SMCC posts a <b>WEEKLY SCHEDULE</b> story (Mon–Sun, with registration) roughly <b>3–5 days before each week starts</b>, historically on a Thursday — not the old "monthly, 1–2 weeks out" assumption.<br><br><b>Two drops to watch</b> (calendar reminders set): ~<b>Aug 20</b> covers Sat 8/29 + Sun 8/30 · ~<b>Aug 27</b> covers Mon 8/31 + Tue 9/1. Register all 6 the moment it posts.<br><br><b>Preferred slot: Mon Aug 31, before the spa day.</b> Spa Gogyeol is 12:00, and Monday\'s bills is a duplicate of Sunday\'s and isn\'t booked yet — so drop Monday bills and go rave → Twelve → spa. No rebooking needed. Sun 8/30 is the backup (likelier to be a true rave, but collides with the 9 AM bills booking).<br><br>⚠️ Every confirmed rave-format event fell on a <b>Saturday</b>; weekday Seoul events skew smaller (Coffee Chat / Espresso Run / Ritual) and I found no Monday example. <a href="https://www.instagram.com/seoulmorningcoffeeclub/" target="_blank">@seoulmorningcoffeeclub</a> · Fallback needs no ticket: MTL Hannam cafe DJ sets every Fri–Sun.'],
  ['c11','📱','eSIMs for Korea + Japan','week before','Airalo / Ubigi — one per phone, install before flying.'],
  ['c12','💳','Transit cards — T-money/TTC+ + Suica','before landing','From your TikTok saves: skip the plastic card — add T-money to iPhone Apple Wallet in 30 sec (or grab the new TTC+ prepaid card). Suica also adds straight from Apple Wallet for Tokyo.'],
- ['c13','🛂','K-ETA / Visit Japan Web check','2 wks before','US travelers K-ETA-exempt through 2026 (verify) · fill Visit Japan Web for fast entry.'],
+ ['c13','🛂','K-ETA / Visit Japan Web check','2 wks before','The official K-ETA notice extends the temporary exemption through <b>Dec 31, 2026</b>. US travelers on this trip do not need K-ETA; complete Visit Japan Web for smoother Japan entry. <a href="https://www.k-eta.go.kr/portal/board/viewboarddetail.do?bbsSn=299707&amp;locale=EN" target="_blank">Official K-ETA notice</a>.'],
+ ['c28','🛫','Reconfirm every flight in the airline apps','24–48 hours before each flight','Check times, terminals, seats and travel alerts in United, Air Premia and JAL. Capture the Bryson and Beckstead confirmation codes that are still missing from this app.'],
  ['c14','⚾','KBO baseball — decided against, not booking','—','<b>Closed 1 Aug — Nick called it: not doing Korean baseball.</b> (Jamsil / LG Twins / Doosan Bears, Aug 30–Sep 1.) Note this is <i>not</i> the same as the Tokyo game — <b>Yakult Swallows at Meiji Jingu, Sat Sep 5</b> is still live and still needs tickets.',1]
 ];
 
@@ -610,8 +614,12 @@ const FLIGHTS = [
 /* ================= STATE ================= */
 let store;
 try{store=JSON.parse(localStorage.getItem('st26v2')||'{}')}catch(e){store={}}
-store.extra=store.extra||{};store.checks=store.checks||{};store.wx=store.wx||{};store.mode=store.mode||null;
-delete store.order;delete store.img;delete store.props;delete store.family; // v9: clear obsolete pre-v8 local state
+if(!store||typeof store!=='object'||Array.isArray(store))store={};
+if(!store.extra||typeof store.extra!=='object'||Array.isArray(store.extra))store.extra={};
+if(!store.checks||typeof store.checks!=='object'||Array.isArray(store.checks))store.checks={};
+if(!store.wx||typeof store.wx!=='object'||Array.isArray(store.wx))store.wx={};
+store.mode=store.mode==='desk'||store.mode==='mob'?store.mode:null;
+delete store.order;delete store.img;delete store.props;delete store.family; // v10: clear obsolete pre-v8 local state
 function save(){try{localStorage.setItem('st26v2',JSON.stringify(store))}catch(e){}}
 
 /* ================= ENGINE ================= */
@@ -654,9 +662,8 @@ const TZ={seoul:'Asia/Seoul',tokyo:'Asia/Tokyo'};
 function nowIn(tz){
   if(window.__fakeNow)return window.__fakeNow;
   const d=new Date();
-  const date=d.toLocaleDateString('en-CA',{timeZone:tz});
-  const [h,m]=d.toLocaleTimeString('en-GB',{timeZone:tz,hour12:false,hour:'2-digit',minute:'2-digit'}).split(':');
-  return {date,mins:+h*60+ +m};
+  const parts=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:tz,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(d).map(p=>[p.type,p.value]));
+  return {date:`${parts.year}-${parts.month}-${parts.day}`,mins:+parts.hour*60+ +parts.minute};
 }
 function liveDay(city){
   const days=city==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
@@ -704,7 +711,12 @@ async function fetchWeather(){
 
 /* ================= RENDER ================= */
 const VIEWS=[{id:'seoul',kr:'서울',en:'SEOUL'},{id:'tokyo',kr:'東京',en:'TOKYO'},{id:'map',kr:'지도',en:'MAP'},{id:'music',kr:'음악',en:'MUSIC'},{id:'todo',kr:'체크',en:'TO-DO'},{id:'flights',kr:'항공',en:'FLIGHTS'},{id:'pointers',kr:'꿀팁',en:'TIPS'},{id:'info',kr:'정보',en:'INFO'}];
-let curView='seoul',mapCity='seoul',selZone=null;
+function initialView(){
+  const n=nowIn(TZ.tokyo);
+  if(TOKYO_DAYS.some(d=>d.iso===n.date)&&!(n.date==='2026-09-02'&&n.mins<10*60+15))return 'tokyo';
+  return 'seoul';
+}
+let curView=initialView(),mapCity=curView,selZone=null;
 const $=s=>document.querySelector(s);
 
 function todoLeft(){return TODOS.filter(t=>!t[5]&&!store.checks[t[0]]).length}
@@ -718,7 +730,8 @@ function renderTabs(){
 function renderPills(){
   if(curView==='seoul'||curView==='tokyo'){
     const days=curView==='seoul'?SEOUL_DAYS:TOKYO_DAYS;
-    $('#pills').innerHTML=days.map(d=>`<div class="pill" data-d="${d.id}">${d.num}<span style="opacity:.6"> · ${d.date.split(' · ')[1]}</span></div>`).join('');
+    const live=liveDay(curView).day;
+    $('#pills').innerHTML=days.map(d=>`<div class="pill ${live?.id===d.id?'on':''}" data-d="${d.id}">${d.num}<span style="opacity:.6"> · ${d.date.split(' · ')[1]}</span></div>`).join('');
     document.querySelectorAll('.pill').forEach(el=>el.onclick=()=>document.getElementById('sec-'+el.dataset.d).scrollIntoView({behavior:'smooth'}));
   }else if(curView==='map'){
     $('#pills').innerHTML=['seoul','tokyo'].map(c=>`<div class="pill ${c===mapCity?'on':''}" data-m="${c}">${c==='seoul'?'🇰🇷 서울 Seoul':'🇯🇵 東京 Tokyo'}</div>`).join('');
@@ -938,7 +951,6 @@ function pointersHTML(){
     ${P('Age comes up fast','People will ask how old you are early, and it isn’t nosy — Korean has different speech levels and they’re working out which one to use. Just answer.')}
     ${P('Calling a server','Say <b style="color:var(--txt)">저기요 (jeo-gi-yo)</b> loudly, or press the table buzzer. Waving quietly and waiting politely will get you nothing — this is the single most useful thing on this page.')}
     ${P('Banchan','The little side dishes are free and <b style="color:var(--txt)">refillable</b>. Ask for more. Don’t take them home.')}
-    ${P('Chopsticks','Never stand them upright in rice — it’s a funeral image. Don’t pass food chopstick-to-chopstick.')}
     ${P('Subway','Priority seats stay empty even on a packed train. Genuinely — don’t sit.')}
     ${P('The spa','Bath areas are gender-separated and <b style="color:var(--txt)">fully nude</b> — that’s normal, nobody is looking. Shower thoroughly <i>before</i> getting in. Large tattoos: fine at most modern spots, but worth a heads-up.')}
     ${P('Photos','Ask before shooting people. Plenty of cafes and shops ban photography outright — look for the sign.')}
@@ -1072,7 +1084,7 @@ function musicHTML(){
   h+=`<div style="text-align:center;color:var(--dim2);font-size:11px;padding:14px 4px 0">curated for the trip — press play on the plane ✈️</div>`;
   return h;
 }
-function renderAll(){
+function renderAllUnsafe(){
   renderTabs();renderPills();
   document.body.classList.toggle('view-map',curView==='map');
   let html='';
@@ -1093,6 +1105,14 @@ function renderAll(){
   $('#content').innerHTML=html;
   open.forEach(k=>{const [d,i]=k.split('|');document.querySelector(`.list[data-day="${d}"] .card[data-idx="${i}"]`)?.classList.add('open')});
   bind();
+}
+function renderAll(){
+  try{renderAllUnsafe()}
+  catch(e){
+    console.error('render failed',e);
+    const c=document.getElementById('content');
+    if(c)c.innerHTML=`<div class="fcard" style="border-color:var(--red);margin-top:18px"><div class="who">The trip app hiccuped</div><div class="meta" style="margin-top:8px">Your saved checklist and Bench items are safe. Reload to recover the itinerary.</div><button class="reset" style="margin-top:12px" onclick="location.reload()">Reload app</button></div>`;
+  }
 }
 function rerenderDay(day){
   const sec=document.getElementById('sec-'+day.id);
@@ -1120,7 +1140,7 @@ function bind(){
     selZone=selZone===p.dataset.z?null:p.dataset.z;renderAll();
   });
   document.querySelectorAll('.todo').forEach(t=>t.onclick=ev=>{
-    if(ev.target.tagName==='A'||t.dataset.lk)return;
+    if(ev.target.closest('a')||t.dataset.lk)return;
     store.checks[t.dataset.t]=!store.checks[t.dataset.t];save();renderAll();
   });
 }
@@ -1154,7 +1174,8 @@ function openBench(){
   });
   sh.querySelectorAll('.dp').forEach(dp=>dp.onclick=()=>{
     const k=+dp.closest('.brow').dataset.k,dayId=dp.dataset.day;
-    (store.extra[dayId]=store.extra[dayId]||[]).push(k);
+    const extras=store.extra[dayId]=Array.isArray(store.extra[dayId])?store.extra[dayId]:[];
+    if(!extras.includes(k))extras.push(k);
     save();closeBench();renderAll();
     setTimeout(()=>{const s=document.getElementById('sec-'+dayId);if(s)s.scrollIntoView({behavior:'smooth'})},60);
   });
@@ -1174,6 +1195,10 @@ window.addEventListener('resize',()=>{if(store.mode)return;const m=detectMode();
 
 /* ---- offline (PWA) ---- */
 if('serviceWorker' in navigator&&location.protocol==='https:'){
+  let refreshing=false;
+  navigator.serviceWorker.addEventListener('controllerchange',()=>{
+    if(refreshing)return;refreshing=true;location.reload();
+  });
   addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 }
 
