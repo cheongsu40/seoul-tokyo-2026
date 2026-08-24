@@ -2,7 +2,7 @@
    Strategy: cache-first with background refresh (stale-while-revalidate) for the app shell
    and fonts; network passthrough for live APIs (weather has its own baked-in fallback). */
 const CACHE_PREFIX = 'st26-';
-const CACHE = 'st26-v6';
+const CACHE = 'st26-v7';
 const CORE = ['./', 'index.html', 'manifest.json', 'apple-touch-icon.png'];
 
 self.addEventListener('install', e => {

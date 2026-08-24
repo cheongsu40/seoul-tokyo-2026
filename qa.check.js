@@ -135,7 +135,7 @@ check('official K-ETA exemption notice is linked', /k-eta\.go\.kr\/.+299707/.tes
 check('voting feature is absent', !/\b(vote|voting|proposal)\b/i.test(html));
 check('retired voting API is absent', !/st26-api|api\/proposals/i.test(html));
 const sw = fs.readFileSync(path.join(__dirname, 'sw.js'), 'utf8');
-check('service worker cache version matches release', /st26-v6/.test(sw));
+check('service worker cache version matches release', /st26-v7/.test(sw));
 check('navigation uses network-first freshness', /req\.mode === 'navigate'[\s\S]+fetch\(req, \{ cache: 'no-cache' \}\)/.test(sw));
 check('service worker only deletes this app cache family', /k\.startsWith\(CACHE_PREFIX\)/.test(sw));
 check('service worker has an offline document fallback', /caches\.match\('\.\/index\.html'\)/.test(sw));
