@@ -129,13 +129,18 @@ check('clicking a to-do link does not toggle completion', !dom.window.eval('stor
 
 const seoulBusStart = dom.window.eval(`compute(findDay('s3')).rows.find(r=>r.type==='item'&&r.it[1].includes('City Tour Bus')).start`);
 check('Seoul tour bus has at least 20 minutes of official cutoff buffer', seoulBusStart <= 16 * 60 + 30, `starts at minute ${seoulBusStart}`);
+const tuesdayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
+const manorsRow = tuesdayRows.find((row) => row.it[1].includes('MANORS Golf'));
+const malbonRow = tuesdayRows.find((row) => row.it[1].includes('Malbon 6451'));
+check('MANORS Hannam is scheduled before the conservative 7 PM close', manorsRow && manorsRow.start + manorsRow.it[8] <= 19 * 60);
+check('Malbon Dosan is scheduled before its 8 PM close', malbonRow && malbonRow.start + malbonRow.it[8] <= 20 * 60);
 check('Tokyo baseball matchup is confirmed in the itinerary', /Yakult Swallows vs Chunichi Dragons/.test(html));
 check('official K-ETA exemption notice is linked', /k-eta\.go\.kr\/.+299707/.test(html));
 
 check('voting feature is absent', !/\b(vote|voting|proposal)\b/i.test(html));
 check('retired voting API is absent', !/st26-api|api\/proposals/i.test(html));
 const sw = fs.readFileSync(path.join(__dirname, 'sw.js'), 'utf8');
-check('service worker cache version matches release', /st26-v7/.test(sw));
+check('service worker cache version matches release', /st26-v8/.test(sw));
 check('navigation uses network-first freshness', /req\.mode === 'navigate'[\s\S]+fetch\(req, \{ cache: 'no-cache' \}\)/.test(sw));
 check('service worker only deletes this app cache family', /k\.startsWith\(CACHE_PREFIX\)/.test(sw));
 check('service worker has an offline document fallback', /caches\.match\('\.\/index\.html'\)/.test(sw));
