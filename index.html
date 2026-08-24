@@ -298,7 +298,7 @@ const T_SEOUL = M([
  ['md','gwh',15],['md','iks',15],['md','elj',7],
  ['gwh','iks',10],['iks','mj',20],['mj','gn',30],['bp','gn',20],['bp','md',25],['jamsil','ss',15],
  ['md','sinsa',25],['sinsa','bp',10],
- ['hn','gn',25],['hn','gns',25],['hn','apg',20],['hn','md',20],['hn','gwh',25],['hn','iks',25],['hn','hd',35],['hn','ss',20],['hn','elj',15],['hn','bp',20]
+ ['hn','gn',25],['hn','gns',25],['hn','apg',28],['hn','md',20],['hn','gwh',30],['hn','iks',25],['hn','hd',35],['hn','ss',20],['hn','elj',15],['hn','bp',20]
 ],35);
 const T_TOKYO = M([
  ['hnd','sj',45],['sj','asa',30],['asa','ue',10],['ue','akb',5],['akb','sj',20],
@@ -312,14 +312,14 @@ const T_TOKYO = M([
 const ZONES = {
  seoul:{
   gn:{n:'Samseong · 호텔',la:37.5089,lo:127.0633,hotel:1}, gns:{n:'Gangnam Stn',la:37.4979,lo:127.0276},
-  apg:{n:'Apgujeong',la:37.5270,lo:127.0286}, sinsa:{n:'Garosugil',la:37.5160,lo:127.0203},
+  apg:{n:'Dosan golf cluster',la:37.5239,lo:127.0349}, sinsa:{n:'Garosugil',la:37.5160,lo:127.0203},
   cdm:{n:'Cheongdam',la:37.5193,lo:127.0536}, hd:{n:'Hongdae',la:37.5573,lo:126.9237},
   sc:{n:'Shinchon',la:37.5598,lo:126.9423}, ss:{n:'Seongsu',la:37.5446,lo:127.0559},
   ddp:{n:'DDP',la:37.5663,lo:127.0110}, md:{n:'Myeongdong',la:37.5560,lo:126.9820},
   gwh:{n:'Gwanghwamun',la:37.5790,lo:126.9680}, iks:{n:'Ikseon-dong',la:37.5830,lo:126.9950},
   mj:{n:'Majang',la:37.5660,lo:127.0427}, bp:{n:'Banpo',la:37.5126,lo:126.9966},
   elj:{n:'Euljiro',la:37.5600,lo:126.9960}, jamsil:{n:'Jamsil',la:37.5133,lo:127.1001},
-  hn:{n:'Hannam',la:37.5345,lo:127.0017}
+  hn:{n:'Hannam · MANORS',la:37.5365,lo:126.9984}
  },
  tokyo:{
   sj:{n:'Nishi-Shinjuku · Park Hyatt',la:35.6852,lo:139.6907,hotel:1}, hj:{n:'Harajuku',la:35.6702,lo:139.7027},
@@ -372,10 +372,13 @@ const NAVER=[
  ['Shake Shack','q:쉐이크쉑 강남대로점'],
  ['Musinsa','q:무신사 스탠다드 성수'],['PHYPS','q:핍스마트 성수'],['29CM','q:이구성수'],
  ['NyuNyu','q:뉴뉴 성수'],['LCDC','q:LCDC SEOUL 성수'],['Run Hub','q:뉴발란스 북촌'],
+ ['MANORS Golf','q:매너스골프 한남'],['VINYL & PLASTIC','q:현대카드 바이닐앤플라스틱'],
+ ['Titleist Dosan','q:타이틀리스트 도산점'],['Maison Southcape','q:메종 사우스케이프'],
+ ['G/FORE Seoul','q:지포어 서울 플래그십스토어'],['Malbon 6451','q:말본6451 도산 플래그쉽스토어'],
  ['MTL Hannam','36648938'],['SMCC','q:서울 모닝 커피 레이브']
 ];
 
-/* item: [emoji,title,cat,zone,areaLabel,line,station,rating,durMins,note,link,locked,notBefore] */
+/* item: [emoji,title,cat,zone,areaLabel,line,station,rating,durMins,note,link,locked,notBefore,parallelTrack,transferMins] */
 const SEOUL_DAYS = [
  {id:'s0',num:'ARRIVAL',kr:'토요일',date:'Sat · Aug 29',iso:'2026-08-29',sub:'Touch down, bag drop & Hongdae Saturday night 🎶',anchor:15*60,items:[
   ['✈️','Arrive Incheon International Airport','travel','ich','Incheon','AREX','ICN T1',null,45,'Immigration + bags — the usual drill. Both families land ~3:00–3:50 PM.',null,1],
@@ -404,17 +407,21 @@ const SEOUL_DAYS = [
   ['🌉','Banpo Bridge Rainbow Fountain + 7/11 ramen','night','bp','Banpo','3','고속터미널 Express Bus Tml',5.0,45,'Moonlight Rainbow Fountain show on the Han River — pair with convenience-store ramen on the riverbank. Aug shows run 7:30–9:30 PM, every 30 min — catch whichever one you land on.','https://www.tiktok.com/@tiktok/video/7342997097806843182',0,20*60],
   ['🌙','Return to Park Hyatt & rest','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Spa day tomorrow! 💆']
  ]},
- {id:'s2',num:'DAY 2',kr:'월요일',date:'Mon · Aug 31',iso:'2026-08-31',sub:'Gangnam wellness & beauty day 💆✨',anchor:9*60,items:[
+ {id:'s2',num:'DAY 2',kr:'월요일',date:'Mon · Aug 31',iso:'2026-08-31',sub:'Gangnam wellness + Dosan golf-crew split 💆⛳',anchor:9*60,items:[
   ['🥞','Bills — Ricotta Pancakes','food','gn','Gangnam','2','삼성 Samseong',5.0,60,'"Unreal" ricotta pancakes — rated 5.0 by everyone. Confirmed open 9am–10pm daily (Mon included) per billskorea.com. <b>Flex item:</b> this is a repeat of Sunday\'s bills and isn\'t booked yet — if an SMCC morning rave lands on Mon 8/31, drop this and the morning opens up for it (spa isn\'t until 12:00).','https://www.billskorea.com/en/locations/gangnam',0,9*60],
   ['🥤','Twelve (Korea\'s Erewhon) — Wonder Bar','food','cdm','Cheongdam','7','청담 Cheongdam',5.0,45,'Smoothie stop after bills — health bowls + juices inside House of Shinsegae. Same neighborhood as the spa, no real transit needed after.','https://www.tiktok.com/@justinyooniverse/video/7588163558945410359',0,10*60+30],
-  ['💆','Spa Gogyeol — Korean wellness massage ✓','beauty','cdm','Cheongdam','7','청담 Cheongdam',5.0,150,'BOOKED ✓ — Cheongdam branch (NOT Seocho), J&C Building 3-4F, 13 Seolleung-ro 132-gil. Package 1, 150 min, ×6 split across two seatings: 4 people at 12:00 PM, 2 people at 12:30 PM. Arrive 10 min early for consultation. From ₩120K. Confirmed via Instagram.','https://www.tiktok.com/@farhabae/video/7592736918274690318',0,12*60],
-  ['🎨','Color Analysis (Ecojardin) + Headspa ✓','beauty','gn','Gangnam','2','삼성 Samseong',5.0,90,'BOOKED ✓ — Ecojardin Coex branch, 3:00 PM, ×3 (color analysis + 18-step scalp treatment). ⚠️ CONFLICT: Spa Gogyeol is actually in Cheongdam (not Samseong) and runs to 2:30/3:00 PM (150-min Package 1, 2 people finish right at 3:00) — that\'s zero-to-no transit buffer to Coex. Needs a fix: push Ecojardin later, split who goes, or take a taxi straight from the 12:00 spa seating. Confirmed via WhatsApp.','https://www.tiktok.com/@tiktok/video/7510294635755982136',0,15*60],
+  ['💆','Spa Gogyeol — Korean wellness massage ✓','beauty','cdm','Cheongdam','7','청담 Cheongdam',5.0,150,'BOOKED ✓ — Cheongdam branch (NOT Seocho), J&C Building 3-4F, 13 Seolleung-ro 132-gil. Package 1, 150 min, ×6 split across two seatings: 4 people at 12:00 PM, 2 people at 12:30 PM. <b>Seat assignment matters:</b> put all three Ecojardin guests in the 12:00 seating; the fourth 12:00 guest joins the two 12:30 guests as the golf crew. Arrive 10 min early for consultation. Confirmed via Instagram.','https://www.tiktok.com/@farhabae/video/7592736918274690318',0,12*60],
+  ['🎨','BEAUTY CREW ×3 · Color Analysis (Ecojardin) + Headspa ✓','beauty','gn','Gangnam','2','삼성 Samseong',5.0,90,'BOOKED ✓ — Ecojardin Coex branch, 3:00 PM, ×3 (color analysis + 18-step scalp treatment). All three guests must use Spa Gogyeol\'s 12:00 seating, finishing ~2:30; taxi Cheongdam→Coex takes ~10 minutes and leaves a comfortable 20-minute check-in buffer. The golf crew shops Dosan in parallel and everyone reunites for Born and Bred. Confirmed via WhatsApp.','https://www.tiktok.com/@tiktok/video/7510294635755982136',0,15*60],
+  ['⛳','GOLF CREW ×3 · Titleist Dosan','shop','apg','Apgujeong · Dosan','3','압구정로데오 Apgujeong Rodeo',null,20,'<b>3:10–3:30 PM · 20 minutes max.</b> Start at the south end of the cluster after a ~10-minute taxi from Spa Gogyeol. Full apparel, gear, clubs and balls. 1F, 310 Dosan-daero · official hours 10:30 AM–8 PM daily.','https://www.titleistapparel.co.kr/store/157',0,15*60+10,'golf'],
+  ['⛳','GOLF CREW ×3 · Maison Southcape','shop','apg','Apgujeong · Dosan Park','3','압구정로데오 Apgujeong Rodeo',null,20,'<b>3:33–3:53 PM · 20 minutes max.</b> Walk ~3 minutes north to the resort-golf flagship opposite Dosan Park. 1F, 17 Dosan-daero 45-gil · official hours 11 AM–8 PM. The golf studio downstairs is reservation-only, so stay on 1F.','https://southcape.shop/us/service/maison.php',0,null,'golf'],
+  ['⛳','GOLF CREW ×3 · G/FORE Seoul flagship','shop','apg','Apgujeong · Dosan Park','3','압구정로데오 Apgujeong Rodeo',null,20,'<b>3:54–4:14 PM · 20 minutes max.</b> Nearly next door to Southcape: 1–2F, 14 Eonju-ro 154-gil. Official hours 11 AM–8 PM.','https://www.gfore.kr/Store?tabId=flagship',0,null,'golf',1],
+  ['⛳','GOLF CREW ×3 · Malbon 6451 Dosan flagship','shop','apg','Apgujeong · Dosan','3','압구정로데오 Apgujeong Rodeo',5.0,20,'<b>4:19–4:39 PM · 20 minutes max.</b> Finish ~5 minutes north at the priority Malbon stop. First Korean flagship, 16 Eonju-ro 168-gil · official hours 10:30 AM–8 PM daily. Leave the area by ~5:05; Apgujeong→Majang is ~35 minutes, giving the golf crew a healthy buffer before the prepaid 6 PM dinner.','https://malbongolfkorea.com/board/?cate=29&db=gallery_3',0,null,'golf',5],
   ['🥩','Born and Bred — premium hanwoo beef ✓','food','mj','Majang','5','마장 Majang',5.0,120,'✓ <b>BOOKED &amp; PAID</b> — <b>6:00 PM</b>, ×6, under 서청수. 2F Casual Dining · Casual Tasting Menu (5 courses, ₩165K/pp) · ₩300K deposit prepaid, deducted from the bill.<br><br><b>Swapped off Tuesday with Shake Shack</b> — Born and Bred is <b>closed every Tuesday</b>, so the original Sep 1 plan was impossible. The 3F private room was fully booked all three Seoul nights, so this is 2F.<br><br>⚠️ Dining is a hard <b>2 hours</b>, and <b>>15 min late = auto-cancelled with the deposit forfeited</b>. Ecojardin finishes ~4:30 and Coex→Majang is ~35 min — leave by 5:15 to be safe. Free cancellation until <b>Aug 23</b>. Confirmation link in the checklist.','https://www.tiktok.com/@tiktok/video/7462314178645331218',0,18*60],
   ['🎶','Break Silence music bar','night','ss','Seongsu','2','성수 Seongsu',4.7,75,'Request 2 songs each and hear them on the big speakers — the music is the whole point. Straight from Born and Bred — Majang→Seongsu is one stop (~10 min), landing ~8:10 with the Mon midnight close nowhere in sight. Small 2F room — DM @break__silence ahead so 6 can sit together. Dinner\'s handled: you arrive fresh off the 5-course tasting menu.','https://www.tiktok.com/@leoniecadao/video/7562157146268257539'],
   ['🌃','Euljiro "Hipjiro" — hidden bars & neon alleys','night','elj','Euljiro','3','을지로3가 Euljiro 3-ga',3.0,90,'From your IG saves — Euljiro by day, Hipjiro by night. Round two after Break Silence: Line 2 from Seongsu (~20-25 min). No storefront signs, just handwritten markers on old hardware/lighting shops — hunt for George Tunnel, Euljiromun, Dongbaek Palace, or Nogari Alley\'s pub row between Euljiro 3-ga and 4-ga. Station exits: 3 for the workshop alleys, 7 for the bar streets.','https://www.instagram.com/p/DYSFhSFzgUy/'],
   ['🌙','Return to Park Hyatt & rest','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Home before midnight — palace district & temples tomorrow 🇰🇷']
  ]},
- {id:'s3',num:'DAY 3',kr:'화요일',date:'Tue · Sep 1',iso:'2026-09-01',sub:'Temples, palace district & golf flagships ⛳',anchor:9*60,items:[
+ {id:'s3',num:'DAY 3',kr:'화요일',date:'Tue · Sep 1',iso:'2026-09-01',sub:'Gyeongbokgung day + MANORS and Hannam ⛳',anchor:9*60,items:[
   ['🍳','Breakfast at Park Hyatt','food','gn','Gangnam','2','삼성 Samseong',null,45,'Hotel breakfast — quick fuel before the temple.'],
   ['🛕','Seoul Temple','sight','sc','Shinchon','2','신촌 Sinchon',7.5,90,'Rated 7.5 (Bryson gave it a 10 🤣) — peaceful morning visit.'],
   ['🏹','Shinchon Robinhood Archery Café','act','sc','Shinchon','2','신촌 Sinchon',4.0,45,'Archery café near the temple — friendly competition. Opens around noon — confirm via IG @sinchonrobinhood before locking the time.','https://www.tiktok.com/@clovchoi/video/7597972816776023327'],
@@ -423,10 +430,10 @@ const SEOUL_DAYS = [
   ['📚','Kyobo Book Centre — Gwanghwamun flagship','shop','gwh','Gwanghwamun','5','광화문 Gwanghwamun',3.0,20,'Korea\'s biggest bookstore — stationery, K-books, souvenirs. A focused 20-minute browse preserves the City Tour Bus buffer.','https://www.tiktok.com/@gisselle_val/video/7392572302761790753'],
   ['🥖','Jayeondo Sogeumppang — salted bread','snack','iks','Ikseon-dong','3','안국 Anguk',5.0,20,'Viral salted bread — grab and go. Open till 10 PM, but popular flavors can sell out — if you pass it earlier in the Ikseon loop, buy then.','https://www.tiktok.com/@daveyscakestravels/video/7496822617878433031'],
   ['☔','Rain Report — indoor rain cafe','cafe','iks','Ikseon-dong','3','안국 Anguk',5.0,35,'Indoor rain every 15 min — K-drama umbrella photos + the famous tissue bread. One rain cycle plus photos is enough; leave on time for the bus.','https://www.tiktok.com/@angelagiakas/video/7438035533227478279'],
-  ['🚌','Seoul City Tour Bus — full loop, ride it all the way round','sight','gwh','Gwanghwamun','5','광화문 Gwanghwamun',null,90,'TOUR01 "Downtown, Palaces & Namsan" — the full ~90-min circuit, staying aboard the whole way and back to where you started. Board at the Gwanghwamun Stop; exchange your reserved ticket for a physical one at the booth first (68-2 Taepyeong-ro 1-ga). Buses every 30 min, first 9:20 AM, <b>last bus 4:50 PM</b>, closed Mondays. Open-top double-decker — bring a hat/sunscreen. ☎ 02-777-6090.<br><br>✅ <b>Built-in buffer:</b> the tightened palace/bookstore/cafe stops target Gwanghwamun around <b>4:15 PM</b>, leaving roughly 35 minutes for delays and ticket exchange. Aim to board by 4:30 rather than treating 4:50 as the plan; if the day slips, skip the bookstore or leave Rain Report after one rain cycle.<br><br><b>The full 15-stop loop, in order:</b><br>• 1. Gwanghwamun Station (board here)<br>• 2. Myeong-dong<br>• 3. Namsangol Hanok Village<br>• 4. Ambassador Seoul Pullman Hotel<br>• 5. Shilla Hotel, Jangchungdan Park<br>• 6. N Seoul Tower<br>• 7. Hyatt Hotel, Gangnam<br>• 8. DDP, Dongdaemun Market<br>• 9. Daehak-ro<br>• 10. Changgyeonggung Palace<br>• 11. Changdeokgung Palace<br>• 12. Insa-dong, Bukchon<br>• 13. Cheongwadae (Blue House)<br>• 14. Gyeongbokgung, Folk Museum, MMCA<br>• 15. Sejong Center, Gwanghwamun Square<br>• → back to Gwanghwamun, hop off<br><br><b>Off at:</b> Stop 1/Gwanghwamun where you started, around 6 PM. Then ~30 min to Gangnam Station for Shake Shack (Line 3 → 9). Dinner is a walk-in, so a small overrun is harmless.','https://en.seoulcitybus.com/customer/faq.php'],
-  ['⛳','MANORS Golf — Hannam flagship','shop','hn','Hannam','6','한강진 Hangangjin',null,20,'<b>Target: ~6:05–6:25 PM · 20 minutes max.</b> MANORS Golf\'s first global flagship, styled like a British clubhouse. B1, 22 Itaewon-ro 45-gil, Yongsan-gu. The early-evening stop is deliberately planned against a conservative 7 PM close; verify day-of on the official Kakao channel. The new MANORS × Reebok collection launched here in August.','https://pf.kakao.com/_GWKXn'],
-  ['⛳','Malbon 6451 — Dosan flagship','shop','apg','Apgujeong','3','압구정로데오 Apgujeong Rodeo',5.0,20,'<b>Target: ~6:45–7:05 PM · 20 minutes max.</b> First Korean Malbon flagship, 16 Eonju-ro 168-gil, Gangnam-gu. Closes at 8 PM.<br><br><b>Nearby Dosan Park golf shops, if time:</b><br>• <b>G/FORE Seoul</b> — 14 Eonju-ro 154-gil<br>• <b>Titleist Dosan</b> — 310 Dosan-daero · closes 8 PM<br>• <b>Maison Southcape</b> — 17 Dosan-daero 45-gil · closes 8 PM<br><br>Malbon is the priority; the nearby shops are saved references, not scheduled stops.','https://visitgangnam.net/en/places/malbon-6451-dosan-flagship-store'],
-  ['🍔','Shake Shack — Gangnam-daero','food','gns','Gangnam Stn','2','강남 Gangnam',5.0,60,'<b>Swapped onto Tuesday from Monday and moved after the golf shops.</b> Born and Bred is closed Tuesdays, so the two traded nights. The original Korea flagship (opened 2016) — 2 min walk from Gangnam Station Exit 10, 서울 서초구 강남대로 421. Open 10:30 AM–10 PM daily. ☎ 0507-1413-4409. Walk-in is fine, so the later arrival after MANORS + Malbon is harmless.','https://app.catchtable.co.kr/ct/shop/shakeshack_gangnam'],
+  ['🚌','Seoul City Tour Bus — full loop, ride it all the way round','sight','gwh','Gwanghwamun','5','광화문 Gwanghwamun',null,90,'TOUR01 "Downtown, Palaces & Namsan" — the full ~90-min circuit, staying aboard the whole way and back to where you started. Board at the Gwanghwamun Stop; exchange your reserved ticket for a physical one at the booth first (68-2 Taepyeong-ro 1-ga). Buses every 30 min, first 9:20 AM, <b>last bus 4:50 PM</b>, closed Mondays. Open-top double-decker — bring a hat/sunscreen. ☎ 02-777-6090.<br><br>✅ <b>Built-in buffer:</b> the tightened palace/bookstore/cafe stops target Gwanghwamun around <b>4:15 PM</b>, leaving roughly 35 minutes for delays and ticket exchange. Aim to board by 4:30 rather than treating 4:50 as the plan; if the day slips, skip the bookstore or leave Rain Report after one rain cycle.<br><br><b>The full 15-stop loop, in order:</b><br>• 1. Gwanghwamun Station (board here)<br>• 2. Myeong-dong<br>• 3. Namsangol Hanok Village<br>• 4. Ambassador Seoul Pullman Hotel<br>• 5. Shilla Hotel, Jangchungdan Park<br>• 6. N Seoul Tower<br>• 7. Hyatt Hotel, Gangnam<br>• 8. DDP, Dongdaemun Market<br>• 9. Daehak-ro<br>• 10. Changgyeonggung Palace<br>• 11. Changdeokgung Palace<br>• 12. Insa-dong, Bukchon<br>• 13. Cheongwadae (Blue House)<br>• 14. Gyeongbokgung, Folk Museum, MMCA<br>• 15. Sejong Center, Gwanghwamun Square<br>• → back to Gwanghwamun, hop off<br><br><b>Off at:</b> Stop 1/Gwanghwamun where you started, around 5:40 PM. Then allow ~30 minutes to the MANORS flagship in Hannam. After MANORS, Vinyl & Plastic is a five-minute walk and Gangnam Station is ~25 minutes away. Dinner is a walk-in, so a small overrun is harmless.','https://en.seoulcitybus.com/customer/faq.php'],
+  ['⛳','MANORS Golf — Hannam flagship','shop','hn','Hannam','6','한강진 Hangangjin',null,20,'<b>Target: ~6:12–6:32 PM · 20 minutes max.</b> This is Tuesday\'s priority stop: MANORS Golf\'s first global flagship, styled like a British clubhouse. B1, 22 Itaewon-ro 45-gil, Yongsan-gu. The official Kakao listing confirms <b>11 AM–8 PM</b>, so the route has ample closing buffer. The app map pin is now centered on the actual flagship coordinates.','https://pf.kakao.com/_GWKXn'],
+  ['🎧','VINYL & PLASTIC by Hyundai Card — Hannam','shop','hn','Hannam','6','한강진 Hangangjin',null,20,'<b>Target: ~6:37–6:57 PM · 5-minute walk east from MANORS · 20 minutes max.</b> The one Hannam add worth scheduling: a hands-on record store with 10,000+ vinyl titles and listening stations. 248 Itaewon-ro · open Tuesday–Saturday noon–9 PM · non-Hyundai Card holders are welcome. <b>Fashion substitute:</b> BEAKER Hannam is directly across the street at 241 Itaewon-ro, open 11 AM–8 PM; choose it instead of Vinyl & Plastic, not in addition. Leeum Museum is excellent but closes at 6 PM, so it cannot fit this evening.','https://dive.hyundaicard.com/web/vinylandplastic/spaceInfo.hdc',0,null,null,5],
+  ['🍔','Shake Shack — Gangnam-daero','food','gns','Gangnam Stn','2','강남 Gangnam',5.0,60,'<b>Swapped onto Tuesday from Monday and placed after the Hannam cluster.</b> Born and Bred is closed Tuesdays, so the two traded nights. The original Korea flagship (opened 2016) — 2 min walk from Gangnam Station Exit 10, 서울 서초구 강남대로 421. Open 10:30 AM–10 PM daily. ☎ 0507-1413-4409. Walk-in is fine, so the ~7:22 PM arrival after MANORS + Vinyl & Plastic is harmless.','https://app.catchtable.co.kr/ct/shop/shakeshack_gangnam'],
   ['🎤','Su Noraebang (수노래방) — Gangnam','night','gns','Gangnam Stn','2','강남 Gangnam',null,90,'The crowd-favourite pick over a random coin noraebang: proper private rooms, clean, big regularly-updated song list (strong on English tracks), and genuinely foreigner-friendly — staff speak some English. ~₩20K/hr per room, and about +₩1,000/person gets you free-flow soft drinks, ice cream and popcorn. No alcohol served, open late. ⚠️ A few foreign reviewers have flagged inconsistent pricing — agree the room rate and per-hour total up front before you start singing.','https://www.tiktok.com/@erinasimon/video/7504416082028006698'],
   ['🌙','Last night at Park Hyatt — pack for Tokyo','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Pack tonight — 5:30 AM start tomorrow ✈️']
  ]},
@@ -642,11 +649,23 @@ function orderedItems(day){
   return base.slice(0,at).concat(extra,base.slice(at));
 }
 function compute(day){
-  const city=cityOf(day.id);let t=day.anchor;const rows=[];let prev=null;let transit=0;
+  const city=cityOf(day.id);let t=day.anchor;const rows=[];let prev=null;let transit=0;const tracks={};
   for(const ent of orderedItems(day)){
     const it=ent.it,[e,title,cat,zone]=it;
+    const track=it[13];
+    if(track){
+      const state=tracks[track];let pt=state?state.t:(it[12]||t);
+      if(state){
+        const mins=it[14]??tt(city,state.prev[3],zone);
+        if(mins>0){rows.push({type:'chip',mins,walk:mins<=7,track});pt+=mins;transit+=mins}
+        else if(state.prev[3]===zone&&state.prev[2]!=='travel'&&cat!=='travel'){rows.push({type:'chip',mins:3,walk:true,track});pt+=3;transit+=3}
+      }
+      rows.push({type:'item',id:ent.id,bench:ent.bench,start:pt,it,track});
+      tracks[track]={t:pt+(it[8]||0),prev:it};
+      continue;
+    }
     if(prev){
-      const mins=tt(city,prev[3],zone);
+      const mins=it[14]??tt(city,prev[3],zone);
       if(mins>0){rows.push({type:'chip',mins,walk:mins<=7});t+=mins;transit+=mins}
       else if(prev[3]===zone&&prev[2]!=='travel'&&cat!=='travel'){rows.push({type:'chip',mins:3,walk:true});t+=3;transit+=3}
     }
@@ -760,6 +779,7 @@ function cardHTML(row,city,liveNow){
   const isNow=liveNow!=null&&liveNow>=row.start&&liveNow<row.start+(d||30);
   const lbl=link?(link.includes('tiktok')?'▶ TikTok':link.includes('instagram')?'▶ Instagram':'↗ map / link'):'';
   const badges=[
+    row.track?`<span class="bdg" style="background:#244a3f;color:#7fffc9">↗ PARALLEL GOLF CREW</span>`:'',
     `<span class="bdg cat" style="background:${c.c}">${c.l}</span>`,
     line?`<span class="bdg line" style="background:${LINES[line]||'#555'}">${/^\d/.test(line)?'Line '+line:line}</span>`:'',
     stn&&stn!=='—'?`<span class="bdg">${stn}</span>`:'',
