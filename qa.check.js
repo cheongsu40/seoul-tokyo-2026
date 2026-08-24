@@ -71,6 +71,7 @@ const externalTransitZones = new Set(['ich', 'gmp', 'hnd', 'nrt']);
 check('every itinerary category is defined', itinerary.every(({ item }) => data.categories.includes(item[2])));
 check('every itinerary map zone is defined or an external airport', itinerary.every(({ city, item }) => data.zones[city].includes(item[3]) || externalTransitZones.has(item[3])));
 check('every itinerary duration is finite and non-negative', itinerary.every(({ item }) => Number.isFinite(item[8]) && item[8] >= 0));
+check('every scheduled shopping stop is capped at 20 minutes', itinerary.every(({ item }) => item[2] !== 'shop' || item[8] <= 20));
 check('every itinerary link is an absolute web URL', itinerary.every(({ item }) => !item[10] || /^https:\/\//.test(item[10])));
 check('every forced start is a valid minute value', itinerary.every(({ item }) => item[12] == null || (Number.isFinite(item[12]) && item[12] >= 0 && item[12] < 1440)));
 check('base itinerary has no duplicate day titles', [...data.seoul, ...data.tokyo].every((day) => new Set(day.items.map((item) => item[1])).size === day.items.length));
@@ -80,6 +81,7 @@ for (const city of ['seoul', 'tokyo']) {
     check(`${city} Bench item ${item[1]} has valid category`, data.categories.includes(item[2]));
     check(`${city} Bench item ${item[1]} has valid zone`, data.zones[city].includes(item[3]) || externalTransitZones.has(item[3]));
     check(`${city} Bench item ${item[1]} has valid duration`, Number.isFinite(item[8]) && item[8] >= 0);
+    check(`${city} Bench shopping item ${item[1]} is capped at 20 minutes`, item[2] !== 'shop' || item[8] <= 20);
   }
 }
 
@@ -140,7 +142,7 @@ check('official K-ETA exemption notice is linked', /k-eta\.go\.kr\/.+299707/.tes
 check('voting feature is absent', !/\b(vote|voting|proposal)\b/i.test(html));
 check('retired voting API is absent', !/st26-api|api\/proposals/i.test(html));
 const sw = fs.readFileSync(path.join(__dirname, 'sw.js'), 'utf8');
-check('service worker cache version matches release', /st26-v8/.test(sw));
+check('service worker cache version matches release', /st26-v9/.test(sw));
 check('navigation uses network-first freshness', /req\.mode === 'navigate'[\s\S]+fetch\(req, \{ cache: 'no-cache' \}\)/.test(sw));
 check('service worker only deletes this app cache family', /k\.startsWith\(CACHE_PREFIX\)/.test(sw));
 check('service worker has an offline document fallback', /caches\.match\('\.\/index\.html'\)/.test(sw));
