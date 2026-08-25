@@ -142,6 +142,12 @@ const vinylRow = tuesdayRows.find((row) => row.it[1].includes('VINYL & PLASTIC')
 check('MANORS Hannam is scheduled before its official 8 PM close', manorsRow && manorsRow.start + manorsRow.it[8] <= 20 * 60);
 check('Vinyl & Plastic follows MANORS and closes with ample buffer', vinylRow && manorsRow && vinylRow.start > manorsRow.start && vinylRow.start + vinylRow.it[8] <= 21 * 60);
 check('Tokyo baseball matchup is confirmed in the itinerary', /Yakult Swallows vs Chunichi Dragons/.test(html));
+const sundayTokyoRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('t4')).rows.filter(r=>r.type==='item'))`));
+const shibuyaSkyRows = JSON.parse(dom.window.eval(`JSON.stringify(TOKYO_DAYS.flatMap(day=>day.items).filter(item=>item[1].includes('Shibuya Sky')))`));
+const shibuyaSkyRow = sundayTokyoRows.find((row) => row.it[1].includes('Shibuya Sky'));
+check('Shibuya Sky appears once on the confirmed Sunday', shibuyaSkyRows.length === 1 && shibuyaSkyRow);
+check('Shibuya Sky is anchored at the booked 3:20 PM slot', shibuyaSkyRow && shibuyaSkyRow.start === 15 * 60 + 20);
+check('Shibuya Sky booking details include party size and reference', /Adult \(12\+\) ×6/.test(shibuyaSkyRow?.it[9] || '') && /SXP766439/.test(shibuyaSkyRow?.it[9] || ''));
 check('official K-ETA exemption notice is linked', /k-eta\.go\.kr\/.+299707/.test(html));
 
 check('voting feature is absent', !/\b(vote|voting|proposal)\b/i.test(html));
