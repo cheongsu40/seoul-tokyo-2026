@@ -85,6 +85,13 @@ body{background:var(--bg);color:var(--txt);font-family:'Outfit','Noto Sans KR',-
 .wx{margin-left:auto;font-size:12px;color:var(--dim);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
 .dsub{color:var(--dim);font-size:13px;padding:0 2px 14px}
 
+/* past days fold into slim strips so today rides the top */
+.day.past-min{margin:6px 0 10px}
+.day.past-min .dhead{cursor:pointer;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:9px 14px;opacity:.72}
+.day.past-min .dhead .big{font-size:15px}
+.dhead[data-ptog]{cursor:pointer}
+.pastnote{margin-left:auto;font-size:11px;color:var(--dim2);white-space:nowrap}
+
 /* ---------- cards ---------- */
 .list{display:flex;flex-direction:column}
 .card{display:block;background:var(--card);border:1px solid var(--line);border-radius:18px;
@@ -812,15 +819,22 @@ function chipHTML(row){
   const icon=row.walk?'🚶':'🚇',lbl=row.walk?'walk':'subway';
   return `<div class="chip"><span class="ln"></span><span>${icon} <b>~${row.mins} min</b> ${lbl}</span></div>`;
 }
+const pastOpen=new Set(); /* past days a user has tapped back open — resets each load */
 function dayHTML(day){
   const city=cityOf(day.id);
+  const past=day.iso<nowIn(TZ[city]).date;
+  if(past&&!pastOpen.has(day.id)){
+    return `<section class="day past-min" id="sec-${day.id}">
+      <div class="dhead" data-ptog="${day.id}"><span class="big">${day.num}</span><span class="kr">${day.kr} · ${day.date}</span><span class="pastnote">✓ wrapped · tap to expand</span></div>
+    </section>`;
+  }
   const {rows,end,transit}=compute(day);
   const live=liveDay(city);
   const liveNow=(live.day&&live.day.id===day.id)?live.now.mins:null;
   const f=fmt(end);const wx=wxFor(day.iso);
   const wxs=wx?`<span class="wx">${wx.e} ${wx.hi}°/${wx.lo}° · 💧${wx.p}%${wx.live?'':' <span style="opacity:.55">typical</span>'}</span>`:'';
   return `<section class="day" id="sec-${day.id}">
-    <div class="dhead"><span class="big">${day.num}</span><span class="kr">${day.kr} · ${day.date}</span>${wxs}</div>
+    <div class="dhead"${past?` data-ptog="${day.id}"`:''}><span class="big">${day.num}</span><span class="kr">${day.kr} · ${day.date}</span>${past?'<span class="pastnote">tap to minimize</span>':''}${wxs}</div>
     <div class="dsub">${day.sub}</div>
     <div class="list" data-day="${day.id}">${rows.map(r=>r.type==='item'?cardHTML(r,city,liveNow):chipHTML(r)).join('')}</div>
     <div class="dfoot"><span>wraps ~<b style="color:var(--txt)">${f.t} ${f.ap}</b> · ${rows.filter(r=>r.type==='item').length} stops · ~${Math.round(transit/60*10)/10} hr transit</span>
@@ -1149,6 +1163,11 @@ function rerenderDay(day){
 
 /* ================= INTERACTION ================= */
 function bind(){
+  document.querySelectorAll('[data-ptog]').forEach(h=>h.onclick=()=>{
+    const id=h.dataset.ptog;
+    pastOpen.has(id)?pastOpen.delete(id):pastOpen.add(id);
+    rerenderDay(findDay(id));
+  });
   document.querySelectorAll('.card .body').forEach(el=>{
     el.onclick=()=>el.closest('.card').classList.toggle('open');
   });
