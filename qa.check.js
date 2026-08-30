@@ -131,7 +131,12 @@ check('clicking a to-do link does not toggle completion', !dom.window.eval('stor
 
 check('City Tour Bus stays cut from the schedule and the Bench', !data.seoul.some((day) => day.items.some((item) => item[1].includes('City Tour Bus'))) && !data.bench.seoul.filter(Boolean).some((item) => item[1].includes('City Tour Bus')));
 const mondayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s2')).rows.filter(r=>r.type==='item'))`));
-check('Monday runs single-track — no parallel golf circuit', mondayRows.every((row) => !row.track));
+check('Monday morning split reconvenes before Twelve', (() => {
+  const tracked = mondayRows.filter((row) => row.track);
+  const twelve = mondayRows.find((row) => row.it[1].includes('Twelve'));
+  return tracked.length === 2 && new Set(tracked.map((r) => r.track)).size === 2 && twelve && tracked.every((r) => r.start + r.it[8] <= twelve.start);
+})());
+check('Monday afternoon stays single-track', mondayRows.every((row) => !row.track || row.start < 12 * 60));
 const ecojardinRow = mondayRows.find((row) => row.it[1].includes('Ecojardin'));
 const bornBredRow = mondayRows.find((row) => row.it[1].includes('Born and Bred'));
 check('Ecojardin leaves ample transit buffer for the 6 PM Born and Bred', ecojardinRow && bornBredRow && bornBredRow.start - (ecojardinRow.start + ecojardinRow.it[8]) >= 45);
