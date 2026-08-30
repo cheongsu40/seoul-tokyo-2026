@@ -132,11 +132,10 @@ check('clicking a to-do link does not toggle completion', !dom.window.eval('stor
 check('City Tour Bus stays cut from the schedule and the Bench', !data.seoul.some((day) => day.items.some((item) => item[1].includes('City Tour Bus'))) && !data.bench.seoul.filter(Boolean).some((item) => item[1].includes('City Tour Bus')));
 const mondayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s2')).rows.filter(r=>r.type==='item'))`));
 check('Monday runs single-track — no parallel golf circuit', mondayRows.every((row) => !row.track));
-const malbonRow = mondayRows.find((row) => row.it[1].includes('Malbon 6451'));
 const ecojardinRow = mondayRows.find((row) => row.it[1].includes('Ecojardin'));
-check('Malbon golf stop follows Ecojardin, not during', malbonRow && ecojardinRow && malbonRow.start >= ecojardinRow.start + ecojardinRow.it[8]);
-check('Malbon golf stop leaves transit buffer for the 6 PM Born and Bred', malbonRow && malbonRow.start + malbonRow.it[8] + 25 <= 18 * 60);
-check('benched Dosan shops stay recoverable from the Bench', ['Titleist Dosan', 'Maison Southcape', 'G/FORE Seoul'].every((name) => data.bench.seoul.filter(Boolean).some((item) => item[1].includes(name))));
+const bornBredRow = mondayRows.find((row) => row.it[1].includes('Born and Bred'));
+check('Ecojardin leaves ample transit buffer for the 6 PM Born and Bred', ecojardinRow && bornBredRow && bornBredRow.start - (ecojardinRow.start + ecojardinRow.it[8]) >= 45);
+check('benched Dosan shops stay recoverable from the Bench', ['Titleist Dosan', 'Maison Southcape', 'G/FORE Seoul', 'Malbon 6451'].every((name) => data.bench.seoul.filter(Boolean).some((item) => item[1].includes(name))));
 const tuesdayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
 const manorsRow = tuesdayRows.find((row) => row.it[1].includes('MANORS Golf'));
 const vinylRow = tuesdayRows.find((row) => row.it[1].includes('VINYL & PLASTIC'));
