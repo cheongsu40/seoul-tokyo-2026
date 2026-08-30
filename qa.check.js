@@ -132,10 +132,12 @@ check('clicking a to-do link does not toggle completion', !dom.window.eval('stor
 const seoulBusStart = dom.window.eval(`compute(findDay('s3')).rows.find(r=>r.type==='item'&&r.it[1].includes('City Tour Bus')).start`);
 check('Seoul tour bus has at least 20 minutes of official cutoff buffer', seoulBusStart <= 16 * 60 + 30, `starts at minute ${seoulBusStart}`);
 const mondayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s2')).rows.filter(r=>r.type==='item'))`));
-const dosanGolfRows = mondayRows.filter((row) => row.track === 'golf');
-check('Dosan golf circuit contains all four requested shops', dosanGolfRows.length === 4 && ['Titleist Dosan', 'Maison Southcape', 'G/FORE Seoul', 'Malbon 6451'].every((name) => dosanGolfRows.some((row) => row.it[1].includes(name))));
-check('Dosan golf circuit runs in parallel with Ecojardin', dosanGolfRows[0] && dosanGolfRows[0].start === 15 * 60 + 10 && dosanGolfRows.at(-1).start + dosanGolfRows.at(-1).it[8] <= 16 * 60 + 40);
-check('Dosan golf circuit finishes before every 8 PM close', dosanGolfRows.every((row) => row.start + row.it[8] <= 20 * 60));
+check('Monday runs single-track — no parallel golf circuit', mondayRows.every((row) => !row.track));
+const malbonRow = mondayRows.find((row) => row.it[1].includes('Malbon 6451'));
+const ecojardinRow = mondayRows.find((row) => row.it[1].includes('Ecojardin'));
+check('Malbon golf stop follows Ecojardin, not during', malbonRow && ecojardinRow && malbonRow.start >= ecojardinRow.start + ecojardinRow.it[8]);
+check('Malbon golf stop leaves transit buffer for the 6 PM Born and Bred', malbonRow && malbonRow.start + malbonRow.it[8] + 25 <= 18 * 60);
+check('benched Dosan shops stay recoverable from the Bench', ['Titleist Dosan', 'Maison Southcape', 'G/FORE Seoul'].every((name) => data.bench.seoul.filter(Boolean).some((item) => item[1].includes(name))));
 const tuesdayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
 const manorsRow = tuesdayRows.find((row) => row.it[1].includes('MANORS Golf'));
 const vinylRow = tuesdayRows.find((row) => row.it[1].includes('VINYL & PLASTIC'));
