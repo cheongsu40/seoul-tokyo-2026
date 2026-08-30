@@ -140,7 +140,12 @@ check('Monday afternoon stays single-track', mondayRows.every((row) => !row.trac
 const ecojardinRow = mondayRows.find((row) => row.it[1].includes('Ecojardin'));
 const bornBredRow = mondayRows.find((row) => row.it[1].includes('Born and Bred'));
 check('Ecojardin leaves ample transit buffer for the 6 PM Born and Bred', ecojardinRow && bornBredRow && bornBredRow.start - (ecojardinRow.start + ecojardinRow.it[8]) >= 45);
-check('benched Dosan shops stay recoverable from the Bench', ['Titleist Dosan', 'Maison Southcape', 'G/FORE Seoul', 'Malbon 6451'].every((name) => data.bench.seoul.filter(Boolean).some((item) => item[1].includes(name))));
+check('Dosan golf flagships run inside the Tuesday Rodeo block', (() => {
+  const tueRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
+  const names = ['Titleist Dosan', 'Maison Southcape', 'G/FORE Seoul', 'Malbon 6451', 'Haus Dosan'];
+  const shops = names.map((name) => tueRows.find((row) => row.it[1].includes(name)));
+  return shops.every(Boolean) && shops.every((row) => row.start + row.it[8] <= 20 * 60);
+})());
 const tuesdayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
 const manorsRow = tuesdayRows.find((row) => row.it[1].includes('MANORS Golf'));
 const vinylRow = tuesdayRows.find((row) => row.it[1].includes('VINYL & PLASTIC'));
