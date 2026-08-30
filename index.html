@@ -306,6 +306,7 @@ const T_SEOUL = M([
  ['gwh','iks',10],['iks','mj',20],['mj','gn',30],['mj','apg',25],['bp','gn',20],['bp','md',25],['jamsil','ss',15],['sinsa','ss',30],
  ['md','sinsa',25],['sinsa','bp',10],
  ['scg','gn',20],['scg','gns',10],['scg','ss',30],['scg','sinsa',12],['scg','bp',15],['scg','md',30],['scg','cdm',20],['scg','ddp',30],
+ ['itw','hn',8],['itw','apg',20],['itw','gns',25],['itw','gn',25],['itw','md',20],['itw','bp',15],['itw','elj',20],
  ['hn','gn',25],['hn','gns',25],['hn','apg',28],['hn','md',20],['hn','gwh',30],['hn','iks',25],['hn','hd',35],['hn','ss',20],['hn','elj',15],['hn','bp',20]
 ],35);
 const T_TOKYO = M([
@@ -327,7 +328,8 @@ const ZONES = {
   gwh:{n:'Gwanghwamun',la:37.5790,lo:126.9680}, iks:{n:'Ikseon-dong',la:37.5830,lo:126.9950},
   mj:{n:'Majang',la:37.5660,lo:127.0427}, bp:{n:'Banpo',la:37.5126,lo:126.9966},
   elj:{n:'Euljiro',la:37.5600,lo:126.9960}, jamsil:{n:'Jamsil',la:37.5133,lo:127.1001},
-  hn:{n:'Hannam · MANORS',la:37.5365,lo:126.9984}, scg:{n:'Seocho · church',la:37.4923,lo:127.0104}
+  hn:{n:'Hannam · MANORS',la:37.5365,lo:126.9984}, scg:{n:'Seocho · church',la:37.4923,lo:127.0104},
+  itw:{n:'Itaewon',la:37.5346,lo:126.9942}
  },
  tokyo:{
   sj:{n:'Nishi-Shinjuku · Park Hyatt',la:35.6852,lo:139.6907,hotel:1}, hj:{n:'Harajuku',la:35.6702,lo:139.7027},
@@ -384,7 +386,7 @@ const NAVER=[
  ['Titleist Dosan','q:타이틀리스트 도산점'],['Maison Southcape','q:메종 사우스케이프'],
  ['G/FORE Seoul','q:지포어 서울 플래그십스토어'],['Malbon 6451','q:말본6451 도산 플래그쉽스토어'],
  ['MTL Hannam','36648938'],['SMCC','q:서울 모닝 커피 레이브'],
- ['Sunday church','q:서울 서초구 법원로 10'],['Apgujeong Rodeo','q:압구정로데오거리'],['Kyochon Chicken','q:교촌치킨 강남역'],
+ ['Sunday church','q:서울 서초구 법원로 10'],['Apgujeong Rodeo','q:압구정로데오거리'],['Kyochon Chicken','q:교촌치킨 강남역'],['Hamilton Hotel','q:이태원 세계음식문화거리'],
  ['POTTERY Hannam','q:포터리 한남 플래그십'],['COS — Hannam','q:COS 한남'],['Rough Side','q:러프사이드 한남'],
  ['Mango Many','q:한남동 망고마니'],['lululemon — Hannam','q:룰루레몬 한남'],['SCULPSTORE','q:스컬프스토어 한남']
 ];
@@ -451,8 +453,8 @@ const SEOUL_DAYS = [
   ['🧘','lululemon — Hannam-dong','shop','hn','Hannam','6','한강진 Hangangjin',null,5,'<b>5-minute grab-and-go.</b> The Hannam/Itaewon store — open to ~8 PM, and the condensed run lands you here ~5:33 with hours of buffer.',null],
   ['🍩','Odonut (오도넛) — viral Taiwanese donuts','snack','hn','Hannam (Yongsan)','6','한강진 Hangangjin',5.0,30,'Back off the Bench to close the run: "best bites of my life" per your IG saves — crispy Taiwanese-style donuts, a few minutes\' walk from the shop cluster. Then taxi across the river to Rodeo.','https://www.instagram.com/p/DZDukK2iFmh/'],
   ['🛍️','Apgujeong Rodeo — neon K-fashion street','shop','apg','Apgujeong Rodeo','3','압구정로데오 Apgujeong Rodeo',4.5,20,'<b>Condensed 20-minute sweep</b> straight off the Hannam run (~28-min taxi) — and the better shopping pass of the two Rodeo visits: at ~6:40 the flagships are all still open (<b>most close 8–9 PM; Haus Dosan to 9</b>). Hit whatever Monday night missed, then it\'s a quick 15 to Gangnam for dinner.',null],
-  ['🍔','Shake Shack — Gangnam-daero','food','gns','Gangnam Stn','2','강남 Gangnam',5.0,60,'<b>Swapped onto Tuesday from Monday and placed after the Hannam + Rodeo run.</b> Born and Bred is closed Tuesdays, so the two traded nights. The original Korea flagship (opened 2016) — 2 min walk from Gangnam Station Exit 10, 서울 서초구 강남대로 421. Open 10:30 AM–10 PM daily. ☎ 0507-1413-4409. Walk-in is fine — dinner lands ~7:15, with the Kyochon course next door right after, then karaoke.','https://app.catchtable.co.kr/ct/shop/shakeshack_gangnam'],
-  ['🍗','Kyochon Chicken — pre-karaoke chimaek','food','gns','Gangnam Stn','2','강남 Gangnam',5.0,45,'The Kyochon craving, solved: the <b>Gangnam Station branch</b> (11 Gangnam-daero 98-gil) is around the corner from both Shake Shack and Su Noraebang, and serves until ~4:50 AM — timing can\'t fail. Half honey-original, half red-hot for the table, straight after Shake Shack and fueling the karaoke room. Share-plate pacing recommended — it\'s the second fried course of the hour.','https://www.tripadvisor.com/Restaurant_Review-g294197-d7738110-Reviews-Kyochon_Chicken_Gangnam_Station-Seoul.html'],
+  ['🌮','Itaewon — Hamilton Hotel back alley','food','itw','Itaewon','6','이태원 Itaewon',5.0,60,'<b>Dinner is a graze</b> — the densest global-food strip in Seoul, packed into the alleys behind the Hamilton Hotel: Turkish kebabs, halal wagyu skewers, tacos, Nigerian, late-night desserts. ~20-min taxi back west from Rodeo once the shops shut; the alley is just hitting its stride at this hour. Eat your way down and back — this replaces the Shake Shack sit-down (benched, easy to restore).',null],
+  ['🍗','Kyochon Chicken — pre-karaoke chimaek','food','gns','Gangnam Stn','2','강남 Gangnam',5.0,45,'The Kyochon craving, solved: the <b>Gangnam Station branch</b> (11 Gangnam-daero 98-gil) is around the corner from Su Noraebang, and serves until ~4:50 AM — timing can\'t fail. Half honey-original, half red-hot for the table after the Itaewon graze, fueling the karaoke room. Share-plate pacing recommended.','https://www.tripadvisor.com/Restaurant_Review-g294197-d7738110-Reviews-Kyochon_Chicken_Gangnam_Station-Seoul.html'],
   ['🎤','Su Noraebang (수노래방) — Gangnam','night','gns','Gangnam Stn','2','강남 Gangnam',null,90,'The crowd-favourite pick over a random coin noraebang: proper private rooms, clean, big regularly-updated song list (strong on English tracks), and genuinely foreigner-friendly — staff speak some English. ~₩20K/hr per room, and about +₩1,000/person gets you free-flow soft drinks, ice cream and popcorn. No alcohol served, open late. ⚠️ A few foreign reviewers have flagged inconsistent pricing — agree the room rate and per-hour total up front before you start singing.','https://www.tiktok.com/@erinasimon/video/7504416082028006698'],
   ['🌙','Last night at Park Hyatt — pack for Tokyo','rest','gn','Gangnam','2','삼성 Samseong',null,0,'Pack tonight — 5:30 AM start tomorrow ✈️']
  ]},
@@ -581,6 +583,7 @@ const BENCH={
   ['⛳','Maison Southcape','shop','apg','Apgujeong · Dosan Park','3','압구정로데오 Apgujeong Rodeo',null,20,'Resort-golf flagship opposite Dosan Park. 1F, 17 Dosan-daero 45-gil · 11 AM–8 PM (1F only; the studio downstairs is reservation-only). Benched Mon 8/31 — same story as Titleist.','https://southcape.shop/us/service/maison.php'],
   ['⛳','G/FORE Seoul flagship','shop','apg','Apgujeong · Dosan Park','3','압구정로데오 Apgujeong Rodeo',null,20,'1–2F, 14 Eonju-ro 154-gil · 11 AM–8 PM. Benched Mon 8/31 — same story as Titleist.','https://www.gfore.kr/Store?tabId=flagship'],
   ['⛳','Malbon 6451 Dosan flagship','shop','apg','Apgujeong · Dosan','3','압구정로데오 Apgujeong Rodeo',5.0,20,'Malbon\'s first Korean flagship, 16 Eonju-ro 168-gil · 10:30 AM–8 PM daily. Pulled from Monday — the Hyundai Trade Center 6F golf hall covers Malbon that same morning, so the standalone Dosan trip stopped earning its slot. Add it back if a window opens and the flagship experience matters.','https://malbongolfkorea.com/board/?cate=29&db=gallery_3'],
+  ['🍔','Shake Shack — Gangnam-daero','food','gns','Gangnam Stn','2','강남 Gangnam',5.0,60,'The original Korea flagship (opened 2016) — 2 min walk from Gangnam Station Exit 10, 서울 서초구 강남대로 421 · 10:30 AM–10 PM daily · ☎ 0507-1413-4409. Benched Tue Sep 1 — the Itaewon Hamilton back-alley graze took the dinner slot. Walk-in anytime if the craving strikes.','https://app.catchtable.co.kr/ct/shop/shakeshack_gangnam'],
   null, /* Hyundai Trade Center 6F golf hall — promoted to the Monday morning schedule; null keeps bench indices stable */
   null /* City Tour Bus — cut entirely per Nick (was Tue Sep 1). If tickets were reserved, cancel: ☎ 02-777-6090 / seoulcitybus.com. Null keeps bench indices stable */
  ],
