@@ -129,7 +129,7 @@ todoLink.addEventListener('click', (event) => event.preventDefault());
 todoLink.click();
 check('clicking a to-do link does not toggle completion', !dom.window.eval('store.checks.c13'));
 
-check('City Tour Bus is parked on the Bench, not the Tuesday schedule', data.bench.seoul.filter(Boolean).some((item) => item[1].includes('City Tour Bus')) && !data.seoul.some((day) => day.items.some((item) => item[1].includes('City Tour Bus'))));
+check('City Tour Bus stays cut from the schedule and the Bench', !data.seoul.some((day) => day.items.some((item) => item[1].includes('City Tour Bus'))) && !data.bench.seoul.filter(Boolean).some((item) => item[1].includes('City Tour Bus')));
 const mondayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s2')).rows.filter(r=>r.type==='item'))`));
 check('Monday runs single-track — no parallel golf circuit', mondayRows.every((row) => !row.track));
 const malbonRow = mondayRows.find((row) => row.it[1].includes('Malbon 6451'));
