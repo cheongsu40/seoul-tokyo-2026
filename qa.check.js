@@ -129,11 +129,11 @@ todoLink.addEventListener('click', (event) => event.preventDefault());
 todoLink.click();
 check('clicking a to-do link does not toggle completion', !dom.window.eval('store.checks.c13'));
 
-check('City Tour Bus boards after the chicken lunch and before the 4:50 last bus', (() => {
+check('optional City Tour Bus loop runs opposite Ecojardin and lands before the Pilbang lunch', (() => {
   const tueRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
   const bus = tueRows.find((row) => row.it[1].includes('City Tour Bus'));
-  const lunch = tueRows.find((row) => row.it[1].includes('BBQ Chicken'));
-  return bus && lunch && bus.start >= lunch.start + lunch.it[8] && bus.start <= 16 * 60 + 50;
+  const lunch = tueRows.find((row) => row.it[1].includes('Kyochon Pilbang'));
+  return bus && lunch && bus.track && bus.start === 9 * 60 + 20 && bus.start + bus.it[8] + 25 <= lunch.start;
 })());
 const mondayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s2')).rows.filter(r=>r.type==='item'))`));
 check('Monday morning split reconvenes before Twelve', (() => {
