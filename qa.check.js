@@ -157,7 +157,7 @@ const tuesdayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('
 const hannamCard = tuesdayRows.find((row) => row.it[1].includes('Hannam-dong shopping run'));
 const rodeoCard = tuesdayRows.find((row) => row.it[1].includes('designer run'));
 check('Hannam shopping card lists the shops and ends before 8 PM', hannamCard && hannamCard.start + hannamCard.it[8] <= 20 * 60 && ['MANORS', 'SCULPSTORE', 'POTTERY', 'COS', 'Rough Side'].every((name) => hannamCard.it[9].includes(name)));
-check('Rodeo designer card lists the flagships and beats the 8 PM golf close', rodeoCard && rodeoCard.start + rodeoCard.it[8] <= 19 * 60 + 45 && ['Haus Dosan', 'Titleist', 'Malbon', 'Hermès', 'Ader Error'].every((name) => rodeoCard.it[9].includes(name)));
+check('Rodeo designer card lists Dosan + Cheongdam flagships and ends by 8 PM', rodeoCard && rodeoCard.start + rodeoCard.it[8] <= 20 * 60 && ['Haus Dosan', 'Titleist', 'Malbon', 'Hermès', 'Ader Error', 'Cheongdam', 'Dior', 'Louis Vuitton', 'Gucci', 'Galleria'].every((name) => rodeoCard.it[9].includes(name)));
 check('Tokyo baseball matchup is confirmed in the itinerary', /Yakult Swallows vs Chunichi Dragons/.test(html));
 const sundayTokyoRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('t4')).rows.filter(r=>r.type==='item'))`));
 const shibuyaSkyRows = JSON.parse(dom.window.eval(`JSON.stringify(TOKYO_DAYS.flatMap(day=>day.items).filter(item=>item[1].includes('Shibuya Sky')))`));
