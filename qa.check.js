@@ -137,9 +137,16 @@ check('Monday morning split reconvenes before Twelve', (() => {
   return tracked.length === 2 && new Set(tracked.map((r) => r.track)).size === 2 && twelve && tracked.every((r) => r.start + r.it[8] <= twelve.start);
 })());
 check('Monday afternoon stays single-track', mondayRows.every((row) => !row.track || row.start < 12 * 60));
-const ecojardinRow = mondayRows.find((row) => row.it[1].includes('Ecojardin'));
 const bornBredRow = mondayRows.find((row) => row.it[1].includes('Born and Bred'));
-check('Ecojardin leaves ample transit buffer for the 6 PM Born and Bred', ecojardinRow && bornBredRow && bornBredRow.start - (ecojardinRow.start + ecojardinRow.it[8]) >= 45);
+check('Monday spa leaves ample buffer before the 6 PM Born and Bred', (() => {
+  const spaRow = mondayRows.find((row) => row.it[1].includes('Spa Gogyeol'));
+  return spaRow && bornBredRow && bornBredRow.start - (spaRow.start + spaRow.it[8]) >= 45;
+})());
+check('Ecojardin now opens Tuesday at 9 AM sharp', (() => {
+  const tueRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
+  const eco = tueRows.find((row) => row.it[1].includes('Ecojardin'));
+  return eco && eco.start === 9 * 60 && !mondayRows.some((row) => row.it[1].includes('Ecojardin'));
+})());
 check('Dosan golf flagships run inside the Tuesday Rodeo block', (() => {
   const tueRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
   const names = ['Titleist Dosan', 'Maison Southcape', 'G/FORE Seoul', 'Malbon 6451', 'Haus Dosan'];
