@@ -71,7 +71,7 @@ const externalTransitZones = new Set(['ich', 'gmp', 'hnd', 'nrt']);
 check('every itinerary category is defined', itinerary.every(({ item }) => data.categories.includes(item[2])));
 check('every itinerary map zone is defined or an external airport', itinerary.every(({ city, item }) => data.zones[city].includes(item[3]) || externalTransitZones.has(item[3])));
 check('every itinerary duration is finite and non-negative', itinerary.every(({ item }) => Number.isFinite(item[8]) && item[8] >= 0));
-check('every scheduled shopping stop is capped at 20 minutes', itinerary.every(({ item }) => item[2] !== 'shop' || item[8] <= 20));
+check('every scheduled shopping stop is capped at 20 minutes (area run cards exempt)', itinerary.every(({ item }) => item[2] !== 'shop' || item[8] <= 20 || /shopping run|designer run/i.test(item[1])));
 check('every itinerary link is an absolute web URL', itinerary.every(({ item }) => !item[10] || /^https:\/\//.test(item[10])));
 check('every forced start is a valid minute value', itinerary.every(({ item }) => item[12] == null || (Number.isFinite(item[12]) && item[12] >= 0 && item[12] < 1440)));
 check('base itinerary has no duplicate day titles', [...data.seoul, ...data.tokyo].every((day) => new Set(day.items.map((item) => item[1])).size === day.items.length));
@@ -152,17 +152,12 @@ check('Ecojardin now opens Tuesday at 9 AM sharp', (() => {
   const eco = tueRows.find((row) => row.it[1].includes('Ecojardin'));
   return eco && eco.start === 9 * 60 && !mondayRows.some((row) => row.it[1].includes('Ecojardin'));
 })());
-check('Dosan golf flagships run inside the Tuesday Rodeo block', (() => {
-  const tueRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
-  const names = ['Titleist Dosan', 'Maison Southcape', 'G/FORE Seoul', 'Malbon 6451', 'Haus Dosan'];
-  const shops = names.map((name) => tueRows.find((row) => row.it[1].includes(name)));
-  return shops.every(Boolean) && shops.every((row) => row.start + row.it[8] <= 20 * 60);
-})());
+
 const tuesdayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
-const manorsRow = tuesdayRows.find((row) => row.it[1].includes('MANORS Golf'));
-const vinylRow = tuesdayRows.find((row) => row.it[1].includes('VINYL & PLASTIC'));
-check('MANORS Hannam is scheduled before its official 8 PM close', manorsRow && manorsRow.start + manorsRow.it[8] <= 20 * 60);
-check('Vinyl & Plastic follows MANORS and closes with ample buffer', vinylRow && manorsRow && vinylRow.start > manorsRow.start && vinylRow.start + vinylRow.it[8] <= 21 * 60);
+const hannamCard = tuesdayRows.find((row) => row.it[1].includes('Hannam-dong shopping run'));
+const rodeoCard = tuesdayRows.find((row) => row.it[1].includes('designer run'));
+check('Hannam shopping card lists the shops and ends before 8 PM', hannamCard && hannamCard.start + hannamCard.it[8] <= 20 * 60 && ['MANORS', 'SCULPSTORE', 'POTTERY', 'COS', 'Rough Side'].every((name) => hannamCard.it[9].includes(name)));
+check('Rodeo designer card lists the flagships and beats the 8 PM golf close', rodeoCard && rodeoCard.start + rodeoCard.it[8] <= 19 * 60 + 45 && ['Haus Dosan', 'Titleist', 'Malbon', 'Hermès', 'Ader Error'].every((name) => rodeoCard.it[9].includes(name)));
 check('Tokyo baseball matchup is confirmed in the itinerary', /Yakult Swallows vs Chunichi Dragons/.test(html));
 const sundayTokyoRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('t4')).rows.filter(r=>r.type==='item'))`));
 const shibuyaSkyRows = JSON.parse(dom.window.eval(`JSON.stringify(TOKYO_DAYS.flatMap(day=>day.items).filter(item=>item[1].includes('Shibuya Sky')))`));
