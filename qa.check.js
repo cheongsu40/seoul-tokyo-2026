@@ -132,7 +132,7 @@ check('clicking a to-do link does not toggle completion', !dom.window.eval('stor
 check('hop-on-hop-off bus boards after lunch, before the 4:50 last bus', (() => {
   const tueRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s3')).rows.filter(r=>r.type==='item'))`));
   const bus = tueRows.find((row) => row.it[1].includes('City Tour Bus'));
-  const lunch = tueRows.find((row) => row.it[1].includes("Johnna"));
+  const lunch = tueRows.find((row) => row.it[1].includes('Kyochon Pilbang'));
   return bus && lunch && bus.start >= lunch.start + lunch.it[8] && bus.start <= 16 * 60 + 50;
 })());
 const mondayRows = JSON.parse(dom.window.eval(`JSON.stringify(compute(findDay('s2')).rows.filter(r=>r.type==='item'))`));
