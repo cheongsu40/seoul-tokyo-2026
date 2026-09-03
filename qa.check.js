@@ -59,7 +59,7 @@ check('every day has itinerary items', [...data.seoul, ...data.tokyo].every((day
 check('to-do ids are unique', new Set(data.todos.map((todo) => todo[0])).size === data.todos.length);
 check('every to-do has a title and timing cue', data.todos.every((todo) => todo[0] && todo[2] && todo[3]));
 check('requested Taecho booking remains actionable', !data.todos.find((todo) => todo[0] === 'c16')[5]);
-check('teamLab entry time has a dedicated action', data.todos.some((todo) => todo[0] === 'c26' && !todo[5]));
+check('teamLab entry time action is resolved', data.todos.some((todo) => todo[0] === 'c26' && todo[5]));
 check('facial details have a dedicated action', data.todos.some((todo) => todo[0] === 'c27' && !todo[5]));
 check('flight reconfirmation has a dedicated action', data.todos.some((todo) => todo[0] === 'c28' && !todo[5]));
 
